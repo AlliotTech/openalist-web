@@ -1313,7 +1313,7 @@
   word-break: break-all;
 }
 
-/* https://github.com/alist-org/alist/issues/6929 */
+/* https://github.com/AlliotTech/openalist/issues/6929 */
 .katex-display .frac-line {
   border-bottom-width: 0.04em;
 }
