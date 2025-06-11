@@ -10,15 +10,15 @@
   "packageManager": "pnpm@9.9.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alist-org/alist-web.git"
+    "url": "git+https://github.com/AlliotTech/openalist-web.git"
   },
   "bugs": {
-    "url": "https://github.com/alist-org/alist/issues"
+    "url": "https://github.com/AlliotTech/openalist/issues"
   },
   "files": [
     "dist"
   ],
-  "homepage": "https://alist.nn.ci",
+  "homepage": "https://alist.iots.vip",
   "scripts": {
     "crowdin:upload": "crowdin upload sources --auto-update",
     "crowdin:download": "crowdin download --verbose",
