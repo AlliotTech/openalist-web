@@ -38,7 +38,7 @@ jobs:
       - name: Checkout dist repo
         uses: actions/checkout@v4
         with:
-          repository: alist-org/web-dist
+          repository: AlliotTech/web-dist
           ref: dev
           path: web-dist
           persist-credentials: false
@@ -72,5 +72,5 @@ jobs:
           github_token: ${{ secrets.MY_TOKEN }}
           branch: dev
           directory: web-dist
-          repository: alist-org/web-dist
+          repository: AlliotTech/web-dist
           force: true
