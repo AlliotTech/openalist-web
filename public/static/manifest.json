@@ -2,7 +2,7 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "AList",
+  "name": "OpenAList",
   "icons": [
     {
       "src": "https://jsd.nn.ci/gh/alist-org/logo@main/logo.png",
