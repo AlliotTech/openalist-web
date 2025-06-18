@@ -29,16 +29,18 @@ export const Center = () => {
           animate={{ opacity: 1, scale: 1, x: "50%", y: 0 }}
           exit={{ opacity: 0, scale: 0.9 }}
           // @ts-ignore
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.3, easing: "easeOut" }}
         >
           <HStack
-            p="$2"
+            p="$3"
             bgColor={useColorModeValue("white", "#000000d0")()}
-            spacing="$1"
-            shadow="0px 10px 30px -5px rgba(0, 0, 0, 0.3)"
-            rounded="$lg"
+            spacing="$2"
+            shadow="0px 20px 40px -10px rgba(0, 0, 0, 0.3)"
+            rounded="$xl"
+            border="1px solid"
+            borderColor={useColorModeValue("$neutral4", "$neutral6")()}
             css={{
-              backdropFilter: "blur(8px)",
+              backdropFilter: "blur(20px)",
             }}
           >
             <For each={["rename", "move", "copy", "delete", "decompress"]}>

@@ -36,14 +36,17 @@ export const Header = () => {
       bgColor="$background"
       class="header"
       w="$full"
-      // shadow="$md"
+      borderBottom="1px solid"
+      borderColor="$neutral4"
+      transition="all 0.3s ease"
     >
       <Container>
         <HStack
           px="calc(2% + 0.5rem)"
-          py="$2"
+          py="$3"
           w="$full"
           justifyContent="space-between"
+          alignItems="center"
         >
           <HStack class="header-left" h="44px">
             <Image
@@ -51,30 +54,39 @@ export const Header = () => {
               h="$full"
               w="auto"
               fallback={<CenterLoading />}
+              transition="transform 0.2s ease"
+              _hover={{
+                transform: "scale(1.05)",
+              }}
             />
           </HStack>
-          <HStack class="header-right" spacing="$2">
+          <HStack class="header-right" spacing="$3">
             <Show when={objStore.state === State.Folder}>
               <Show when={getSetting("search_index") !== "none"}>
                 <HStack
-                  bg="$neutral4"
-                  w="$32"
-                  p="$1"
-                  rounded="$md"
+                  w="$36"
+                  p="$2"
+                  rounded="$lg"
                   justifyContent="space-between"
                   border="2px solid transparent"
                   cursor="pointer"
                   color={getMainColor()}
                   bgColor={changeColor(getMainColor(), { alpha: 0.15 })}
+                  transition="all 0.2s ease"
                   _hover={{
                     bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
+                    transform: "translateY(-1px)",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                  }}
+                  _active={{
+                    transform: "scale(0.98)",
                   }}
                   onClick={() => {
                     bus.emit("tool", "search")
                   }}
                 >
                   <Icon as={BsSearch} />
-                  <HStack>
+                  <HStack spacing="$1">
                     {isMac ? <Kbd>Cmd</Kbd> : <Kbd>Ctrl</Kbd>}
                     <Kbd>K</Kbd>
                   </HStack>

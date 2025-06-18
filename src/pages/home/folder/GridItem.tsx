@@ -29,9 +29,9 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
     useSelectWithMouse()
   return (
     <Motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.2 }}
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
       style={{
         width: "100%",
       }}
@@ -41,13 +41,14 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
         class="grid-item viselect-item"
         data-index={props.index}
         w="$full"
-        p="$1"
-        spacing="$1"
+        p="$2"
+        spacing="$2"
         rounded="$lg"
-        transition="all 0.3s"
+        transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
         _hover={{
-          transform: "scale(1.06)",
-          bgColor: hoverColor(),
+          transform: "translateY(-4px) scale(1.02)",
+          boxShadow:
+            "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         }}
         as={LinkWithPush}
         href={props.obj.name}
@@ -74,9 +75,6 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
         }}
         onContextMenu={(e: MouseEvent) => {
           batch(() => {
-            // if (!checkboxOpen()) {
-            //   toggleCheckbox();
-            // }
             selectIndex(props.index, true, true)
           })
           show(e, { props: props.obj })
@@ -96,13 +94,15 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
             e.stopPropagation()
           }}
           pos="relative"
+          rounded="$md"
+          overflow="hidden"
         >
           <Show when={checkboxOpen()}>
             <ItemCheckbox
               pos="absolute"
-              left="$1"
-              top="$1"
-              // colorScheme="neutral"
+              left="$2"
+              top="$2"
+              zIndex="1"
               on:mousedown={(e: MouseEvent) => {
                 e.stopPropagation()
               }}
@@ -119,12 +119,16 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
             <ImageWithError
               maxH="$full"
               maxW="$full"
-              rounded="$lg"
+              rounded="$md"
               shadow="$md"
               fallback={<CenterLoading size="lg" />}
               fallbackErr={objIcon}
               src={props.obj.thumb}
               loading="lazy"
+              transition="transform 0.3s ease"
+              _hover={{
+                transform: "scale(1.05)",
+              }}
             />
           </Show>
         </Center>
@@ -132,12 +136,18 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
           css={{
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
+            fontWeight: "500",
           }}
           w="$full"
           overflow="hidden"
           textAlign="center"
           fontSize="$sm"
           title={props.obj.name}
+          color="$neutral11"
+          transition="color 0.2s ease"
+          _hover={{
+            color: getMainColor(),
+          }}
         >
           {props.obj.name}
         </Text>

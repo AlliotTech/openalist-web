@@ -29,6 +29,8 @@ export const Nav = () => {
         transform: "translateX(-50%)",
         left: "50%",
         top: 0,
+        borderBottom: "1px solid",
+        borderColor: "$neutral4",
       },
     }
 
@@ -48,7 +50,13 @@ export const Nav = () => {
   })
 
   return (
-    <Breadcrumb {...stickyProps} background="$background" class="nav" w="$full">
+    <Breadcrumb
+      {...stickyProps}
+      background="$background"
+      class="nav"
+      w="$full"
+      py="$2"
+    >
       <For each={paths()}>
         {(name, i) => {
           const isLast = createMemo(() => i() === paths().length - 1)
@@ -66,12 +74,21 @@ export const Nav = () => {
                 class="nav-link"
                 css={{
                   wordBreak: "break-all",
+                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 color="unset"
-                _hover={{ bgColor: hoverColor(), color: "unset" }}
-                _active={{ transform: "scale(.95)", transition: "0.1s" }}
+                _hover={{
+                  bgColor: hoverColor(),
+                  color: "unset",
+                  transform: "translateY(-1px)",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                }}
+                _active={{
+                  transform: "scale(.95)",
+                  transition: "0.1s",
+                }}
                 cursor="pointer"
-                p="$1"
+                p="$2"
                 rounded="$lg"
                 currentPage={isLast()}
                 as={isLast() ? undefined : Link}
@@ -81,7 +98,7 @@ export const Nav = () => {
                 {text}
               </BreadcrumbLink>
               <Show when={!isLast()}>
-                <BreadcrumbSeparator class="nav-separator" />
+                <BreadcrumbSeparator class="nav-separator" mx="$2" />
               </Show>
             </BreadcrumbItem>
           )
