@@ -1,17 +1,18 @@
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-corner,
 ::-webkit-scrollbar-track {
-  background-color: #e2e2e2;
-  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 2px;
-  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar-button:vertical {
@@ -19,32 +20,323 @@
 }
 
 ::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:vertical:active {
-  background-color: rgba(0, 0, 0, 0.38);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* dark */
 
 .hope-ui-dark ::-webkit-scrollbar-corner,
 .hope-ui-dark ::-webkit-scrollbar-track {
-  background-color: rgb(15, 15, 15);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .hope-ui-dark ::-webkit-scrollbar-thumb {
-  background-color: #2d2d2d;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .hope-ui-dark ::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: rgb(58, 58, 58);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .hope-ui-dark ::-webkit-scrollbar-thumb:vertical:active {
-  background-color: rgb(58, 58, 58);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .hope-select__option {
   flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.hope-select__option:hover {
+  transform: translateX(2px);
+}
+
+/* 全局样式优化 */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 15px;
+}
+
+body {
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1;
+}
+
+/* 图片优化 */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* 链接样式优化 */
+a {
+  transition: all 0.2s ease;
+}
+
+/* 按钮和输入框焦点优化 */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 卡片阴影优化 */
+.card-shadow {
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.card-shadow:hover {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* 深色模式卡片阴影 */
+.hope-ui-dark .card-shadow {
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.3),
+    0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.hope-ui-dark .card-shadow:hover {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* 加载动画优化 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* 网格项优化 */
+.grid-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grid-item:hover::before {
+  opacity: 1;
+}
+
+/* 工具栏优化 */
+.center-toolbar {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .grid-item {
+    margin-bottom: 1rem;
+  }
+
+  .center-toolbar {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    left: 1rem !important;
+    width: auto !important;
+    transform: none !important;
+  }
+
+  .center-toolbar > div {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .grid-item {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* 深色模式优化 */
+.hope-ui-dark .grid-item::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* 动画优化 */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-bottom {
+  animation: slideInFromBottom 0.4s ease-out;
+}
+
+/* 工具提示优化 */
+.hope-tooltip__content {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 模态框优化 */
+.hope-modal__overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hope-modal__content {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 输入框优化 */
+.hope-input__input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 按钮优化 */
+.hope-button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hope-button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* 选择框优化 */
+.hope-select__trigger:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 复选框优化 */
+.hope-checkbox__control:hover {
+  transform: scale(1.05);
+}
+
+/* 开关优化 */
+.hope-switch__track {
+  transition: all 0.2s ease;
+}
+
+.hope-switch__thumb {
+  transition: all 0.2s ease;
+}
+
+/* 菜单优化 */
+.hope-menu__content {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.hope-menu__item:hover {
+  transform: translateX(2px);
+}
+
+/* 通知优化 */
+.hope-notification {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 警告框优化 */
+.hope-alert {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 锚点优化 */
+.hope-anchor:hover {
+  transform: translateY(-1px);
+}
+
+/* 卡片优化 */
+.hope-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.markdown-body th,
+.markdown-body td,
+th,
+td {
+  padding: 6px 8px;
+  line-height: 1.4;
 }

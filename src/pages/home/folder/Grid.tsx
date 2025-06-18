@@ -16,8 +16,9 @@ const GridLayout = () => {
       w="$full"
       gap="$1"
       templateColumns={`repeat(auto-fill, minmax(${
-        parseInt(local["grid_item_size"]) + 20
+        parseInt(local["grid_item_size"]) + 10
       }px,1fr))`}
+      transition="all 0.3s ease"
     >
       <For each={objStore.objs}>
         {(obj, i) => {
