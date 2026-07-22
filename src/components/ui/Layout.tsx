@@ -13,6 +13,9 @@ const token = (value: string | number | undefined, group: string) => {
 const colors = (value: string | undefined) =>
   value?.replace(/\$([\w]+)/g, "var(--hope-colors-$1)")
 
+const zIndex = (value: string | number | undefined) =>
+  typeof value === "number" ? value.toString() : token(value, "zIndices")
+
 type AppBoxProps = ParentProps<
   Omit<JSX.HTMLAttributes<HTMLDivElement>, "style"> & {
     as?: any
@@ -161,7 +164,7 @@ export const AppBox = (props: AppBoxProps) => {
           typeof local.left === "object" ? undefined : local.left,
           "space",
         ),
-        "z-index": token(local.zIndex, "zIndices"),
+        "z-index": zIndex(local.zIndex),
         "flex-shrink": local.flexShrink,
         overflow: local.overflow,
         "overflow-x": local.overflowX,
