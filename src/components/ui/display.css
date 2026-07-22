@@ -16,6 +16,18 @@
   border-top: 1px solid var(--hope-colors-neutral6);
 }
 
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--hope-radii-sm);
+  font-size: var(--hope-fontSizes-xs);
+  font-weight: 500;
+  line-height: 1.25rem;
+  vertical-align: middle;
+}
+
 @keyframes app-skeleton-pulse {
   from {
     background-position: 200% 0;

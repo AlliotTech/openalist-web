@@ -1,3 +1,4 @@
+import type { JSX, ParentProps } from "solid-js"
 import "./display.css"
 
 const token = (value: string | undefined, group: string) =>
@@ -20,3 +21,23 @@ export const AppSkeleton = (props: {
 )
 
 export const AppDivider = () => <hr class="app-divider" />
+
+export const AppBadge = (
+  props: ParentProps<{
+    colorScheme?: string
+    ml?: string
+    css?: JSX.CSSProperties | Record<string, string>
+  }>,
+) => (
+  <span
+    class="app-badge"
+    style={{
+      ...(props.css as JSX.CSSProperties),
+      "margin-left": token(props.ml, "space"),
+      background: `var(--hope-colors-${props.colorScheme ?? "neutral"}3)`,
+      color: `var(--hope-colors-${props.colorScheme ?? "neutral"}11)`,
+    }}
+  >
+    {props.children}
+  </span>
+)

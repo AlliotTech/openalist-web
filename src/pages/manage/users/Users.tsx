@@ -1,4 +1,4 @@
-import { Badge } from "@hope-ui/solid"
+import { AppBadge as Badge } from "~/components/ui/Display"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import "~/components/ui/table.css"

@@ -1,4 +1,5 @@
-import { Badge, Text, useColorModeValue } from "@hope-ui/solid"
+import { Text, useColorModeValue } from "@hope-ui/solid"
+import { AppBadge as Badge } from "~/components/ui/Display"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"

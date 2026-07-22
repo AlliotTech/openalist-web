@@ -3,10 +3,10 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Badge,
   Heading,
   Text,
 } from "@hope-ui/solid"
+import { AppBadge as Badge } from "~/components/ui/Display"
 import { AppSimpleGrid as SimpleGrid } from "~/components/ui/Grid"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import {

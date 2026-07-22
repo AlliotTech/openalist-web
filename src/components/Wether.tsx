@@ -1,4 +1,4 @@
-import { Badge } from "@hope-ui/solid"
+import { AppBadge as Badge } from "~/components/ui/Display"
 import { useT } from "~/hooks"
 
 export interface WetherProps {
