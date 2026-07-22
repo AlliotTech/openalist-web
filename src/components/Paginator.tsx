@@ -1,4 +1,4 @@
-import { HStack } from "@hope-ui/solid"
+import { AppHStack as HStack } from "~/components/ui/Stack"
 import { createMemo, For, mergeProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { FaSolidAngleLeft, FaSolidAngleRight } from "solid-icons/fa"

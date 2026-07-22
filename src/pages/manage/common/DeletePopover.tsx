@@ -1,5 +1,5 @@
 import { Popover } from "@kobalte/core/popover"
-import { HStack } from "@hope-ui/solid"
+import { AppHStack as HStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import "~/components/ui/popover.css"

@@ -1,4 +1,5 @@
 import { splitProps, type JSX, type ParentProps } from "solid-js"
+import "./stack.css"
 
 const token = (value: string | number | undefined, group: string) => {
   if (typeof value === "number") return `${value}px`
@@ -7,6 +8,9 @@ const token = (value: string | number | undefined, group: string) => {
     ? `var(--hope-${group}-${value.slice(1)})`
     : value
 }
+
+const cssTokens = (value: string | undefined) =>
+  value?.replace(/\$([\w]+)/g, "var(--hope-colors-$1)")
 
 type StackProps = ParentProps<
   Omit<JSX.HTMLAttributes<HTMLDivElement>, "style"> & {
@@ -31,7 +35,8 @@ type StackProps = ParentProps<
     mr?: string
     my?: string
     mx?: string
-    wrap?: JSX.CSSProperties["flex-wrap"]
+    wrap?:
+      JSX.CSSProperties["flex-wrap"] | { "@initial"?: string; "@md"?: string }
     flexWrap?: JSX.CSSProperties["flex-wrap"]
     flex?: string | number
     overflow?: JSX.CSSProperties["overflow"]
@@ -40,6 +45,12 @@ type StackProps = ParentProps<
     color?: string
     rounded?: string
     shadow?: string
+    pl?: string
+    pr?: string
+    bg?: string
+    background?: string
+    border?: string
+    _hover?: { border?: string }
   }
 >
 
@@ -78,11 +89,17 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "color",
     "rounded",
     "shadow",
+    "pl",
+    "pr",
+    "bg",
+    "background",
+    "border",
+    "_hover",
   ])
   return (
     <div
       {...others}
-      class={`app-stack app-stack--${local.direction}${local.class ? ` ${local.class}` : ""}`}
+      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${local._hover?.border ? " app-stack--hover-border" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={
         {
           ...(local.style ?? {}),
@@ -100,6 +117,8 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           padding: token(local.p, "space"),
           "padding-left": token(local.px, "space"),
           "padding-right": token(local.px, "space"),
+          "padding-inline-start": token(local.pl, "space"),
+          "padding-inline-end": token(local.pr, "space"),
           "padding-top": token(local.py, "space"),
           "padding-bottom": token(local.py, "space"),
           margin: token(local.m, "space"),
@@ -107,7 +126,11 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           "margin-bottom": token(local.mb ?? local.my, "space"),
           "margin-left": token(local.ml ?? local.mx, "space"),
           "margin-right": token(local.mr ?? local.mx, "space"),
-          "flex-wrap": local.flexWrap ?? local.wrap,
+          "flex-wrap":
+            local.flexWrap ??
+            (typeof local.wrap === "object"
+              ? (local.wrap["@initial"] as JSX.CSSProperties["flex-wrap"])
+              : local.wrap),
           flex: local.flex,
           overflow: local.overflow,
           "overflow-x": local.overflowX,
@@ -115,6 +138,9 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           color: token(local.color, "colors"),
           "border-radius": token(local.rounded, "radii"),
           "box-shadow": token(local.shadow, "shadows"),
+          background: cssTokens(local.bg ?? local.background),
+          border: cssTokens(local.border),
+          "--app-stack-hover-border": cssTokens(local._hover?.border),
         } as any
       }
     >

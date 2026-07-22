@@ -1,4 +1,5 @@
-import { Alert, AlertIcon, Heading, VStack } from "@hope-ui/solid"
+import { Alert, AlertIcon, Heading } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createMemo, createSignal, For, Show } from "solid-js"
 import { MaybeLoading } from "~/components"

@@ -1,0 +1,9 @@
+.app-stack--hover-border:hover {
+  border: var(--app-stack-hover-border);
+}
+
+@media (min-width: 768px) {
+  .app-stack--responsive-wrap {
+    flex-wrap: nowrap;
+  }
+}
