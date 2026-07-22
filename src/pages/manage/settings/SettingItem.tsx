@@ -4,9 +4,8 @@ import {
   FormHelperText,
   FormLabel,
   Icon,
-  Input,
-  Textarea,
 } from "@hope-ui/solid"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import { For, Match, Show, Switch } from "solid-js"
 import { useT } from "~/hooks"
 import { Flag, SettingItem, Type } from "~/types"
@@ -46,7 +45,7 @@ const Item = (props: ItemProps) => {
       </Show>
       <Switch fallback={<Center>{t("settings_other.unknown_type")}</Center>}>
         <Match when={[Type.String, Type.Number].includes(props.type)}>
-          <Input
+          <AppInput
             type={props.type === Type.Number ? "number" : ""}
             id={props.key}
             // value={props.value()}
@@ -68,7 +67,7 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Text}>
-          <Textarea
+          <AppTextarea
             id={props.key}
             value={props.value}
             // value={props.value()}

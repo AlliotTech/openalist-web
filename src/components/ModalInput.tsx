@@ -1,5 +1,6 @@
-import { Input, Textarea, FormHelperText } from "@hope-ui/solid"
+import { FormHelperText } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import {
   AppModal,
   AppModalBody,
@@ -98,7 +99,7 @@ export const ModalInput = (props: ModalInputProps) => {
           <Show
             when={props.type === "text"}
             fallback={
-              <Input
+              <AppInput
                 id="modal-input"
                 type={props.type}
                 value={value()}
@@ -115,7 +116,7 @@ export const ModalInput = (props: ModalInputProps) => {
               />
             }
           >
-            <Textarea
+            <AppTextarea
               id="modal-input"
               value={value()}
               ref={(el) => (inputRef = el)}

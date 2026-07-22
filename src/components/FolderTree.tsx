@@ -1,5 +1,6 @@
-import { Box, HStack, Icon, Input, Spinner, Text, VStack } from "@hope-ui/solid"
+import { Box, HStack, Icon, Spinner, Text, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import {
   AppModal,
   AppModalBody,
@@ -246,7 +247,7 @@ export const FolderChooseInput = (props: {
   return (
     <>
       <HStack w="$full" spacing="$2">
-        <Input
+        <AppInput
           id={props.id}
           value={props.value}
           onInput={(e) => props.onChange(e.currentTarget.value)}

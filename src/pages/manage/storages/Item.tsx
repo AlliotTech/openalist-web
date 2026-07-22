@@ -1,11 +1,5 @@
-import {
-  Center,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-  Textarea,
-} from "@hope-ui/solid"
+import { Center, FormControl, FormHelperText, FormLabel } from "@hope-ui/solid"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import { Match, Show, Switch } from "solid-js"
 import { useT } from "~/hooks"
 import { DriverItem, Type } from "~/types"
@@ -64,7 +58,7 @@ const Item = (props: ItemProps) => {
       </FormLabel>
       <Switch fallback={<Center>{t("settings.unknown_type")}</Center>}>
         <Match when={props.type === Type.String}>
-          <Input
+          <AppInput
             id={props.name}
             type={props.name == "password" ? "password" : "text"}
             readOnly={props.readonly}
@@ -77,7 +71,7 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Number}>
-          <Input
+          <AppInput
             type="number"
             id={props.name}
             readOnly={props.readonly}
@@ -90,7 +84,7 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Float}>
-          <Input
+          <AppInput
             type="number"
             id={props.name}
             readOnly={props.readonly}
@@ -115,7 +109,7 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Text}>
-          <Textarea
+          <AppTextarea
             id={props.name}
             readOnly={props.readonly}
             value={props.value as string}

@@ -1,5 +1,6 @@
-import { Input, Textarea, FormHelperText, VStack } from "@hope-ui/solid"
+import { FormHelperText, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import {
   AppModal,
   AppModalBody,
@@ -52,7 +53,7 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
             when={props.type === "text"}
             fallback={
               <VStack spacing="$2">
-                <Input
+                <AppInput
                   id="modal-input1" // Update id to "modal-input1" for first input
                   type={props.type}
                   value={value1()} // Update value to value1 for first input
@@ -65,7 +66,7 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
                     }
                   }}
                 />
-                <Input
+                <AppInput
                   id="modal-input2" // Add second input with id "modal-input2"
                   type={props.type}
                   value={value2()} // Bind value to value2 for second input
@@ -82,14 +83,14 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
             }
           >
             <div>
-              <Textarea
+              <AppTextarea
                 id="modal-input1" // Update id to "modal-input1" for first input
                 value={value1()} // Update value to value1 for first input
                 onInput={(e) => {
                   setValue1(e.currentTarget.value)
                 }}
               />
-              <Textarea
+              <AppTextarea
                 id="modal-input2" // Add second input with id "modal-input2"
                 value={value2()} // Bind value to value2 for second input
                 onInput={(e) => {
