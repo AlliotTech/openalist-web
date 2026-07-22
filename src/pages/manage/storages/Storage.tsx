@@ -1,4 +1,5 @@
-import { Badge, Box, Text, useColorModeValue } from "@hope-ui/solid"
+import { Badge, Text, useColorModeValue } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { useFetch, useRouter, useT } from "~/hooks"
@@ -92,7 +93,7 @@ export function StorageGridItem(props: StorageProps) {
       <HStack>
         <Text>{t("storages.common.status")}:&nbsp;</Text>
         <Box
-          css={{ wordBreak: "break-all" }}
+          css={{ "word-break": "break-all" }}
           overflowX="auto"
           innerHTML={props.storage.status}
         />

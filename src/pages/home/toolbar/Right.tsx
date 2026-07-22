@@ -1,4 +1,4 @@
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { createDisclosure } from "~/hooks/disclosure"
 import { createMemo, Show } from "solid-js"

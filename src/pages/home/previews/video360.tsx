@@ -1,4 +1,4 @@
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { VideoBox } from "./video_box"
 import { createSignal, onCleanup, onMount } from "solid-js"
 import { getSettingBool, objStore } from "~/store"
