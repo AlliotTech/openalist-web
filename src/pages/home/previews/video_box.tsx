@@ -1,12 +1,5 @@
-import {
-  Flex,
-  VStack,
-  Image,
-  Anchor,
-  Tooltip,
-  HStack,
-  Switch,
-} from "@hope-ui/solid"
+import { Flex, VStack, Image, Anchor, HStack, Switch } from "@hope-ui/solid"
+import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { For, JSXElement } from "solid-js"
 import { useRouter, useLink, useT } from "~/hooks"
 import { objStore } from "~/store"

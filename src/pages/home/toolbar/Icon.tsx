@@ -1,4 +1,5 @@
-import { ElementType, Icon, IconProps, Tooltip } from "@hope-ui/solid"
+import { ElementType, Icon, IconProps } from "@hope-ui/solid"
+import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { IconTypes } from "solid-icons"
 import { useT } from "~/hooks"
 import { getMainColor, me } from "~/store"

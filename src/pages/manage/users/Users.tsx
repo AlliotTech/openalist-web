@@ -8,10 +8,10 @@ import {
   Td,
   Th,
   Thead,
-  Tooltip,
   Tr,
   VStack,
 } from "@hope-ui/solid"
+import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { createSignal, For } from "solid-js"
 import {
   useFetch,
