@@ -43,6 +43,23 @@ function transformImageUri(uri: string) {
   return ""
 }
 
+type MarkdownAstNode = {
+  position?: { start?: unknown; end?: unknown }
+  children?: MarkdownAstNode[]
+}
+
+function normalizeMarkdownPositions() {
+  return (tree: MarkdownAstNode) => {
+    const visit = (node: MarkdownAstNode) => {
+      if (node.position && (!node.position.start || !node.position.end)) {
+        delete node.position
+      }
+      node.children?.forEach(visit)
+    }
+    visit(tree)
+  }
+}
+
 const [isTocVisible, setVisible] = createSignal(false)
 const [isTocDisabled, setTocDisabled] = createStorageSignal(
   "isMarkdownTocDisabled",
@@ -238,22 +255,28 @@ export function Markdown(props: {
     })
     return content
   })
-  const [remarkPlugins, setRemarkPlugins] = createSignal<
-    SolidMarkdownOptions["remarkPlugins"]
-  >([remarkGfm])
-  const [rehypePlugins, setRehypePlugins] = createSignal<
-    SolidMarkdownOptions["rehypePlugins"]
-  >([rehypeRaw])
+  const baseRemarkPlugins: SolidMarkdownOptions["remarkPlugins"] = [remarkGfm]
+  const baseRehypePlugins: SolidMarkdownOptions["rehypePlugins"] = [
+    rehypeRaw,
+    normalizeMarkdownPositions,
+  ]
+  const [remarkPlugins, setRemarkPlugins] = createSignal(baseRemarkPlugins)
+  const [rehypePlugins, setRehypePlugins] = createSignal(baseRehypePlugins)
+  let renderVersion = 0
   createEffect(
-    on(md, async () => {
+    on(md, async (content) => {
+      const version = ++renderVersion
       setShow(false)
-      // lazy for math rendering
-      if (/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/.test(md())) {
-        const { default: reMarkMath } = await import("remark-math")
-        const { default: rehypeKatex } = await import("rehype-katex")
+      if (/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/.test(content)) {
+        const [{ default: remarkMath }, { default: rehypeKatex }] =
+          await Promise.all([import("remark-math"), import("rehype-katex")])
+        if (version !== renderVersion) return
         insertKatexCSS()
-        setRemarkPlugins([...remarkPlugins(), reMarkMath])
-        setRehypePlugins([...rehypePlugins(), rehypeKatex])
+        setRemarkPlugins([remarkGfm, remarkMath])
+        setRehypePlugins([rehypeRaw, rehypeKatex, normalizeMarkdownPositions])
+      } else {
+        setRemarkPlugins(baseRemarkPlugins)
+        setRehypePlugins(baseRehypePlugins)
       }
       insertMermaidJS()
       setTimeout(() => {
