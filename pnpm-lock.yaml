@@ -144,9 +144,6 @@ importers:
       '@crowdin/cli':
         specifier: ^4.14.4
         version: 4.14.4
-      '@hrgui/libass-wasm-ts':
-        specifier: ^1.0.3
-        version: 1.0.3
       '@types/bencode':
         specifier: ^4.0.0
         version: 4.0.0
@@ -761,10 +758,6 @@ packages:
       '@stitches/core': ^1.2.8
       solid-js: ^1.4.0
       solid-transition-group: ^0.0.10
-
-  '@hrgui/libass-wasm-ts@1.0.3':
-    resolution: {integrity: sha512-n8RbJLrhirfgDun88jVSs0/SeLC5PZz9iost9DXZ9dAXztDzpmjlEfu+k/viM37+EbaC9gWnRdUwcnptDkjtNw==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
@@ -3659,8 +3652,6 @@ snapshots:
       scroll-lock: 2.1.5
       solid-js: 1.9.14
       solid-transition-group: 0.0.12(solid-js@1.9.14)
-
-  '@hrgui/libass-wasm-ts@1.0.3': {}
 
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
