@@ -1,4 +1,4 @@
-import type { JSX, ParentProps } from "solid-js"
+import { createContext, useContext, type JSX, type ParentProps } from "solid-js"
 import "./display.css"
 
 const token = (value: string | undefined, group: string) =>
@@ -34,13 +34,15 @@ export const AppBadge = (
     style={{
       ...(props.css as JSX.CSSProperties),
       "margin-left": token(props.ml, "space"),
-      background: `var(--hope-colors-${props.colorScheme ?? "neutral"}3)`,
-      color: `var(--hope-colors-${props.colorScheme ?? "neutral"}11)`,
+      background: `var(--hope-colors-${props.colorScheme ?? "neutral"}4)`,
+      color: `var(--hope-colors-${props.colorScheme ?? "neutral"}${props.colorScheme ? "11" : "12"})`,
     }}
   >
     {props.children}
   </span>
 )
+
+const AlertStatusContext = createContext("info")
 
 export const AppAlert = (
   props: ParentProps<{
@@ -51,29 +53,64 @@ export const AppAlert = (
       "@lg"?: JSX.CSSProperties["flex-direction"]
     }
   }>,
-) => (
-  <div
-    role="alert"
-    class={`app-alert app-alert--${props.status ?? "info"}${props.flexDirection ? " app-alert--responsive" : ""}`}
-    style={{
-      width: token(props.w, "sizes"),
-      "--app-alert-direction-initial": props.flexDirection?.["@initial"],
-      "--app-alert-direction-lg": props.flexDirection?.["@lg"],
-    }}
-  >
-    {props.children}
-  </div>
-)
+) => {
+  const status = props.status ?? "info"
+  return (
+    <AlertStatusContext.Provider value={status}>
+      <div
+        role="alert"
+        class={`app-alert app-alert--${status}${props.flexDirection ? " app-alert--responsive" : ""}`}
+        style={{
+          width: token(props.w, "sizes"),
+          "--app-alert-direction-initial": props.flexDirection?.["@initial"],
+          "--app-alert-direction-lg": props.flexDirection?.["@lg"],
+        }}
+      >
+        {props.children}
+      </div>
+    </AlertStatusContext.Provider>
+  )
+}
 
-export const AppAlertIcon = (props: { mr?: string }) => (
-  <span
-    aria-hidden="true"
-    class="app-alert__icon"
-    style={{ "margin-right": token(props.mr, "space") }}
-  >
-    !
-  </span>
-)
+export const AppAlertIcon = (props: { mr?: string }) => {
+  const status = useContext(AlertStatusContext)
+  const paths: Record<string, JSX.Element> = {
+    success: (
+      <path
+        fill="currentColor"
+        d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2Zm-2 19.59l-5-5L10.59 15L14 18.41L21.41 11l1.596 1.586Z"
+      />
+    ),
+    warning: (
+      <path
+        fill="currentColor"
+        d="M29.49 29.87A1 1 0 0 1 29 30H3a1 1 0 0 1-.887-1.462l13-25a1 1 0 0 1 1.774 0l13 25a1 1 0 0 1-.397 1.332ZM17.125 21v-9h-2.25v9h2.25ZM16 26a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
+      />
+    ),
+    danger: (
+      <path
+        fill="currentColor"
+        d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2Zm-1.1 6h2.2v11h-2.2V8ZM16 25a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"
+      />
+    ),
+    info: (
+      <path
+        fill="currentColor"
+        d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2Zm0 6a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 16 8Zm4 16.125h-8v-2.25h2.875v-5.75H13v-2.25h4.125v8H20Z"
+      />
+    ),
+  }
+  return (
+    <svg
+      aria-hidden="true"
+      class="app-alert__icon"
+      viewBox="0 0 32 32"
+      style={{ "margin-right": token(props.mr, "space") }}
+    >
+      {paths[status] ?? paths.info}
+    </svg>
+  )
+}
 
 export const AppAlertTitle = (props: ParentProps<{ mr?: string }>) => (
   <strong style={{ "margin-right": token(props.mr, "space") }}>
