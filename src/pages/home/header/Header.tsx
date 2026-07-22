@@ -74,7 +74,7 @@ export const Header = () => {
                   bgColor={changeColor(getMainColor(), { alpha: 0.15 })}
                   transition="all 0.2s ease"
                   _hover={{
-                    bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
+                    bgColor: changeColor(getMainColor(), { alpha: 0.2 }) as any,
                     transform: "translateY(-1px)",
                     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
                   }}

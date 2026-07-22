@@ -36,8 +36,8 @@ export const BackTop = () => {
         color={getMainColor()}
         overflow="hidden"
         shadow="$lg"
-        _dark={{ bgColor: getMainColor(), color: "white" }}
-        _hover={{ bgColor: getMainColor(), color: "white" }}
+        _dark={{ bgColor: getMainColor() as any, color: "white" }}
+        _hover={{ bgColor: getMainColor() as any, color: "white" }}
       >
         <Icon
           _focus={{

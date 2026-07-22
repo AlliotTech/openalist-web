@@ -21,7 +21,7 @@ export const Nav = () => {
     const mask: BreadcrumbProps = {
       _after: {
         content: "",
-        bgColor: "$background",
+        bgColor: "$background" as any,
         position: "absolute",
         height: "100%",
         width: "99vw",
@@ -78,7 +78,7 @@ export const Nav = () => {
                 }}
                 color="unset"
                 _hover={{
-                  bgColor: hoverColor(),
+                  bgColor: hoverColor() as any,
                   color: "unset",
                   transform: "translateY(-1px)",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",

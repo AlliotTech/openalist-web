@@ -21,7 +21,7 @@ export const RenameItem = (props: { obj: RenameObj; index: number }) => {
         transition="all 0.3s"
         _hover={{
           transform: "scale(1.01)",
-          bgColor: hoverColor(),
+          bgColor: hoverColor() as any,
         }}
       >
         <Text

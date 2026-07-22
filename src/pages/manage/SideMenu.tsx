@@ -64,7 +64,7 @@ const SideMenuItemWithTo = (props: SideMenuItemProps) => {
       w="$full"
       alignItems="center"
       _hover={{
-        bgColor: isActive() ? "$info4" : hoverColor(),
+        bgColor: (isActive() ? "$info4" : hoverColor()) as any,
         textDecoration: "none",
       }}
       px="$2"
@@ -96,7 +96,7 @@ const SideMenuItemWithChildren = (props: SideMenuItemProps) => {
         w="$full"
         alignItems="center"
         _hover={{
-          bgColor: hoverColor(),
+          bgColor: hoverColor() as any,
         }}
         px="$2"
         py="$1_5"

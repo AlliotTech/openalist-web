@@ -58,7 +58,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
         transition="all 0.3s"
         _hover={{
           transform: "scale(1.01)",
-          bgColor: hoverColor(),
+          bgColor: hoverColor() as any,
         }}
         as={LinkWithPush}
         href={props.obj.name}

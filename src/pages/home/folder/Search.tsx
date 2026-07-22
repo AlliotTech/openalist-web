@@ -127,7 +127,7 @@ const SearchResult = (props: { node: SearchNode; keywords: string }) => {
       w="$full"
       borderBottom={`1px solid ${hoverColor()}`}
       _hover={{
-        bgColor: hoverColor(),
+        bgColor: hoverColor() as any,
       }}
       rounded="$md"
       cursor="pointer"

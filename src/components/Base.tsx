@@ -92,7 +92,7 @@ export const BoxWithFullScreen = (props: Parameters<typeof Box>[0]) => {
         transition="all 0.2s ease"
         _hover={{
           transform: "scale(1.1)",
-          bgColor: "$neutral4",
+          bgColor: "$neutral4" as any,
         }}
         _active={{
           transform: "scale(0.95)",
