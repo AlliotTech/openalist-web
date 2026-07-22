@@ -3,7 +3,10 @@ import { AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createEffect, createMemo, createSignal, on, Show } from "solid-js"
 import { EncodingSelect, MaybeLoading } from "~/components"
-import { MonacoEditorLoader } from "~/components/MonacoEditor"
+import {
+  editorLanguageForPath,
+  MonacoEditorLoader,
+} from "~/components/MonacoEditor"
 import { useFetch, useFetchText, useParseText, useRouter, useT } from "~/hooks"
 import { objStore, userCan } from "~/store"
 import { PEmptyResp } from "~/types"
@@ -55,7 +58,8 @@ function Editor(props: { data?: string | ArrayBuffer; contentType?: string }) {
       <MonacoEditorLoader
         value={text(encoding())}
         theme={theme()}
-        path={objStore.obj.name}
+        path={pathname()}
+        language={editorLanguageForPath(pathname())}
         onChange={(value) => {
           setValue(value)
         }}
