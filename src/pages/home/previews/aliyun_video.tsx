@@ -301,13 +301,12 @@ const Preview = () => {
       }),
     )
   }
-  const [loading, post] = useFetch(
-    (): PResp<Data> =>
-      r.post("/fs/other", {
-        path: pathname(),
-        password: password(),
-        method: "video_preview",
-      }),
+  const [loading, post] = useFetch((): PResp<Data> =>
+    r.post("/fs/other", {
+      path: pathname(),
+      password: password(),
+      method: "video_preview",
+    }),
   )
   onMount(async () => {
     const resp = await post()

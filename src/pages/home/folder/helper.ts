@@ -47,8 +47,8 @@ export function useSelectWithMouse() {
       if (!isMouseSupported()) {
         const area = document.querySelector(".viselect-container")
         area?.addEventListener("mousedown", saveSelectionCache)
-        onCleanup(
-          () => area?.removeEventListener("mousedown", saveSelectionCache),
+        onCleanup(() =>
+          area?.removeEventListener("mousedown", saveSelectionCache),
         )
         return
       }

@@ -71,17 +71,17 @@ const BackupRestore = () => {
     setLog((prev) => [...prev, { type, msg }])
     logRef.scrollTop = logRef.scrollHeight
   }
-  const [getSettingsLoading, getSettings] = useFetch(
-    (): PResp<any> => r.get("/admin/setting/list"),
+  const [getSettingsLoading, getSettings] = useFetch((): PResp<any> =>
+    r.get("/admin/setting/list"),
   )
-  const [getUsersLoading, getUsers] = useFetch(
-    (): PPageResp<User> => r.get("/admin/user/list"),
+  const [getUsersLoading, getUsers] = useFetch((): PPageResp<User> =>
+    r.get("/admin/user/list"),
   )
-  const [getMetasLoading, getMetas] = useFetch(
-    (): PPageResp<Meta> => r.get("/admin/meta/list"),
+  const [getMetasLoading, getMetas] = useFetch((): PPageResp<Meta> =>
+    r.get("/admin/meta/list"),
   )
-  const [getStoragesLoading, getStorages] = useFetch(
-    (): PPageResp<Storage> => r.get("/admin/storage/list"),
+  const [getStoragesLoading, getStorages] = useFetch((): PPageResp<Storage> =>
+    r.get("/admin/storage/list"),
   )
   const backupLoading = () => {
     return (

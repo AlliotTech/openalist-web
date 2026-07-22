@@ -18,14 +18,13 @@ function Editor(props: { data?: string | ArrayBuffer; contentType?: string }) {
   const [encoding, setEncoding] = createSignal("utf-8")
   const [value, setValue] = createSignal(text(encoding()))
   const t = useT()
-  const [loading, save] = useFetch(
-    (): PEmptyResp =>
-      r.put("/fs/put", value(), {
-        headers: {
-          "File-Path": encodeURIComponent(pathname()),
-          "Content-Type": props.contentType || "text/plain",
-        },
-      }),
+  const [loading, save] = useFetch((): PEmptyResp =>
+    r.put("/fs/put", value(), {
+      headers: {
+        "File-Path": encodeURIComponent(pathname()),
+        "Content-Type": props.contentType || "text/plain",
+      },
+    }),
   )
   createEffect(
     on(encoding, (v) => {

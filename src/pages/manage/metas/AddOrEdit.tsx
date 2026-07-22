@@ -99,8 +99,8 @@ const AddOrEdit = () => {
     header: "",
     header_sub: false,
   })
-  const [metaLoading, loadMeta] = useFetch(
-    (): PResp<Meta> => r.get(`/admin/meta/get?id=${id}`),
+  const [metaLoading, loadMeta] = useFetch((): PResp<Meta> =>
+    r.get(`/admin/meta/get?id=${id}`),
   )
 
   const initEdit = async () => {

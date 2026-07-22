@@ -58,7 +58,7 @@ const Item = (props: ItemProps) => {
     >
       <FormLabel for={props.name} display="flex" alignItems="center">
         {t(
-          props.full_name_path ?? props.driver === "common"
+          (props.full_name_path ?? props.driver === "common")
             ? `storages.common.${props.name}`
             : `drivers.${props.driver}.${props.name}`,
         )}
