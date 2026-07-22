@@ -50,6 +50,16 @@
   background: var(--hope-colors-neutral4, #eceef0);
 }
 
+.app-select--outline .app-select__trigger {
+  border-color: var(--hope-colors-neutral6, #cbd5e0);
+  background: transparent;
+}
+
+.app-select--outline .app-select__trigger:hover {
+  border-color: var(--hope-colors-info6, #63b3ed);
+  background: transparent;
+}
+
 .app-select--bordered .app-select__trigger {
   border-color: var(--hope-colors-info5, #90cdf4);
 }

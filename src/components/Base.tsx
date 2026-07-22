@@ -108,6 +108,7 @@ export function SelectWrapper<T extends string | number>(props: {
   }[]
   alwaysShowBorder?: boolean
   size?: "xs" | "sm" | "md" | "lg"
+  variant?: "filled" | "outline"
   w?: string
 }) {
   return (
@@ -119,16 +120,15 @@ export function SelectWrapper<T extends string | number>(props: {
         label: option.label ?? option.value.toString(),
       }))}
       size={props.size}
+      variant={props.variant}
       class={props.alwaysShowBorder ? "app-select--bordered" : undefined}
-      style={
-        props.w
-          ? {
-              width: props.w.startsWith("$")
-                ? `var(--hope-sizes-${props.w.slice(1)})`
-                : props.w,
-            }
-          : undefined
-      }
+      style={{
+        width: props.w
+          ? props.w.startsWith("$")
+            ? `var(--hope-sizes-${props.w.slice(1)})`
+            : props.w
+          : "100%",
+      }}
     />
   )
 }

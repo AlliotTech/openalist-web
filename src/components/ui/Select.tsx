@@ -45,7 +45,7 @@ export function AppCombobox<T extends string | number>(
           </Combobox.ItemIndicator>
         </Combobox.Item>
       )}
-      class={`app-select app-select--${props.size ?? "md"}${props.class ? ` ${props.class}` : ""}`}
+      class={`app-select app-select--${props.size ?? "md"} app-select--${props.variant ?? "filled"}${props.class ? ` ${props.class}` : ""}`}
       style={props.style}
     >
       <Combobox.HiddenSelect />
@@ -73,6 +73,7 @@ interface AppSelectBaseProps<T extends string | number> {
   class?: string
   style?: JSX.CSSProperties
   size?: "xs" | "sm" | "md" | "lg"
+  variant?: "filled" | "outline"
 }
 
 type AppSelectProps<T extends string | number> = AppSelectBaseProps<T> &
@@ -140,7 +141,7 @@ export function AppSelect<T extends string | number>(props: AppSelectProps<T>) {
           </Select.ItemIndicator>
         </Select.Item>
       )}
-      class={`app-select app-select--${props.size ?? "md"}${props.class ? ` ${props.class}` : ""}`}
+      class={`app-select app-select--${props.size ?? "md"} app-select--${props.variant ?? "filled"}${props.class ? ` ${props.class}` : ""}`}
       style={props.style}
     >
       <Select.HiddenSelect />

@@ -104,6 +104,7 @@ export function EncodingSelect(props: {
         }))}
         value={props.encoding}
         onChange={(v) => props.setEncoding(v)}
+        variant="outline"
         w="$full"
       />
     </Box>
