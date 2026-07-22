@@ -1,5 +1,9 @@
-import { Box, Flex, Heading, useColorModeValue } from "@hope-ui/solid"
-import { AppCenter as Center, AppHStack as HStack } from "~/components/ui/Stack"
+import { Box, Heading, useColorModeValue } from "@hope-ui/solid"
+import {
+  AppCenter as Center,
+  AppFlex as Flex,
+  AppHStack as HStack,
+} from "~/components/ui/Stack"
 import { AppIconButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import { TiThMenu } from "solid-icons/ti"

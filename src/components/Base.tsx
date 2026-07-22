@@ -1,5 +1,5 @@
-import { Box, Flex, Heading, useColorModeValue, Icon } from "@hope-ui/solid"
-import { AppCenter as Center } from "~/components/ui/Stack"
+import { Box, Heading, useColorModeValue, Icon } from "@hope-ui/solid"
+import { AppCenter as Center, AppFlex as Flex } from "~/components/ui/Stack"
 import { SwitchColorMode } from "./SwitchColorMode"
 import { mergeProps, Show } from "solid-js"
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from "solid-icons/ai"

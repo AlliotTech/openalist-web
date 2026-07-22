@@ -1,15 +1,8 @@
-import {
-  Badge,
-  Divider,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Text,
-} from "@hope-ui/solid"
+import { Badge, Divider, Grid, GridItem, Heading, Text } from "@hope-ui/solid"
 import { AppSpacer as Spacer } from "~/components/ui/Layout"
 import {
   AppCenter as Center,
+  AppFlex as Flex,
   AppHStack as HStack,
   AppVStack as VStack,
 } from "~/components/ui/Stack"

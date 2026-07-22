@@ -1,5 +1,9 @@
-import { Flex, Image, Anchor, Switch } from "@hope-ui/solid"
-import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
+import { Image, Anchor, Switch } from "@hope-ui/solid"
+import {
+  AppFlex as Flex,
+  AppHStack as HStack,
+  AppVStack as VStack,
+} from "~/components/ui/Stack"
 import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { For, JSXElement } from "solid-js"
 import { useRouter, useLink, useT } from "~/hooks"

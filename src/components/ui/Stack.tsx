@@ -22,7 +22,11 @@ export type AppStackProps = ParentProps<
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
     justifyContent?: JSX.CSSProperties["justify-content"]
-    flexDirection?: JSX.CSSProperties["flex-direction"]
+    flexDirection?:
+      | JSX.CSSProperties["flex-direction"]
+      | { "@initial"?: string; "@sm"?: string; "@md"?: string }
+    columnGap?: string
+    fontSize?: string
     w?:
       | string
       | number
@@ -104,6 +108,8 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
     "alignItems",
     "justifyContent",
     "flexDirection",
+    "columnGap",
+    "fontSize",
     "w",
     "width",
     "h",
@@ -161,14 +167,19 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
       {...(typeof local.transition === "object"
         ? { transition: local.transition }
         : {})}
-      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${local._hover ? " app-stack--hover" : ""}${local._active ? " app-stack--active" : ""}${local.class ? ` ${local.class}` : ""}`}
+      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${typeof local.flexDirection === "object" ? " app-stack--responsive-direction" : ""}${local._hover ? " app-stack--hover" : ""}${local._active ? " app-stack--active" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={
         {
           ...(local.css ?? {}),
           ...(local.style ?? {}),
           display: "flex",
-          "flex-direction": local.flexDirection ?? local.direction,
+          "flex-direction":
+            typeof local.flexDirection === "object"
+              ? local.flexDirection["@initial"]
+              : (local.flexDirection ?? local.direction),
           gap: token(local.gap ?? local.spacing, "space"),
+          "column-gap": token(local.columnGap, "space"),
+          "font-size": token(local.fontSize, "fontSizes"),
           "align-items": local.alignItems,
           "justify-content": local.justifyContent,
           width: token(
@@ -237,6 +248,14 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           "--app-stack-hover-transform": local._hover?.transform,
           "--app-stack-hover-shadow": local._hover?.boxShadow,
           "--app-stack-active-transform": local._active?.transform,
+          "--app-stack-direction-sm":
+            typeof local.flexDirection === "object"
+              ? local.flexDirection["@sm"]
+              : undefined,
+          "--app-stack-direction-md":
+            typeof local.flexDirection === "object"
+              ? local.flexDirection["@md"]
+              : undefined,
         } as any
       }
     >
@@ -261,3 +280,9 @@ export const AppCenter = (props: AppStackProps) => (
     justifyContent={props.justifyContent ?? "center"}
   />
 )
+
+export const AppFlex = (
+  props: AppStackProps & {
+    direction?: AppStackProps["flexDirection"]
+  },
+) => <Stack {...props} flexDirection={props.direction} direction="row" />

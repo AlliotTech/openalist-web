@@ -1,5 +1,5 @@
-import { Flex, Grid, Heading } from "@hope-ui/solid"
-import { AppVStack as VStack } from "~/components/ui/Stack"
+import { Grid, Heading } from "@hope-ui/solid"
+import { AppFlex as Flex, AppVStack as VStack } from "~/components/ui/Stack"
 import { For, Show, createMemo } from "solid-js"
 import { ImageItem } from "./ImageItem"
 import { local, objStore } from "~/store"

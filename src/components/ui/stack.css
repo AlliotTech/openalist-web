@@ -13,6 +13,10 @@
   .app-stack--responsive-width {
     width: var(--app-stack-width-sm);
   }
+
+  .app-stack--responsive-direction {
+    flex-direction: var(--app-stack-direction-sm);
+  }
 }
 
 @media (min-width: 768px) {
@@ -22,6 +26,13 @@
 
   .app-stack--responsive-width {
     width: var(--app-stack-width-md, var(--app-stack-width-sm));
+  }
+
+  .app-stack--responsive-direction {
+    flex-direction: var(
+      --app-stack-direction-md,
+      var(--app-stack-direction-sm)
+    );
   }
 }
 

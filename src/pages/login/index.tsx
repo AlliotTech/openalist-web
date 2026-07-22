@@ -1,13 +1,7 @@
-import {
-  Image,
-  Flex,
-  Heading,
-  Text,
-  useColorModeValue,
-  Icon,
-} from "@hope-ui/solid"
+import { Image, Heading, Text, useColorModeValue, Icon } from "@hope-ui/solid"
 import {
   AppCenter as Center,
+  AppFlex as Flex,
   AppHStack as HStack,
   AppVStack as VStack,
 } from "~/components/ui/Stack"
