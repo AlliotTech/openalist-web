@@ -1,6 +1,6 @@
 // @ts-ignore
 import { hljs } from "./highlight.js"
-import SolidMarkdown from "solid-markdown"
+import { SolidMarkdown, type SolidMarkdownOptions } from "solid-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import "./markdown.css"
@@ -18,6 +18,30 @@ import { Motion } from "solid-motionone"
 import { getMainColor, me } from "~/store"
 
 type TocItem = { indent: number; text: string; tagName: string; key: string }
+
+const safeLinkSchemes = new Set(["http", "https", "mailto", "tel"])
+const safeImageSchemes = new Set(["http", "https", "blob"])
+
+function getUriScheme(uri: string) {
+  return uri
+    .trim()
+    .match(/^([a-z][a-z\d+.-]*):/i)?.[1]
+    .toLowerCase()
+}
+
+function transformLinkUri(uri: string) {
+  const scheme = getUriScheme(uri)
+  return !scheme || safeLinkSchemes.has(scheme) ? uri : ""
+}
+
+function transformImageUri(uri: string) {
+  const scheme = getUriScheme(uri)
+  if (!scheme || safeImageSchemes.has(scheme)) return uri
+  if (/^data:image\/(?:avif|bmp|gif|jpe?g|png|webp);/i.test(uri.trim())) {
+    return uri
+  }
+  return ""
+}
 
 const [isTocVisible, setVisible] = createSignal(false)
 const [isTocDisabled, setTocDisabled] = createStorageSignal(
@@ -214,12 +238,12 @@ export function Markdown(props: {
     })
     return content
   })
-  const [remarkPlugins, setRemarkPlugins] = createSignal<Function[]>([
-    remarkGfm,
-  ])
-  const [rehypePlugins, setRehypePlugins] = createSignal<Function[]>([
-    rehypeRaw,
-  ])
+  const [remarkPlugins, setRemarkPlugins] = createSignal<
+    SolidMarkdownOptions["remarkPlugins"]
+  >([remarkGfm])
+  const [rehypePlugins, setRehypePlugins] = createSignal<
+    SolidMarkdownOptions["rehypePlugins"]
+  >([rehypeRaw])
   createEffect(
     on(md, async () => {
       setShow(false)
@@ -256,6 +280,8 @@ export function Markdown(props: {
           class={clsx("markdown-body", props.class)}
           remarkPlugins={remarkPlugins()}
           rehypePlugins={rehypePlugins()}
+          transformLinkUri={transformLinkUri}
+          transformImageUri={transformImageUri}
           children={md()}
         />
       </Show>
