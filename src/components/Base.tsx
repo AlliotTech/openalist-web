@@ -46,7 +46,7 @@ export const Error = (props: {
             wordBreak: "break-all",
             textAlign: "center",
           }}
-          size="lg"
+          fontSize="$lg"
           color="$neutral11"
         >
           {props.msg}

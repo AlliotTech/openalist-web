@@ -20,7 +20,7 @@ export const FileInfo = (props: { children: JSXElement }) => {
       />
       <VStack spacing="$2">
         <Heading
-          size="lg"
+          fontSize="$lg"
           css={{
             wordBreak: "break-all",
           }}

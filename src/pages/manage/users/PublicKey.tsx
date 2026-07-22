@@ -50,7 +50,7 @@ export const PublicKey = (props: PublicKeysProps & SSHPublicKey) => {
       <HStack w="$full" p="$2">
         <Heading
           w={cols[0].w}
-          size="sm"
+          fontSize="$sm"
           textAlign={cols[0].textAlign}
           css={textEllipsisCss}
         >

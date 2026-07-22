@@ -1,6 +1,7 @@
 import { Box, useColorModeValue } from "@hope-ui/solid"
 import CornerBottom from "./CornerBottom"
 import CornerTop from "./CornerTop"
+import type { JSX } from "solid-js"
 
 const LoginBg = () => {
   // 渐变色
@@ -10,7 +11,7 @@ const LoginBg = () => {
   )
 
   // 柔和光斑点缀
-  const spots = [
+  const spots: Array<{ style: JSX.CSSProperties }> = [
     {
       style: {
         position: "absolute",
@@ -21,7 +22,7 @@ const LoginBg = () => {
         background: "radial-gradient(circle, #fff6 0%, #fff0 70%)",
         filter: "blur(40px)",
         opacity: 0.7,
-        pointerEvents: "none",
+        "pointer-events": "none",
       },
     },
     {
@@ -34,7 +35,7 @@ const LoginBg = () => {
         background: "radial-gradient(circle, #a9c6ff88 0%, #fff0 80%)",
         filter: "blur(30px)",
         opacity: 0.5,
-        pointerEvents: "none",
+        "pointer-events": "none",
       },
     },
   ]
@@ -64,9 +65,9 @@ const LoginBg = () => {
         h="100vh"
         style={{
           background: "rgba(255,255,255,0.15)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          pointerEvents: "none",
+          "backdrop-filter": "blur(12px)",
+          "-webkit-backdrop-filter": "blur(12px)",
+          "pointer-events": "none",
         }}
       />
 

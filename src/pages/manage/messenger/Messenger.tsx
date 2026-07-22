@@ -59,7 +59,7 @@ export const Messenger = () => {
         rounded="$lg"
         border="1px solid var(--hope-colors-neutral6)"
       >
-        <Heading size="xl">{t("manage.received_msgs")}</Heading>
+        <Heading fontSize="$xl">{t("manage.received_msgs")}</Heading>
         <For each={received}>
           {(item) => <Dynamic component={Shower[item.type]} {...item} />}
         </For>

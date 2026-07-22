@@ -194,7 +194,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
             }}
           />
           <Heading
-            size="sm"
+            fontSize="$sm"
             css={{
               whiteSpace: "nowrap",
               overflow: "hidden",

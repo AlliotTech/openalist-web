@@ -254,7 +254,7 @@ export const Tasks = (props: TasksProps) => {
   }
   return (
     <VStack w="$full" alignItems="start" spacing="$2">
-      <Heading size="lg">{t(`tasks.${props.done}`)}</Heading>
+      <Heading fontSize="$lg">{t(`tasks.${props.done}`)}</Heading>
       <HStack gap="$2" flexWrap="wrap">
         <Show when={props.done === "done"}>
           <AppButton colorScheme="accent" loading={loading()} onClick={refresh}>
@@ -415,7 +415,7 @@ export const TypeTasks = (props: {
   const t = useT()
   return (
     <VStack w="$full" alignItems="start" spacing="$4">
-      <Heading size="xl">{t(`tasks.${props.type}`)}</Heading>
+      <Heading fontSize="$xl">{t(`tasks.${props.type}`)}</Heading>
       <VStack w="$full" spacing="$2">
         <For each={["undone", "done"]}>
           {(done) => (
