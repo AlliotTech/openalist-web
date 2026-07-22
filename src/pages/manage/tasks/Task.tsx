@@ -7,12 +7,11 @@ import {
   GridItem,
   Heading,
   HStack,
-  Progress,
-  ProgressIndicator,
   Spacer,
   Text,
   VStack,
 } from "@hope-ui/solid"
+import { AppProgress } from "~/components/ui/Loading"
 import { createSignal, For, Show } from "solid-js"
 import { useT, useFetch } from "~/hooks"
 import { PEmptyResp } from "~/types"
@@ -212,17 +211,15 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
         <Center w={cols[2].w}>
           <TaskState state={props.state} />
         </Center>
-        <Progress
+        <AppProgress
           w={cols[3].w}
           trackColor="$info3"
           rounded="$full"
           size="sm"
           value={props.progress}
           mr="$1"
-        >
-          <ProgressIndicator color="$info8" rounded="$md" />
-          {/* <ProgressLabel /> */}
-        </Progress>
+          color="$info8"
+        />
         <Center w={cols[1].w}>
           <Text
             size="sm"

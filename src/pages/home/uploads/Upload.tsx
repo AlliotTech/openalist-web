@@ -1,15 +1,7 @@
-import {
-  VStack,
-  Heading,
-  HStack,
-  Text,
-  Badge,
-  Progress,
-  ProgressIndicator,
-  Box,
-} from "@hope-ui/solid"
+import { VStack, Heading, HStack, Text, Badge, Box } from "@hope-ui/solid"
 import { AppButton, AppIconButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
+import { AppProgress } from "~/components/ui/Loading"
 import { createSignal, For, Show, onMount, onCleanup } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
 import { getMainColor } from "~/store"
@@ -53,16 +45,14 @@ const UploadFile = (props: UploadFileProps) => {
         </Badge>
         <Text>{getFileSize(props.speed)}/s</Text>
       </HStack>
-      <Progress
+      <AppProgress
         w="$full"
         trackColor="$info3"
         rounded="$full"
         value={props.progress}
         size="sm"
-      >
-        <ProgressIndicator color={getMainColor()} rounded="$md" />
-        {/* <ProgressLabel /> */}
-      </Progress>
+        color={getMainColor()}
+      />
       <Text color="$danger10">{props.msg}</Text>
     </VStack>
   )

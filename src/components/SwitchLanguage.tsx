@@ -1,4 +1,5 @@
-import { Center, Icon, Spinner, useColorModeValue } from "@hope-ui/solid"
+import { Center, Icon, useColorModeValue } from "@hope-ui/solid"
+import { AppSpinner } from "~/components/ui/Loading"
 import { createSignal, For, Show } from "solid-js"
 import {
   addLanguage,
@@ -58,7 +59,7 @@ export const SwitchLanguage = () => {
             bg={useColorModeValue("$blackAlpha4", "$whiteAlpha4")()}
             zIndex="9000"
           >
-            <Spinner
+            <AppSpinner
               thickness="4px"
               speed="0.65s"
               emptyColor="$neutral4"

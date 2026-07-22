@@ -1,6 +1,7 @@
-import { Box, HStack, Icon, Spinner, Text, VStack } from "@hope-ui/solid"
+import { Box, HStack, Icon, Text, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
+import { AppSpinner } from "~/components/ui/Loading"
 import {
   AppModal,
   AppModalBody,
@@ -125,7 +126,7 @@ const FolderTreeNode = (props: { path: string }) => {
         <HStack spacing="$2">
           <Show
             when={!loading()}
-            fallback={<Spinner size="sm" color={getMainColor()} />}
+            fallback={<AppSpinner size="sm" color={getMainColor()} />}
           >
             <Show
               when={!emptyIconVisible()}

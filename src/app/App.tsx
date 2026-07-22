@@ -1,4 +1,4 @@
-import { Progress, ProgressIndicator } from "@hope-ui/solid"
+import { AppProgress } from "~/components/ui/Loading"
 import { useIsRouting } from "@solidjs/router"
 import {
   Component,
@@ -64,7 +64,7 @@ const App: Component<{ children?: JSXElement }> = (props) => {
   return (
     <>
       <Portal>
-        <Progress
+        <AppProgress
           indeterminate
           size="xs"
           position="fixed"
@@ -73,9 +73,7 @@ const App: Component<{ children?: JSXElement }> = (props) => {
           right="0"
           zIndex="$banner"
           d={isRouting() ? "block" : "none"}
-        >
-          <ProgressIndicator />
-        </Progress>
+        />
       </Portal>
       <Switch fallback={props.children}>
         <Match when={err().length > 0}>

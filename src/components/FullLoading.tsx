@@ -1,10 +1,11 @@
-import { Center, ElementType, Spinner, SpinnerProps } from "@hope-ui/solid"
+import { Center } from "@hope-ui/solid"
 import { JSXElement, mergeProps, Show } from "solid-js"
 import { getMainColor } from "~/store"
+import { AppSpinner, type AppSpinnerProps } from "~/components/ui/Loading"
 export const FullScreenLoading = () => {
   return (
     <Center h="100vh">
-      <Spinner
+      <AppSpinner
         thickness="4px"
         speed="0.65s"
         emptyColor="$neutral4"
@@ -31,7 +32,7 @@ export const FullLoading = (props: {
   )
   return (
     <Center ref={props.ref} h="$full" w="$full" py={merged.py}>
-      <Spinner
+      <AppSpinner
         thickness={`${merged.thickness}px`}
         speed="0.65s"
         emptyColor="$neutral4"
@@ -53,12 +54,10 @@ export const MaybeLoading = (props: {
   )
 }
 
-export const CenterLoading = <C extends ElementType = "div">(
-  props: SpinnerProps<C>,
-) => {
+export const CenterLoading = (props: AppSpinnerProps) => {
   return (
     <Center w="$full" h="$full">
-      <Spinner color={getMainColor()} {...props} />
+      <AppSpinner color={getMainColor()} {...props} />
     </Center>
   )
 }
