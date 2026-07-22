@@ -36,8 +36,8 @@ export const AppSpinner = (props: AppSpinnerProps) => {
         ...(local.style ?? {}),
         color: token(local.color, "colors"),
         "border-width": local.thickness,
-        "border-color": token(local.emptyColor, "colors"),
-        "border-right-color": token(local.color, "colors") ?? "currentColor",
+        "border-bottom-color": token(local.emptyColor, "colors"),
+        "border-left-color": token(local.emptyColor, "colors"),
         "animation-duration": local.speed,
       }}
     />
@@ -99,6 +99,7 @@ export const AppProgress = (props: AppProgressProps) => {
         width: token(local.w, "sizes"),
         background: token(local.trackColor, "colors"),
         "margin-right": token(local.mr, "space"),
+        "border-radius": token(local.rounded, "radii"),
         display: local.d,
         position: local.position,
         top: local.top,
@@ -111,7 +112,9 @@ export const AppProgress = (props: AppProgressProps) => {
         class="app-progress__indicator"
         style={{
           width: local.indeterminate ? undefined : `${value()}%`,
-          background: token(local.color, "colors"),
+          background: local.indeterminate
+            ? `linear-gradient(to right, transparent 0%, ${token(local.color, "colors") ?? "var(--hope-colors-primary9)"} 50%, transparent 100%)`
+            : token(local.color, "colors"),
         }}
       />
     </div>
