@@ -32,6 +32,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "style: format code with prettier"
-          commit_user_name: Isla
-          commit_user_email: bot@nn.ci
-          commit_author: "Isla <bot@nn.ci>"
+          commit_user_name: AlliotTech
+          commit_user_email: 24980252+AlliotTech@users.noreply.github.com
+          commit_author: "AlliotTech <24980252+AlliotTech@users.noreply.github.com>"
