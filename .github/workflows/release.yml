@@ -11,12 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 9.9.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: ".node-version"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Generate changelog
-        run: npx changelogithub # or changelogithub@0.12 if ensure the stable result
+        run: pnpm exec changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.MY_TOKEN}}
 
@@ -28,21 +40,8 @@ jobs:
     name: Release
     runs-on: ${{ matrix.platform }}
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org"
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 9
-          run_install: false
-
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: main
           path: alist-web
@@ -50,8 +49,21 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: "alist-web/.node-version"
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: pnpm/action-setup@v6
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.9.0
+          run_install: false
+
       - name: Checkout dist repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: AlliotTech/web-dist
           ref: main
@@ -77,7 +89,7 @@ jobs:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Upload dist files
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@881a6320fdb16eb5318c5054f31c218aec2b324c
         with:
           github_token: ${{ secrets.MY_TOKEN }}
           branch: main
@@ -85,6 +97,6 @@ jobs:
           repository: AlliotTech/web-dist
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           files: compress/*

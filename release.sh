@@ -5,7 +5,7 @@ sed -i -e "s/\"version\": \"0.0.0\"/\"version\": \"$version\"/g" package.json
 cat package.json
 
 # build
-pnpm install
+pnpm install --frozen-lockfile
 pnpm i18n:release
 pnpm build
 cp -r dist ../

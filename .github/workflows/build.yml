@@ -13,21 +13,8 @@ jobs:
     name: Build
     runs-on: ${{ matrix.platform }}
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org"
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 9
-          run_install: false
-
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: main
           path: alist-web
@@ -35,8 +22,21 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: "alist-web/.node-version"
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: pnpm/action-setup@v6
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.9.0
+          run_install: false
+
       - name: Checkout dist repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: AlliotTech/web-dist
           ref: dev
@@ -47,7 +47,7 @@ jobs:
       - name: Build
         run: |
           cd alist-web
-          pnpm install
+          pnpm install --frozen-lockfile
           pnpm i18n:build
           pnpm build
           cd ..
@@ -67,7 +67,7 @@ jobs:
           cd ..
 
       - name: Upload dist files
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@881a6320fdb16eb5318c5054f31c218aec2b324c
         with:
           github_token: ${{ secrets.MY_TOKEN }}
           branch: dev
