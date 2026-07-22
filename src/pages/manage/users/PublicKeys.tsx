@@ -1,4 +1,5 @@
-import { Flex, Heading, HStack, Spacer, Text, VStack } from "@hope-ui/solid"
+import { Flex, Heading, Spacer, Text } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,
   AppFormLabel as FormLabel,

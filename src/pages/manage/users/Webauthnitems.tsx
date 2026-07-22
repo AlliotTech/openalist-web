@@ -1,4 +1,5 @@
-import { Heading, Stack, VStack } from "@hope-ui/solid"
+import { Heading, Stack } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createSignal, Show } from "solid-js"
 import { useT, useFetch } from "~/hooks"

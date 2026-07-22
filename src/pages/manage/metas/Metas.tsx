@@ -1,4 +1,5 @@
-import { Box, HStack, VStack } from "@hope-ui/solid"
+import { Box } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import "~/components/ui/table.css"
 import { AppButton } from "~/components/ui/Button"
 import { createSignal, For } from "solid-js"
