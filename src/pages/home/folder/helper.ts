@@ -1,6 +1,6 @@
 import { Checkbox, hope } from "@hope-ui/solid"
 import { createEffect, onCleanup } from "solid-js"
-import { useContextMenu } from "solid-contextmenu"
+import { useContextMenu } from "~/components/ui/ContextMenu"
 import SelectionArea from "@viselect/vanilla"
 import {
   checkboxOpen,

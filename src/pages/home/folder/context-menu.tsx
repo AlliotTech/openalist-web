@@ -1,6 +1,5 @@
-import { Menu, Item, Submenu } from "solid-contextmenu"
+import { Menu, Item, Submenu } from "~/components/ui/ContextMenu"
 import { useCopyLink, useDownload, useLink, useT } from "~/hooks"
-import "solid-contextmenu/dist/style.css"
 import { HStack, Icon, Text, useColorMode, Image } from "@hope-ui/solid"
 import { operations } from "../toolbar/operations"
 import { For, Show } from "solid-js"
@@ -43,12 +42,7 @@ export const ContextMenu = () => {
   }
   const { rawLink } = useLink()
   return (
-    <Menu
-      id={1}
-      animation="scale"
-      theme={colorMode() !== "dark" ? "light" : "dark"}
-      style="z-index: var(--hope-zIndices-popover)"
-    >
+    <Menu id={1} theme={colorMode() !== "dark" ? "light" : "dark"}>
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
           <Item

@@ -41,11 +41,10 @@ import Password from "~/pages/home/Password"
 import { useSelectWithMouse } from "~/pages/home/folder/helper"
 import { getIconByObj } from "~/utils/icon"
 import createMutex from "~/utils/mutex"
-import { Item, Menu, useContextMenu } from "solid-contextmenu"
+import { Item, Menu, useContextMenu } from "~/components/ui/ContextMenu"
 import { TbOutlineCopy, TbOutlineLink } from "solid-icons/tb"
 import { AiOutlineCloudDownload } from "solid-icons/ai"
 import { Operations } from "~/pages/home/toolbar/operations"
-import "solid-contextmenu/dist/style.css"
 
 const download = (url: string) => {
   window.open(url, "_blank")
@@ -150,12 +149,7 @@ const ContextMenu = () => {
   const { copy } = useUtil()
   const { colorMode } = useColorMode()
   return (
-    <Menu
-      id={2}
-      animation="scale"
-      theme={colorMode() !== "dark" ? "light" : "dark"}
-      style="z-index: var(--hope-zIndices-popover)"
-    >
+    <Menu id={2} theme={colorMode() !== "dark" ? "light" : "dark"}>
       <Item
         hidden={({ props }) => {
           return props.obj.is_dir

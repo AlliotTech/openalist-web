@@ -131,9 +131,6 @@ importers:
       sha256:
         specifier: ^0.2.0
         version: 0.2.0
-      solid-contextmenu:
-        specifier: 0.0.2
-        version: 0.0.2(solid-js@1.9.14)(solid-transition-group@0.0.12(solid-js@1.9.14))
       solid-icons:
         specifier: 1.2.0
         version: 1.2.0(solid-js@1.9.14)
@@ -1545,10 +1542,6 @@ packages:
   cliui@6.0.0:
     resolution: {integrity: sha512-t6wbgtoCXvAzst7QgXxJYqPt0usEfbgQdftEPbLL/cvv6HPE5VgvqCuAIDR0NgU52ds6rFwqrgakNLrHEjCbrQ==}
 
-  clsx@1.2.1:
-    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
-    engines: {node: '>=6'}
-
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
@@ -2663,12 +2656,6 @@ packages:
 
   smoothscroll@0.4.0:
     resolution: {integrity: sha512-sggQ3U2Un38b3+q/j1P4Y4fCboCtoUIaBYoge+Lb6Xg1H8RTIif/hugVr+ErMtIDpvBbhQfTjtiTeYAfbw1ZGQ==}
-
-  solid-contextmenu@0.0.2:
-    resolution: {integrity: sha512-TmOhIvVpZmQdoiydSP07d9rT0xu/wvRSH6TJqbGPd+2XZz0wOualbm5CvLiHbOGnOU5tBrbe4q0cU/EMvG7u+w==}
-    peerDependencies:
-      solid-js: ^1.4.8
-      solid-transition-group: ^0.0.10
 
   solid-icons@1.2.0:
     resolution: {integrity: sha512-yjQxWQMi9l19P5Af9vjsvalTMDFPDL4XD6etrUdNxNVhFp1bMYF0SFwUa5VYDfJ7u0SF3Qkz/F7BZxqcLUwklw==}
@@ -4478,8 +4465,6 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 6.2.0
 
-  clsx@1.2.1: {}
-
   clsx@2.1.1: {}
 
   color-convert@2.0.1:
@@ -5749,13 +5734,6 @@ snapshots:
   slash@3.0.0: {}
 
   smoothscroll@0.4.0: {}
-
-  solid-contextmenu@0.0.2(solid-js@1.9.14)(solid-transition-group@0.0.12(solid-js@1.9.14)):
-    dependencies:
-      clsx: 1.2.1
-      mitt: 3.0.1
-      solid-js: 1.9.14
-      solid-transition-group: 0.0.12(solid-js@1.9.14)
 
   solid-icons@1.2.0(solid-js@1.9.14):
     dependencies:
