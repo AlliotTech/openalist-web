@@ -5,16 +5,6 @@ import {
   FormLabel,
   Icon,
   Input,
-  Select,
-  SelectContent,
-  SelectIcon,
-  SelectListbox,
-  SelectOption,
-  SelectOptionIndicator,
-  SelectOptionText,
-  SelectPlaceholder,
-  SelectTrigger,
-  SelectValue,
   Textarea,
 } from "@hope-ui/solid"
 import { For, Match, Show, Switch } from "solid-js"
@@ -22,6 +12,7 @@ import { useT } from "~/hooks"
 import { Flag, SettingItem, Type } from "~/types"
 import { TiDelete } from "solid-icons/ti"
 import { AppSwitch } from "~/components/ui/Switch"
+import { AppSelect } from "~/components/ui/Select"
 
 export type ItemProps = SettingItem & {
   onChange?: (value: string) => void
@@ -86,33 +77,17 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Select}>
-          <Select
+          <AppSelect
             id={props.key}
             defaultValue={props.value}
-            // value={props.value()}
-            onChange={(e) => props.onChange?.(e)}
+            onChange={(value) => props.onChange?.(value)}
             readOnly={props.flag === Flag.READONLY}
-          >
-            <SelectTrigger>
-              <SelectPlaceholder>{t("global.choose")}</SelectPlaceholder>
-              <SelectValue />
-              <SelectIcon />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectListbox>
-                <For each={props.options?.split(",")}>
-                  {(item) => (
-                    <SelectOption value={item}>
-                      <SelectOptionText>
-                        {t(`settings.${props.key}s.${item}`)}
-                      </SelectOptionText>
-                      <SelectOptionIndicator />
-                    </SelectOption>
-                  )}
-                </For>
-              </SelectListbox>
-            </SelectContent>
-          </Select>
+            placeholder={t("global.choose")}
+            options={(props.options?.split(",") ?? []).map((item) => ({
+              value: item,
+              label: t(`settings.${props.key}s.${item}`),
+            }))}
+          />
         </Match>
       </Switch>
       <FormHelperText>

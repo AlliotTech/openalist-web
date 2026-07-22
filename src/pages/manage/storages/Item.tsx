@@ -4,14 +4,13 @@ import {
   FormHelperText,
   FormLabel,
   Input,
-  Select,
   Textarea,
 } from "@hope-ui/solid"
 import { Match, Show, Switch } from "solid-js"
 import { useT } from "~/hooks"
 import { DriverItem, Type } from "~/types"
-import { SelectOptions } from "~/components"
 import { AppSwitch } from "~/components/ui/Switch"
+import { AppCombobox, AppSelect } from "~/components/ui/Select"
 
 export type ItemProps = DriverItem & {
   readonly?: boolean
@@ -128,21 +127,15 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Select}>
-          <Select
-            id={props.name}
-            readOnly={props.readonly}
-            defaultValue={props.value}
-            onChange={
-              props.type === Type.Select
-                ? (e) => props.onChange?.(e)
-                : undefined
-            }
-          >
-            <SelectOptions
-              readonly={props.readonly}
-              searchable={props.type === Type.Select && props.searchable}
+          {props.type === Type.Select && props.searchable ? (
+            <AppCombobox
+              id={props.name}
+              readOnly={props.readonly}
+              defaultValue={props.value}
+              onChange={(value) => props.onChange?.(value)}
+              placeholder={t("global.choose")}
               options={props.options.split(",").map((key) => ({
-                key,
+                value: key,
                 label: t(
                   (props.options_prefix ??
                     (props.driver === "common"
@@ -151,7 +144,24 @@ const Item = (props: ItemProps) => {
                 ),
               }))}
             />
-          </Select>
+          ) : props.type === Type.Select ? (
+            <AppSelect
+              id={props.name}
+              readOnly={props.readonly}
+              defaultValue={props.value}
+              onChange={(value) => props.onChange?.(value)}
+              placeholder={t("global.choose")}
+              options={props.options.split(",").map((key) => ({
+                value: key,
+                label: t(
+                  (props.options_prefix ??
+                    (props.driver === "common"
+                      ? `storages.common.${props.name}s`
+                      : `drivers.${props.driver}.${props.name}s`)) + `.${key}`,
+                ),
+              }))}
+            />
+          ) : null}
         </Match>
       </Switch>
       <Show when={props.help}>

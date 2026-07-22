@@ -3,16 +3,6 @@ import {
   Button,
   Grid,
   HStack,
-  Select,
-  SelectContent,
-  SelectIcon,
-  SelectListbox,
-  SelectOption,
-  SelectOptionIndicator,
-  SelectOptionText,
-  SelectPlaceholder,
-  SelectTrigger,
-  SelectValue,
   Table,
   Tbody,
   Th,
@@ -27,6 +17,7 @@ import { EmptyResp, PageResp, Resp, Storage } from "~/types"
 import { StorageGridItem, StorageListItem } from "./Storage"
 import { createStorageSignal } from "~/utils/storage"
 import { AppSwitch } from "~/components/ui/Switch"
+import { AppSelect } from "~/components/ui/Select"
 
 const Storages = () => {
   const t = useT()
@@ -99,34 +90,16 @@ const Storages = () => {
           {t("storages.other.load_all")}
         </Button>
         <Show when={drivers().length > 0}>
-          <Select
+          <AppSelect
             multiple
             value={selectedDrivers()}
             onChange={setSelectedDrivers}
-            // variant="outline"
-          >
-            <SelectTrigger>
-              <SelectPlaceholder>
-                {t("storages.other.filter_by_driver")}
-              </SelectPlaceholder>
-              <SelectValue />
-              <SelectIcon />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectListbox>
-                <For each={drivers()}>
-                  {(item) => (
-                    <SelectOption value={item}>
-                      <SelectOptionText>
-                        {t(`drivers.drivers.${item}`)}
-                      </SelectOptionText>
-                      <SelectOptionIndicator />
-                    </SelectOption>
-                  )}
-                </For>
-              </SelectListbox>
-            </SelectContent>
-          </Select>
+            placeholder={t("storages.other.filter_by_driver")}
+            options={drivers().map((item) => ({
+              value: item,
+              label: t(`drivers.drivers.${item}`),
+            }))}
+          />
         </Show>
         <AppSwitch
           checked={layout() === "table"}

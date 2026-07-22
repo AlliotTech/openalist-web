@@ -1,19 +1,8 @@
-import {
-  Box,
-  Button,
-  HStack,
-  IconButton,
-  Select,
-  SelectContent,
-  SelectListbox,
-  SelectOption,
-  SelectOptionText,
-  SelectTrigger,
-} from "@hope-ui/solid"
+import { Button, HStack, IconButton } from "@hope-ui/solid"
 import { createMemo, For, mergeProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { FaSolidAngleLeft, FaSolidAngleRight } from "solid-icons/fa"
-import { TbOutlineSelector } from "solid-icons/tb"
+import { AppSelect } from "~/components/ui/Select"
 
 export interface PaginatorProps {
   colorScheme?:
@@ -110,37 +99,18 @@ export const Paginator = (props: PaginatorProps) => {
             </Button>
           )}
         </For>
-        <Select
-          size={size}
-          variant="unstyled"
+        <AppSelect
           defaultValue={store.current}
           onChange={(page) => {
             onPageChange(+page)
           }}
-        >
-          <SelectTrigger
-            as={Button}
-            size={size}
-            width="auto"
-            px="$1"
-            variant="solid"
-            colorScheme={merged.colorScheme}
-          >
-            <Box px={store.current > 10 ? "$1_5" : "$2"}>{store.current}</Box>
-            <TbOutlineSelector />
-          </SelectTrigger>
-          <SelectContent minW="80px">
-            <SelectListbox>
-              <For each={allPages()}>
-                {(page) => (
-                  <SelectOption value={page}>
-                    <SelectOptionText px="$2">{page}</SelectOptionText>
-                  </SelectOption>
-                )}
-              </For>
-            </SelectListbox>
-          </SelectContent>
-        </Select>
+          options={allPages().map((page) => ({
+            value: page,
+            label: page.toString(),
+          }))}
+          class="app-select--compact"
+          style={{ width: "5rem" }}
+        />
         <For each={rightPages()}>
           {(page) => (
             <Button

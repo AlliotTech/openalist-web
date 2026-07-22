@@ -4,16 +4,6 @@ import {
   FormLabel,
   HStack,
   Input,
-  Select,
-  SelectContent,
-  SelectIcon,
-  SelectListbox,
-  SelectOption,
-  SelectOptionIndicator,
-  SelectOptionText,
-  SelectPlaceholder,
-  SelectTrigger,
-  SelectValue,
   VStack,
 } from "@hope-ui/solid"
 import { For, Match, onCleanup, Switch, createSignal } from "solid-js"
@@ -23,6 +13,7 @@ import { initialLocalSettings, local, LocalSetting, setLocal } from "~/store"
 import { bus } from "~/utils"
 import { AppDrawer } from "~/components/ui/Drawer"
 import { AppSwitch } from "~/components/ui/Switch"
+import { AppSelect } from "~/components/ui/Select"
 
 function LocalSettingEdit(props: LocalSetting) {
   const t = useT()
@@ -40,37 +31,20 @@ function LocalSettingEdit(props: LocalSetting) {
         }
       >
         <Match when={props.type === "select"}>
-          <Select
+          <AppSelect
             id={props.key}
             defaultValue={local[props.key]}
             onChange={(v) => setLocal(props.key, v)}
-          >
-            <SelectTrigger>
-              <SelectPlaceholder>{t("global.choose")}</SelectPlaceholder>
-              <SelectValue />
-              <SelectIcon />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectListbox>
-                <For
-                  each={
-                    typeof props.options === "function"
-                      ? props.options()
-                      : props.options
-                  }
-                >
-                  {(item) => (
-                    <SelectOption value={item}>
-                      <SelectOptionText>
-                        {t(`home.local_settings.${props.key}_options.${item}`)}
-                      </SelectOptionText>
-                      <SelectOptionIndicator />
-                    </SelectOption>
-                  )}
-                </For>
-              </SelectListbox>
-            </SelectContent>
-          </Select>
+            placeholder={t("global.choose")}
+            options={(
+              (typeof props.options === "function"
+                ? props.options()
+                : props.options) ?? []
+            ).map((item) => ({
+              value: item,
+              label: t(`home.local_settings.${props.key}_options.${item}`),
+            }))}
+          />
         </Match>
         <Match when={props.type === "boolean"}>
           <AppSwitch

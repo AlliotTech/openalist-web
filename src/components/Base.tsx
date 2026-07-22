@@ -5,21 +5,13 @@ import {
   Heading,
   useColorModeValue,
   createDisclosure,
-  Select,
-  SelectContent,
-  SelectIcon,
-  SelectListbox,
-  SelectOption,
-  SelectOptionIndicator,
-  SelectOptionText,
-  SelectTrigger,
-  SelectValue,
   Icon,
 } from "@hope-ui/solid"
 import { SwitchColorMode } from "./SwitchColorMode"
-import { ComponentProps, For, mergeProps, Show } from "solid-js"
+import { mergeProps, Show } from "solid-js"
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from "solid-icons/ai"
 import { hoverColor } from "~/utils"
+import { AppSelect } from "~/components/ui/Select"
 
 export const Error = (props: {
   msg: string
@@ -119,43 +111,26 @@ export function SelectWrapper<T extends string | number>(props: {
   }[]
   alwaysShowBorder?: boolean
   size?: "xs" | "sm" | "md" | "lg"
-  w?: ComponentProps<typeof SelectTrigger>["w"]
+  w?: string
 }) {
   return (
-    <Select size={props.size} value={props.value} onChange={props.onChange}>
-      <SelectTrigger
-        borderColor={props.alwaysShowBorder ? "$info5" : undefined}
-        w={props.w}
-        transition="all 0.2s ease"
-        _hover={{
-          borderColor: "$info6",
-        }}
-        _focus={{
-          transform: "translateY(-1px)",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        <SelectValue />
-        <SelectIcon />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectListbox>
-          <For each={props.options}>
-            {(item) => (
-              <SelectOption
-                value={item.value}
-                transition="all 0.2s ease"
-                _hover={{
-                  transform: "translateX(2px)",
-                }}
-              >
-                <SelectOptionText>{item.label ?? item.value}</SelectOptionText>
-                <SelectOptionIndicator />
-              </SelectOption>
-            )}
-          </For>
-        </SelectListbox>
-      </SelectContent>
-    </Select>
+    <AppSelect
+      value={props.value}
+      onChange={props.onChange}
+      options={props.options.map((option) => ({
+        value: option.value,
+        label: option.label ?? option.value.toString(),
+      }))}
+      class={props.alwaysShowBorder ? "app-select--bordered" : undefined}
+      style={
+        props.w
+          ? {
+              width: props.w.startsWith("$")
+                ? `var(--hope-sizes-${props.w.slice(1)})`
+                : props.w,
+            }
+          : undefined
+      }
+    />
   )
 }
