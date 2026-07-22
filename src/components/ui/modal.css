@@ -1,7 +1,7 @@
 .app-modal__overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.42);
+  background: hsl(0deg 0% 0% / 65%);
   z-index: 1100;
 }
 
@@ -15,11 +15,11 @@
   max-width: var(--hope-sizes-md, 28rem);
   max-height: calc(100vh - 7.5rem);
   overflow: auto;
-  border: 1px solid var(--hope-colors-neutral6, #cbd5e0);
-  border-radius: 0.75rem;
+  border: 0;
+  border-radius: var(--hope-radii-lg, 0.5rem);
   background: var(--hope-colors-background, #fff);
   color: var(--hope-colors-neutral12, #1a202c);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+  box-shadow: var(--hope-shadows-lg, 0 10px 15px rgba(15, 23, 42, 0.18));
   transform: translateX(-50%);
   z-index: 1101;
   outline: none;
@@ -147,14 +147,15 @@
 }
 
 .app-modal__header {
-  padding: 1rem 1.25rem;
+  padding: var(--hope-space-5, 1.25rem) var(--hope-space-5, 1.25rem)
+    var(--hope-space-3, 0.75rem);
   font-size: 1.125rem;
   font-weight: 600;
   overflow-wrap: break-word;
 }
 
 .app-modal__body {
-  padding: 0 1.25rem 1rem;
+  padding: var(--hope-space-2, 0.5rem) var(--hope-space-5, 1.25rem);
 }
 
 .app-modal__body[data-scroll-behavior="inside"] {
@@ -163,15 +164,17 @@
 
 .app-modal__footer {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem 1rem;
+  padding: var(--hope-space-3, 0.75rem) var(--hope-space-5, 1.25rem)
+    var(--hope-space-5, 1.25rem);
 }
 
 .app-modal__close {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: var(--hope-space-4, 1rem);
+  right: var(--hope-space-4, 1rem);
   display: inline-flex;
   align-items: center;
   justify-content: center;
