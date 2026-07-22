@@ -1,4 +1,5 @@
-import { Image, Switch } from "@hope-ui/solid"
+import { Switch } from "@hope-ui/solid"
+import { AppImage as Image } from "~/components/ui/Image"
 import { AppAnchor as Anchor } from "~/components/ui/Typography"
 import {
   AppFlex as Flex,

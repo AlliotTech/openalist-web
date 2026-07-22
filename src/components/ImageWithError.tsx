@@ -1,8 +1,8 @@
-import { ElementType, Image, ImageProps } from "@hope-ui/solid"
+import { AppImage as Image, type AppImageProps } from "~/components/ui/Image"
 import { createSignal, JSXElement, Show } from "solid-js"
 
-export const ImageWithError = <C extends ElementType = "img">(
-  props: ImageProps<C> & {
+export const ImageWithError = (
+  props: AppImageProps & {
     fallbackErr?: JSXElement
   },
 ) => {

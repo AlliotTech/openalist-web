@@ -1,0 +1,7 @@
+.app-image {
+  display: block;
+}
+
+.app-image--hover:hover {
+  transform: var(--app-image-hover-transform);
+}

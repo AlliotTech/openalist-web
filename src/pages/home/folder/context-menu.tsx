@@ -1,6 +1,7 @@
 import { Menu, Item, Submenu } from "~/components/ui/ContextMenu"
 import { useCopyLink, useDownload, useLink, useT } from "~/hooks"
-import { Icon, Text, useColorMode, Image } from "@hope-ui/solid"
+import { Icon, Text, useColorMode } from "@hope-ui/solid"
+import { AppImage as Image } from "~/components/ui/Image"
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import { operations } from "../toolbar/operations"
 import { For, Show } from "solid-js"

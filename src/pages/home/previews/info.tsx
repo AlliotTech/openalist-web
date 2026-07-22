@@ -1,4 +1,5 @@
-import { Heading, Icon, Image, Text } from "@hope-ui/solid"
+import { Heading, Icon, Text } from "@hope-ui/solid"
+import { AppImage as Image } from "~/components/ui/Image"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { JSXElement } from "solid-js"
 import { getMainColor, objStore } from "~/store"

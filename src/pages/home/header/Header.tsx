@@ -1,4 +1,5 @@
-import { useColorModeValue, Image, Icon, Kbd } from "@hope-ui/solid"
+import { useColorModeValue, Icon, Kbd } from "@hope-ui/solid"
+import { AppImage as Image } from "~/components/ui/Image"
 import {
   AppCenter as Center,
   AppHStack as HStack,

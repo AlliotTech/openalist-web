@@ -1,4 +1,4 @@
-import { Image } from "@hope-ui/solid"
+import { AppImage as Image } from "~/components/ui/Image"
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import { AppButton, AppIconButton } from "~/components/ui/Button"
 import { Popover } from "@kobalte/core/popover"

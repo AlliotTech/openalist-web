@@ -1,5 +1,6 @@
 import { Message } from "./Messenger"
-import { Heading, Image } from "@hope-ui/solid"
+import { Heading } from "@hope-ui/solid"
+import { AppImage as Image } from "~/components/ui/Image"
 
 export const StringShow = (props: Message) => {
   return <Heading>{props.content}</Heading>
