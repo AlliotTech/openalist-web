@@ -26,7 +26,7 @@ import { useFetch, useManageTitle, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
 import { EmptyResp, PageResp, Resp, Storage } from "~/types"
 import { StorageGridItem, StorageListItem } from "./Storage"
-import { createStorageSignal } from "@solid-primitives/storage"
+import { createStorageSignal } from "~/utils/storage"
 
 const Storages = () => {
   const t = useT()

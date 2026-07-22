@@ -1,14 +1,14 @@
-import { useI18n } from "@solid-primitives/i18n"
+import { translate } from "~/app/i18n"
+import type { BaseTemplateArgs } from "@solid-primitives/i18n"
 import { firstUpperCase } from "~/utils"
 
 const useT = () => {
-  const [t] = useI18n()
   return (
     key: string,
-    params?: Record<string, string> | undefined,
+    params?: BaseTemplateArgs | undefined,
     defaultValue?: string | undefined,
   ) => {
-    const value = t(key, params, defaultValue)
+    const value = translate(key, params) ?? defaultValue
     if (!value) {
       if (import.meta.env.DEV) return key
       let lastDotIndex = key.lastIndexOf(".")

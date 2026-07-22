@@ -17,8 +17,7 @@ import { setSettings } from "~/store"
 import { Error, FullScreenLoading } from "~/components"
 import { MustUser } from "./MustUser"
 import "./index.css"
-import { useI18n } from "@solid-primitives/i18n"
-import { initialLang, langMap, loadedLangs } from "./i18n"
+import { addLanguage, initialLang, langMap, loadedLangs } from "./i18n"
 import { Resp } from "~/types"
 import { setArchiveExtensions } from "~/store/archive"
 
@@ -30,7 +29,6 @@ const Test = lazy(() => import("~/pages/test"))
 const App: Component = () => {
   const t = useT()
   globalStyles()
-  const [, { add }] = useI18n()
   const isRouting = useIsRouting()
   const { to, pathname } = useRouter()
   const onTo = (path: string) => {
@@ -49,7 +47,7 @@ const App: Component = () => {
   const [loading, data] = useLoading(() =>
     Promise.all([
       (async () => {
-        add(initialLang, (await langMap[initialLang]()).default)
+        addLanguage(initialLang, (await langMap[initialLang]()).default)
         loadedLangs.add(initialLang)
       })(),
       (async () => {

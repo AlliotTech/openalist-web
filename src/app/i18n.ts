@@ -1,5 +1,12 @@
-import { createI18nContext } from "@solid-primitives/i18n"
+import {
+  flatten,
+  resolveTemplate,
+  translator,
+  type BaseTemplateArgs,
+  type BaseRecordDict,
+} from "@solid-primitives/i18n"
 import { createSignal } from "solid-js"
+import { createStore } from "solid-js/store"
 
 interface Language {
   code: string
@@ -44,8 +51,23 @@ for (const path in imports) {
 
 export const loadedLangs = new Set<string>()
 
-const i18n = createI18nContext({}, initialLang)
-
 const [currentLang, setLang] = createSignal(initialLang)
+const [dictionaries, setDictionaries] = createStore<
+  Record<string, BaseRecordDict>
+>({})
 
-export { languages, i18n, currentLang, setLang }
+const baseTranslate = translator(
+  () => dictionaries[currentLang()],
+  resolveTemplate,
+)
+
+export const translate = baseTranslate as (
+  key: string,
+  params?: BaseTemplateArgs,
+) => string | undefined
+
+export const addLanguage = (language: string, dictionary: BaseRecordDict) => {
+  setDictionaries(language, flatten(dictionary))
+}
+
+export { languages, currentLang, setLang }

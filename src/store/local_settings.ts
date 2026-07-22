@@ -1,7 +1,33 @@
-import { createLocalStorage } from "@solid-primitives/storage"
+import { createStore } from "solid-js/store"
 import { isMobile } from "~/utils/compatibility"
 
-const [local, setLocal, { remove, clear, toJSON }] = createLocalStorage()
+const initialStorage = Object.fromEntries(
+  Array.from({ length: localStorage.length }, (_, index) => {
+    const key = localStorage.key(index)!
+    return [key, localStorage.getItem(key) ?? ""]
+  }),
+)
+const [local, setLocalStore] =
+  createStore<Record<string, string>>(initialStorage)
+
+const setLocal = (key: string, value: string) => {
+  localStorage.setItem(key, value)
+  setLocalStore(key, value)
+}
+
+const remove = (key: string) => {
+  localStorage.removeItem(key)
+  setLocalStore(key, undefined!)
+}
+
+const clear = () => {
+  localStorage.clear()
+  for (const key of Object.keys(local)) {
+    setLocalStore(key, undefined!)
+  }
+}
+
+const toJSON = () => ({ ...local })
 // export function isValidKey(
 //   key: string | number | symbol,
 //   object: object

@@ -1,11 +1,12 @@
 import naturalSort from "typescript-natural-sort"
-import { cookieStorage, createStorageSignal } from "@solid-primitives/storage"
+import { cookieStorage } from "@solid-primitives/storage"
 import { createMemo, createSignal } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import { Obj, StoreObj } from "~/types"
 import { bus, log } from "~/utils"
 import { keyPressed } from "./key-event"
 import { local } from "./local_settings"
+import { createStorageSignal } from "~/utils/storage"
 
 export enum State {
   Initial, // Initial state

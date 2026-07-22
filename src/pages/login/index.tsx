@@ -26,7 +26,7 @@ import {
 } from "~/utils"
 import { PResp, Resp } from "~/types"
 import LoginBg from "./LoginBg"
-import { createStorageSignal } from "@solid-primitives/storage"
+import { createStorageSignal } from "~/utils/storage"
 import { getSetting, getSettingBool } from "~/store"
 import { SSOLogin } from "./SSOLogin"
 import { IoFingerPrint } from "solid-icons/io"
