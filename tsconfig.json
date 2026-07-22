@@ -3,16 +3,18 @@
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
+    "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": false,
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@hope-ui/solid": ["./node_modules/@hope-ui/solid/dist/index.d.ts"]
       // "@solidjs/router": ["./solid-router/src/index.tsx"]
     },
     "resolveJsonModule": true
