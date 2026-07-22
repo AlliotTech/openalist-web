@@ -15,13 +15,13 @@ import {
   SelectPlaceholder,
   SelectTrigger,
   SelectValue,
-  Switch as HopeSwitch,
   Textarea,
 } from "@hope-ui/solid"
 import { For, Match, Show, Switch } from "solid-js"
 import { useT } from "~/hooks"
 import { Flag, SettingItem, Type } from "~/types"
 import { TiDelete } from "solid-icons/ti"
+import { AppSwitch } from "~/components/ui/Switch"
 
 export type ItemProps = SettingItem & {
   onChange?: (value: string) => void
@@ -65,13 +65,13 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Bool}>
-          <HopeSwitch
+          <AppSwitch
             id={props.key}
             defaultChecked={props.value === "true"}
             // checked={props.value() === "true"}
-            onChange={(e: any) =>
+            onChange={(checked) =>
               // props.onChange?.(props.value() === "true" ? "false" : "true")
-              props.onChange?.(e.currentTarget.checked ? "true" : "false")
+              props.onChange?.(checked.toString())
             }
             readOnly={props.flag === Flag.READONLY}
           />

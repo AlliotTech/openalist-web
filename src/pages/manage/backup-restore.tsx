@@ -3,7 +3,6 @@ import {
   Button,
   VStack,
   Text,
-  Switch as HopeSwitch,
   Input,
   FormControl,
   FormLabel,
@@ -23,6 +22,7 @@ import {
 } from "~/types"
 import { createSignal, For } from "solid-js"
 import crypto from "crypto-js"
+import { AppSwitch } from "~/components/ui/Switch"
 
 interface Data {
   encrypted: string
@@ -412,13 +412,11 @@ const BackupRestore = () => {
       <FormControl w="$full" display="flex" flexDirection="column">
         <Flex w="$full" direction="column" gap="$1">
           <FormLabel>{t(`br.override`)}</FormLabel>
-          <HopeSwitch
+          <AppSwitch
             id="restore-override"
             checked={override()}
-            onChange={(e: { currentTarget: HTMLInputElement }) =>
-              setOverride(e.currentTarget.checked)
-            }
-          ></HopeSwitch>
+            onChange={setOverride}
+          />
 
           <FormLabel>{t(`br.encrypt_password`)}</FormLabel>
           <Input

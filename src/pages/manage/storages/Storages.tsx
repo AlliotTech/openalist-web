@@ -19,7 +19,6 @@ import {
   Thead,
   Tr,
   VStack,
-  Switch as HopeSwitch,
 } from "@hope-ui/solid"
 import { createMemo, createSignal, For, Match, Show, Switch } from "solid-js"
 import { useFetch, useManageTitle, useRouter, useT } from "~/hooks"
@@ -27,6 +26,7 @@ import { handleResp, notify, r } from "~/utils"
 import { EmptyResp, PageResp, Resp, Storage } from "~/types"
 import { StorageGridItem, StorageListItem } from "./Storage"
 import { createStorageSignal } from "~/utils/storage"
+import { AppSwitch } from "~/components/ui/Switch"
 
 const Storages = () => {
   const t = useT()
@@ -128,14 +128,14 @@ const Storages = () => {
             </SelectContent>
           </Select>
         </Show>
-        <HopeSwitch
+        <AppSwitch
           checked={layout() === "table"}
-          onChange={(e) => {
-            setLayout(e.currentTarget.checked ? "table" : "grid")
+          onChange={(checked) => {
+            setLayout(checked ? "table" : "grid")
           }}
         >
           {t("storages.other.table_layout")}
-        </HopeSwitch>
+        </AppSwitch>
       </HStack>
       <Switch>
         <Match when={layout() === "grid"}>

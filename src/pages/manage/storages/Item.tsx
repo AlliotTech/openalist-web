@@ -5,13 +5,13 @@ import {
   FormLabel,
   Input,
   Select,
-  Switch as HopeSwitch,
   Textarea,
 } from "@hope-ui/solid"
 import { Match, Show, Switch } from "solid-js"
 import { useT } from "~/hooks"
 import { DriverItem, Type } from "~/types"
 import { SelectOptions } from "~/components"
+import { AppSwitch } from "~/components/ui/Switch"
 
 export type ItemProps = DriverItem & {
   readonly?: boolean
@@ -104,13 +104,13 @@ const Item = (props: ItemProps) => {
           />
         </Match>
         <Match when={props.type === Type.Bool}>
-          <HopeSwitch
+          <AppSwitch
             id={props.name}
             readOnly={props.readonly}
             defaultChecked={props.value as boolean}
             onChange={
               props.type === Type.Bool
-                ? (e: any) => props.onChange?.(e.currentTarget.checked)
+                ? (checked) => props.onChange?.(checked)
                 : undefined
             }
           />

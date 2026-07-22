@@ -1,7 +1,6 @@
 import {
   Button,
   Checkbox,
-  Switch as HopeSwitch,
   FormControl,
   FormLabel,
   Heading,
@@ -17,6 +16,7 @@ import { handleResp, notify, r } from "~/utils"
 import { Meta, PEmptyResp, PResp } from "~/types"
 import { createStore } from "solid-js/store"
 import { For, Show } from "solid-js"
+import { AppSwitch } from "~/components/ui/Switch"
 
 type ItemProps = {
   name: string
@@ -49,10 +49,10 @@ const Item = (props: ItemProps) => {
             onInput={(e) => props.onChange(e.currentTarget.value)}
           />
         ) : props.type === "bool" ? (
-          <HopeSwitch
+          <AppSwitch
             id={props.name}
             checked={props.value}
-            onChange={(e: any) => props.onChange(e.currentTarget.checked)}
+            onChange={props.onChange}
           />
         ) : (
           <Textarea

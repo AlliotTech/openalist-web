@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
   VStack,
-  Switch as HopeSwitch,
 } from "@hope-ui/solid"
 import { For, Match, onCleanup, Switch, createSignal } from "solid-js"
 import { SwitchLanguageWhite, SwitchColorMode } from "~/components"
@@ -23,6 +22,7 @@ import { useT } from "~/hooks"
 import { initialLocalSettings, local, LocalSetting, setLocal } from "~/store"
 import { bus } from "~/utils"
 import { AppDrawer } from "~/components/ui/Drawer"
+import { AppSwitch } from "~/components/ui/Switch"
 
 function LocalSettingEdit(props: LocalSetting) {
   const t = useT()
@@ -73,10 +73,10 @@ function LocalSettingEdit(props: LocalSetting) {
           </Select>
         </Match>
         <Match when={props.type === "boolean"}>
-          <HopeSwitch
+          <AppSwitch
             defaultChecked={local[props.key] === "true"}
-            onChange={(e) => {
-              setLocal(props.key, e.currentTarget.checked.toString())
+            onChange={(checked) => {
+              setLocal(props.key, checked.toString())
             }}
           />
         </Match>
