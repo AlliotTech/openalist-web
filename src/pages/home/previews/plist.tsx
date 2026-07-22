@@ -1,4 +1,4 @@
-import { Button } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import { useT } from "~/hooks"
 import { objStore } from "~/store"
@@ -9,7 +9,7 @@ const Plist = () => {
   const [installing, setInstalling] = createSignal(false)
   return (
     <FileInfo>
-      <Button
+      <AppButton
         as="a"
         href={
           "itms-services://?action=download-manifest&url=" + objStore.raw_url
@@ -19,7 +19,7 @@ const Plist = () => {
         }}
       >
         {t(`home.preview.${installing() ? "installing" : "install"}`)}
-      </Button>
+      </AppButton>
     </FileInfo>
   )
 }

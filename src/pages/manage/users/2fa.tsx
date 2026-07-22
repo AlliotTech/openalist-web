@@ -1,4 +1,5 @@
-import { Button, Heading, Image, Input, Text, VStack } from "@hope-ui/solid"
+import { Heading, Image, Input, Text, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal, Show } from "solid-js"
 import { MaybeLoading } from "~/components"
 import { useRouter, useFetch, useT } from "~/hooks"
@@ -63,9 +64,9 @@ const TwoFA = () => {
               }
             }}
           />
-          <Button loading={verifyLoadind()} onClick={verify2FA}>
+          <AppButton loading={verifyLoadind()} onClick={verify2FA}>
             {t("users.verify")}
-          </Button>
+          </AppButton>
         </VStack>
       </Show>
     </MaybeLoading>

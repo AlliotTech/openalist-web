@@ -1,5 +1,6 @@
 import { Popover } from "@kobalte/core/popover"
-import { Button, HStack } from "@hope-ui/solid"
+import { HStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import "~/components/ui/popover.css"
 import { useT } from "~/hooks"
@@ -15,7 +16,7 @@ export const DeletePopover = (props: DeletePopoverProps) => {
   const [open, setOpen] = createSignal(false)
   return (
     <Popover open={open()} onOpenChange={setOpen} gutter={8} placement="bottom">
-      <Popover.Trigger as={Button} colorScheme="danger">
+      <Popover.Trigger as={AppButton} colorScheme="danger">
         {t("global.delete")}
       </Popover.Trigger>
       <Popover.Portal>
@@ -26,10 +27,10 @@ export const DeletePopover = (props: DeletePopoverProps) => {
           </Popover.Title>
           <div class="app-popover__body">
             <HStack spacing="$2">
-              <Button onClick={() => setOpen(false)} colorScheme="neutral">
+              <AppButton onClick={() => setOpen(false)} colorScheme="neutral">
                 {t("global.cancel")}
-              </Button>
-              <Button
+              </AppButton>
+              <AppButton
                 colorScheme="danger"
                 loading={props.loading}
                 onClick={() => {
@@ -38,7 +39,7 @@ export const DeletePopover = (props: DeletePopoverProps) => {
                 }}
               >
                 {t("global.confirm")}
-              </Button>
+              </AppButton>
             </HStack>
           </div>
         </Popover.Content>

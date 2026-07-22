@@ -1,4 +1,5 @@
-import { Button, Heading, HStack, Input, VStack } from "@hope-ui/solid"
+import { Heading, HStack, Input, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { Component, createSignal, For, onCleanup } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import { Dynamic } from "solid-js/web"
@@ -68,12 +69,12 @@ export const Messenger = () => {
         onInput={(e) => setToSend(e.currentTarget.value)}
       />
       <HStack spacing="$2">
-        <Button colorScheme="accent" loading={getLoading()} onClick={get}>
+        <AppButton colorScheme="accent" loading={getLoading()} onClick={get}>
           {t("manage.receive")}
-        </Button>
-        <Button loading={sendLoading()} onClick={send}>
+        </AppButton>
+        <AppButton loading={sendLoading()} onClick={send}>
           {t("manage.send")}
-        </Button>
+        </AppButton>
       </HStack>
     </VStack>
   )

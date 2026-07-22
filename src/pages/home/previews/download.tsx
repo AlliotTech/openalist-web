@@ -1,4 +1,5 @@
-import { Button, HStack, IconButton, Image } from "@hope-ui/solid"
+import { HStack, Image } from "@hope-ui/solid"
+import { AppButton, AppIconButton } from "~/components/ui/Button"
 import { Popover } from "@kobalte/core/popover"
 import { useCopyLink, useT } from "~/hooks"
 import { objStore } from "~/store"
@@ -22,12 +23,15 @@ export const Download = (props: { openWith?: boolean }) => {
   return (
     <FileInfo>
       <HStack spacing="$2">
-        <Button colorScheme="accent" onClick={() => copyCurrentRawLink(true)}>
+        <AppButton
+          colorScheme="accent"
+          onClick={() => copyCurrentRawLink(true)}
+        >
           {t("home.toolbar.copy_link")}
-        </Button>
-        <Button as="a" href={objStore.raw_url} target="_blank">
+        </AppButton>
+        <AppButton as="a" href={objStore.raw_url} target="_blank">
           {t("home.preview.download")}
-        </Button>
+        </AppButton>
         <Popover
           open={pinned() || hover()}
           onOpenChange={setPinned}
@@ -35,7 +39,7 @@ export const Download = (props: { openWith?: boolean }) => {
           placement="top"
         >
           <Popover.Trigger
-            as={IconButton}
+            as={AppIconButton}
             icon={<BsQrCode />}
             aria-label="QRCode"
             colorScheme="success"

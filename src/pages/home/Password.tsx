@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   Heading,
   HStack,
@@ -8,6 +7,7 @@ import {
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { useRouter, useT } from "~/hooks"
 import { JSXElement } from "solid-js"
 
@@ -54,12 +54,12 @@ const Password = (props: PasswordProps) => {
           {props.children}
         </Flex>
         <HStack spacing="$2">
-          <Button colorScheme="neutral" onClick={back}>
+          <AppButton colorScheme="neutral" onClick={back}>
             {t("global.back")}
-          </Button>
-          <Button onClick={() => props.enterCallback()}>
+          </AppButton>
+          <AppButton onClick={() => props.enterCallback()}>
             {t("global.ok")}
-          </Button>
+          </AppButton>
         </HStack>
       </HStack>
     </VStack>

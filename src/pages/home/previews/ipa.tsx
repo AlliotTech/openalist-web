@@ -1,4 +1,5 @@
-import { Button, HStack } from "@hope-ui/solid"
+import { HStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import { useT, useLink } from "~/hooks"
 import { objStore } from "~/store"
@@ -13,7 +14,7 @@ const Ipa = () => {
   return (
     <FileInfo>
       <HStack spacing="$2">
-        <Button
+        <AppButton
           as="a"
           href={
             "itms-services://?action=download-manifest&url=" +
@@ -28,8 +29,8 @@ const Ipa = () => {
           }}
         >
           {t(`home.preview.${installing() ? "installing" : "install"}`)}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           as="a"
           colorScheme="primary"
           href={
@@ -41,7 +42,7 @@ const Ipa = () => {
           }}
         >
           {t(`home.preview.${trInstalling() ? "tr-installing" : "tr-install"}`)}
-        </Button>
+        </AppButton>
       </HStack>
     </FileInfo>
   )

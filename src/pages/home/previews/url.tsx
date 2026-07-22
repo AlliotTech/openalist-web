@@ -3,7 +3,7 @@ import { parseInternetShortcutUrl } from "~/utils"
 import { FileInfo } from "./info"
 import { useFetchText, useParseText, useT } from "~/hooks"
 import { createEffect } from "solid-js"
-import { Button } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 
 export default function () {
   const [content] = useFetchText()
@@ -26,9 +26,9 @@ export default function () {
   return (
     <MaybeLoading loading={content.loading}>
       <FileInfo>
-        <Button onClick={openInNewWindow}>
+        <AppButton onClick={openInNewWindow}>
           {t("home.preview.open_in_new_window")}
-        </Button>
+        </AppButton>
       </FileInfo>
     </MaybeLoading>
   )

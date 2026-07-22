@@ -1,4 +1,5 @@
-import { Button, useColorMode, VStack } from "@hope-ui/solid"
+import { useColorMode, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createEffect, createMemo, createSignal, on, Show } from "solid-js"
 import { EncodingSelect, MaybeLoading } from "~/components"
 import { MonacoEditorLoader } from "~/components/MonacoEditor"
@@ -59,9 +60,9 @@ function Editor(props: { data?: string | ArrayBuffer; contentType?: string }) {
         }}
       />
       <Show when={userCan("write") || objStore.write}>
-        <Button loading={loading()} onClick={onSave}>
+        <AppButton loading={loading()} onClick={onSave}>
           {t("global.save")}
-        </Button>
+        </AppButton>
       </Show>
     </VStack>
   )
