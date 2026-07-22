@@ -6,6 +6,7 @@ settings:
 
 overrides:
   changelogithub>changelogen: 0.6.2
+  monaco-editor>dompurify: 3.4.12
   mpegts.js>webworkify-webpack: 2.1.5
   baseline-browser-mapping: 2.10.44
   browserslist: 4.28.6
@@ -96,8 +97,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       monaco-editor:
-        specifier: 0.52.2
-        version: 0.52.2
+        specifier: 0.56.0
+        version: 0.56.0
       mpegts.js:
         specifier: ^1.8.0
         version: 1.8.0
@@ -1171,6 +1172,9 @@ packages:
   '@types/streamsaver@2.0.5':
     resolution: {integrity: sha512-93o0zjV8swEhR2YI57h/2ytbJF8bJh7sI9GNB02TLJHdM4fWDxZuChwfWhyD8vt2ub4kw4rsfZ0C0yAUX+3gcg==}
 
+  '@types/trusted-types@2.0.7':
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
 
@@ -1610,6 +1614,9 @@ packages:
     resolution: {integrity: sha512-GrwoxYN+uWlzO8uhUXRl0P+kHE4GtVPfYzVLcUxPL7KNdHKj66vvlhiweIHqYYXWlw+T8iLMp42Lm67ghw4WMQ==}
     engines: {node: '>= 4'}
 
+  dompurify@3.4.12:
+    resolution: {integrity: sha512-zQvGet8Z2sWbQhCmfFz/T5QWH2oBmjnqK3qvOjaqaNLrLEF912WamU+ohnTp0TCep/MFVHpdJuCZEdFOdTnEFg==}
+
   domutils@2.8.0:
     resolution: {integrity: sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==}
 
@@ -2045,6 +2052,11 @@ packages:
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
 
+  marked@14.0.0:
+    resolution: {integrity: sha512-uIj4+faQ+MgHgwUW1l2PsPglZLOLOT1uErt06dAPtx2kjteLAkbsd/0FiYg/MGS+i7ZKLb7w2WClxHkzOOuryQ==}
+    engines: {node: '>= 18'}
+    hasBin: true
+
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
@@ -2217,8 +2229,8 @@ packages:
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
 
-  monaco-editor@0.52.2:
-    resolution: {integrity: sha512-GEQWEZmfkOGLdd3XK8ryrfWz3AIP8YymVXiPHEdewrUq7mh0qrKrfHLNCXcbB6sTnMLnOZ3ztSiKcciFUkIJwQ==}
+  monaco-editor@0.56.0:
+    resolution: {integrity: sha512-sXboRm3BeBeLm938eaiyLMe0OxzfXIlZvbv4ir/jVgQy1zDhWjgmny0WoN45fuDKhCCQsYMbBJrv/A6jd8aCUg==}
 
   mpegts.js@1.8.0:
     resolution: {integrity: sha512-ZtujqtmTjWgcDDkoOnLvrOKUTO/MKgLHM432zGDI8oPaJ0S+ebPxg1nEpDpLw6I7KmV/GZgUIrfbWi3qqEircg==}
@@ -3958,6 +3970,9 @@ snapshots:
 
   '@types/streamsaver@2.0.5': {}
 
+  '@types/trusted-types@2.0.7':
+    optional: true
+
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
@@ -4350,6 +4365,10 @@ snapshots:
   domhandler@4.3.1:
     dependencies:
       domelementtype: 2.3.0
+
+  dompurify@3.4.12:
+    optionalDependencies:
+      '@types/trusted-types': 2.0.7
 
   domutils@2.8.0:
     dependencies:
@@ -4766,6 +4785,8 @@ snapshots:
 
   markdown-table@3.0.4: {}
 
+  marked@14.0.0: {}
+
   math-intrinsics@1.1.0: {}
 
   mdast-util-find-and-replace@3.0.2:
@@ -5126,7 +5147,10 @@ snapshots:
 
   mitt@3.0.1: {}
 
-  monaco-editor@0.52.2: {}
+  monaco-editor@0.56.0:
+    dependencies:
+      dompurify: 3.4.12
+      marked: 14.0.0
 
   mpegts.js@1.8.0:
     dependencies:
