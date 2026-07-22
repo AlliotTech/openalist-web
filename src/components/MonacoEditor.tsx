@@ -1,14 +1,21 @@
 import { AppBox as Box } from "~/components/ui/Layout"
-import { createEffect, createSignal, onCleanup, onMount } from "solid-js"
-import { MaybeLoading } from "./FullLoading"
-import loader from "@monaco-editor/loader"
-import { monaco_cdn } from "~/utils"
+import { createEffect, onCleanup, onMount } from "solid-js"
+import * as monaco from "monaco-editor"
+import EditorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker"
+import CssWorker from "monaco-editor/esm/vs/language/css/css.worker?worker"
+import HtmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker"
+import JsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker"
+import TsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
 
-loader.config({
-  paths: {
-    vs: monaco_cdn,
+;(self as any).MonacoEnvironment = {
+  getWorker(_: string, label: string) {
+    if (label === "json") return new JsonWorker()
+    if (["css", "less", "scss"].includes(label)) return new CssWorker()
+    if (["html", "handlebars", "razor"].includes(label)) return new HtmlWorker()
+    if (["typescript", "javascript"].includes(label)) return new TsWorker()
+    return new EditorWorker()
   },
-})
+}
 export interface MonacoEditorProps {
   value: string
   onChange?: (value: string) => void
@@ -16,25 +23,14 @@ export interface MonacoEditorProps {
   path?: string
   language?: string
 }
-let monaco: any
-
-export const MonacoEditorLoader = (props: MonacoEditorProps) => {
-  const [loading, setLoading] = createSignal(true)
-  loader.init().then((m) => {
-    monaco = m
-    setLoading(false)
-  })
-  return (
-    <MaybeLoading loading={loading()}>
-      <MonacoEditor {...props} />
-    </MaybeLoading>
-  )
-}
+export const MonacoEditorLoader = (props: MonacoEditorProps) => (
+  <MonacoEditor {...props} />
+)
 
 export const MonacoEditor = (props: MonacoEditorProps) => {
   let monacoEditorDiv: HTMLDivElement
-  let monacoEditor: any /*monaco.editor.IStandaloneCodeEditor*/
-  let model: any /*monaco.editor.ITextModel*/
+  let monacoEditor: monaco.editor.IStandaloneCodeEditor
+  let model: monaco.editor.ITextModel
   onMount(() => {
     monacoEditor = monaco.editor.create(monacoEditorDiv!, {
       value: props.value,
