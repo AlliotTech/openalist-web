@@ -1,4 +1,6 @@
-import { ext, recordToArray, strToRegExp } from "~/utils"
+import { recordToArray } from "~/utils/convert"
+import { ext } from "~/utils/path"
+import { strToRegExp } from "~/utils/str"
 
 const settings: Record<string, string> = {}
 

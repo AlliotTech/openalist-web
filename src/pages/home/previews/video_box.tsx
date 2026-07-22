@@ -13,54 +13,10 @@ import { objStore } from "~/store"
 import { ObjType } from "~/types"
 import { convertURL } from "~/utils"
 import Artplayer from "artplayer"
-import { SelectWrapper } from "~/components"
+import { SelectWrapper } from "~/components/Base"
+import { players } from "./players"
 
 Artplayer.PLAYBACK_RATE = [0.5, 0.75, 1, 1.25, 1.5, 2, 3, 4]
-
-export const players: { icon: string; name: string; scheme: string }[] = [
-  { icon: "iina", name: "IINA", scheme: "iina://weblink?url=$edurl" },
-  { icon: "potplayer", name: "PotPlayer", scheme: "potplayer://$durl" },
-  { icon: "vlc", name: "VLC", scheme: "vlc://$durl" },
-  { icon: "nplayer", name: "nPlayer", scheme: "nplayer-$durl" },
-  {
-    icon: "omniplayer",
-    name: "OmniPlayer",
-    scheme: "omniplayer://weblink?url=$durl",
-  },
-  {
-    icon: "figplayer",
-    name: "Fig Player",
-    scheme: "figplayer://weblink?url=$durl",
-  },
-  {
-    icon: "infuse",
-    name: "Infuse",
-    scheme: "infuse://x-callback-url/play?url=$durl",
-  },
-  {
-    icon: "fileball",
-    name: "Fileball",
-    scheme: "filebox://play?url=$durl",
-  },
-  {
-    icon: "mxplayer",
-    name: "MX Player",
-    scheme:
-      "intent:$durl#Intent;package=com.mxtech.videoplayer.ad;S.title=$name;end",
-  },
-  {
-    icon: "mxplayer-pro",
-    name: "MX Player Pro",
-    scheme:
-      "intent:$durl#Intent;package=com.mxtech.videoplayer.pro;S.title=$name;end",
-  },
-  {
-    icon: "iPlay",
-    name: "iPlay",
-    scheme: "iplay://play/any?type=url&url=$bdurl",
-  },
-  { icon: "mpv", name: "mpv", scheme: "mpv://$edurl" },
-]
 
 export const AutoHeightPlugin = (player: Artplayer) => {
   const { $container, $video } = player.template

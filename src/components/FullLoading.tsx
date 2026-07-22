@@ -1,6 +1,6 @@
 import { AppCenter as Center } from "~/components/ui/Stack"
 import { JSXElement, mergeProps, Show } from "solid-js"
-import { getMainColor } from "~/store"
+import { getMainColor } from "~/store/settings"
 import { AppSpinner, type AppSpinnerProps } from "~/components/ui/Loading"
 export const FullScreenLoading = () => {
   return (

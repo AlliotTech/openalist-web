@@ -21,7 +21,7 @@ import { asyncPool } from "~/utils/async_pool"
 import { createStore } from "solid-js/store"
 import { UploadFileProps, StatusBadge } from "./types"
 import { File2Upload, traverseFileTree } from "./util"
-import { SelectWrapper } from "~/components"
+import { SelectWrapper } from "~/components/Base"
 import { getUploads } from "./uploads"
 import { AppCheckbox } from "~/components/ui/Checkbox"
 

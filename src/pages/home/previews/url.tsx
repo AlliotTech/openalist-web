@@ -1,4 +1,4 @@
-import { MaybeLoading } from "~/components"
+import { MaybeLoading } from "~/components/FullLoading"
 import { parseInternetShortcutUrl } from "~/utils"
 import { FileInfo } from "./info"
 import { useFetchText, useParseText, useT } from "~/hooks"

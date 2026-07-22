@@ -4,7 +4,7 @@ import { AppHStack as HStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import { batch, Show } from "solid-js"
-import { LinkWithPush } from "~/components"
+import { LinkWithPush } from "~/components/LinkWithBase"
 import { usePath, useRouter, useUtil } from "~/hooks"
 import {
   checkboxOpen,

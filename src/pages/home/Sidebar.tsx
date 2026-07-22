@@ -10,7 +10,7 @@ import {
   onCleanup,
   onMount,
 } from "solid-js"
-import { FolderTree, FolderTreeHandler } from "~/components"
+import { FolderTree, type FolderTreeHandler } from "~/components/FolderTree"
 import { useRouter } from "~/hooks"
 import { local, objStore } from "~/store"
 import { objBoxRef } from "./Obj"

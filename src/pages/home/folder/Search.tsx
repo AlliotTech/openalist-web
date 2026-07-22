@@ -16,12 +16,10 @@ import {
   Switch,
 } from "solid-js"
 import Mark from "mark.js"
-import {
-  FullLoading,
-  LinkWithBase,
-  Paginator,
-  SelectWrapper,
-} from "~/components"
+import { SelectWrapper } from "~/components/Base"
+import { FullLoading } from "~/components/FullLoading"
+import { LinkWithBase } from "~/components/LinkWithBase"
+import { Paginator } from "~/components/Paginator"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { getMainColor, me, password } from "~/store"
 import { SearchNode } from "~/types"
@@ -165,9 +163,11 @@ const SearchResult = (props: { node: SearchNode; keywords: string }) => {
   )
 }
 
-const Search = () => {
+const Search = (props: { defaultIsOpen?: boolean }) => {
   const pageSize = 100
-  const { isOpen, onOpen, onClose, onToggle } = createDisclosure()
+  const { isOpen, onOpen, onClose, onToggle } = createDisclosure({
+    defaultIsOpen: props.defaultIsOpen,
+  })
   const t = useT()
   const handler = (name: string) => {
     if (name === "search") {

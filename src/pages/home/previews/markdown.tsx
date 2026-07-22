@@ -1,4 +1,5 @@
-import { Markdown, MaybeLoading } from "~/components"
+import { MaybeLoading } from "~/components/FullLoading"
+import { Markdown } from "~/components/Markdown"
 import { useFetchText } from "~/hooks"
 import { objStore } from "~/store"
 import { ext } from "~/utils"

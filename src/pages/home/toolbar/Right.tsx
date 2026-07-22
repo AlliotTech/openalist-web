@@ -13,7 +13,7 @@ import { AiOutlineCloudUpload, AiOutlineSetting } from "solid-icons/ai"
 import { RiSystemRefreshLine } from "solid-icons/ri"
 import { usePath } from "~/hooks"
 import { Motion } from "solid-motionone"
-import { isTocVisible, setTocDisabled } from "~/components"
+import { isTocVisible, setTocDisabled } from "~/components/markdown-state"
 import { BiSolidBookContent } from "solid-icons/bi"
 
 export const Right = () => {

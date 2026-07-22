@@ -1,5 +1,5 @@
 import { createDisclosure } from "~/hooks/disclosure"
-import { ModalInput } from "~/components"
+import { ModalInput } from "~/components/ModalInput"
 import { useFetch, usePath, useRouter } from "~/hooks"
 import { bus, fsMkdir, handleRespWithNotifySuccess, pathJoin } from "~/utils"
 import { onCleanup } from "solid-js"

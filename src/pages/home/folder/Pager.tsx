@@ -2,7 +2,8 @@ import { AppText as Text } from "~/components/ui/Typography"
 
 import { AppButton } from "~/components/ui/Button"
 import { Match, onCleanup, onMount, Show, Switch } from "solid-js"
-import { FullLoading, Paginator } from "~/components"
+import { FullLoading } from "~/components/FullLoading"
+import { Paginator } from "~/components/Paginator"
 import { getGlobalPage, usePath, useRouter, useT } from "~/hooks"
 import { clearHistory, getPagination, objStore, State } from "~/store"
 

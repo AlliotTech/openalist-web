@@ -11,7 +11,9 @@ import {
   Suspense,
   Switch,
 } from "solid-js"
-import { Error, FullLoading, LinkWithBase } from "~/components"
+import { Error } from "~/components/Base"
+import { FullLoading } from "~/components/FullLoading"
+import { LinkWithBase } from "~/components/LinkWithBase"
 import { useObjTitle, usePath, useRouter, useT } from "~/hooks"
 import {
   getPagination,

@@ -6,7 +6,7 @@ import { createDisclosure } from "~/hooks/disclosure"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsArchiveDecompress, handleRespWithNotifySuccess } from "~/utils"
 import { batch, createSignal, onCleanup } from "solid-js"
-import { ModalFolderChoose } from "~/components"
+import { ModalFolderChoose } from "~/components/FolderTree"
 import { selectedObjs } from "~/store"
 import { AppCheckbox } from "~/components/ui/Checkbox"
 

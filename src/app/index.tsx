@@ -1,5 +1,6 @@
 import { ErrorBoundary, Suspense, type JSXElement } from "solid-js"
-import { Error, FullScreenLoading } from "~/components"
+import { Error } from "~/components/Base"
+import { FullScreenLoading } from "~/components/FullLoading"
 import { AppToastRegion } from "~/components/ui/ToastRegion"
 import { AppColorModeProvider } from "~/components/ui/ColorMode"
 import App from "./App"

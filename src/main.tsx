@@ -7,7 +7,7 @@ import { render } from "solid-js/web"
 import { Index } from "./app"
 import { MustUser } from "./app/MustUser"
 import { routes as manageRoutes } from "./pages/manage/routes"
-import { joinBase } from "./utils"
+import { joinBase } from "./utils/path"
 
 const Home = lazy(() => import("~/pages/home/Layout"))
 const Manage = lazy(() => import("~/pages/manage"))

@@ -13,14 +13,14 @@ import {
 import { AppAnchor as Anchor } from "~/components/ui/Typography"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { useParseText, useRouter } from "~/hooks"
-import { EncodingSelect } from "."
+import { EncodingSelect } from "./EncodingSelect"
 import once from "just-once"
 import { pathDir, pathJoin, api, pathResolve } from "~/utils"
-import { createStorageSignal } from "~/utils/storage"
 import { isMobile } from "~/utils/compatibility.js"
 import { useScrollListener } from "~/pages/home/toolbar/BackTop.jsx"
 import { Motion } from "solid-motionone"
 import { getMainColor, me } from "~/store"
+import { isTocDisabled, isTocVisible, setTocVisible } from "./markdown-state"
 
 type TocItem = { indent: number; text: string; tagName: string; key: string }
 
@@ -65,18 +65,6 @@ function normalizeMarkdownPositions() {
   }
 }
 
-const [isTocVisible, setVisible] = createSignal(false)
-const [isTocDisabled, setTocDisabled] = createStorageSignal(
-  "isMarkdownTocDisabled",
-  true,
-  {
-    serializer: (v: boolean) => JSON.stringify(v),
-    deserializer: (v) => JSON.parse(v),
-  },
-)
-
-export { isTocVisible, setTocDisabled }
-
 function MarkdownToc(props: {
   disabled?: boolean
   markdownRef: HTMLDivElement
@@ -87,7 +75,7 @@ function MarkdownToc(props: {
   const [tocList, setTocList] = createSignal<TocItem[]>([])
 
   useScrollListener(
-    () => setVisible(window.scrollY > 100 && tocList().length > 1),
+    () => setTocVisible(window.scrollY > 100 && tocList().length > 1),
     { immediate: true },
   )
 
@@ -324,3 +312,5 @@ export function Markdown(props: {
     </Box>
   )
 }
+
+export default Markdown

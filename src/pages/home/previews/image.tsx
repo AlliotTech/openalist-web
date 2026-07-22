@@ -1,4 +1,6 @@
-import { Error, FullLoading, ImageWithError } from "~/components"
+import { Error } from "~/components/Base"
+import { FullLoading } from "~/components/FullLoading"
+import { ImageWithError } from "~/components/ImageWithError"
 import { useRouter, useT } from "~/hooks"
 import { objStore } from "~/store"
 import { ObjType } from "~/types"

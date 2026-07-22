@@ -1,6 +1,6 @@
 import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, onCleanup } from "solid-js"
-import { ModalFolderChoose } from "~/components"
+import { ModalFolderChoose } from "~/components/FolderTree"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { selectedObjs } from "~/store"
 import { bus, fsCopy, fsMove, handleRespWithNotifySuccess } from "~/utils"

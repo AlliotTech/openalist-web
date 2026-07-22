@@ -1,10 +1,14 @@
 import { useColorModeValue } from "~/components/ui/ColorMode"
 import { AppBox as Box } from "~/components/ui/Layout"
-import { createMemo, Show, createResource, on } from "solid-js"
-import { Markdown, MaybeLoading } from "~/components"
-import { useLink, useRouter } from "~/hooks"
-import { getSettingBool, objStore, State } from "~/store"
-import { fetchText } from "~/utils"
+import { createMemo, Show, createResource, lazy, on, Suspense } from "solid-js"
+import { FullLoading, MaybeLoading } from "~/components/FullLoading"
+import { useLink } from "~/hooks/useLink"
+import { useRouter } from "~/hooks/useRouter"
+import { objStore, State } from "~/store/obj"
+import { getSettingBool } from "~/store/settings"
+import { fetchText } from "~/utils/api"
+
+const Markdown = lazy(() => import("~/components/Markdown"))
 
 export function Readme(props: {
   files: string[]
@@ -58,11 +62,13 @@ export function Readme(props: {
     <Show when={getSettingBool("readme_autorender") && readme()}>
       <Box w="$full" rounded="$xl" p="$4" bgColor={cardBg()} shadow="$lg">
         <MaybeLoading loading={content.loading}>
-          <Markdown
-            children={content()?.content}
-            readme
-            toc={props.fromMeta === "readme"}
-          />
+          <Suspense fallback={<FullLoading />}>
+            <Markdown
+              children={content()?.content}
+              readme
+              toc={props.fromMeta === "readme"}
+            />
+          </Suspense>
         </MaybeLoading>
       </Box>
     </Show>

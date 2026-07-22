@@ -1,9 +1,12 @@
 import { createSignal, JSXElement, Match, Switch } from "solid-js"
-import { Error, FullScreenLoading } from "~/components"
-import { useFetch, useT } from "~/hooks"
-import { Me, setMe } from "~/store"
+import { Error } from "~/components/Base"
+import { FullScreenLoading } from "~/components/FullLoading"
+import { useFetch } from "~/hooks/useFetch"
+import { useT } from "~/hooks/useT"
+import { Me, setMe } from "~/store/user"
 import { PResp } from "~/types"
-import { r, handleResp } from "~/utils"
+import { handleResp } from "~/utils/handle_resp"
+import { r } from "~/utils/request"
 
 const MustUser = (props: { children: JSXElement }) => {
   const t = useT()

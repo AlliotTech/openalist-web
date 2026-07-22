@@ -1,4 +1,4 @@
-import { BoxWithFullScreen } from "~/components"
+import { BoxWithFullScreen } from "~/components/Base"
 import { objStore } from "~/store"
 import { AppIcon as Icon } from "~/components/ui/Icon"
 import { convertURL, hoverColor } from "~/utils"

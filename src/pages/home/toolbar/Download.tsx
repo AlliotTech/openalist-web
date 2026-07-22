@@ -1,7 +1,7 @@
 import { AppButton } from "~/components/ui/Button"
 import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, lazy, onCleanup, Show, Suspense } from "solid-js"
-import { FullLoading } from "~/components"
+import { FullLoading } from "~/components/FullLoading"
 import { useT, useDownload } from "~/hooks"
 import { getSettingBool, me } from "~/store"
 import { UserMethods } from "~/types"

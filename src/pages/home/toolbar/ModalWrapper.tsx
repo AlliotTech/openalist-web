@@ -1,6 +1,6 @@
 import { createDisclosure } from "~/hooks/disclosure"
 import { JSXElement, onCleanup, Show, Suspense } from "solid-js"
-import { FullLoading } from "~/components"
+import { FullLoading } from "~/components/FullLoading"
 import { useT } from "~/hooks"
 import {
   AppModal,

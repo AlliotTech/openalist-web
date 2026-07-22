@@ -1,5 +1,7 @@
 import { Show, createSignal } from "solid-js"
-import { BoxWithFullScreen, EncodingSelect, MaybeLoading } from "~/components"
+import { BoxWithFullScreen } from "~/components/Base"
+import { EncodingSelect } from "~/components/EncodingSelect"
+import { MaybeLoading } from "~/components/FullLoading"
 import { useFetchText, useParseText } from "~/hooks"
 
 function Html(props: { children?: string | ArrayBuffer }) {

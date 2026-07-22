@@ -16,7 +16,7 @@ import {
   oneChecked,
   selectedObjs,
 } from "~/store"
-import { players } from "../previews/video_box"
+import { players } from "../previews/players"
 import { BsPlayCircleFill } from "solid-icons/bs"
 import { isArchive } from "~/store/archive"
 

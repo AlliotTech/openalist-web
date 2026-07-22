@@ -6,7 +6,7 @@ import { AppCenter as Center, AppFlex as Flex } from "~/components/ui/Stack"
 import { SwitchColorMode } from "./SwitchColorMode"
 import { mergeProps, Show } from "solid-js"
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from "solid-icons/ai"
-import { hoverColor } from "~/utils"
+import { hoverColor } from "~/utils/const"
 import { AppSelect } from "~/components/ui/Select"
 import { createDisclosure } from "~/hooks/disclosure"
 

@@ -2,7 +2,8 @@ import { useColorMode } from "~/components/ui/ColorMode"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createEffect, createMemo, createSignal, on, Show } from "solid-js"
-import { EncodingSelect, MaybeLoading } from "~/components"
+import { EncodingSelect } from "~/components/EncodingSelect"
+import { MaybeLoading } from "~/components/FullLoading"
 import {
   editorLanguageForPath,
   MonacoEditorLoader,

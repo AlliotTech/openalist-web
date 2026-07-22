@@ -9,7 +9,7 @@ import {
   AppModalOverlay,
 } from "~/components/ui/Modal"
 import { createDisclosure } from "~/hooks/disclosure"
-import { ModalFolderChoose } from "~/components"
+import { ModalFolderChoose } from "~/components/FolderTree"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsRecursiveMove, handleRespWithNotifySuccess } from "~/utils"
 import { createSignal, onCleanup } from "solid-js"

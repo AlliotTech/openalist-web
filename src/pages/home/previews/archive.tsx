@@ -25,7 +25,8 @@ import { Obj, ObjTree, UserMethods, UserPermissions } from "~/types"
 import { useFetch, useRouter, useT, useUtil } from "~/hooks"
 import { ListTitle } from "~/pages/home/folder/List"
 import { cols } from "~/pages/home/folder/ListItem"
-import { Error, MaybeLoading } from "~/components"
+import { Error } from "~/components/Base"
+import { MaybeLoading } from "~/components/FullLoading"
 import {
   bus,
   encodePath,

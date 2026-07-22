@@ -1,6 +1,7 @@
 import { AppBox as Box } from "~/components/ui/Layout"
 import { createDisclosure } from "~/hooks/disclosure"
-import { ModalInput, SelectWrapper } from "~/components"
+import { SelectWrapper } from "~/components/Base"
+import { ModalInput } from "~/components/ModalInput"
 import { useFetch, useRouter, useT } from "~/hooks"
 import {
   offlineDownload,
