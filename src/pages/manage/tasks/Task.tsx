@@ -1,4 +1,5 @@
-import { Badge, Divider, Grid, GridItem, Heading, Text } from "@hope-ui/solid"
+import { Badge, Divider, Heading, Text } from "@hope-ui/solid"
+import { AppGrid as Grid, AppGridItem as GridItem } from "~/components/ui/Grid"
 import { AppSpacer as Spacer } from "~/components/ui/Layout"
 import {
   AppCenter as Center,
@@ -291,7 +292,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
               <GridItem
                 color="$neutral9"
                 textAlign="right"
-                css={{ whiteSpace: "nowrap" }}
+                css={{ "white-space": "nowrap" }}
               >
                 {t(`tasks.attr.time_elapsed`)}
               </GridItem>
@@ -308,7 +309,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
                       <GridItem
                         color="$neutral9"
                         textAlign="right"
-                        css={{ whiteSpace: "nowrap" }}
+                        css={{ "white-space": "nowrap" }}
                       >
                         {entry[0]}
                       </GridItem>
@@ -321,7 +322,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
             <GridItem
               color="$neutral9"
               textAlign="right"
-              css={{ whiteSpace: "nowrap" }}
+              css={{ "white-space": "nowrap" }}
             >
               {t(`tasks.attr.status`)}
             </GridItem>
@@ -330,7 +331,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
               <GridItem
                 color="$danger9"
                 textAlign="right"
-                css={{ whiteSpace: "nowrap" }}
+                css={{ "white-space": "nowrap" }}
               >
                 {t(`tasks.attr.err`)}
               </GridItem>

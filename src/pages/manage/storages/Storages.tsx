@@ -1,4 +1,4 @@
-import { Grid } from "@hope-ui/solid"
+import { AppGrid as Grid } from "~/components/ui/Grid"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import "~/components/ui/table.css"

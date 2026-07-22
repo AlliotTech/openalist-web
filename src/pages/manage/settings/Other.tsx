@@ -1,4 +1,5 @@
-import { Heading, SimpleGrid } from "@hope-ui/solid"
+import { Heading } from "@hope-ui/solid"
+import { AppSimpleGrid as SimpleGrid } from "~/components/ui/Grid"
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,

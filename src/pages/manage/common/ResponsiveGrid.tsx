@@ -1,4 +1,4 @@
-import { Grid } from "@hope-ui/solid"
+import { AppGrid as Grid } from "~/components/ui/Grid"
 import { JSXElement } from "solid-js"
 import { getSetting } from "~/store"
 

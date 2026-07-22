@@ -1,4 +1,4 @@
-import { Grid } from "@hope-ui/solid"
+import { AppGrid as Grid } from "~/components/ui/Grid"
 import { For } from "solid-js"
 import { GridItem } from "./GridItem"
 import "lightgallery/css/lightgallery-bundle.css"
