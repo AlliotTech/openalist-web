@@ -1,5 +1,12 @@
-.app-stack--hover-border:hover {
+.app-stack--hover:hover {
   border: var(--app-stack-hover-border);
+  background: var(--app-stack-hover-background);
+  transform: var(--app-stack-hover-transform);
+  box-shadow: var(--app-stack-hover-shadow);
+}
+
+.app-stack--active:active {
+  transform: var(--app-stack-active-transform);
 }
 
 @media (min-width: 768px) {

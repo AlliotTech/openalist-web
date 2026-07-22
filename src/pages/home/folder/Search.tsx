@@ -1,4 +1,5 @@
-import { Badge, HStack, Icon, Text, VStack, hope } from "@hope-ui/solid"
+import { Badge, Icon, Text, hope } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppIconButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { BsSearch } from "solid-icons/bs"

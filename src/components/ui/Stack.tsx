@@ -1,4 +1,5 @@
 import { splitProps, type JSX, type ParentProps } from "solid-js"
+import { Dynamic } from "solid-js/web"
 import "./stack.css"
 
 const token = (value: string | number | undefined, group: string) => {
@@ -15,6 +16,8 @@ const cssTokens = (value: string | undefined) =>
 type StackProps = ParentProps<
   Omit<JSX.HTMLAttributes<HTMLDivElement>, "style"> & {
     style?: JSX.CSSProperties
+    as?: any
+    href?: string
     spacing?: string
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
@@ -61,7 +64,13 @@ type StackProps = ParentProps<
     borderTop?: string
     borderBottom?: string
     borderColor?: string
-    _hover?: { border?: string }
+    _hover?: {
+      border?: string
+      bgColor?: string
+      transform?: string
+      boxShadow?: string
+    }
+    _active?: { transform?: string }
     css?: JSX.CSSProperties
   }
 >
@@ -69,6 +78,7 @@ type StackProps = ParentProps<
 const Stack = (props: StackProps & { direction: "row" | "column" }) => {
   const [local, others] = splitProps(props, [
     "class",
+    "as",
     "style",
     "children",
     "direction",
@@ -118,12 +128,14 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "borderBottom",
     "borderColor",
     "_hover",
+    "_active",
     "css",
   ])
   return (
-    <div
+    <Dynamic
+      component={local.as ?? "div"}
       {...others}
-      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${local._hover?.border ? " app-stack--hover-border" : ""}${local.class ? ` ${local.class}` : ""}`}
+      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${local._hover ? " app-stack--hover" : ""}${local._active ? " app-stack--active" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={
         {
           ...(local.css ?? {}),
@@ -185,11 +197,15 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
             "sizes",
           ),
           "--app-stack-hover-border": cssTokens(local._hover?.border),
+          "--app-stack-hover-background": cssTokens(local._hover?.bgColor),
+          "--app-stack-hover-transform": local._hover?.transform,
+          "--app-stack-hover-shadow": local._hover?.boxShadow,
+          "--app-stack-active-transform": local._active?.transform,
         } as any
       }
     >
       {local.children}
-    </div>
+    </Dynamic>
   )
 }
 

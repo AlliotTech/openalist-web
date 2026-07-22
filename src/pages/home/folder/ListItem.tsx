@@ -1,4 +1,5 @@
-import { HStack, Icon, Text } from "@hope-ui/solid"
+import { Icon, Text } from "@hope-ui/solid"
+import { AppHStack as HStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import { batch, Show } from "solid-js"
