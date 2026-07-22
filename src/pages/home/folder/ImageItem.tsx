@@ -1,4 +1,5 @@
-import { Center, VStack, Icon } from "@hope-ui/solid"
+import { Center, Icon } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import { batch, Show } from "solid-js"

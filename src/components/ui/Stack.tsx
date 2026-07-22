@@ -45,6 +45,7 @@ type StackProps = ParentProps<
     position?: JSX.CSSProperties["position"]
     pos?: JSX.CSSProperties["position"]
     transition?: JSX.CSSProperties["transition"]
+    cursor?: JSX.CSSProperties["cursor"]
     overflow?: JSX.CSSProperties["overflow"]
     overflowX?: JSX.CSSProperties["overflow-x"]
     overflowY?: JSX.CSSProperties["overflow-y"]
@@ -100,6 +101,7 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "position",
     "pos",
     "transition",
+    "cursor",
     "overflow",
     "overflowX",
     "overflowY",
@@ -162,6 +164,7 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           flex: local.flex,
           position: local.position ?? local.pos,
           transition: local.transition,
+          cursor: local.cursor,
           overflow: local.overflow,
           "overflow-x": local.overflowX,
           "overflow-y": local.overflowY,
