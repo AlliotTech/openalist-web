@@ -3,6 +3,8 @@
   align-items: center;
   gap: 0.5rem;
   color: inherit;
+  font-size: var(--hope-fontSizes-base, 1rem);
+  line-height: var(--hope-lineHeights-6, 1.5rem);
 }
 
 .app-switch__control {
@@ -10,10 +12,10 @@
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  width: 2.5rem;
-  height: 1.4rem;
-  padding: 0.15rem;
-  border: 0;
+  width: 34px;
+  height: 20px;
+  padding: 2px;
+  border: 1px solid transparent;
   border-radius: 999px;
   background: var(--hope-colors-neutral7, #a0aec0);
   cursor: pointer;
@@ -30,13 +32,14 @@
 }
 
 .app-switch__control:focus-visible {
-  outline: 2px solid var(--hope-colors-info8, #4299e1);
-  outline-offset: 2px;
+  border-color: var(--hope-colors-info8, #0d74ce);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--hope-colors-info5, #cee7fe);
 }
 
 .app-switch__thumb {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
   background: #fff;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.28);
@@ -45,7 +48,7 @@
 }
 
 .app-switch__thumb[data-checked] {
-  transform: translateX(1.1rem);
+  transform: translateX(14px);
 }
 
 .app-switch__label {
