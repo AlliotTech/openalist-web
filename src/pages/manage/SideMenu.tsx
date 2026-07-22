@@ -1,4 +1,5 @@
-import { Box, Flex, Heading, HStack, Icon, VStack } from "@hope-ui/solid"
+import { Box, Flex, Heading, Icon } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { createMemo, createSignal, For, Match, Show, Switch } from "solid-js"
 import { useRouter, useT } from "~/hooks"
 import { BiSolidRightArrow } from "solid-icons/bi"

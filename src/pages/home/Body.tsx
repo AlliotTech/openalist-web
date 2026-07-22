@@ -1,4 +1,4 @@
-import { VStack } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { Nav } from "./Nav"
 import { Obj } from "./Obj"
 import { Readme } from "./Readme"

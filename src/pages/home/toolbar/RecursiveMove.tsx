@@ -1,4 +1,4 @@
-import { HStack } from "@hope-ui/solid"
+import { AppHStack as HStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,

@@ -20,6 +20,7 @@ type StackProps = ParentProps<
     alignItems?: JSX.CSSProperties["align-items"]
     justifyContent?: JSX.CSSProperties["justify-content"]
     w?: string | { "@initial"?: string; "@lg"?: string }
+    width?: string
     h?: string
     minW?: string | number
     maxW?: string | number
@@ -39,6 +40,9 @@ type StackProps = ParentProps<
       JSX.CSSProperties["flex-wrap"] | { "@initial"?: string; "@md"?: string }
     flexWrap?: JSX.CSSProperties["flex-wrap"]
     flex?: string | number
+    position?: JSX.CSSProperties["position"]
+    pos?: JSX.CSSProperties["position"]
+    transition?: JSX.CSSProperties["transition"]
     overflow?: JSX.CSSProperties["overflow"]
     overflowX?: JSX.CSSProperties["overflow-x"]
     overflowY?: JSX.CSSProperties["overflow-y"]
@@ -66,6 +70,7 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "alignItems",
     "justifyContent",
     "w",
+    "width",
     "h",
     "minW",
     "maxW",
@@ -84,6 +89,9 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "wrap",
     "flexWrap",
     "flex",
+    "position",
+    "pos",
+    "transition",
     "overflow",
     "overflowX",
     "overflowY",
@@ -112,7 +120,9 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           "align-items": local.alignItems,
           "justify-content": local.justifyContent,
           width: token(
-            typeof local.w === "object" ? local.w["@initial"] : local.w,
+            typeof local.w === "object"
+              ? local.w["@initial"]
+              : (local.w ?? local.width),
             "sizes",
           ),
           height: token(local.h, "sizes"),
@@ -138,6 +148,8 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
               ? (local.wrap["@initial"] as JSX.CSSProperties["flex-wrap"])
               : local.wrap),
           flex: local.flex,
+          position: local.position ?? local.pos,
+          transition: local.transition,
           overflow: local.overflow,
           "overflow-x": local.overflowX,
           "overflow-y": local.overflowY,

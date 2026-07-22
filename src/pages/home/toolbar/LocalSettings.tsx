@@ -1,4 +1,5 @@
-import { Center, HStack, VStack } from "@hope-ui/solid"
+import { Center } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,
   AppFormLabel as FormLabel,

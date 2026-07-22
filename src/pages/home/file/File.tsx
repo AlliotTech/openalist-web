@@ -1,4 +1,4 @@
-import { HStack, VStack } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { createMemo, createSignal, Show, Suspense } from "solid-js"
 import { Dynamic } from "solid-js/web"
 import { FullLoading, SelectWrapper } from "~/components"
