@@ -98,7 +98,9 @@ export const Menu = (
   const [open, setOpen] = createSignal(false)
   const [closing, setClosing] = createSignal(false)
   const [menuProps, setMenuProps] = createSignal<any>()
+  const [anchorPoint, setAnchorPoint] = createSignal({ x: 0, y: 0 })
   const [position, setPosition] = createSignal({ x: 0, y: 0 })
+  const [transformOrigin, setTransformOrigin] = createSignal("0px 0px")
   let menuRef: HTMLDivElement | undefined
   let closeTimer: ReturnType<typeof setTimeout> | undefined
 
@@ -107,7 +109,7 @@ export const Menu = (
     setOpen(false)
     setClosing(true)
     clearTimeout(closeTimer)
-    closeTimer = setTimeout(() => setClosing(false), 200)
+    closeTimer = setTimeout(() => setClosing(false), 100)
     props.onHidden?.()
   }
 
@@ -123,9 +125,12 @@ export const Menu = (
       setMenuProps(state.props)
       clearTimeout(closeTimer)
       setClosing(false)
-      setPosition(
-        state.position ?? { x: state.event.clientX, y: state.event.clientY },
-      )
+      const requestedPosition = state.position ?? {
+        x: state.event.clientX,
+        y: state.event.clientY,
+      }
+      setAnchorPoint(requestedPosition)
+      setPosition(requestedPosition)
       setOpen(true)
       props.onShown?.()
     })
@@ -138,10 +143,22 @@ export const Menu = (
     requestAnimationFrame(() => {
       if (!menuRef) return
       const rect = menuRef.getBoundingClientRect()
-      setPosition((current) => ({
+      const current = position()
+      const nextPosition = {
         x: Math.max(0, Math.min(current.x, window.innerWidth - rect.width)),
         y: Math.max(0, Math.min(current.y, window.innerHeight - rect.height)),
-      }))
+      }
+      const anchor = anchorPoint()
+      const originX = Math.max(
+        0,
+        Math.min(anchor.x - nextPosition.x, rect.width),
+      )
+      const originY = Math.max(
+        0,
+        Math.min(anchor.y - nextPosition.y, rect.height),
+      )
+      setPosition(nextPosition)
+      setTransformOrigin(`${originX}px ${originY}px`)
       menuRef.focus()
     })
   })
@@ -175,6 +192,7 @@ export const Menu = (
               ...(typeof props.style === "object" ? props.style : {}),
               left: `${position().x}px`,
               top: `${position().y}px`,
+              "transform-origin": transformOrigin(),
             }}
             onKeyDown={handleMenuNavigation}
           >
@@ -246,16 +264,19 @@ export const Submenu = (
     left: 0,
     top: 0,
   })
+  const [submenuTransformOrigin, setSubmenuTransformOrigin] =
+    createSignal("0px 0px")
   const positionSubmenu = () => {
     requestAnimationFrame(() => {
       if (!triggerRef || !contentRef) return
       const triggerRect = triggerRef.getBoundingClientRect()
       const contentRect = contentRef.getBoundingClientRect()
       const space = 4
-      const left =
+      const opensRight =
         triggerRect.right + contentRect.width <= window.innerWidth
-          ? triggerRect.right
-          : Math.max(space, triggerRect.left - contentRect.width)
+      const left = opensRight
+        ? triggerRect.right
+        : Math.max(space, triggerRect.left - contentRect.width)
       const top = Math.max(
         space,
         Math.min(
@@ -264,6 +285,9 @@ export const Submenu = (
         ),
       )
       setSubmenuPosition({ left, top })
+      setSubmenuTransformOrigin(
+        `${opensRight ? 0 : contentRect.width}px ${triggerRect.top + triggerRect.height / 2 - top}px`,
+      )
     })
   }
   return (
@@ -302,6 +326,7 @@ export const Submenu = (
           style={{
             left: `${submenuPosition().left}px`,
             top: `${submenuPosition().top}px`,
+            "transform-origin": submenuTransformOrigin(),
           }}
           onKeyDown={(e) => {
             handleMenuNavigation(e)

@@ -1,5 +1,7 @@
 :root,
 .hope-ui-light {
+  --app-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --app-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --hope-colors-blackAlpha1: #00000003;
   --hope-colors-blackAlpha2: #00000007;
   --hope-colors-blackAlpha3: #0000000c;

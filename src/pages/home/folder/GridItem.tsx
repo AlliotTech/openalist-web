@@ -1,7 +1,6 @@
 import { AppText as Text } from "~/components/ui/Typography"
 import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppCenter as Center, AppVStack as VStack } from "~/components/ui/Stack"
-import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import { batch, Show } from "solid-js"
 import { CenterLoading } from "~/components/FullLoading"
@@ -32,10 +31,7 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
   const { openWithDoubleClick, toggleWithClick, restoreSelectionCache } =
     useSelectWithMouse()
   return (
-    <Motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+    <div
       style={{
         width: "100%",
       }}
@@ -156,6 +152,6 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
           {props.obj.name}
         </Text>
       </VStack>
-    </Motion.div>
+    </div>
   )
 }

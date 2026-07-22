@@ -111,7 +111,9 @@ export const AppProgress = (props: AppProgressProps) => {
       <div
         class="app-progress__indicator"
         style={{
-          width: local.indeterminate ? undefined : `${value()}%`,
+          transform: local.indeterminate
+            ? undefined
+            : `scaleX(${value() / 100})`,
           background: local.indeterminate
             ? `linear-gradient(to right, transparent 0%, ${token(local.color, "colors") ?? "var(--hope-colors-primary9)"} 50%, transparent 100%)`
             : token(local.color, "colors"),

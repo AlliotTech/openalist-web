@@ -41,6 +41,11 @@
   animation: app-modal-content-out 100ms ease-in;
 }
 
+.app-modal__overlay[data-motion="none"],
+.app-modal__content[data-motion="none"] {
+  animation: none;
+}
+
 .app-modal__content[data-size="xs"] {
   max-width: var(--hope-sizes-xs, 20rem);
 }

@@ -1,7 +1,6 @@
 import { AppText as Text } from "~/components/ui/Typography"
 import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppHStack as HStack } from "~/components/ui/Stack"
-import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import { batch, Show } from "solid-js"
 import { LinkWithPush } from "~/components/LinkWithBase"
@@ -42,10 +41,7 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
     useSelectWithMouse()
   const filenameStyle = () => local["list_item_filename_overflow"]
   return (
-    <Motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.2 }}
+    <div
       style={{
         width: "100%",
       }}
@@ -159,6 +155,6 @@ export const ListItem = (props: { obj: StoreObj; index: number }) => {
           {formatDate(props.obj.modified)}
         </Text>
       </HStack>
-    </Motion.div>
+    </div>
   )
 }

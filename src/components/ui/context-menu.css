@@ -10,12 +10,25 @@
   color: #666;
   box-shadow: 0 10px 30px -5px rgb(0 0 0 / 30%);
   outline: none;
-  animation: app-context-menu-in 300ms;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 180ms var(--app-ease-out),
+    transform 180ms var(--app-ease-out);
+}
+
+@starting-style {
+  .app-context-menu {
+    opacity: 0;
+    transform: scale(0.97);
+  }
 }
 
 .app-context-menu[data-closed] {
   pointer-events: none;
-  animation: app-context-menu-out 200ms ease-in;
+  opacity: 0;
+  transform: scale(0.97);
+  transition-duration: 100ms;
 }
 
 .app-context-menu--dark {
@@ -89,22 +102,21 @@
   background: #eee;
 }
 
-@keyframes app-context-menu-in {
-  from {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-}
-
-@keyframes app-context-menu-out {
-  to {
-    opacity: 0;
-    transform: scale3d(0.95, 0.95, 0.95);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .app-context-menu {
-    animation: none;
+    transform: none;
+    transition: opacity 200ms ease;
+  }
+
+  @starting-style {
+    .app-context-menu {
+      opacity: 0;
+      transform: none;
+    }
+  }
+
+  .app-context-menu[data-closed] {
+    opacity: 0;
+    transform: none;
   }
 }

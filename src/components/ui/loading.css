@@ -51,15 +51,20 @@
 }
 
 .app-progress__indicator {
+  width: 100%;
   height: 100%;
   background: var(--hope-colors-primary9);
-  transition: width 600ms ease;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms var(--app-ease-out);
 }
 
 .app-progress--indeterminate .app-progress__indicator {
   position: absolute;
-  min-width: 50%;
-  animation: app-progress-indeterminate 1.2s ease infinite;
+  width: 50%;
+  min-width: 0;
+  transform: translateX(-100%);
+  animation: app-progress-indeterminate 1.2s linear infinite;
 }
 
 @keyframes app-loading-spin {
@@ -70,16 +75,25 @@
 
 @keyframes app-progress-indeterminate {
   from {
-    left: -40%;
+    transform: translateX(-100%);
   }
   to {
-    left: 100%;
+    transform: translateX(200%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .app-spinner,
-  .app-progress__indicator {
+  .app-spinner {
     animation: none;
+  }
+
+  .app-progress__indicator {
+    transition: none;
+  }
+
+  .app-progress--indeterminate .app-progress__indicator {
+    animation: none;
+    transform: translateX(50%);
+    opacity: 0.6;
   }
 }

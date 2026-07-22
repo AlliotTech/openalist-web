@@ -1,6 +1,5 @@
 import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppCenter as Center, AppVStack as VStack } from "~/components/ui/Stack"
-import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import { batch, Show } from "solid-js"
 import { CenterLoading } from "~/components/FullLoading"
@@ -26,10 +25,7 @@ export const ImageItem = (props: { obj: StoreObj; index: number }) => {
   const { openWithDoubleClick, toggleWithClick, restoreSelectionCache } =
     useSelectWithMouse()
   return (
-    <Motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.2 }}
+    <div
       style={{
         "flex-grow": 1,
       }}
@@ -104,6 +100,6 @@ export const ImageItem = (props: { obj: StoreObj; index: number }) => {
           />
         </Center>
       </VStack>
-    </Motion.div>
+    </div>
   )
 }

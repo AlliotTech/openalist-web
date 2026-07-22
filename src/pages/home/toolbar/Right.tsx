@@ -5,8 +5,15 @@ import { createMemo, Show } from "solid-js"
 import { RightIcon } from "./Icon"
 import { CgMoreO } from "solid-icons/cg"
 import { TbOutlineCheckbox } from "solid-icons/tb"
-import { objStore, selectAll, State, toggleCheckbox, userCan } from "~/store"
-import { bus } from "~/utils"
+import {
+  getMainColor,
+  objStore,
+  selectAll,
+  State,
+  toggleCheckbox,
+  userCan,
+} from "~/store"
+import { bus, hoverColor } from "~/utils"
 import { operations } from "./operations"
 import { IoMagnetOutline } from "solid-icons/io"
 import { AiOutlineCloudUpload, AiOutlineSetting } from "solid-icons/ai"
@@ -38,6 +45,12 @@ export const Right = () => {
           <RightIcon
             class="toolbar-toggle"
             as={CgMoreO}
+            _hover={{
+              bgColor: hoverColor(),
+              color: getMainColor(),
+              transform: "translateY(-2px) scale(1.05)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            }}
             onClick={() => {
               onToggle()
             }}
@@ -146,7 +159,17 @@ export const Right = () => {
               }}
             />
           </VStack>
-          <RightIcon tips="more" as={CgMoreO} onClick={onToggle} />
+          <RightIcon
+            tips="more"
+            as={CgMoreO}
+            _hover={{
+              bgColor: hoverColor(),
+              color: getMainColor(),
+              transform: "translateY(-2px) scale(1.05)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            }}
+            onClick={onToggle}
+          />
         </VStack>
       </Show>
     </Box>

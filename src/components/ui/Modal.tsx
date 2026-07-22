@@ -12,6 +12,7 @@ interface ModalContextValue {
   initialFocus?: string
   closeOnOverlayClick: boolean
   closeOnEsc: boolean
+  motion: "default" | "none"
   size: ResponsiveModalSize
   scrollBehavior: AppModalScrollBehavior
 }
@@ -53,6 +54,7 @@ export interface AppModalProps {
   initialFocus?: string
   closeOnOverlayClick?: boolean
   closeOnEsc?: boolean
+  motion?: "default" | "none"
   size?: ResponsiveModalSize
   scrollBehavior?: AppModalScrollBehavior
   children: JSXElement
@@ -71,6 +73,7 @@ export const AppModal = (props: AppModalProps) => (
         initialFocus: props.initialFocus,
         closeOnOverlayClick: props.closeOnOverlayClick !== false,
         closeOnEsc: props.closeOnEsc !== false,
+        motion: props.motion ?? "default",
         size: props.size ?? "md",
         scrollBehavior: props.scrollBehavior ?? "outside",
       }}
@@ -80,12 +83,16 @@ export const AppModal = (props: AppModalProps) => (
   </Dialog>
 )
 
-export const AppModalOverlay = (props: JSX.HTMLAttributes<HTMLDivElement>) => (
-  <Dialog.Overlay
-    {...props}
-    class={`app-modal__overlay ${props.class ?? ""}`}
-  />
-)
+export const AppModalOverlay = (props: JSX.HTMLAttributes<HTMLDivElement>) => {
+  const context = useContext(ModalContext)
+  return (
+    <Dialog.Overlay
+      {...props}
+      class={`app-modal__overlay ${props.class ?? ""}`}
+      data-motion={context?.motion ?? "default"}
+    />
+  )
+}
 
 export const AppModalContent = (
   props: JSX.HTMLAttributes<HTMLDivElement> & { children: JSXElement },
@@ -105,6 +112,7 @@ export const AppModalContent = (
     <Dialog.Content
       {...others}
       class={`app-modal__content${typeof size() === "object" ? " app-modal__content--responsive" : ""} ${local.class ?? ""}`}
+      data-motion={context?.motion ?? "default"}
       data-size={initialSize()}
       data-scroll-behavior={context?.scrollBehavior ?? "outside"}
       style={

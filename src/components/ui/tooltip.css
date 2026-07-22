@@ -20,10 +20,14 @@
 }
 
 .app-tooltip__content[data-expanded] {
-  animation: app-tooltip-in 200ms ease-out;
+  animation: app-tooltip-in 125ms var(--app-ease-out);
 }
 .app-tooltip__content[data-closed] {
-  animation: app-tooltip-out 100ms ease-in;
+  animation: app-tooltip-out 100ms var(--app-ease-out);
+}
+
+.app-tooltip__content[data-instant] {
+  animation: none;
 }
 
 .app-tooltip__arrow {
@@ -52,8 +56,28 @@
   }
 }
 
+@keyframes app-tooltip-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes app-tooltip-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .app-tooltip__content {
+  .app-tooltip__content[data-expanded] {
+    animation-name: app-tooltip-fade-in;
+  }
+
+  .app-tooltip__content[data-closed] {
+    animation-name: app-tooltip-fade-out;
+  }
+
+  .app-tooltip__content[data-instant] {
     animation: none;
   }
 }

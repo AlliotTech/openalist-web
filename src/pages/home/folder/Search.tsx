@@ -232,6 +232,7 @@ const Search = (props: { defaultIsOpen?: boolean }) => {
   return (
     <AppModal
       // blockScrollOnMount={false}
+      motion="none"
       opened={isOpen()}
       onClose={onClose}
       closeOnEsc={false}
