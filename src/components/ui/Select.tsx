@@ -20,6 +20,8 @@ export function AppCombobox<T extends string | number>(
 
   return (
     <Combobox<AppSelectOption<T>>
+      gutter={5}
+      sameWidth
       id={props.id}
       options={props.options}
       optionValue="value"
@@ -103,6 +105,8 @@ export function AppSelect<T extends string | number>(props: AppSelectProps<T>) {
 
   return (
     <Select<AppSelectOption<T>>
+      gutter={5}
+      sameWidth
       id={props.id}
       multiple={props.multiple as true}
       options={props.options}
