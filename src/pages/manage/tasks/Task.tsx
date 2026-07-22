@@ -1,6 +1,5 @@
 import {
   Badge,
-  Button,
   Center,
   Divider,
   Flex,
@@ -21,6 +20,7 @@ import { handleResp, notify, r } from "~/utils"
 import { TaskAttribute, TaskLocalSetter, TasksProps } from "./Tasks"
 import { me } from "~/store"
 import { AppCheckbox } from "~/components/ui/Checkbox"
+import { AppButton } from "~/components/ui/Button"
 
 enum TaskStateEnum {
   Pending,
@@ -238,7 +238,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
         <Flex w={cols[5].w} gap="$1">
           <Spacer />
           <Show when={props.canRetry}>
-            <Button
+            <AppButton
               size="sm"
               disabled={!canRetry}
               display={canRetry ? "block" : "none"}
@@ -252,9 +252,9 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
               }}
             >
               {t(`tasks.retry`)}
-            </Button>
+            </AppButton>
           </Show>
-          <Button
+          <AppButton
             size="sm"
             colorScheme="danger"
             loading={operateLoading()}
@@ -267,8 +267,8 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
             }}
           >
             {t(`global.${operateName}`)}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             size="sm"
             colorScheme="neutral"
             onClick={() => {
@@ -279,7 +279,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
             }}
           >
             {props.local.expanded ? t(`tasks.fold`) : t(`tasks.expand`)}
-          </Button>
+          </AppButton>
         </Flex>
       </HStack>
       <Show when={props.local.expanded}>

@@ -1,0 +1,87 @@
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  background: var(--hope-colors-info9, #3182ce);
+  color: #fff;
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    opacity 120ms ease;
+}
+
+.app-button:hover:not(:disabled) {
+  filter: brightness(0.94);
+}
+
+.app-button:focus-visible {
+  outline: 2px solid var(--hope-colors-info8, #4299e1);
+  outline-offset: 2px;
+}
+
+.app-button:disabled,
+.app-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.app-button--neutral {
+  border-color: var(--hope-colors-neutral6, #cbd5e0);
+  background: var(--hope-colors-neutral3, #edf2f7);
+  color: var(--hope-colors-neutral12, #1a202c);
+}
+
+.app-button--accent,
+.app-button--success {
+  background: var(--hope-colors-success9, #38a169);
+}
+
+.app-button--danger {
+  background: var(--hope-colors-danger9, #e53e3e);
+}
+
+.app-button--warning {
+  background: var(--hope-colors-warning9, #dd6b20);
+}
+
+.app-button--sm {
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.app-icon-button {
+  width: 2.5rem;
+  padding: 0.5rem;
+}
+
+.app-button__spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 999px;
+  animation: app-button-spin 650ms linear infinite;
+}
+
+@keyframes app-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-button,
+  .app-button__spinner {
+    transition: none;
+    animation: none;
+  }
+}

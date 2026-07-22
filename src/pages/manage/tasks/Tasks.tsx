@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   Heading,
   HStack,
@@ -25,6 +24,7 @@ import { handleResp, notify, r } from "~/utils"
 import { TaskCol, cols, Task, TaskOrderBy, TaskLocal } from "./Task"
 import { me } from "~/store"
 import { AppCheckbox } from "~/components/ui/Checkbox"
+import { AppButton } from "~/components/ui/Button"
 
 export interface TaskNameAnalyzer {
   regex: RegExp
@@ -264,10 +264,10 @@ export const Tasks = (props: TasksProps) => {
       <Heading size="lg">{t(`tasks.${props.done}`)}</Heading>
       <HStack gap="$2" flexWrap="wrap">
         <Show when={props.done === "done"}>
-          <Button colorScheme="accent" loading={loading()} onClick={refresh}>
+          <AppButton colorScheme="accent" loading={loading()} onClick={refresh}>
             {t(`global.refresh`)}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             loading={retryFailedLoading()}
             onClick={async () => {
               const resp = await retryFailed()
@@ -275,8 +275,8 @@ export const Tasks = (props: TasksProps) => {
             }}
           >
             {t(`tasks.retry_failed`)}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             colorScheme="danger"
             loading={clearDoneLoading()}
             onClick={async () => {
@@ -285,8 +285,8 @@ export const Tasks = (props: TasksProps) => {
             }}
           >
             {t(`global.clear`)}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             colorScheme="success"
             loading={clearSucceededLoading()}
             onClick={async () => {
@@ -295,10 +295,10 @@ export const Tasks = (props: TasksProps) => {
             }}
           >
             {t(`tasks.clear_succeeded`)}
-          </Button>
+          </AppButton>
         </Show>
         <Show when={props.canRetry}>
-          <Button
+          <AppButton
             colorScheme="primary"
             loading={retrySelectedLoading()}
             onClick={async () => {
@@ -310,9 +310,9 @@ export const Tasks = (props: TasksProps) => {
             }}
           >
             {t(`tasks.retry_selected`)}
-          </Button>
+          </AppButton>
         </Show>
-        <Button
+        <AppButton
           colorScheme="warning"
           loading={operateSelectedLoading()}
           onClick={async () => {
@@ -324,7 +324,7 @@ export const Tasks = (props: TasksProps) => {
           }}
         >
           {t(`tasks.${operateName}_selected`)}
-        </Button>
+        </AppButton>
         <Input
           width="auto"
           placeholder={t(`tasks.filter`)}
@@ -389,14 +389,14 @@ export const Tasks = (props: TasksProps) => {
             <Text {...itemProps(cols[5])}>
               {t(`tasks.attr.${cols[5].name}`)}
             </Text>
-            <Button
+            <AppButton
               size="xs"
               colorScheme="neutral"
               onClick={() => expandAll(!allExpanded())}
               disabled={filteredTask().length === 0}
             >
               {allExpanded() ? t(`tasks.fold_all`) : t(`tasks.expand_all`)}
-            </Button>
+            </AppButton>
           </Flex>
         </HStack>
         {curTasks().map((task) => (

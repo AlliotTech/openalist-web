@@ -1,8 +1,9 @@
-import { Button, HStack, IconButton } from "@hope-ui/solid"
+import { HStack } from "@hope-ui/solid"
 import { createMemo, For, mergeProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { FaSolidAngleLeft, FaSolidAngleRight } from "solid-icons/fa"
 import { AppSelect } from "~/components/ui/Select"
+import { AppButton, AppIconButton } from "~/components/ui/Button"
 
 export interface PaginatorProps {
   colorScheme?:
@@ -64,7 +65,7 @@ export const Paginator = (props: PaginatorProps) => {
     <Show when={!merged.hideOnSinglePage || pages() > 1}>
       <HStack spacing="$1">
         <Show when={store.current !== 1}>
-          <Button
+          <AppButton
             size={size}
             colorScheme={merged.colorScheme}
             onClick={() => {
@@ -73,8 +74,8 @@ export const Paginator = (props: PaginatorProps) => {
             px="$3"
           >
             1
-          </Button>
-          <IconButton
+          </AppButton>
+          <AppIconButton
             size={size}
             icon={<FaSolidAngleLeft />}
             aria-label="Previous"
@@ -87,7 +88,7 @@ export const Paginator = (props: PaginatorProps) => {
         </Show>
         <For each={leftPages()}>
           {(page) => (
-            <Button
+            <AppButton
               size={size}
               colorScheme={merged.colorScheme}
               onClick={() => {
@@ -96,7 +97,7 @@ export const Paginator = (props: PaginatorProps) => {
               px={page > 10 ? "$2_5" : "$3"}
             >
               {page}
-            </Button>
+            </AppButton>
           )}
         </For>
         <AppSelect
@@ -113,7 +114,7 @@ export const Paginator = (props: PaginatorProps) => {
         />
         <For each={rightPages()}>
           {(page) => (
-            <Button
+            <AppButton
               size={size}
               colorScheme={merged.colorScheme}
               onClick={() => {
@@ -122,11 +123,11 @@ export const Paginator = (props: PaginatorProps) => {
               px={page > 10 ? "$2_5" : "$3"}
             >
               {page}
-            </Button>
+            </AppButton>
           )}
         </For>
         <Show when={store.current !== pages()}>
-          <IconButton
+          <AppIconButton
             size={size}
             icon={<FaSolidAngleRight />}
             aria-label="Next"
@@ -136,7 +137,7 @@ export const Paginator = (props: PaginatorProps) => {
             }}
             w="2rem !important"
           />
-          <Button
+          <AppButton
             size={size}
             colorScheme={merged.colorScheme}
             onClick={() => {
@@ -145,7 +146,7 @@ export const Paginator = (props: PaginatorProps) => {
             px={pages() > 10 ? "$2_5" : "$3"}
           >
             {pages()}
-          </Button>
+          </AppButton>
         </Show>
       </HStack>
     </Show>
