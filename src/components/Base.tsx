@@ -1,4 +1,5 @@
-import { Box, Heading, useColorModeValue, Icon } from "@hope-ui/solid"
+import { Heading, useColorModeValue, Icon } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { AppCenter as Center, AppFlex as Flex } from "~/components/ui/Stack"
 import { SwitchColorMode } from "./SwitchColorMode"
 import { mergeProps, Show } from "solid-js"
@@ -67,7 +68,7 @@ export const BoxWithFullScreen = (props: Parameters<typeof Box>[0]) => {
       zIndex={1}
       transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
       css={{
-        backdropFilter: isOpen() ? "blur(10px)" : undefined,
+        "backdrop-filter": isOpen() ? "blur(10px)" : undefined,
       }}
     >
       {props.children}

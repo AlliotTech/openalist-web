@@ -1,4 +1,4 @@
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { Motion } from "solid-motionone"
 import { useLocation } from "@solidjs/router"
 import {

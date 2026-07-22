@@ -1,0 +1,23 @@
+.app-box--hover:hover {
+  opacity: var(--app-box-hover-opacity);
+  background: var(--app-box-hover-background);
+  color: var(--app-box-hover-color);
+  transform: var(--app-box-hover-transform);
+  box-shadow: var(--app-box-hover-shadow);
+}
+
+.hope-ui-dark .app-box--dark {
+  background: var(--app-box-dark-background);
+  color: var(--app-box-dark-color);
+}
+
+@media (min-width: 640px) {
+  .app-box--responsive {
+    width: var(--app-box-width-sm);
+    display: var(--app-box-display-sm);
+    top: var(--app-box-top-sm);
+    right: var(--app-box-right-sm);
+    bottom: var(--app-box-bottom-sm);
+    left: var(--app-box-left-sm);
+  }
+}
