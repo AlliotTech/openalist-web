@@ -1,4 +1,3 @@
-import { IconButton } from "@hope-ui/solid"
 import { changeColor } from "seemly"
 import { BsGridFill, BsCardImage } from "solid-icons/bs"
 import { FaSolidListUl } from "solid-icons/fa"
@@ -7,6 +6,7 @@ import { Dynamic } from "solid-js/web"
 import { useT } from "~/hooks"
 import { getMainColor, LayoutType, layout, setLayout } from "~/store"
 import { AppMenu } from "~/components/ui/Menu"
+import { AppIconButton } from "~/components/ui/Button"
 
 const layouts = {
   list: FaSolidListUl,
@@ -19,12 +19,11 @@ export const Layout = () => {
   return (
     <AppMenu>
       <AppMenu.Trigger
-        as={IconButton}
+        as={AppIconButton}
         class="app-menu__trigger"
-        color={getMainColor()}
-        bgColor={changeColor(getMainColor(), { alpha: 0.15 })}
-        _hover={{
-          bgColor: changeColor(getMainColor(), { alpha: 0.2 }),
+        style={{
+          color: getMainColor(),
+          background: changeColor(getMainColor(), { alpha: 0.15 }),
         }}
         aria-label="switch layout"
         compact

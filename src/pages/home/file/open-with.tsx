@@ -1,10 +1,10 @@
-import { Button, Icon } from "@hope-ui/solid"
 import { createMemo, For, Show } from "solid-js"
 import { useLink, useT } from "~/hooks"
 import { getExternalPreviews, objStore } from "~/store"
 import { FaSolidAngleDown } from "solid-icons/fa"
 import { convertURL } from "~/utils"
 import { AppMenu } from "~/components/ui/Menu"
+import { AppButton } from "~/components/ui/Button"
 
 export const OpenWith = () => {
   const t = useT()
@@ -16,10 +16,10 @@ export const OpenWith = () => {
     <Show when={previews().length}>
       <AppMenu>
         <AppMenu.Trigger
-          as={Button}
+          as={AppButton}
           class="app-menu__trigger"
           colorScheme="success"
-          rightIcon={<Icon as={FaSolidAngleDown} />}
+          rightIcon={<FaSolidAngleDown />}
         >
           {t("home.preview.open_with")}
         </AppMenu.Trigger>

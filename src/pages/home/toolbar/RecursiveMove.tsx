@@ -1,4 +1,4 @@
-import { HStack, SimpleOption, SimpleSelect } from "@hope-ui/solid"
+import { HStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
@@ -13,6 +13,7 @@ import { ModalFolderChoose } from "~/components"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsRecursiveMove, handleRespWithNotifySuccess } from "~/utils"
 import { createSignal, onCleanup } from "solid-js"
+import { AppSelect } from "~/components/ui/Select"
 
 export const RecursiveMove = () => {
   const {
@@ -80,20 +81,24 @@ export const RecursiveMove = () => {
         loading={loading()}
         footerSlot={
           <HStack mr="auto" flex="0.8" spacing="$1">
-            <SimpleSelect
+            <AppSelect
               value={conflictPolicy()}
               onChange={(value) => setConflictPolicy(value)}
-            >
-              <SimpleOption value="cancel">
-                {t("home.conflict_policy.cancel_if_exists")}
-              </SimpleOption>
-              <SimpleOption value="overwrite">
-                {t("home.conflict_policy.overwrite_existing")}
-              </SimpleOption>
-              <SimpleOption value="skip">
-                {t("home.conflict_policy.skip_existing")}
-              </SimpleOption>
-            </SimpleSelect>
+              options={[
+                {
+                  value: "cancel",
+                  label: t("home.conflict_policy.cancel_if_exists"),
+                },
+                {
+                  value: "overwrite",
+                  label: t("home.conflict_policy.overwrite_existing"),
+                },
+                {
+                  value: "skip",
+                  label: t("home.conflict_policy.skip_existing"),
+                },
+              ]}
+            />
           </HStack>
         }
         onSubmit={async (dst) => {
