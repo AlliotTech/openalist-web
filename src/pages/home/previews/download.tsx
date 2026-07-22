@@ -1,14 +1,5 @@
-import {
-  Button,
-  HStack,
-  IconButton,
-  Image,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-} from "@hope-ui/solid"
+import { Button, HStack, IconButton, Image } from "@hope-ui/solid"
+import { Popover } from "@kobalte/core/popover"
 import { useCopyLink, useT } from "~/hooks"
 import { objStore } from "~/store"
 import { FileInfo } from "./info"
@@ -16,6 +7,7 @@ import { OpenWith } from "../file/open-with"
 import { createSignal, Show } from "solid-js"
 import { BsQrCode } from "solid-icons/bs"
 import QRCode from "qrcode"
+import "~/components/ui/popover.css"
 
 export const Download = (props: { openWith?: boolean }) => {
   const t = useT()
@@ -36,8 +28,13 @@ export const Download = (props: { openWith?: boolean }) => {
         <Button as="a" href={objStore.raw_url} target="_blank">
           {t("home.preview.download")}
         </Button>
-        <Popover opened={pinned() || hover()} motionPreset="none">
-          <PopoverTrigger
+        <Popover
+          open={pinned() || hover()}
+          onOpenChange={setPinned}
+          gutter={8}
+          placement="top"
+        >
+          <Popover.Trigger
             as={IconButton}
             icon={<BsQrCode />}
             aria-label="QRCode"
@@ -48,17 +45,19 @@ export const Download = (props: { openWith?: boolean }) => {
             onMouseOver={() => setHover(true)}
             onMouseOut={() => setHover(false)}
           />
-          <PopoverContent width="fit-content">
-            <PopoverArrow />
-            <PopoverBody>
-              <Image
-                maxWidth="300px"
-                src={qrUrl()}
-                alt="QR Code of download link"
-                objectFit="cover"
-              />
-            </PopoverBody>
-          </PopoverContent>
+          <Popover.Portal>
+            <Popover.Content class="app-popover__content app-popover__content--fit">
+              <Popover.Arrow class="app-popover__arrow" />
+              <div class="app-popover__body">
+                <Image
+                  maxWidth="300px"
+                  src={qrUrl()}
+                  alt="QR Code of download link"
+                  objectFit="cover"
+                />
+              </div>
+            </Popover.Content>
+          </Popover.Portal>
         </Popover>
       </HStack>
       <Show when={props.openWith}>

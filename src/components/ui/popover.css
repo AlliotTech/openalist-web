@@ -1,0 +1,64 @@
+.app-popover__content {
+  z-index: var(--hope-zIndices-popover, 1700);
+  min-width: 12rem;
+  max-width: min(24rem, calc(100vw - 1rem));
+  border: 1px solid var(--hope-colors-neutral6, rgba(127, 127, 127, 0.25));
+  border-radius: var(--hope-radii-lg, 0.75rem);
+  background: var(--hope-colors-background, #fff);
+  color: var(--hope-colors-neutral12, #1a202c);
+  box-shadow: var(--hope-shadows-lg, 0 10px 25px rgba(15, 23, 42, 0.16));
+  transform-origin: var(--kb-popover-content-transform-origin);
+  animation: app-popover-in 140ms ease-out;
+}
+
+.hope-ui-dark .app-popover__content {
+  background: var(--hope-colors-neutral2, #1a1a1d);
+  color: var(--hope-colors-neutral12, #f7fafc);
+}
+
+.app-popover__content--fit {
+  min-width: 0;
+  width: fit-content;
+}
+
+.app-popover__title {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--hope-colors-neutral6, rgba(127, 127, 127, 0.2));
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.app-popover__body {
+  padding: 0.75rem 1rem;
+}
+
+.app-popover__arrow {
+  color: var(--hope-colors-background, #fff);
+}
+
+.hope-ui-dark .app-popover__arrow {
+  color: var(--hope-colors-neutral2, #1a1a1d);
+}
+
+.app-popover__arrow > svg {
+  fill: currentcolor;
+  stroke: var(--hope-colors-neutral6, rgba(127, 127, 127, 0.25));
+}
+
+@keyframes app-popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-popover__content {
+    animation: none;
+  }
+}
