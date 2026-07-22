@@ -104,6 +104,11 @@
     "streamsaver": "^2.0.6",
     "typescript-natural-sort": "^0.7.2"
   },
+  "pnpm": {
+    "overrides": {
+      "changelogithub>changelogen": "0.6.2"
+    }
+  },
   "lint-staged": {
     "**/*.{css,html,js,json,jsx,md,mjs,ts,tsx,yaml,yml}": "prettier --write"
   }
