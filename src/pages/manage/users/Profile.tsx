@@ -32,7 +32,7 @@ import {
   parseCreationOptionsFromJSON,
   supported,
   CredentialCreationOptionsJSON,
-} from "@github/webauthn-json/browser-ponyfill"
+} from "~/utils/webauthn"
 import { PublicKeys } from "./PublicKeys"
 
 const PermissionBadge = (props: { can: boolean; children: JSXElement }) => {

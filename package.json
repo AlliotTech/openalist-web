@@ -60,7 +60,6 @@
   },
   "dependencies": {
     "@egjs/view360": "4.0.0-beta.7",
-    "@github/webauthn-json": "^2.1.1",
     "@kobalte/core": "0.13.12",
     "@monaco-editor/loader": "^1.7.0",
     "@solid-primitives/i18n": "^2.2.1",

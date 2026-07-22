@@ -38,7 +38,7 @@ import {
   AuthenticationPublicKeyCredential,
   supported,
   CredentialRequestOptionsJSON,
-} from "@github/webauthn-json/browser-ponyfill"
+} from "~/utils/webauthn"
 
 const Login = () => {
   const logos = getSetting("logo").split("\n")
