@@ -1,6 +1,6 @@
 import naturalSort from "typescript-natural-sort"
 import { cookieStorage } from "@solid-primitives/storage"
-import { createMemo, createSignal } from "solid-js"
+import { createSignal } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import { Obj, StoreObj } from "~/types"
 import { bus, log } from "~/utils"
@@ -192,7 +192,7 @@ export const isIndeterminate = () => {
   return selectedNum() > 0 && selectedNum() < objStore.objs.length
 }
 
-const selectedNum = createMemo(() => selectedObjs().length)
+const selectedNum = () => selectedObjs().length
 
 export type LayoutType = "list" | "grid" | "image"
 const [pathname, setPathname] = createSignal<string>(location.pathname)
