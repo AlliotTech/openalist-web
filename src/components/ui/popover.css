@@ -1,12 +1,11 @@
 .app-popover__content {
   z-index: var(--hope-zIndices-popover, 1700);
-  min-width: 12rem;
-  max-width: min(24rem, calc(100vw - 1rem));
-  border: 1px solid var(--hope-colors-neutral6, rgba(127, 127, 127, 0.25));
-  border-radius: var(--hope-radii-lg, 0.75rem);
+  max-width: min(var(--hope-sizes-xs, 20rem), calc(100vw - 1rem));
+  border: 1px solid var(--hope-colors-neutral7, rgba(127, 127, 127, 0.35));
+  border-radius: var(--hope-radii-sm, 0.25rem);
   background: var(--hope-colors-background, #fff);
   color: var(--hope-colors-neutral12, #1a202c);
-  box-shadow: var(--hope-shadows-lg, 0 10px 25px rgba(15, 23, 42, 0.16));
+  box-shadow: var(--hope-shadows-md, 0 4px 8px rgba(15, 23, 42, 0.16));
   transform-origin: var(--kb-popover-content-transform-origin);
   animation: app-popover-in 140ms ease-out;
 }
@@ -22,15 +21,15 @@
 }
 
 .app-popover__title {
-  padding: 0.75rem 1rem;
+  padding: var(--hope-space-2, 0.5rem) var(--hope-space-3, 0.75rem);
   border-bottom: 1px solid var(--hope-colors-neutral6, rgba(127, 127, 127, 0.2));
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: var(--hope-fontSizes-base, 1rem);
+  font-weight: var(--hope-fontWeights-medium, 500);
+  line-height: var(--hope-lineHeights-6, 1.5rem);
 }
 
 .app-popover__body {
-  padding: 0.75rem 1rem;
+  padding: var(--hope-space-2, 0.5rem) var(--hope-space-3, 0.75rem);
 }
 
 .app-popover__arrow {
