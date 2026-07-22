@@ -1,4 +1,8 @@
-import { Flex, FormControl, FormLabel, Heading, VStack } from "@hope-ui/solid"
+import { Flex, Heading, VStack } from "@hope-ui/solid"
+import {
+  AppFormControl as FormControl,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { MaybeLoading, FolderChooseInput } from "~/components"

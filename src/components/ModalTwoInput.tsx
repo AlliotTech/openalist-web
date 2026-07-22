@@ -1,4 +1,5 @@
-import { FormHelperText, VStack } from "@hope-ui/solid"
+import { VStack } from "@hope-ui/solid"
+import { AppFormHelperText as FormHelperText } from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput, AppTextarea } from "~/components/ui/Input"
 import {

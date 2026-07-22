@@ -1,10 +1,8 @@
+import { Heading, HStack, SimpleGrid } from "@hope-ui/solid"
 import {
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  SimpleGrid,
-} from "@hope-ui/solid"
+  AppFormControl as FormControl,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { createSignal } from "solid-js"

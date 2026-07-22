@@ -4,15 +4,17 @@ import {
   AlertIcon,
   AlertTitle,
   Badge,
-  FormControl,
-  FormHelperText,
-  FormLabel,
   Heading,
   HStack,
   SimpleGrid,
   VStack,
   Text,
 } from "@hope-ui/solid"
+import {
+  AppFormControl as FormControl,
+  AppFormHelperText as FormHelperText,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { createSignal, For, JSXElement, onCleanup, Show } from "solid-js"

@@ -1,10 +1,9 @@
+import { Center, Icon } from "@hope-ui/solid"
 import {
-  Center,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Icon,
-} from "@hope-ui/solid"
+  AppFormControl as FormControl,
+  AppFormHelperText as FormHelperText,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppInput, AppTextarea } from "~/components/ui/Input"
 import { For, Match, Show, Switch } from "solid-js"
 import { useT } from "~/hooks"

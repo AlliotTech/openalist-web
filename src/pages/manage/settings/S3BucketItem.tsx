@@ -1,4 +1,8 @@
-import { FormControl, FormLabel, Stack } from "@hope-ui/solid"
+import { Stack } from "@hope-ui/solid"
+import {
+  AppFormControl as FormControl,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { FolderChooseInput } from "~/components"

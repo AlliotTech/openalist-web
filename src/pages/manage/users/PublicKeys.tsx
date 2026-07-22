@@ -1,13 +1,8 @@
+import { Flex, Heading, HStack, Spacer, Text, VStack } from "@hope-ui/solid"
 import {
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  HStack,
-  Spacer,
-  Text,
-  VStack,
-} from "@hope-ui/solid"
+  AppFormControl as FormControl,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput, AppTextarea } from "~/components/ui/Input"
 import {

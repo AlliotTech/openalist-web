@@ -1,4 +1,8 @@
-import { Center, FormControl, FormLabel, HStack, VStack } from "@hope-ui/solid"
+import { Center, HStack, VStack } from "@hope-ui/solid"
+import {
+  AppFormControl as FormControl,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppInput } from "~/components/ui/Input"
 import { For, Match, onCleanup, Switch, createSignal } from "solid-js"
 import { SwitchLanguageWhite, SwitchColorMode } from "~/components"

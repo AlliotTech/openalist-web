@@ -1,11 +1,8 @@
+import { HStack, VStack, Text, Flex } from "@hope-ui/solid"
 import {
-  HStack,
-  VStack,
-  Text,
-  FormControl,
-  FormLabel,
-  Flex,
-} from "@hope-ui/solid"
+  AppFormControl as FormControl,
+  AppFormLabel as FormLabel,
+} from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { r, handleRespWithoutNotify, notify } from "~/utils"

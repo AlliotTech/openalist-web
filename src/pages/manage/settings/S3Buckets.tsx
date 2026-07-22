@@ -1,4 +1,5 @@
-import { VStack, FormLabel } from "@hope-ui/solid"
+import { VStack } from "@hope-ui/solid"
+import { AppFormLabel as FormLabel } from "~/components/ui/Form"
 import { AppButton } from "~/components/ui/Button"
 import { For } from "solid-js"
 import { SetStoreFunction } from "solid-js/store"
