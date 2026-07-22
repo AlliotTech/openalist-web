@@ -2,12 +2,6 @@ import {
   Button,
   createDisclosure,
   HStack,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Text,
   VStack,
   Input,
@@ -24,6 +18,14 @@ import { selectedObjs } from "~/store"
 import { RenameObj } from "~/types"
 import { RenameItem } from "~/pages/home/toolbar/RenameItem"
 import { AppRadio, AppRadioGroup } from "~/components/ui/RadioGroup"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 
 export const BatchRename = () => {
   const {
@@ -158,7 +160,7 @@ export const BatchRename = () => {
 
   return (
     <>
-      <Modal
+      <AppModal
         blockScrollOnMount={false}
         opened={isOpen()}
         onClose={onClose}
@@ -168,11 +170,11 @@ export const BatchRename = () => {
           "@md": "md",
         }}
       >
-        <ModalOverlay />
-        <ModalContent>
+        <AppModalOverlay />
+        <AppModalContent>
           {/* <ModalCloseButton /> */}
-          <ModalHeader>{t("home.toolbar.batch_rename")}</ModalHeader>
-          <ModalBody>
+          <AppModalHeader>{t("home.toolbar.batch_rename")}</AppModalHeader>
+          <AppModalBody>
             <AppRadioGroup
               defaultValue="1"
               onChange={(value) => {
@@ -225,8 +227,8 @@ export const BatchRename = () => {
                 }}
               />
             </VStack>
-          </ModalBody>
-          <ModalFooter display="flex" gap="$2">
+          </AppModalBody>
+          <AppModalFooter>
             <Button
               onClick={() => {
                 setType("1")
@@ -243,19 +245,21 @@ export const BatchRename = () => {
             >
               {t("global.ok")}
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </AppModalFooter>
+        </AppModalContent>
+      </AppModal>
 
-      <Modal
+      <AppModal
         size="xl"
         opened={isPreviewModalOpen()}
         onClose={closePreviewModal}
       >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{t("home.toolbar.regex_rename_preview")}</ModalHeader>
-          <ModalBody>
+        <AppModalOverlay />
+        <AppModalContent>
+          <AppModalHeader>
+            {t("home.toolbar.regex_rename_preview")}
+          </AppModalHeader>
+          <AppModalBody>
             <VStack class="list" w="$full" spacing="$1">
               <HStack class="title" w="$full" p="$2">
                 <Text w={{ "@initial": "50%", "@md": "50%" }} {...itemProps()}>
@@ -271,8 +275,8 @@ export const BatchRename = () => {
                 }}
               </For>
             </VStack>
-          </ModalBody>
-          <ModalFooter display="flex" gap="$2">
+          </AppModalBody>
+          <AppModalFooter>
             <Button
               onClick={() => {
                 setMatchNames([])
@@ -314,9 +318,9 @@ export const BatchRename = () => {
             >
               {t("global.ok")}
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </AppModalFooter>
+        </AppModalContent>
+      </AppModal>
     </>
   )
 }

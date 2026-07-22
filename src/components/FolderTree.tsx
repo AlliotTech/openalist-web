@@ -5,17 +5,19 @@ import {
   HStack,
   Icon,
   Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Spinner,
   Text,
   VStack,
 } from "@hope-ui/solid"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalCloseButton,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { BiSolidRightArrow, BiSolidFolderOpen } from "solid-icons/bi"
 import {
   Accessor,
@@ -206,27 +208,25 @@ export const ModalFolderChoose = (props: ModalFolderChooseProps) => {
     handler()?.setPath(value())
   })
   return (
-    <Modal
+    <AppModal
       size="xl"
       blockScrollOnMount={false}
       opened={props.opened}
       onClose={props.onClose}
     >
-      <ModalOverlay />
-      <ModalContent>
+      <AppModalOverlay />
+      <AppModalContent>
         {/* <ModalCloseButton /> */}
-        <ModalHeader w="$full" css={{ overflowWrap: "break-word" }}>
-          {props.header}
-        </ModalHeader>
-        <ModalBody>
+        <AppModalHeader>{props.header}</AppModalHeader>
+        <AppModalBody>
           {props.children}
           <FolderTree
             onChange={setValue}
             handle={(h) => setHandler(h)}
             autoOpen
           />
-        </ModalBody>
-        <ModalFooter display="flex" gap="$2">
+        </AppModalBody>
+        <AppModalFooter>
           <Show when={props.footerSlot}>{props.footerSlot}</Show>
           <Button onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
@@ -237,9 +237,9 @@ export const ModalFolderChoose = (props: ModalFolderChooseProps) => {
           >
             {t("global.ok")}
           </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </AppModalFooter>
+      </AppModalContent>
+    </AppModal>
   )
 }
 
@@ -270,19 +270,19 @@ export const FolderChooseInput = (props: {
           <Button onClick={onOpen}>{t("global.choose")}</Button>
         </Show>
       </HStack>
-      <Modal size="xl" opened={isOpen()} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalCloseButton />
-          <ModalHeader>{t("global.choose_folder")}</ModalHeader>
-          <ModalBody>
+      <AppModal size="xl" opened={isOpen()} onClose={onClose}>
+        <AppModalOverlay />
+        <AppModalContent>
+          <AppModalCloseButton />
+          <AppModalHeader>{t("global.choose_folder")}</AppModalHeader>
+          <AppModalBody>
             <FolderTree forceRoot onChange={props.onChange} />
-          </ModalBody>
-          <ModalFooter>
+          </AppModalBody>
+          <AppModalFooter>
             <Button onClick={onClose}>{t("global.confirm")}</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </AppModalFooter>
+        </AppModalContent>
+      </AppModal>
     </>
   )
 }

@@ -7,18 +7,20 @@ import {
   Heading,
   HStack,
   Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Spacer,
   Text,
   Textarea,
   VStack,
 } from "@hope-ui/solid"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalCloseButton,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { createSignal, Show } from "solid-js"
 import { useFetch, useT } from "~/hooks"
 import { SSHPublicKey } from "~/types/sshkey"
@@ -77,12 +79,12 @@ export const PublicKeys = (props: PublicKeysProps) => {
           <Button loading={loading()} onClick={onOpen}>
             {t(`global.add`)}
           </Button>
-          <Modal opened={isOpen()} onClose={onClose} scrollBehavior="inside">
-            <ModalOverlay />
-            <ModalContent>
-              <ModalCloseButton />
-              <ModalHeader>{t(`users.ssh_keys.add_heading`)}</ModalHeader>
-              <ModalBody>
+          <AppModal opened={isOpen()} onClose={onClose} scrollBehavior="inside">
+            <AppModalOverlay />
+            <AppModalContent>
+              <AppModalCloseButton />
+              <AppModalHeader>{t(`users.ssh_keys.add_heading`)}</AppModalHeader>
+              <AppModalBody>
                 <FormControl mb="$4">
                   <FormLabel for="add_title">
                     {t(`users.ssh_keys.title`)}
@@ -101,8 +103,8 @@ export const PublicKeys = (props: PublicKeysProps) => {
                     onInput={(e) => setAddReq("key", e.currentTarget.value)}
                   />
                 </FormControl>
-              </ModalBody>
-              <ModalFooter>
+              </AppModalBody>
+              <AppModalFooter>
                 <Button
                   loading={addLoading()}
                   onClick={async () => {
@@ -117,9 +119,9 @@ export const PublicKeys = (props: PublicKeysProps) => {
                 >
                   {t(`global.add`)}
                 </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+              </AppModalFooter>
+            </AppModalContent>
+          </AppModal>
         </Show>
       </Flex>
       <VStack

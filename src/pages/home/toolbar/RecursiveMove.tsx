@@ -2,15 +2,17 @@ import {
   Button,
   createDisclosure,
   HStack,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   SimpleOption,
   SimpleSelect,
 } from "@hope-ui/solid"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { ModalFolderChoose } from "~/components"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsRecursiveMove, handleRespWithNotifySuccess } from "~/utils"
@@ -40,7 +42,7 @@ export const RecursiveMove = () => {
   const t = useT()
   return (
     <>
-      <Modal
+      <AppModal
         blockScrollOnMount={false}
         opened={isConfirmModalOpen()}
         onClose={() => closeConfirmModal()}
@@ -49,13 +51,13 @@ export const RecursiveMove = () => {
           "@md": "md",
         }}
       >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{t("home.toolbar.recursive_move")}</ModalHeader>
-          <ModalBody>
+        <AppModalOverlay />
+        <AppModalContent>
+          <AppModalHeader>{t("home.toolbar.recursive_move")}</AppModalHeader>
+          <AppModalBody>
             <p>{t("home.toolbar.recursive_move_directory-tips")}</p>
-          </ModalBody>
-          <ModalFooter display="flex" gap="$2">
+          </AppModalBody>
+          <AppModalFooter>
             <Button onClick={() => closeConfirmModal()} colorScheme="neutral">
               {t("global.cancel")}
             </Button>
@@ -68,9 +70,9 @@ export const RecursiveMove = () => {
             >
               {t("global.confirm")}
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </AppModalFooter>
+        </AppModalContent>
+      </AppModal>
 
       <ModalFolderChoose
         header={t("home.toolbar.choose_dst_folder")}

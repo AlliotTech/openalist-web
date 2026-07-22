@@ -6,18 +6,20 @@ import {
   HStack,
   Icon,
   Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Text,
   Textarea,
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalCloseButton,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { createSignal, onCleanup, Show } from "solid-js"
 import { useFetch, useT } from "~/hooks"
 import { Group, PEmptyResp, PResp } from "~/types"
@@ -172,24 +174,24 @@ const Indexes = () => {
         </Button>
       </HStack>
       <Button onClick={onOpen}>{t(`indexes.update`)}</Button>
-      <Modal opened={isOpen()} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalCloseButton />
-          <ModalHeader>{t(`indexes.update`)}</ModalHeader>
-          <ModalBody>
+      <AppModal opened={isOpen()} onClose={onClose}>
+        <AppModalOverlay />
+        <AppModalContent>
+          <AppModalCloseButton />
+          <AppModalHeader>{t(`indexes.update`)}</AppModalHeader>
+          <AppModalBody>
             <Heading>{t("indexes.paths_to_update")}</Heading>
             <Textarea ref={updatePathsRef!}></Textarea>
             <Heading>{t("indexes.max_depth")}</Heading>
             <Input value={20} type="number" ref={updateMaxDepthRef!} />
-          </ModalBody>
-          <ModalFooter>
+          </AppModalBody>
+          <AppModalFooter>
             <Button onClick={[update, undefined]} loading={updateLoading()}>
               {t(`indexes.update`)}
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+          </AppModalFooter>
+        </AppModalContent>
+      </AppModal>
     </VStack>
   )
 }
