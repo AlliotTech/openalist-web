@@ -12,6 +12,25 @@ const token = (value: string | number | undefined, group: string) => {
 const colors = (value: string | undefined) =>
   value?.replace(/\$([\w]+)/g, "var(--hope-colors-$1)")
 
+const sizeLineHeight = (value: string | undefined) => {
+  const lineHeights: Record<string, string> = {
+    xs: "$4",
+    sm: "$5",
+    base: "$6",
+    lg: "$7",
+    xl: "$7",
+    "2xl": "$8",
+    "3xl": "$9",
+    "4xl": "$10",
+    "5xl": "$none",
+    "6xl": "$none",
+    "7xl": "$none",
+    "8xl": "$none",
+    "9xl": "$none",
+  }
+  return token(lineHeights[value ?? ""], "lineHeights")
+}
+
 const normalizeCss = (value: Record<string, unknown> | undefined) =>
   Object.fromEntries(
     Object.entries(value ?? {}).map(([key, item]) => [
@@ -57,7 +76,7 @@ type TypeProps = ParentProps<{
   onClick?: JSX.EventHandlerUnion<HTMLElement, MouseEvent>
 }>
 
-const Type = (props: TypeProps & { element: "span" | "h2" }) => {
+const Type = (props: TypeProps & { element: "p" | "h2" }) => {
   const [local, others] = splitProps(props, [
     "as",
     "class",
@@ -100,6 +119,7 @@ const Type = (props: TypeProps & { element: "span" | "h2" }) => {
         ...normalizeCss(local.css as Record<string, unknown>),
         color: colors(local.color),
         "font-size": token(local.fontSize ?? local.size, "fontSizes"),
+        "line-height": sizeLineHeight(local.size),
         "font-weight": token(local.fontWeight, "fontWeights"),
         "font-style": local.fontStyle,
         "text-align": local.textAlign,
@@ -144,7 +164,7 @@ const Type = (props: TypeProps & { element: "span" | "h2" }) => {
   )
 }
 
-export const AppText = (props: TypeProps) => <Type {...props} element="span" />
+export const AppText = (props: TypeProps) => <Type {...props} element="p" />
 
 export const AppHeading = (props: TypeProps) => <Type {...props} element="h2" />
 

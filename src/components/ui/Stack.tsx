@@ -184,8 +184,16 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
             typeof local.flexDirection === "object"
               ? undefined
               : (local.flexDirection ?? local.direction),
-          gap: token(local.gap ?? local.spacing, "space"),
-          "column-gap": token(local.columnGap, "space"),
+          gap: token(local.gap, "space"),
+          "column-gap": token(
+            local.columnGap ??
+              (local.direction === "row" ? local.spacing : undefined),
+            "space",
+          ),
+          "row-gap": token(
+            local.direction === "column" ? local.spacing : undefined,
+            "space",
+          ),
           "font-size": token(local.fontSize, "fontSizes"),
           "align-items": local.alignItems,
           "justify-content":
