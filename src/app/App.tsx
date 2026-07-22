@@ -11,7 +11,6 @@ import {
 } from "solid-js"
 import { Portal } from "solid-js/web"
 import { useLoading, useRouter, useT } from "~/hooks"
-import { globalStyles } from "./theme"
 import { bus, r, handleRespWithoutAuthAndNotify } from "~/utils"
 import { setSettings } from "~/store"
 import { Error, FullScreenLoading } from "~/components"
@@ -22,7 +21,6 @@ import { setArchiveExtensions } from "~/store/archive"
 
 const App: Component<{ children?: JSXElement }> = (props) => {
   const t = useT()
-  globalStyles()
   const isRouting = useIsRouting()
   const { to, pathname } = useRouter()
   const onTo = (path: string) => {
