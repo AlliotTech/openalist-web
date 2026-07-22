@@ -54,7 +54,10 @@ type StackProps = ParentProps<
     flex?: string | number
     position?: JSX.CSSProperties["position"]
     pos?: JSX.CSSProperties["position"]
-    transition?: JSX.CSSProperties["transition"]
+    transition?: JSX.CSSProperties["transition"] | Record<string, unknown>
+    initial?: unknown
+    animate?: unknown
+    exit?: unknown
     cursor?: JSX.CSSProperties["cursor"]
     overflow?: JSX.CSSProperties["overflow"]
     overflowX?: JSX.CSSProperties["overflow-x"]
@@ -142,6 +145,9 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     <Dynamic
       component={local.as ?? "div"}
       {...others}
+      {...(typeof local.transition === "object"
+        ? { transition: local.transition }
+        : {})}
       class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${local._hover ? " app-stack--hover" : ""}${local._active ? " app-stack--active" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={
         {
@@ -182,7 +188,8 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
               : local.wrap),
           flex: local.flex,
           position: local.position ?? local.pos,
-          transition: local.transition,
+          transition:
+            typeof local.transition === "string" ? local.transition : undefined,
           cursor: local.cursor,
           overflow: local.overflow,
           "overflow-x": local.overflowX,
