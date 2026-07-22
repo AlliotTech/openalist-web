@@ -1,7 +1,7 @@
 .app-tooltip__trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
 }
 
 .app-tooltip__content {

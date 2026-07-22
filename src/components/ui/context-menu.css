@@ -13,6 +13,11 @@
   animation: app-context-menu-in 300ms;
 }
 
+.app-context-menu[data-closed] {
+  pointer-events: none;
+  animation: app-context-menu-out 200ms ease-in;
+}
+
 .app-context-menu--dark {
   background: rgb(40 40 40 / 98%);
   color: #fff;
@@ -88,6 +93,13 @@
   from {
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@keyframes app-context-menu-out {
+  to {
+    opacity: 0;
+    transform: scale3d(0.95, 0.95, 0.95);
   }
 }
 

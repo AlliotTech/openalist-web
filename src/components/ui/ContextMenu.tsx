@@ -96,13 +96,18 @@ export const Menu = (
   }>,
 ) => {
   const [open, setOpen] = createSignal(false)
+  const [closing, setClosing] = createSignal(false)
   const [menuProps, setMenuProps] = createSignal<any>()
   const [position, setPosition] = createSignal({ x: 0, y: 0 })
   let menuRef: HTMLDivElement | undefined
+  let closeTimer: ReturnType<typeof setTimeout> | undefined
 
   const close = () => {
     if (!open()) return
     setOpen(false)
+    setClosing(true)
+    clearTimeout(closeTimer)
+    closeTimer = setTimeout(() => setClosing(false), 200)
     props.onHidden?.()
   }
 
@@ -116,6 +121,8 @@ export const Menu = (
         if (id !== props.id) handler(null as never)
       })
       setMenuProps(state.props)
+      clearTimeout(closeTimer)
+      setClosing(false)
       setPosition(
         state.position ?? { x: state.event.clientX, y: state.event.clientY },
       )
@@ -123,6 +130,7 @@ export const Menu = (
       props.onShown?.()
     })
     onCleanup(() => handlers.delete(props.id))
+    onCleanup(() => clearTimeout(closeTimer))
   })
 
   createEffect(() => {
@@ -155,13 +163,14 @@ export const Menu = (
 
   return (
     <Portal>
-      <Show when={open()}>
+      <Show when={open() || closing()}>
         <Context.Provider value={{ props: menuProps, close }}>
           <div
             ref={menuRef}
             role="menu"
             tabindex="-1"
             class={`app-context-menu app-context-menu--${props.theme ?? "light"}${props.class ? ` ${props.class}` : ""}`}
+            data-closed={closing() ? "" : undefined}
             style={{
               ...(typeof props.style === "object" ? props.style : {}),
               left: `${position().x}px`,
