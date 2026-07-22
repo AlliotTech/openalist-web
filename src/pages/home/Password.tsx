@@ -2,12 +2,12 @@ import {
   Flex,
   Heading,
   HStack,
-  Input,
   Text,
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { useRouter, useT } from "~/hooks"
 import { JSXElement } from "solid-js"
 
@@ -33,7 +33,7 @@ const Password = (props: PasswordProps) => {
       alignItems="start"
     >
       <Heading>{props.title}</Heading>
-      <Input
+      <AppInput
         type="password"
         value={props.password()}
         background={useColorModeValue("$neutral3", "$neutral2")()}

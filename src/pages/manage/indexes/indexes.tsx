@@ -3,13 +3,12 @@ import {
   Heading,
   HStack,
   Icon,
-  Input,
   Text,
-  Textarea,
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import {
   AppModal,
   AppModalBody,
@@ -181,9 +180,9 @@ const Indexes = () => {
           <AppModalHeader>{t(`indexes.update`)}</AppModalHeader>
           <AppModalBody>
             <Heading>{t("indexes.paths_to_update")}</Heading>
-            <Textarea ref={updatePathsRef!}></Textarea>
+            <AppTextarea ref={updatePathsRef!}></AppTextarea>
             <Heading>{t("indexes.max_depth")}</Heading>
-            <Input value={20} type="number" ref={updateMaxDepthRef!} />
+            <AppInput value={20} type="number" ref={updateMaxDepthRef!} />
           </AppModalBody>
           <AppModalFooter>
             <AppButton onClick={[update, undefined]} loading={updateLoading()}>

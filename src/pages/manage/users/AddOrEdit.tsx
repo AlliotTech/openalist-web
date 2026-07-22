@@ -1,12 +1,6 @@
-import {
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  VStack,
-} from "@hope-ui/solid"
+import { Flex, FormControl, FormLabel, Heading, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { MaybeLoading, FolderChooseInput } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
@@ -84,7 +78,7 @@ const AddOrEdit = () => {
             <FormLabel for="username" display="flex" alignItems="center">
               {t(`users.username`)}
             </FormLabel>
-            <Input
+            <AppInput
               id="username"
               value={user.username}
               onInput={(e) => setUser("username", e.currentTarget.value)}
@@ -94,7 +88,7 @@ const AddOrEdit = () => {
             <FormLabel for="password" display="flex" alignItems="center">
               {t(`users.password`)}
             </FormLabel>
-            <Input
+            <AppInput
               id="password"
               type="password"
               placeholder="********"

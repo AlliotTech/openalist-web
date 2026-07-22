@@ -9,12 +9,12 @@ import {
   FormLabel,
   Heading,
   HStack,
-  Input,
   SimpleGrid,
   VStack,
   Text,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { createSignal, For, JSXElement, onCleanup, Show } from "solid-js"
 import { LinkWithBase, MaybeLoading } from "~/components"
 import { useFetch, useManageTitle, useRouter, useT } from "~/hooks"
@@ -167,7 +167,7 @@ const Profile = () => {
         <SimpleGrid gap="$2" columns={{ "@initial": 1, "@md": 2 }}>
           <FormControl>
             <FormLabel for="username">{t("users.change_username")}</FormLabel>
-            <Input
+            <AppInput
               id="username"
               value={username()}
               onInput={(e) => {
@@ -179,7 +179,7 @@ const Profile = () => {
         <SimpleGrid gap="$2" columns={{ "@initial": 1, "@md": 2 }}>
           <FormControl>
             <FormLabel for="password">{t("users.change_password")}</FormLabel>
-            <Input
+            <AppInput
               id="password"
               type="password"
               placeholder="********"
@@ -194,7 +194,7 @@ const Profile = () => {
             <FormLabel for="confirm-password">
               {t("users.confirm_password")}
             </FormLabel>
-            <Input
+            <AppInput
               id="confirm-password"
               type="password"
               placeholder="********"

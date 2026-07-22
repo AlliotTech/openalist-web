@@ -4,13 +4,13 @@ import {
   Flex,
   Heading,
   Text,
-  Input,
   useColorModeValue,
   HStack,
   VStack,
   Icon,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { createMemo, createSignal, Show, onMount, onCleanup } from "solid-js"
 import { SwitchColorMode, SwitchLanguageWhite } from "~/components"
 import { AppCheckbox } from "~/components/ui/Checkbox"
@@ -233,7 +233,7 @@ const Login = () => {
         <Show
           when={!needOpt()}
           fallback={
-            <Input
+            <AppInput
               id="totp"
               name="otp"
               placeholder={t("login.otp-tips")}
@@ -247,14 +247,14 @@ const Login = () => {
             />
           }
         >
-          <Input
+          <AppInput
             name="username"
             placeholder={t("login.username-tips")}
             value={username()}
             onInput={(e) => setUsername(e.currentTarget.value)}
           />
           <Show when={!useauthn()}>
-            <Input
+            <AppInput
               name="password"
               placeholder={t("login.password-tips")}
               type="password"

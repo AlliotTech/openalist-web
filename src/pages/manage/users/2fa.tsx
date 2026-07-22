@@ -1,5 +1,6 @@
-import { Heading, Image, Input, Text, VStack } from "@hope-ui/solid"
+import { Heading, Image, Text, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { createSignal, Show } from "solid-js"
 import { MaybeLoading } from "~/components"
 import { useRouter, useFetch, useT } from "~/hooks"
@@ -53,7 +54,7 @@ const TwoFA = () => {
             {t("users.or_manual")}:{" "}
             <Text color={getMainColor()}>{otpData()?.secret}</Text>
           </Heading>
-          <Input
+          <AppInput
             maxW="$xs"
             placeholder={t("users.input_code")}
             value={code()}

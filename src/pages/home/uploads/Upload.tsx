@@ -1,6 +1,5 @@
 import {
   VStack,
-  Input,
   Heading,
   HStack,
   Text,
@@ -10,6 +9,7 @@ import {
   Box,
 } from "@hope-ui/solid"
 import { AppButton, AppIconButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { createSignal, For, Show, onMount, onCleanup } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
 import { getMainColor } from "~/store"
@@ -199,7 +199,7 @@ const Upload = () => {
           </>
         }
       >
-        <Input
+        <AppInput
           type="file"
           multiple
           ref={fileInput!}
@@ -209,7 +209,7 @@ const Upload = () => {
             handleAddFiles(Array.from(e.target.files ?? []))
           }}
         />
-        <Input
+        <AppInput
           type="file"
           multiple
           // @ts-ignore

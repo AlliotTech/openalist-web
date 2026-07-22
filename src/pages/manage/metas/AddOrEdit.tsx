@@ -2,13 +2,12 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Input,
   VStack,
   Flex,
-  Textarea,
   FormHelperText,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import { MaybeLoading, FolderChooseInput } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
@@ -43,7 +42,7 @@ const Item = (props: ItemProps) => {
         gap="$2"
       >
         {props.type === "string" ? (
-          <Input
+          <AppInput
             id={props.name}
             value={props.value}
             onInput={(e) => props.onChange(e.currentTarget.value)}
@@ -55,7 +54,7 @@ const Item = (props: ItemProps) => {
             onChange={props.onChange}
           />
         ) : (
-          <Textarea
+          <AppTextarea
             id={props.name}
             value={props.value}
             onChange={(e) => props.onChange(e.currentTarget.value)}
@@ -129,7 +128,7 @@ const AddOrEdit = () => {
           <FormLabel for="password" display="flex" alignItems="center">
             {t(`metas.password`)}
           </FormLabel>
-          <Input
+          <AppInput
             id="password"
             placeholder="********"
             value={meta.password}

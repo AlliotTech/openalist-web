@@ -1,5 +1,6 @@
-import { Badge, HStack, Icon, Input, Text, VStack, hope } from "@hope-ui/solid"
+import { Badge, HStack, Icon, Text, VStack, hope } from "@hope-ui/solid"
 import { AppIconButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { BsSearch } from "solid-icons/bs"
 import {
   createSignal,
@@ -266,7 +267,7 @@ const Search = () => {
                   label: t(`home.search.scopes.${v}`),
                 }))}
               />
-              <Input
+              <AppInput
                 id="search-input"
                 value={keywords()}
                 onInput={(e) => {

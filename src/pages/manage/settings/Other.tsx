@@ -3,10 +3,10 @@ import {
   FormLabel,
   Heading,
   HStack,
-  Input,
   SimpleGrid,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { createSignal } from "solid-js"
 import { FolderChooseInput, MaybeLoading } from "~/components"
 import { useFetch, useManageTitle, useT, useUtil } from "~/hooks"
@@ -241,7 +241,7 @@ const OtherSettings = () => {
         {t("settings_other.set_thunder")}
       </AppButton>
       <Heading my="$2">{t("settings.token")}</Heading>
-      <Input value={token()} readOnly />
+      <AppInput value={token()} readOnly />
       <HStack my="$2" spacing="$2">
         <AppButton
           onClick={() => {

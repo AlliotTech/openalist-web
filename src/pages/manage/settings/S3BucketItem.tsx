@@ -1,5 +1,6 @@
-import { FormControl, FormLabel, Input, Stack } from "@hope-ui/solid"
+import { FormControl, FormLabel, Stack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { FolderChooseInput } from "~/components"
 import { useT } from "~/hooks"
 
@@ -29,7 +30,7 @@ export const S3BucketItem = (props: props) => {
         <FormLabel for="path" display="flex" alignItems="center">
           {t(`global.name`)}
         </FormLabel>
-        <Input
+        <AppInput
           id="name"
           value={props.name}
           onChange={(e) =>

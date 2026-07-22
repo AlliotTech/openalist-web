@@ -2,12 +2,12 @@ import {
   HStack,
   VStack,
   Text,
-  Input,
   FormControl,
   FormLabel,
   Flex,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { r, handleRespWithoutNotify, notify } from "~/utils"
 import { useFetch, useManageTitle, useT } from "~/hooks"
 import {
@@ -419,7 +419,7 @@ const BackupRestore = () => {
           />
 
           <FormLabel>{t(`br.encrypt_password`)}</FormLabel>
-          <Input
+          <AppInput
             id="password"
             type="password"
             placeholder={t(`br.encrypt_password_placeholder`)}

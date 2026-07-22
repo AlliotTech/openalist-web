@@ -1,4 +1,5 @@
-import { HStack, Input, Text, VStack } from "@hope-ui/solid"
+import { HStack, Text, VStack } from "@hope-ui/solid"
+import { AppInput } from "~/components/ui/Input"
 import { createDisclosure } from "~/hooks/disclosure"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsArchiveDecompress, handleRespWithNotifySuccess } from "~/utils"
@@ -85,7 +86,7 @@ export const Decompress = () => {
           <Text size="sm" css={{ whiteSpace: "nowrap" }}>
             {t(`home.toolbar.decompress-pass`)}
           </Text>
-          <Input
+          <AppInput
             value={archivePass()}
             onInput={(e: any) => setArchivePass(e.target.value as string)}
             size="sm"

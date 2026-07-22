@@ -1,12 +1,5 @@
-import {
-  Flex,
-  Heading,
-  HStack,
-  Input,
-  Spacer,
-  Text,
-  VStack,
-} from "@hope-ui/solid"
+import { Flex, Heading, HStack, Spacer, Text, VStack } from "@hope-ui/solid"
+import { AppInput } from "~/components/ui/Input"
 import {
   batch,
   createEffect,
@@ -325,7 +318,7 @@ export const Tasks = (props: TasksProps) => {
         >
           {t(`tasks.${operateName}_selected`)}
         </AppButton>
-        <Input
+        <AppInput
           width="auto"
           placeholder={t(`tasks.filter`)}
           value={regexFilterValue()}

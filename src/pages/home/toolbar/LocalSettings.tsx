@@ -1,11 +1,5 @@
-import {
-  Center,
-  FormControl,
-  FormLabel,
-  HStack,
-  Input,
-  VStack,
-} from "@hope-ui/solid"
+import { Center, FormControl, FormLabel, HStack, VStack } from "@hope-ui/solid"
+import { AppInput } from "~/components/ui/Input"
 import { For, Match, onCleanup, Switch, createSignal } from "solid-js"
 import { SwitchLanguageWhite, SwitchColorMode } from "~/components"
 import { useT } from "~/hooks"
@@ -22,7 +16,7 @@ function LocalSettingEdit(props: LocalSetting) {
       <FormLabel>{t(`home.local_settings.${props.key}`)}</FormLabel>
       <Switch
         fallback={
-          <Input
+          <AppInput
             value={local[props.key]}
             onInput={(e) => {
               setLocal(props.key, e.currentTarget.value)

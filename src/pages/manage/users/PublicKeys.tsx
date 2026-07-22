@@ -4,13 +4,12 @@ import {
   FormLabel,
   Heading,
   HStack,
-  Input,
   Spacer,
   Text,
-  Textarea,
   VStack,
 } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput, AppTextarea } from "~/components/ui/Input"
 import {
   AppModal,
   AppModalBody,
@@ -89,7 +88,7 @@ export const PublicKeys = (props: PublicKeysProps) => {
                   <FormLabel for="add_title">
                     {t(`users.ssh_keys.title`)}
                   </FormLabel>
-                  <Input
+                  <AppInput
                     id="add_title"
                     value={addReq.title}
                     onInput={(e) => setAddReq("title", e.currentTarget.value)}
@@ -97,7 +96,7 @@ export const PublicKeys = (props: PublicKeysProps) => {
                 </FormControl>
                 <FormControl>
                   <FormLabel for="add_key">{t(`users.ssh_keys.key`)}</FormLabel>
-                  <Textarea
+                  <AppTextarea
                     id="add_key"
                     value={addReq.key}
                     onInput={(e) => setAddReq("key", e.currentTarget.value)}

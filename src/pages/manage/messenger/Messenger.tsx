@@ -1,5 +1,6 @@
-import { Heading, HStack, Input, VStack } from "@hope-ui/solid"
+import { Heading, HStack, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { Component, createSignal, For, onCleanup } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import { Dynamic } from "solid-js/web"
@@ -63,7 +64,7 @@ export const Messenger = () => {
           {(item) => <Dynamic component={Shower[item.type]} {...item} />}
         </For>
       </VStack>
-      <Input
+      <AppInput
         w="$full"
         value={toSend()}
         onInput={(e) => setToSend(e.currentTarget.value)}

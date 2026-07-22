@@ -1,5 +1,6 @@
-import { HStack, Text, VStack, Input } from "@hope-ui/solid"
+import { HStack, Text, VStack } from "@hope-ui/solid"
 import { AppButton } from "~/components/ui/Button"
+import { AppInput } from "~/components/ui/Input"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import {
   bus,
@@ -195,7 +196,7 @@ export const BatchRename = () => {
                   {t("home.toolbar.sequential_renaming_desc")}
                 </Show>
               </p>
-              <Input
+              <AppInput
                 id="modal-input1" // Update id to "modal-input1" for first input
                 type={"string"}
                 value={srcName()} // Update value to value1 for first input
@@ -208,7 +209,7 @@ export const BatchRename = () => {
                   }
                 }}
               />
-              <Input
+              <AppInput
                 id="modal-input2" // Add second input with id "modal-input2"
                 type={newNameType()}
                 value={newName()} // Bind value to value2 for second input
