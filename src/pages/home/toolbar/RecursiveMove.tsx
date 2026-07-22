@@ -11,7 +11,12 @@ import {
 import { createDisclosure } from "~/hooks/disclosure"
 import { ModalFolderChoose } from "~/components/FolderTree"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
-import { bus, fsRecursiveMove, handleRespWithNotifySuccess } from "~/utils"
+import {
+  bus,
+  fsRecursiveMove,
+  handleRespWithNotifySuccess,
+  type RecursiveMoveConflictPolicy,
+} from "~/utils"
 import { createSignal, onCleanup } from "solid-js"
 import { AppSelect } from "~/components/ui/Select"
 
@@ -25,7 +30,8 @@ export const RecursiveMove = () => {
   const [loading, ok] = useFetch(fsRecursiveMove)
   const { pathname } = useRouter()
   const { refresh } = usePath()
-  const [conflictPolicy, setConflictPolicy] = createSignal("cancel")
+  const [conflictPolicy, setConflictPolicy] =
+    createSignal<RecursiveMoveConflictPolicy>("cancel")
   const handler = (name: string) => {
     if (name === "recursiveMove") {
       openConfirmModal()
