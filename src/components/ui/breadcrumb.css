@@ -1,4 +1,7 @@
 .app-breadcrumb {
+  display: block;
+  font-size: var(--hope-fontSizes-base);
+  line-height: var(--hope-lineHeights-6);
   isolation: isolate;
 }
 
@@ -17,7 +20,7 @@
 
 .app-breadcrumb__list,
 .app-breadcrumb__item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -25,13 +28,46 @@
 }
 
 .app-breadcrumb__list {
-  overflow-x: auto;
+  flex-wrap: wrap;
+  row-gap: 0;
 }
 
 .app-breadcrumb__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   flex: 0 0 auto;
-  color: inherit;
+  outline: none;
+  background: transparent;
+  color: var(--hope-colors-neutral11);
   text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 250ms,
+    text-decoration 250ms;
+}
+
+.app-breadcrumb__link:hover {
+  color: var(--hope-colors-primary11);
+}
+
+.app-breadcrumb__link:focus {
+  box-shadow: var(--hope-shadows-outline);
+}
+
+.app-breadcrumb__link--current {
+  color: var(--hope-colors-neutral12);
+  cursor: default;
+}
+
+.app-breadcrumb__link--current:hover {
+  color: var(--hope-colors-neutral12);
+}
+
+.app-breadcrumb__separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-breadcrumb__link--hover:hover {

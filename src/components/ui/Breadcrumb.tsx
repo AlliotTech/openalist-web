@@ -91,7 +91,7 @@ export const AppBreadcrumbLink = (props: LinkProps) => {
       {...others}
       href={local.currentPage && !local.as ? undefined : others.href}
       aria-current={local.currentPage ? "page" : undefined}
-      class={`app-breadcrumb__link${local._hover ? " app-breadcrumb__link--hover" : ""}${local._active ? " app-breadcrumb__link--active" : ""}${local.class ? ` ${local.class}` : ""}`}
+      class={`app-breadcrumb__link${local.currentPage ? " app-breadcrumb__link--current" : ""}${local._hover ? " app-breadcrumb__link--hover" : ""}${local._active ? " app-breadcrumb__link--active" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={{
         ...(local.css as JSX.CSSProperties),
         color: colors(local.color),
