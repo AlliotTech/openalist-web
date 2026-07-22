@@ -1,6 +1,7 @@
-import { HopeProvider, NotificationsProvider } from "@hope-ui/solid"
+import { HopeProvider } from "@hope-ui/solid"
 import { ErrorBoundary, Suspense, type JSXElement } from "solid-js"
 import { Error, FullScreenLoading } from "~/components"
+import { AppToastRegion } from "~/components/ui/ToastRegion"
 import App from "./App"
 import { globalStyles, theme } from "./theme"
 
@@ -14,11 +15,10 @@ const Index = (props: { children?: JSXElement }) => {
           return <Error msg={`System error: ${err}`} h="100vh" />
         }}
       >
-        <NotificationsProvider duration={3000}>
-          <Suspense fallback={<FullScreenLoading />}>
-            <App>{props.children}</App>
-          </Suspense>
-        </NotificationsProvider>
+        <Suspense fallback={<FullScreenLoading />}>
+          <App>{props.children}</App>
+        </Suspense>
+        <AppToastRegion />
       </ErrorBoundary>
     </HopeProvider>
   )

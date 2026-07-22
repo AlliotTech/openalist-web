@@ -1,105 +1,26 @@
-import {
-  Box,
-  CloseButton,
-  // Alert,
-  // AlertDescription,
-  // AlertIcon,
-  // AlertTitle,
-  // CloseButton,
-  notificationService,
-} from "@hope-ui/solid"
-import { JSXElement } from "solid-js"
-import { alphaBgColor, firstUpperCase } from "."
+import { toaster } from "@kobalte/core/toast"
+import type { JSXElement } from "solid-js"
+import { AppToast, type ToastStatus } from "~/components/ui/ToastRegion"
+import { firstUpperCase } from "."
+
+const showMessage = (status: ToastStatus, message: string) =>
+  toaster.show((props) => (
+    <AppToast
+      toastId={props.toastId}
+      status={status}
+      title={firstUpperCase(message)}
+    />
+  ))
 
 const notify = {
-  render: (element: JSXElement) => {
-    notificationService.show({
-      render: (props) => {
-        return (
-          <Box
-            css={{
-              display: "flex",
-              backdropFilter: "blur(8px)",
-              backgroundColor: alphaBgColor(),
-              boxShadow: "$md",
-              borderRadius: "$lg",
-              padding: "$3",
-            }}
-          >
-            <div
-              style={{
-                "flex-grow": 1,
-                display: "flex",
-                "align-items": "center",
-              }}
-            >
-              <div style={{ margin: "auto" }}>{element}</div>
-            </div>
-            <div style={{ display: "inline-block", padding: "5px" }}>
-              <CloseButton
-                style={{ float: "right" }}
-                right="$2"
-                top="$2"
-                onClick={props.close}
-              />
-            </div>
-          </Box>
-        )
-      },
-    })
-  },
-  success: (message: string) => {
-    notificationService.show({
-      status: "success",
-      title: firstUpperCase(message),
-      // render: (props) => (
-      //   <Alert status="success" shadow="$md">
-      //     <AlertIcon mr="$2_5" />
-      //     <AlertDescription mr="$2_5">{message}</AlertDescription>
-      //     <CloseButton size="sm" onClick={props.close} />
-      //   </Alert>
-      // ),
-    })
-  },
-  error: (message: string) => {
-    notificationService.show({
-      status: "danger",
-      title: firstUpperCase(message),
-      // render: (props) => (
-      //   <Alert status="danger" shadow="$md">
-      //     <AlertIcon mr="$2_5" />
-      //     <AlertDescription mr="$2_5">{message}</AlertDescription>
-      //     <CloseButton size="sm" onClick={props.close} />
-      //   </Alert>
-      // ),
-    })
-  },
-  info: (message: string) => {
-    notificationService.show({
-      status: "info",
-      title: firstUpperCase(message),
-      // render: (props) => (
-      //   <Alert status="info" shadow="$md">
-      //     <AlertIcon mr="$2_5" />
-      //     <AlertDescription mr="$2_5">{message}</AlertDescription>
-      //     <CloseButton size="sm" onClick={props.close} />
-      //   </Alert>
-      // ),
-    })
-  },
-  warning: (message: string) => {
-    notificationService.show({
-      status: "warning",
-      title: firstUpperCase(message),
-      // render: (props) => (
-      //   <Alert status="warning" shadow="$md">
-      //     <AlertIcon mr="$2_5" />
-      //     <AlertDescription mr="$2_5">{message}</AlertDescription>
-      //     <CloseButton size="sm" onClick={props.close} />
-      //   </Alert>
-      // ),
-    })
-  },
+  render: (element: JSXElement) =>
+    toaster.show((props) => (
+      <AppToast toastId={props.toastId}>{element}</AppToast>
+    )),
+  success: (message: string) => showMessage("success", message),
+  error: (message: string) => showMessage("danger", message),
+  info: (message: string) => showMessage("info", message),
+  warning: (message: string) => showMessage("warning", message),
 }
 
 export { notify }
