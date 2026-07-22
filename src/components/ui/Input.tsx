@@ -7,6 +7,7 @@ type SharedInputProps = {
   size?: string
   w?: string
   width?: string
+  maxW?: string
   background?: string
   display?: string
   flexGrow?: JSX.CSSProperties["flex-grow"]
@@ -38,6 +39,7 @@ export const AppInput = (props: AppInputProps) => {
     "size",
     "w",
     "width",
+    "maxW",
     "background",
     "display",
     "flexGrow",
@@ -51,6 +53,7 @@ export const AppInput = (props: AppInputProps) => {
       style={{
         ...(local.style ?? {}),
         width: resolveToken(local.w ?? local.width, "sizes"),
+        "max-width": resolveToken(local.maxW, "sizes"),
         background: resolveToken(local.background, "colors"),
         display: local.display,
         "flex-grow": local.flexGrow,
@@ -66,6 +69,7 @@ export const AppTextarea = (props: AppTextareaProps) => {
     "size",
     "w",
     "width",
+    "maxW",
     "background",
     "display",
     "flexGrow",
@@ -79,6 +83,7 @@ export const AppTextarea = (props: AppTextareaProps) => {
       style={{
         ...(local.style ?? {}),
         width: resolveToken(local.w ?? local.width, "sizes"),
+        "max-width": resolveToken(local.maxW, "sizes"),
         background: resolveToken(local.background, "colors"),
         display: local.display,
         "flex-grow": local.flexGrow,

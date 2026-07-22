@@ -8,152 +8,6 @@ const theme: HopeThemeConfig = {
       background: "#fafbfc",
     },
   },
-  components: {
-    Button: {
-      baseStyle: {
-        root: {
-          rounded: "$lg",
-          _active: {
-            transform: "scale(.95)",
-            transition: "0.2s",
-          },
-          _focus: {
-            boxShadow: "unset",
-          },
-        },
-      },
-      defaultProps: {
-        root: {
-          colorScheme: "info",
-          variant: "subtle",
-        },
-      },
-    },
-    IconButton: {
-      defaultProps: {
-        colorScheme: "info",
-        variant: "subtle",
-      },
-    },
-    Input: {
-      baseStyle: {
-        input: {
-          rounded: "$lg",
-          _focus: {
-            boxShadow: "unset",
-            borderColor: "$info8",
-          },
-        },
-      },
-      defaultProps: {
-        input: {
-          variant: "filled",
-        },
-      },
-    },
-    Textarea: {
-      baseStyle: {
-        rounded: "$lg",
-        _focus: {
-          boxShadow: "unset",
-          borderColor: "$info8",
-        },
-        resize: "vertical",
-        wordBreak: "break-all",
-      },
-      defaultProps: {
-        variant: "filled",
-      },
-    },
-    Select: {
-      baseStyle: {
-        trigger: {
-          rounded: "$lg",
-          _focus: {
-            boxShadow: "unset",
-            borderColor: "$info8",
-          },
-        },
-        content: {
-          border: "none",
-          rounded: "$lg",
-        },
-        optionIndicator: {
-          color: "$info10",
-        },
-      },
-      defaultProps: {
-        root: {
-          variant: "filled",
-        },
-      },
-    },
-    Checkbox: {
-      defaultProps: {
-        root: {
-          colorScheme: "info",
-          variant: "filled",
-        },
-      },
-    },
-    Switch: {
-      defaultProps: {
-        root: {
-          colorScheme: "info",
-        },
-      },
-    },
-    Menu: {
-      baseStyle: {
-        content: {
-          rounded: "$md",
-          minW: "unset",
-          border: "unset",
-        },
-        item: {
-          rounded: "$md",
-          py: "$1",
-        },
-      },
-    },
-    Notification: {
-      baseStyle: {
-        root: {
-          rounded: "$lg",
-          border: "unset",
-        },
-      },
-    },
-    Alert: {
-      baseStyle: {
-        root: {
-          rounded: "$lg",
-        },
-      },
-    },
-    Anchor: {
-      baseStyle: {
-        rounded: "$lg",
-        px: "$1_5",
-        py: "$1",
-        _hover: {
-          bgColor: hoverColor(),
-          textDecoration: "none",
-        },
-        _focus: {
-          boxShadow: "unset",
-        },
-        _active: { transform: "scale(.95)", transition: "0.1s" },
-      },
-    },
-    Modal: {
-      baseStyle: {
-        content: {
-          rounded: "$lg",
-        },
-      },
-    },
-  },
 }
 
 export const globalStyles = globalCss({
@@ -180,6 +34,25 @@ export const globalStyles = globalCss({
   ".hope-breadcrumb__list": {
     flexWrap: "wrap",
     rowGap: "0 !important",
+  },
+  ".hope-alert": {
+    borderRadius: "$lg",
+  },
+  ".hope-anchor": {
+    borderRadius: "$lg",
+    px: "$1_5",
+    py: "$1",
+    "&:hover": {
+      backgroundColor: hoverColor(),
+      textDecoration: "none",
+    },
+    "&:focus": {
+      boxShadow: "unset",
+    },
+    "&:active": {
+      transform: "scale(.95)",
+      transition: "0.1s",
+    },
   },
   ".lightgallery-container": {
     "& .lg-backdrop": {
