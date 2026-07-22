@@ -1,8 +1,4 @@
 import {
-  Menu,
-  MenuTrigger,
-  MenuContent,
-  MenuItem,
   Button,
   Modal,
   ModalBody,
@@ -19,44 +15,50 @@ import { getSettingBool, me } from "~/store"
 import { UserMethods } from "~/types"
 import { bus } from "~/utils"
 import { CenterIcon } from "./Icon"
+import { AppMenu } from "~/components/ui/Menu"
 
 export const Download = () => {
   const t = useT()
-  const colorScheme = "neutral"
   const { batchDownloadSelected, sendToAria2, playlistDownloadSelected } =
     useDownload()
   return (
-    <Menu placement="top" offset={10}>
-      <MenuTrigger as={CenterIcon} name="download" />
-      <MenuContent>
-        <MenuItem colorScheme={colorScheme} onSelect={batchDownloadSelected}>
-          {t("home.toolbar.batch_download")}
-        </MenuItem>
-        <Show
-          when={
-            UserMethods.is_admin(me()) || getSettingBool("package_download")
-          }
-        >
-          <MenuItem
-            colorScheme={colorScheme}
-            onSelect={() => {
-              bus.emit("tool", "package_download")
-            }}
+    <AppMenu placement="top" gutter={10}>
+      <AppMenu.Trigger
+        as={CenterIcon}
+        class="app-menu__trigger"
+        name="download"
+      />
+      <AppMenu.Portal>
+        <AppMenu.Content class="app-menu__content">
+          <AppMenu.Item class="app-menu__item" onSelect={batchDownloadSelected}>
+            {t("home.toolbar.batch_download")}
+          </AppMenu.Item>
+          <Show
+            when={
+              UserMethods.is_admin(me()) || getSettingBool("package_download")
+            }
           >
-            {t("home.toolbar.package_download")}
-          </MenuItem>
-          <MenuItem
-            colorScheme={colorScheme}
-            onSelect={playlistDownloadSelected}
-          >
-            {t("home.toolbar.playlist_download")}
-          </MenuItem>
-        </Show>
-        <MenuItem colorScheme={colorScheme} onSelect={sendToAria2}>
-          {t("home.toolbar.send_aria2")}
-        </MenuItem>
-      </MenuContent>
-    </Menu>
+            <AppMenu.Item
+              class="app-menu__item"
+              onSelect={() => {
+                bus.emit("tool", "package_download")
+              }}
+            >
+              {t("home.toolbar.package_download")}
+            </AppMenu.Item>
+            <AppMenu.Item
+              class="app-menu__item"
+              onSelect={playlistDownloadSelected}
+            >
+              {t("home.toolbar.playlist_download")}
+            </AppMenu.Item>
+          </Show>
+          <AppMenu.Item class="app-menu__item" onSelect={sendToAria2}>
+            {t("home.toolbar.send_aria2")}
+          </AppMenu.Item>
+        </AppMenu.Content>
+      </AppMenu.Portal>
+    </AppMenu>
   )
 }
 

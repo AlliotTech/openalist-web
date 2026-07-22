@@ -1,14 +1,4 @@
-import {
-  Center,
-  ElementType,
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
-  MenuTriggerProps,
-  Spinner,
-  useColorModeValue,
-} from "@hope-ui/solid"
+import { Center, Icon, Spinner, useColorModeValue } from "@hope-ui/solid"
 import { createSignal, For, Show } from "solid-js"
 import {
   addLanguage,
@@ -20,12 +10,11 @@ import {
 // import { TbLanguageHiragana } from "solid-icons/tb";
 import { IoLanguageOutline } from "solid-icons/io"
 import { Portal } from "solid-js/web"
+import { AppMenu } from "~/components/ui/Menu"
 
 const [fetchingLang, setFetchingLang] = createSignal(false)
 
-export const SwitchLanguage = <C extends ElementType = "button">(
-  props: MenuTriggerProps<C>,
-) => {
+export const SwitchLanguage = () => {
   const switchLang = async (lang: string) => {
     if (!loadedLangs.has(lang)) {
       setFetchingLang(true)
@@ -38,22 +27,27 @@ export const SwitchLanguage = <C extends ElementType = "button">(
   }
   return (
     <>
-      <Menu>
-        <MenuTrigger cursor="pointer" {...props} />
-        <MenuContent>
-          <For each={languages}>
-            {(lang, i) => (
-              <MenuItem
-                onSelect={() => {
-                  switchLang(lang.code)
-                }}
-              >
-                {lang.lang}
-              </MenuItem>
-            )}
-          </For>
-        </MenuContent>
-      </Menu>
+      <AppMenu>
+        <AppMenu.Trigger class="app-menu__trigger" aria-label="switch language">
+          <Icon as={IoLanguageOutline} boxSize="$8" />
+        </AppMenu.Trigger>
+        <AppMenu.Portal>
+          <AppMenu.Content class="app-menu__content">
+            <For each={languages}>
+              {(lang) => (
+                <AppMenu.Item
+                  class="app-menu__item"
+                  onSelect={() => {
+                    switchLang(lang.code)
+                  }}
+                >
+                  {lang.lang}
+                </AppMenu.Item>
+              )}
+            </For>
+          </AppMenu.Content>
+        </AppMenu.Portal>
+      </AppMenu>
       <Show when={fetchingLang()}>
         <Portal>
           <Center
@@ -78,6 +72,4 @@ export const SwitchLanguage = <C extends ElementType = "button">(
   )
 }
 
-export const SwitchLanguageWhite = () => (
-  <SwitchLanguage as={IoLanguageOutline} boxSize="$8" />
-)
+export const SwitchLanguageWhite = SwitchLanguage

@@ -1,0 +1,52 @@
+.app-menu__trigger {
+  cursor: pointer;
+}
+
+.app-menu__content {
+  min-width: 10rem;
+  padding: 0.375rem;
+  border: 1px solid var(--hope-colors-neutral6, #cbd5e0);
+  border-radius: 0.5rem;
+  background: var(--hope-colors-background, #fff);
+  color: var(--hope-colors-neutral12, #1a202c);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.16);
+  z-index: 1000;
+}
+
+.app-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2rem;
+  padding: 0.375rem 0.625rem;
+  border-radius: 0.375rem;
+  color: inherit;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.app-menu__item[data-highlighted] {
+  background: var(--hope-colors-neutral4, #edf2f7);
+}
+
+.app-menu__item[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.app-menu__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .app-menu__content {
+    background: var(--hope-colors-background, #1a202c);
+    color: var(--hope-colors-neutral12, #f7fafc);
+  }
+}
