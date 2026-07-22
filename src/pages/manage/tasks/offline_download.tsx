@@ -1,4 +1,4 @@
-import { VStack } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { useManageTitle } from "~/hooks"
 import { TypeTasks } from "./Tasks"
 import {

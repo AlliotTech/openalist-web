@@ -1,5 +1,5 @@
 import { useManageTitle } from "~/hooks"
-import { VStack } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { TypeTasks } from "~/pages/manage/tasks/Tasks"
 import {
   getDecompressNameAnalyzer,

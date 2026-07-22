@@ -19,7 +19,7 @@ type StackProps = ParentProps<
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
     justifyContent?: JSX.CSSProperties["justify-content"]
-    w?: string
+    w?: string | { "@initial"?: string; "@lg"?: string }
     h?: string
     minW?: string | number
     maxW?: string | number
@@ -51,6 +51,7 @@ type StackProps = ParentProps<
     background?: string
     border?: string
     _hover?: { border?: string }
+    css?: JSX.CSSProperties
   }
 >
 
@@ -95,20 +96,25 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "background",
     "border",
     "_hover",
+    "css",
   ])
   return (
     <div
       {...others}
-      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${local._hover?.border ? " app-stack--hover-border" : ""}${local.class ? ` ${local.class}` : ""}`}
+      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${local._hover?.border ? " app-stack--hover-border" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={
         {
+          ...(local.css ?? {}),
           ...(local.style ?? {}),
           display: "flex",
           "flex-direction": local.direction,
           gap: token(local.gap ?? local.spacing, "space"),
           "align-items": local.alignItems,
           "justify-content": local.justifyContent,
-          width: token(local.w, "sizes"),
+          width: token(
+            typeof local.w === "object" ? local.w["@initial"] : local.w,
+            "sizes",
+          ),
           height: token(local.h, "sizes"),
           "min-width": token(local.minW, "sizes"),
           "max-width": token(local.maxW, "sizes"),

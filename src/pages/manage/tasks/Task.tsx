@@ -6,11 +6,10 @@ import {
   Grid,
   GridItem,
   Heading,
-  HStack,
   Spacer,
   Text,
-  VStack,
 } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppProgress } from "~/components/ui/Loading"
 import { createSignal, For, Show } from "solid-js"
 import { useT, useFetch } from "~/hooks"
@@ -281,7 +280,7 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
       </HStack>
       <Show when={props.local.expanded}>
         <VStack
-          css={{ wordBreak: "break-all", fontSize: "0.8em" }}
+          css={{ "word-break": "break-all", "font-size": "0.8em" }}
           w="$full"
           pl="$2"
           pr="$2"

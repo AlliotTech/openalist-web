@@ -7,3 +7,9 @@
     flex-wrap: nowrap;
   }
 }
+
+@media (min-width: 1024px) {
+  .app-stack--responsive-width {
+    width: 100%;
+  }
+}

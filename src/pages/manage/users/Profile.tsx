@@ -5,11 +5,10 @@ import {
   AlertTitle,
   Badge,
   Heading,
-  HStack,
   SimpleGrid,
-  VStack,
   Text,
 } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,
   AppFormHelperText as FormHelperText,
