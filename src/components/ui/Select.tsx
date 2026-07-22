@@ -35,7 +35,7 @@ export function AppCombobox<T extends string | number>(
       }}
       itemComponent={(itemProps) => (
         <Combobox.Item item={itemProps.item} class="app-select__item">
-          <Combobox.ItemLabel>
+          <Combobox.ItemLabel class="app-select__item-label">
             {itemProps.item.rawValue.label}
           </Combobox.ItemLabel>
           <Combobox.ItemIndicator class="app-select__indicator">
@@ -43,7 +43,7 @@ export function AppCombobox<T extends string | number>(
           </Combobox.ItemIndicator>
         </Combobox.Item>
       )}
-      class={`app-select${props.class ? ` ${props.class}` : ""}`}
+      class={`app-select app-select--${props.size ?? "md"}${props.class ? ` ${props.class}` : ""}`}
       style={props.style}
     >
       <Combobox.HiddenSelect />
@@ -55,7 +55,7 @@ export function AppCombobox<T extends string | number>(
       </Combobox.Control>
       <Combobox.Portal>
         <Combobox.Content class="app-select__content">
-          <Combobox.Listbox />
+          <Combobox.Listbox class="app-select__listbox" />
         </Combobox.Content>
       </Combobox.Portal>
     </Combobox>
@@ -70,6 +70,7 @@ interface AppSelectBaseProps<T extends string | number> {
   readOnly?: boolean
   class?: string
   style?: JSX.CSSProperties
+  size?: "xs" | "sm" | "md" | "lg"
 }
 
 type AppSelectProps<T extends string | number> = AppSelectBaseProps<T> &
@@ -127,13 +128,15 @@ export function AppSelect<T extends string | number>(props: AppSelectProps<T>) {
       }}
       itemComponent={(itemProps: any) => (
         <Select.Item item={itemProps.item} class="app-select__item">
-          <Select.ItemLabel>{itemProps.item.rawValue.label}</Select.ItemLabel>
+          <Select.ItemLabel class="app-select__item-label">
+            {itemProps.item.rawValue.label}
+          </Select.ItemLabel>
           <Select.ItemIndicator class="app-select__indicator">
             ✓
           </Select.ItemIndicator>
         </Select.Item>
       )}
-      class={`app-select${props.class ? ` ${props.class}` : ""}`}
+      class={`app-select app-select--${props.size ?? "md"}${props.class ? ` ${props.class}` : ""}`}
       style={props.style}
     >
       <Select.HiddenSelect />
@@ -150,7 +153,7 @@ export function AppSelect<T extends string | number>(props: AppSelectProps<T>) {
       </Select.Trigger>
       <Select.Portal>
         <Select.Content class="app-select__content">
-          <Select.Listbox />
+          <Select.Listbox class="app-select__listbox" />
         </Select.Content>
       </Select.Portal>
     </Select>

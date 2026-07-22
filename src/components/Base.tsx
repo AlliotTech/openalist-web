@@ -118,6 +118,7 @@ export function SelectWrapper<T extends string | number>(props: {
         value: option.value,
         label: option.label ?? option.value.toString(),
       }))}
+      size={props.size}
       class={props.alwaysShowBorder ? "app-select--bordered" : undefined}
       style={
         props.w
