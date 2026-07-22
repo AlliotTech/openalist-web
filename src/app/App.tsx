@@ -1,10 +1,10 @@
 import { Progress, ProgressIndicator } from "@hope-ui/solid"
-import { Route, Routes, useIsRouting } from "@solidjs/router"
+import { useIsRouting } from "@solidjs/router"
 import {
   Component,
   createEffect,
   createSignal,
-  lazy,
+  JSXElement,
   Match,
   onCleanup,
   Switch,
@@ -12,21 +12,15 @@ import {
 import { Portal } from "solid-js/web"
 import { useLoading, useRouter, useT } from "~/hooks"
 import { globalStyles } from "./theme"
-import { bus, r, handleRespWithoutAuthAndNotify, base_path } from "~/utils"
+import { bus, r, handleRespWithoutAuthAndNotify } from "~/utils"
 import { setSettings } from "~/store"
 import { Error, FullScreenLoading } from "~/components"
-import { MustUser } from "./MustUser"
 import "./index.css"
 import { addLanguage, initialLang, langMap, loadedLangs } from "./i18n"
 import { Resp } from "~/types"
 import { setArchiveExtensions } from "~/store/archive"
 
-const Home = lazy(() => import("~/pages/home/Layout"))
-const Manage = lazy(() => import("~/pages/manage"))
-const Login = lazy(() => import("~/pages/login"))
-const Test = lazy(() => import("~/pages/test"))
-
-const App: Component = () => {
+const App: Component<{ children?: JSXElement }> = (props) => {
   const t = useT()
   globalStyles()
   const isRouting = useIsRouting()
@@ -83,30 +77,7 @@ const App: Component = () => {
           <ProgressIndicator />
         </Progress>
       </Portal>
-      <Switch
-        fallback={
-          <Routes base={base_path}>
-            <Route path="/@test" component={Test} />
-            <Route path="/@login" component={Login} />
-            <Route
-              path="/@manage/*"
-              element={
-                <MustUser>
-                  <Manage />
-                </MustUser>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <MustUser>
-                  <Home />
-                </MustUser>
-              }
-            />
-          </Routes>
-        }
-      >
+      <Switch fallback={props.children}>
         <Match when={err().length > 0}>
           <Error
             h="100vh"

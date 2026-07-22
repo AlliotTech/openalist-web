@@ -5,7 +5,7 @@ import {
   BreadcrumbProps,
   BreadcrumbSeparator,
 } from "@hope-ui/solid"
-import { Link } from "@solidjs/router"
+import { A as Link } from "@solidjs/router"
 import { createMemo, For, Show } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
 import { getSetting, local } from "~/store"
@@ -95,7 +95,7 @@ export const Nav = () => {
                 href={joinBase(href)}
                 onMouseEnter={() => setPathAs(path)}
               >
-                {text}
+                {text()}
               </BreadcrumbLink>
               <Show when={!isLast()}>
                 <BreadcrumbSeparator class="nav-separator" mx="$2" />

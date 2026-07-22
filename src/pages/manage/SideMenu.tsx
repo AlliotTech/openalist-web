@@ -6,7 +6,7 @@ import { onClose } from "./Header"
 import { UserMethods, UserRole } from "~/types"
 import { me } from "~/store"
 import { AnchorWithBase } from "~/components"
-import { Link } from "@solidjs/router"
+import { A as Link } from "@solidjs/router"
 import { hoverColor, joinBase } from "~/utils"
 import { IconTypes } from "solid-icons"
 

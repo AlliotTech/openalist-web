@@ -1,4 +1,4 @@
-import { Link } from "@solidjs/router"
+import { A as Link } from "@solidjs/router"
 import { Anchor } from "@hope-ui/solid"
 import { joinBase, encodePath } from "~/utils"
 import { useRouter } from "~/hooks"

@@ -4,11 +4,9 @@ import { useT, useTitle } from "~/hooks"
 import { Header } from "./Header"
 import { SideMenu } from "./SideMenu"
 import { side_menu_items } from "./sidemenu_items"
-import { Route, Routes } from "@solidjs/router"
-import { For, Suspense } from "solid-js"
-import { routes } from "./routes"
+import { JSXElement, Suspense } from "solid-js"
 
-const Manage = () => {
+const Manage = (props: { children: JSXElement }) => {
   const t = useT()
   useTitle(() => t("manage.title"))
   return (
@@ -45,13 +43,7 @@ const Manage = () => {
           p="$4"
           overflowY="auto"
         >
-          <Routes>
-            <For each={routes}>
-              {(route) => {
-                return <Route path={route.to!} component={route.component} />
-              }}
-            </For>
-          </Routes>
+          <Suspense fallback={<FullLoading />}>{props.children}</Suspense>
         </Box>
       </Flex>
     </Box>
