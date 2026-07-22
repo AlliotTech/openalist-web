@@ -100,7 +100,6 @@
     "solid-js": "^1.9.14",
     "solid-markdown": "^2.1.1",
     "solid-motionone": "^1.0.4",
-    "solid-transition-group": "^0.0.12",
     "streamsaver": "^2.0.6",
     "typescript-natural-sort": "^0.7.2"
   },
