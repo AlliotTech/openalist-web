@@ -57,6 +57,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
+          version: 11.15.1
           run_install: false
 
       - name: Checkout dist repo
