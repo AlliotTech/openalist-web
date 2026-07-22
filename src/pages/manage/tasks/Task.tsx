@@ -1,6 +1,5 @@
 import {
   Badge,
-  Center,
   Divider,
   Flex,
   Grid,
@@ -9,7 +8,11 @@ import {
   Text,
 } from "@hope-ui/solid"
 import { AppSpacer as Spacer } from "~/components/ui/Layout"
-import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
+import {
+  AppCenter as Center,
+  AppHStack as HStack,
+  AppVStack as VStack,
+} from "~/components/ui/Stack"
 import { AppProgress } from "~/components/ui/Loading"
 import { createSignal, For, Show } from "solid-js"
 import { useT, useFetch } from "~/hooks"

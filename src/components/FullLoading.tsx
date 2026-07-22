@@ -1,4 +1,4 @@
-import { Center } from "@hope-ui/solid"
+import { AppCenter as Center } from "~/components/ui/Stack"
 import { JSXElement, mergeProps, Show } from "solid-js"
 import { getMainColor } from "~/store"
 import { AppSpinner, type AppSpinnerProps } from "~/components/ui/Loading"

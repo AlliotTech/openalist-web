@@ -1,4 +1,4 @@
-import { Center } from "@hope-ui/solid"
+import { AppCenter as Center } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,
   AppFormHelperText as FormHelperText,

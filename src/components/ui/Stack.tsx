@@ -13,7 +13,7 @@ const token = (value: string | number | undefined, group: string) => {
 const cssTokens = (value: string | undefined) =>
   value?.replace(/\$([\w]+)/g, "var(--hope-colors-$1)")
 
-type StackProps = ParentProps<
+export type AppStackProps = ParentProps<
   Omit<JSX.HTMLAttributes<HTMLDivElement>, "style"> & {
     style?: JSX.CSSProperties
     as?: any
@@ -22,13 +22,15 @@ type StackProps = ParentProps<
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
     justifyContent?: JSX.CSSProperties["justify-content"]
+    flexDirection?: JSX.CSSProperties["flex-direction"]
     w?:
       | string
+      | number
       | {
-          "@initial"?: string
-          "@sm"?: string
-          "@md"?: string
-          "@lg"?: string
+          "@initial"?: string | number
+          "@sm"?: string | number
+          "@md"?: string | number
+          "@lg"?: string | number
         }
     width?: string
     h?: string
@@ -59,6 +61,11 @@ type StackProps = ParentProps<
     animate?: unknown
     exit?: unknown
     cursor?: JSX.CSSProperties["cursor"]
+    zIndex?: string | number
+    top?: string | number
+    right?: string | number
+    bottom?: string | number
+    left?: string | number
     overflow?: JSX.CSSProperties["overflow"]
     overflowX?: JSX.CSSProperties["overflow-x"]
     overflowY?: JSX.CSSProperties["overflow-y"]
@@ -85,7 +92,7 @@ type StackProps = ParentProps<
   }
 >
 
-const Stack = (props: StackProps & { direction: "row" | "column" }) => {
+const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
   const [local, others] = splitProps(props, [
     "class",
     "as",
@@ -96,6 +103,7 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "gap",
     "alignItems",
     "justifyContent",
+    "flexDirection",
     "w",
     "width",
     "h",
@@ -122,6 +130,11 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "pos",
     "transition",
     "cursor",
+    "zIndex",
+    "top",
+    "right",
+    "bottom",
+    "left",
     "overflow",
     "overflowX",
     "overflowY",
@@ -154,7 +167,7 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           ...(local.css ?? {}),
           ...(local.style ?? {}),
           display: "flex",
-          "flex-direction": local.direction,
+          "flex-direction": local.flexDirection ?? local.direction,
           gap: token(local.gap ?? local.spacing, "space"),
           "align-items": local.alignItems,
           "justify-content": local.justifyContent,
@@ -191,6 +204,11 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           transition:
             typeof local.transition === "string" ? local.transition : undefined,
           cursor: local.cursor,
+          "z-index": token(local.zIndex, "zIndices"),
+          top: token(local.top, "space"),
+          right: token(local.right, "space"),
+          bottom: token(local.bottom, "space"),
+          left: token(local.left, "space"),
           overflow: local.overflow,
           "overflow-x": local.overflowX,
           "overflow-y": local.overflowY,
@@ -227,10 +245,19 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
   )
 }
 
-export const AppHStack = (props: StackProps) => (
+export const AppHStack = (props: AppStackProps) => (
   <Stack {...props} direction="row" />
 )
 
-export const AppVStack = (props: StackProps) => (
+export const AppVStack = (props: AppStackProps) => (
   <Stack {...props} direction="column" />
+)
+
+export const AppCenter = (props: AppStackProps) => (
+  <Stack
+    {...props}
+    direction="row"
+    alignItems={props.alignItems ?? "center"}
+    justifyContent={props.justifyContent ?? "center"}
+  />
 )

@@ -1,5 +1,5 @@
-import { Box, Center, Flex, useColorModeValue } from "@hope-ui/solid"
-import { AppHStack as HStack } from "~/components/ui/Stack"
+import { Box, Flex, useColorModeValue } from "@hope-ui/solid"
+import { AppCenter as Center, AppHStack as HStack } from "~/components/ui/Stack"
 import { FullLoading, SwitchColorMode, SwitchLanguageWhite } from "~/components"
 import { useT, useTitle } from "~/hooks"
 import { Header } from "./Header"

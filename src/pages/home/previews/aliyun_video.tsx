@@ -1,4 +1,5 @@
-import { Box, Center } from "@hope-ui/solid"
+import { Box } from "@hope-ui/solid"
+import { AppCenter as Center } from "~/components/ui/Stack"
 import { Show, createSignal, onCleanup, onMount } from "solid-js"
 import { useRouter, useLink, useFetch } from "~/hooks"
 import { getMainColor, getSettingBool, objStore, password } from "~/store"

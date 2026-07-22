@@ -1,13 +1,16 @@
 import {
   Image,
-  Center,
   Flex,
   Heading,
   Text,
   useColorModeValue,
   Icon,
 } from "@hope-ui/solid"
-import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
+import {
+  AppCenter as Center,
+  AppHStack as HStack,
+  AppVStack as VStack,
+} from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { createMemo, createSignal, Show, onMount, onCleanup } from "solid-js"

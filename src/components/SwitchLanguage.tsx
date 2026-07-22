@@ -1,4 +1,5 @@
-import { Center, Icon, useColorModeValue } from "@hope-ui/solid"
+import { Icon, useColorModeValue } from "@hope-ui/solid"
+import { AppCenter as Center } from "~/components/ui/Stack"
 import { AppSpinner } from "~/components/ui/Loading"
 import { createSignal, For, Show } from "solid-js"
 import {

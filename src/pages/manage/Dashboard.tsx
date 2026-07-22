@@ -1,4 +1,5 @@
-import { Center, Heading } from "@hope-ui/solid"
+import { Heading } from "@hope-ui/solid"
+import { AppCenter as Center } from "~/components/ui/Stack"
 import { useManageTitle } from "~/hooks"
 
 const Dashboard = () => {
