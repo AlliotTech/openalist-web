@@ -1,6 +1,5 @@
 import { JSXElement, Match, Switch } from "solid-js"
 import { getSetting } from "~/store"
-import { Container as HopeContainer } from "@hope-ui/solid"
 import { AppBox as Box } from "~/components/ui/Layout"
 
 export const Container = (props: { children: JSXElement }) => {
@@ -14,7 +13,9 @@ export const Container = (props: { children: JSXElement }) => {
       }
     >
       <Match when={container === "hope_container"}>
-        <HopeContainer>{props.children}</HopeContainer>
+        <Box w="$full" maxW="$7xl" mx="auto" px="$4">
+          {props.children}
+        </Box>
       </Match>
     </Switch>
   )

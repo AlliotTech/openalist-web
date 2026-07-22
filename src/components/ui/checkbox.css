@@ -63,3 +63,8 @@
   cursor: pointer;
   user-select: none;
 }
+.item-checkbox::before {
+  position: absolute;
+  inset: -10px -2px -10px -10px;
+  content: "";
+}

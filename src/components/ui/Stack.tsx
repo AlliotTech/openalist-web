@@ -21,10 +21,17 @@ export type AppStackProps = ParentProps<
     spacing?: string
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
-    justifyContent?: JSX.CSSProperties["justify-content"]
+    justifyContent?:
+      | JSX.CSSProperties["justify-content"]
+      | { "@initial"?: string; "@xl"?: string }
     flexDirection?:
       | JSX.CSSProperties["flex-direction"]
-      | { "@initial"?: string; "@sm"?: string; "@md"?: string }
+      | {
+          "@initial"?: string
+          "@sm"?: string
+          "@md"?: string
+          "@xl"?: string
+        }
     columnGap?: string
     fontSize?: string
     w?:
@@ -167,7 +174,7 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
       {...(typeof local.transition === "object"
         ? { transition: local.transition }
         : {})}
-      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${typeof local.flexDirection === "object" ? " app-stack--responsive-direction" : ""}${local._hover ? " app-stack--hover" : ""}${local._active ? " app-stack--active" : ""}${local.class ? ` ${local.class}` : ""}`}
+      class={`app-stack app-stack--${local.direction}${typeof local.wrap === "object" ? " app-stack--responsive-wrap" : ""}${typeof local.w === "object" ? " app-stack--responsive-width" : ""}${typeof local.flexDirection === "object" ? " app-stack--responsive-direction" : ""}${typeof local.justifyContent === "object" ? " app-stack--responsive-justify" : ""}${local._hover ? " app-stack--hover" : ""}${local._active ? " app-stack--active" : ""}${local.class ? ` ${local.class}` : ""}`}
       style={
         {
           ...(local.css ?? {}),
@@ -181,7 +188,10 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           "column-gap": token(local.columnGap, "space"),
           "font-size": token(local.fontSize, "fontSizes"),
           "align-items": local.alignItems,
-          "justify-content": local.justifyContent,
+          "justify-content":
+            typeof local.justifyContent === "object"
+              ? local.justifyContent["@initial"]
+              : local.justifyContent,
           width: token(
             typeof local.w === "object"
               ? local.w["@initial"]
@@ -255,6 +265,14 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           "--app-stack-direction-md":
             typeof local.flexDirection === "object"
               ? local.flexDirection["@md"]
+              : undefined,
+          "--app-stack-direction-xl":
+            typeof local.flexDirection === "object"
+              ? local.flexDirection["@xl"]
+              : undefined,
+          "--app-stack-justify-xl":
+            typeof local.justifyContent === "object"
+              ? local.justifyContent["@xl"]
               : undefined,
         } as any
       }

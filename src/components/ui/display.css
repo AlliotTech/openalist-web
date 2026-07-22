@@ -71,6 +71,22 @@
   }
 }
 
+.app-kbd {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--hope-colors-neutral7);
+  border-radius: var(--hope-radii-sm);
+  background: var(--hope-colors-neutral3);
+  box-shadow: 0 1px 0 var(--hope-colors-neutral7);
+  font: inherit;
+  font-size: 0.75rem;
+}
+
+.app-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 @keyframes app-skeleton-pulse {
   from {
     background-position: 200% 0;

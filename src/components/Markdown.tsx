@@ -6,7 +6,10 @@ import rehypeRaw from "rehype-raw"
 import "./markdown.css"
 import { For, Show, createEffect, createMemo, createSignal, on } from "solid-js"
 import { clsx } from "clsx"
-import { List, ListItem } from "@hope-ui/solid"
+import {
+  AppList as List,
+  AppListItem as ListItem,
+} from "~/components/ui/Display"
 import { AppAnchor as Anchor } from "~/components/ui/Typography"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { useParseText, useRouter } from "~/hooks"

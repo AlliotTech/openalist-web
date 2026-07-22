@@ -44,3 +44,16 @@
     );
   }
 }
+
+@media (min-width: 1280px) {
+  .app-stack--responsive-direction {
+    flex-direction: var(
+      --app-stack-direction-xl,
+      var(--app-stack-direction-md, var(--app-stack-direction-sm))
+    );
+  }
+
+  .app-stack--responsive-justify {
+    justify-content: var(--app-stack-justify-xl);
+  }
+}

@@ -1,4 +1,4 @@
-import { Switch } from "@hope-ui/solid"
+import { AppSwitch as Switch } from "~/components/ui/Switch"
 import { AppImage as Image } from "~/components/ui/Image"
 import { AppAnchor as Anchor } from "~/components/ui/Typography"
 import {
@@ -110,16 +110,10 @@ export const VideoBox = (props: {
           options={videos.map((obj) => ({ value: obj.name }))}
         />
         <Switch
-          css={{
-            whiteSpace: "nowrap",
-          }}
           defaultChecked={autoNext === "true"}
-          onChange={(e) => {
-            props.onAutoNextChange(e.currentTarget.checked)
-            localStorage.setItem(
-              "video_auto_next",
-              e.currentTarget.checked.toString(),
-            )
+          onChange={(checked) => {
+            props.onAutoNextChange(checked)
+            localStorage.setItem("video_auto_next", checked.toString())
           }}
         >
           {t("home.preview.auto_next")}

@@ -1,6 +1,5 @@
 import { AppHeading as Heading } from "~/components/ui/Typography"
-import { Stack } from "@hope-ui/solid"
-import { AppVStack as VStack } from "~/components/ui/Stack"
+import { AppFlex as Stack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createSignal, Show } from "solid-js"
 import { useT, useFetch } from "~/hooks"

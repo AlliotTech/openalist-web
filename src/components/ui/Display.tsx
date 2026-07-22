@@ -84,3 +84,41 @@ export const AppAlertTitle = (props: ParentProps<{ mr?: string }>) => (
 export const AppAlertDescription = (props: ParentProps) => (
   <span>{props.children}</span>
 )
+
+export const AppKbd = (props: ParentProps) => (
+  <kbd class="app-kbd">{props.children}</kbd>
+)
+
+export const AppList = (
+  props: ParentProps<{
+    maxH?: string
+    overflowY?: JSX.CSSProperties["overflow-y"]
+  }>,
+) => (
+  <ul
+    class="app-list"
+    style={{
+      "max-height": token(props.maxH, "sizes"),
+      "overflow-y": props.overflowY,
+    }}
+  >
+    {props.children}
+  </ul>
+)
+
+export const AppListItem = (
+  props: ParentProps<{ pl?: number | string; m?: number | string }>,
+) => (
+  <li
+    style={{
+      "padding-left":
+        typeof props.pl === "number"
+          ? `${props.pl}px`
+          : token(props.pl, "space"),
+      margin:
+        typeof props.m === "number" ? `${props.m}px` : token(props.m, "space"),
+    }}
+  >
+    {props.children}
+  </li>
+)

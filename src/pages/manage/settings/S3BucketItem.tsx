@@ -1,4 +1,4 @@
-import { Stack } from "@hope-ui/solid"
+import { AppFlex as Stack } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,
   AppFormLabel as FormLabel,

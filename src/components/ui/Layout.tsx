@@ -23,6 +23,7 @@ type AppBoxProps = ParentProps<
     height?: string | number
     className?: string
     minW?: string | number
+    maxW?: string | number
     boxSize?: string | number
     p?: string
     px?: string
@@ -80,6 +81,7 @@ export const AppBox = (props: AppBoxProps) => {
     "height",
     "className",
     "minW",
+    "maxW",
     "boxSize",
     "p",
     "px",
@@ -132,6 +134,7 @@ export const AppBox = (props: AppBoxProps) => {
         ),
         height: token(local.boxSize ?? local.h ?? local.height, "sizes"),
         "min-width": token(local.minW, "sizes"),
+        "max-width": token(local.maxW, "sizes"),
         padding: token(local.p, "space"),
         "padding-left": token(local.px ?? local.pl, "space"),
         "padding-right": token(local.px, "space"),

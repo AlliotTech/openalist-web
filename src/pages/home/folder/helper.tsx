@@ -1,5 +1,5 @@
-import { Checkbox, hope } from "@hope-ui/solid"
-import { createEffect, onCleanup } from "solid-js"
+import { createEffect, onCleanup, type JSX } from "solid-js"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 import { useContextMenu } from "~/components/ui/ContextMenu"
 import SelectionArea from "@viselect/vanilla"
 import {
@@ -121,16 +121,36 @@ export function useSelectWithMouse() {
   }
 }
 
-export const ItemCheckbox = hope(Checkbox, {
-  baseStyle: {
-    // expand the range of click
-    _before: {
-      content: "",
-      pos: "absolute",
-      top: -10,
-      right: -2,
-      bottom: -10,
-      left: -10,
-    },
-  },
-})
+export const ItemCheckbox = (props: {
+  checked?: boolean
+  indeterminate?: boolean
+  pos?: JSX.CSSProperties["position"]
+  left?: string
+  top?: string
+  zIndex?: string
+  onChange?: (event: { target: { checked: boolean } }) => void
+  "on:mousedown"?: (event: MouseEvent) => void
+  "on:click"?: (event: MouseEvent) => void
+}) => (
+  <div
+    class="item-checkbox"
+    style={{
+      position: props.pos,
+      left: props.left?.startsWith("$")
+        ? `var(--hope-space-${props.left.slice(1)})`
+        : props.left,
+      top: props.top?.startsWith("$")
+        ? `var(--hope-space-${props.top.slice(1)})`
+        : props.top,
+      "z-index": props.zIndex,
+    }}
+    on:mousedown={props["on:mousedown"]}
+    on:click={props["on:click"]}
+  >
+    <AppCheckbox
+      checked={props.checked}
+      indeterminate={props.indeterminate}
+      onChange={(checked) => props.onChange?.({ target: { checked } })}
+    />
+  </div>
+)
