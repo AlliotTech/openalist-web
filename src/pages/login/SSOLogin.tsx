@@ -1,4 +1,4 @@
-import { Icon } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { FiGithub, FiLogIn } from "solid-icons/fi"
 import { BsMicrosoft } from "solid-icons/bs"
 import { AiOutlineGoogle, AiOutlineDingtalk } from "solid-icons/ai"

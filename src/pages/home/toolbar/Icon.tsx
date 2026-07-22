@@ -1,4 +1,4 @@
-import { ElementType, Icon, IconProps } from "@hope-ui/solid"
+import { AppIcon as Icon, type AppIconProps } from "~/components/ui/Icon"
 import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { IconTypes } from "solid-icons"
 import { useT } from "~/hooks"
@@ -7,8 +7,8 @@ import { UserMethods, UserPermissions } from "~/types"
 import { hoverColor } from "~/utils"
 import { operations } from "./operations"
 
-export const CenterIcon = <C extends ElementType = "svg">(
-  props: IconProps<C> & {
+export const CenterIcon = (
+  props: AppIconProps & {
     name: string
   },
 ) => {
@@ -44,8 +44,8 @@ export const CenterIcon = <C extends ElementType = "svg">(
   )
 }
 
-export const RightIcon = <C extends ElementType = "svg">(
-  props: IconProps<C> & {
+export const RightIcon = (
+  props: AppIconProps & {
     tips?: string
     icon?: IconTypes
   },

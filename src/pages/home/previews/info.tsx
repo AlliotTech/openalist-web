@@ -2,7 +2,7 @@ import {
   AppText as Text,
   AppHeading as Heading,
 } from "~/components/ui/Typography"
-import { Icon } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppImage as Image } from "~/components/ui/Image"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { JSXElement } from "solid-js"

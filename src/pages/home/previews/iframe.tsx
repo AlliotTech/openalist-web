@@ -1,6 +1,6 @@
 import { BoxWithFullScreen } from "~/components"
 import { objStore } from "~/store"
-import { Icon, hope } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { convertURL, hoverColor } from "~/utils"
 import { Component, createMemo } from "solid-js"
 import { useLink } from "~/hooks"
@@ -18,7 +18,7 @@ const IframePreview = (props: { scheme: string }) => {
   })
   return (
     <BoxWithFullScreen w="$full" h="70vh">
-      <hope.iframe w="$full" h="$full" src={iframeSrc()} />
+      <iframe style={{ width: "100%", height: "100%" }} src={iframeSrc()} />
       <Icon
         pos="absolute"
         right="$2"

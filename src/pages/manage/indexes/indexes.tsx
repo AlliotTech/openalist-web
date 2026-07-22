@@ -2,7 +2,8 @@ import {
   AppText as Text,
   AppHeading as Heading,
 } from "~/components/ui/Typography"
-import { Icon, useColorModeValue } from "@hope-ui/solid"
+import { useColorModeValue } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppBadge as Badge } from "~/components/ui/Display"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"

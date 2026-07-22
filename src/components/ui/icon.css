@@ -1,0 +1,22 @@
+.app-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.app-icon--hover:hover {
+  background: var(--app-icon-hover-background);
+  color: var(--app-icon-hover-color);
+  transform: var(--app-icon-hover-transform);
+  box-shadow: var(--app-icon-hover-shadow);
+}
+
+.app-icon--focus:focus {
+  outline: var(--app-icon-focus-outline);
+}
+
+.app-icon--active:active {
+  transform: var(--app-icon-active-transform);
+  transition: var(--app-icon-active-transition);
+}

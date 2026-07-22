@@ -1,4 +1,3 @@
-import { hope } from "@hope-ui/solid"
 import { Show, createSignal } from "solid-js"
 import { BoxWithFullScreen, EncodingSelect, MaybeLoading } from "~/components"
 import { useFetchText, useParseText } from "~/hooks"
@@ -8,11 +7,13 @@ function Html(props: { children?: string | ArrayBuffer }) {
   const { isString, text } = useParseText(props.children)
   return (
     <BoxWithFullScreen w="$full" h="70vh" pos="relative">
-      <hope.iframe
-        w="$full"
-        h="$full"
-        rounded="$lg"
-        shadow="$md"
+      <iframe
+        style={{
+          width: "100%",
+          height: "100%",
+          "border-radius": "var(--hope-radii-lg)",
+          "box-shadow": "var(--hope-shadows-md)",
+        }}
         srcdoc={text(encoding())}
       />
       <Show when={!isString}>

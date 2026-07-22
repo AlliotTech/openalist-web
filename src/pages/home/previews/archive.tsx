@@ -1,5 +1,6 @@
 import { AppText as Text } from "~/components/ui/Typography"
-import { Icon, useColorMode } from "@hope-ui/solid"
+import { useColorMode } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import {
   AppBreadcrumb as Breadcrumb,
   AppBreadcrumbItem as BreadcrumbItem,

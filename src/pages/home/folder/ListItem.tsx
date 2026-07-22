@@ -1,5 +1,5 @@
 import { AppText as Text } from "~/components/ui/Typography"
-import { Icon } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import { useContextMenu } from "~/components/ui/ContextMenu"

@@ -1,0 +1,8 @@
+.app-search-result-name mark {
+  padding-right: 1px;
+  padding-left: 1px;
+  border-radius: var(--hope-radii-md);
+  background: var(--hope-colors-info4);
+  color: var(--hope-colors-info11);
+  font-weight: var(--hope-fontWeights-bold);
+}

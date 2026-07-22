@@ -2,7 +2,8 @@ import {
   AppText as Text,
   AppHeading as Heading,
 } from "~/components/ui/Typography"
-import { useColorModeValue, Icon } from "@hope-ui/solid"
+import { useColorModeValue } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppImage as Image } from "~/components/ui/Image"
 import {
   AppCenter as Center,

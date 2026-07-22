@@ -1,5 +1,5 @@
 import { Show, createSignal, onCleanup } from "solid-js"
-import { Icon } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { FiArrowUp } from "solid-icons/fi"
 import { Motion } from "solid-motionone"

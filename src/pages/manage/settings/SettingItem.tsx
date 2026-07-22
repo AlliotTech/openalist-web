@@ -1,4 +1,4 @@
-import { Icon } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppCenter as Center } from "~/components/ui/Stack"
 import {
   AppFormControl as FormControl,

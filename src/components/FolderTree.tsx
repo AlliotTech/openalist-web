@@ -1,5 +1,5 @@
 import { AppText as Text } from "~/components/ui/Typography"
-import { Icon } from "@hope-ui/solid"
+import { AppIcon as Icon } from "~/components/ui/Icon"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
