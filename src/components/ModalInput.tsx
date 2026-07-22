@@ -1,15 +1,12 @@
+import { Button, Input, Textarea, FormHelperText } from "@hope-ui/solid"
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  Input,
-  Textarea,
-  FormHelperText,
-} from "@hope-ui/solid"
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import {
   createSignal,
   JSXElement,
@@ -85,17 +82,17 @@ export const ModalInput = (props: ModalInputProps) => {
   }
 
   return (
-    <Modal
+    <AppModal
       blockScrollOnMount={false}
       opened={props.opened}
       onClose={props.onClose}
       initialFocus="#modal-input"
     >
-      <ModalOverlay />
-      <ModalContent onDrop={(e) => props.onDrop?.(e, setValue)}>
+      <AppModalOverlay />
+      <AppModalContent onDrop={(e) => props.onDrop?.(e, setValue)}>
         {/* <ModalCloseButton /> */}
-        <ModalHeader>{t(props.title)}</ModalHeader>
-        <ModalBody>
+        <AppModalHeader>{t(props.title)}</AppModalHeader>
+        <AppModalBody>
           <Show when={props.topSlot}>{props.topSlot}</Show>
           <Show
             when={props.type === "text"}
@@ -131,8 +128,8 @@ export const ModalInput = (props: ModalInputProps) => {
             <FormHelperText>{props.tips}</FormHelperText>
           </Show>
           <Show when={props.bottomSlot}>{props.bottomSlot}</Show>
-        </ModalBody>
-        <ModalFooter display="flex" gap="$2">
+        </AppModalBody>
+        <AppModalFooter>
           <Show when={props.footerSlot}>{props.footerSlot}</Show>
           <Button onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
@@ -140,8 +137,8 @@ export const ModalInput = (props: ModalInputProps) => {
           <Button loading={props.loading} onClick={() => submit()}>
             {t("global.ok")}
           </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </AppModalFooter>
+      </AppModalContent>
+    </AppModal>
   )
 }

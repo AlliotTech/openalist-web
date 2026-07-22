@@ -5,12 +5,6 @@ import {
   Icon,
   IconButton,
   Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Text,
   VStack,
   hope,
@@ -46,6 +40,14 @@ import {
 } from "~/utils"
 import { isMac } from "~/utils/compatibility"
 import { getIconByObj } from "~/utils/icon"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalCloseButton,
+  AppModalContent,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 
 // class MarkKeywords {
 //   root
@@ -243,7 +245,7 @@ const Search = () => {
     })
   }
   return (
-    <Modal
+    <AppModal
       // blockScrollOnMount={false}
       opened={isOpen()}
       onClose={onClose}
@@ -256,11 +258,11 @@ const Search = () => {
       initialFocus="#search-input"
       scrollBehavior="inside"
     >
-      <ModalOverlay bg="$blackAlpha5" />
-      <ModalContent mx="$2">
-        <ModalCloseButton />
-        <ModalHeader>{t("home.search.search")}</ModalHeader>
-        <ModalBody>
+      <AppModalOverlay />
+      <AppModalContent>
+        <AppModalCloseButton />
+        <AppModalHeader>{t("home.search.search")}</AppModalHeader>
+        <AppModalBody>
           <VStack w="$full" spacing="$2">
             <HStack w="$full" spacing="$2">
               <SelectWrapper
@@ -317,9 +319,9 @@ const Search = () => {
               setResetCallback={(reset) => (resetPaginator = reset)}
             />
           </VStack>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </AppModalBody>
+      </AppModalContent>
+    </AppModal>
   )
 }
 

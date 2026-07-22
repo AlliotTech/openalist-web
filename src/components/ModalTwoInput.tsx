@@ -1,16 +1,12 @@
+import { Button, Input, Textarea, FormHelperText, VStack } from "@hope-ui/solid"
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  Input,
-  Textarea,
-  FormHelperText,
-  VStack,
-} from "@hope-ui/solid"
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { createSignal, JSXElement, Show } from "solid-js"
 import { useT } from "~/hooks"
 import { notify } from "~/utils"
@@ -39,17 +35,17 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
     props.onSubmit?.(value1(), value2()) // Update onSubmit to pass both input values
   }
   return (
-    <Modal
+    <AppModal
       blockScrollOnMount={false}
       opened={props.opened}
       onClose={props.onClose}
       initialFocus="#modal-input1"
     >
-      <ModalOverlay />
-      <ModalContent>
+      <AppModalOverlay />
+      <AppModalContent>
         {/* <ModalCloseButton /> */}
-        <ModalHeader>{t(props.title)}</ModalHeader>
-        <ModalBody>
+        <AppModalHeader>{t(props.title)}</AppModalHeader>
+        <AppModalBody>
           <Show when={props.topSlot}>{props.topSlot}</Show>
           <Show
             when={props.type === "text"}
@@ -104,8 +100,8 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
           <Show when={props.tips}>
             <FormHelperText>{props.tips}</FormHelperText>
           </Show>
-        </ModalBody>
-        <ModalFooter display="flex" gap="$2">
+        </AppModalBody>
+        <AppModalFooter>
           <Button onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
           </Button>
@@ -116,8 +112,8 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
           >
             {t("global.ok")}
           </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </AppModalFooter>
+      </AppModalContent>
+    </AppModal>
   )
 }

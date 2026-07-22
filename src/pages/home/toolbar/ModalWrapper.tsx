@@ -1,15 +1,15 @@
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalOverlay,
-  createDisclosure,
-  ModalCloseButton,
-} from "@hope-ui/solid"
+import { createDisclosure } from "@hope-ui/solid"
 import { JSXElement, onCleanup, Show, Suspense } from "solid-js"
 import { FullLoading } from "~/components"
 import { useT } from "~/hooks"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalCloseButton,
+  AppModalContent,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { bus } from "~/utils"
 
 export const ModalWrapper = (props: {
@@ -30,7 +30,7 @@ export const ModalWrapper = (props: {
   })
   const { isOpen, onOpen, onClose } = createDisclosure()
   return (
-    <Modal
+    <AppModal
       blockScrollOnMount={props.blockScrollOnMount}
       opened={isOpen()}
       onClose={onClose}
@@ -44,16 +44,16 @@ export const ModalWrapper = (props: {
         "@2xl": "2xl",
       }}
     >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalCloseButton />
-        <ModalHeader>{t(props.title)}</ModalHeader>
-        <ModalBody>
+      <AppModalOverlay />
+      <AppModalContent>
+        <AppModalCloseButton />
+        <AppModalHeader>{t(props.title)}</AppModalHeader>
+        <AppModalBody>
           <Show when={isOpen()}>
             <Suspense fallback={<FullLoading />}>{props.children}</Suspense>
           </Show>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+        </AppModalBody>
+      </AppModalContent>
+    </AppModal>
   )
 }

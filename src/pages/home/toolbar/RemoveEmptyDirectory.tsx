@@ -1,13 +1,12 @@
+import { Button, createDisclosure } from "@hope-ui/solid"
 import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  createDisclosure,
-} from "@hope-ui/solid"
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import {
   bus,
@@ -32,7 +31,7 @@ export const RemoveEmptyDirectory = () => {
   })
   const t = useT()
   return (
-    <Modal
+    <AppModal
       blockScrollOnMount={false}
       opened={isOpen()}
       onClose={onClose}
@@ -41,13 +40,15 @@ export const RemoveEmptyDirectory = () => {
         "@md": "md",
       }}
     >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{t("home.toolbar.remove_empty_directory")}</ModalHeader>
-        <ModalBody>
+      <AppModalOverlay />
+      <AppModalContent>
+        <AppModalHeader>
+          {t("home.toolbar.remove_empty_directory")}
+        </AppModalHeader>
+        <AppModalBody>
           <p>{t("home.toolbar.remove_empty_directory-tips")}</p>
-        </ModalBody>
-        <ModalFooter display="flex" gap="$2">
+        </AppModalBody>
+        <AppModalFooter>
           <Button onClick={onClose} colorScheme="neutral">
             {t("global.cancel")}
           </Button>
@@ -64,8 +65,8 @@ export const RemoveEmptyDirectory = () => {
           >
             {t("global.confirm")}
           </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </AppModalFooter>
+      </AppModalContent>
+    </AppModal>
   )
 }

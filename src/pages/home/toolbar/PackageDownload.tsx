@@ -4,14 +4,8 @@ import { getLinkByDirAndObj, useRouter, useT } from "~/hooks"
 import { fsList, pathBase, pathJoin } from "~/utils"
 import { password, selectedObjs as _selectedObjs } from "~/store"
 import { createSignal, For, Show } from "solid-js"
-import {
-  Button,
-  Heading,
-  ModalBody,
-  ModalFooter,
-  Text,
-  VStack,
-} from "@hope-ui/solid"
+import { Button, Heading, Text, VStack } from "@hope-ui/solid"
+import { AppModalBody, AppModalFooter } from "~/components/ui/Modal"
 import { Obj } from "~/types"
 
 streamSaver.mitm = "/streamer/mitm.html"
@@ -140,7 +134,7 @@ const PackageDownload = (props: { onClose: () => void }) => {
 
   return (
     <>
-      <ModalBody>
+      <AppModalBody>
         <VStack w="$full" alignItems="start" spacing="$2">
           <Heading>
             {t(`home.package_download.current_status`)}: {cur()}
@@ -157,13 +151,13 @@ const PackageDownload = (props: { onClose: () => void }) => {
             )}
           </For>
         </VStack>
-      </ModalBody>
+      </AppModalBody>
       <Show when={[1, 4].includes(status())}>
-        <ModalFooter>
+        <AppModalFooter>
           <Button colorScheme="info" onClick={props.onClose}>
             {t("global.close")}
           </Button>
-        </ModalFooter>
+        </AppModalFooter>
       </Show>
     </>
   )

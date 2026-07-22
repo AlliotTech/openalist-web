@@ -1,13 +1,12 @@
+import { Button, createDisclosure } from "@hope-ui/solid"
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  createDisclosure,
-} from "@hope-ui/solid"
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 import { onCleanup } from "solid-js"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { selectedObjs } from "~/store"
@@ -29,7 +28,7 @@ export const Delete = () => {
     bus.off("tool", handler)
   })
   return (
-    <Modal
+    <AppModal
       blockScrollOnMount={false}
       opened={isOpen()}
       onClose={onClose}
@@ -38,13 +37,13 @@ export const Delete = () => {
         "@md": "md",
       }}
     >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{t("home.toolbar.delete")}</ModalHeader>
-        <ModalBody>
+      <AppModalOverlay />
+      <AppModalContent>
+        <AppModalHeader>{t("home.toolbar.delete")}</AppModalHeader>
+        <AppModalBody>
           <p>{t("home.toolbar.delete-tips")}</p>
-        </ModalBody>
-        <ModalFooter display="flex" gap="$2">
+        </AppModalBody>
+        <AppModalFooter>
           <Button onClick={onClose} colorScheme="neutral">
             {t("global.cancel")}
           </Button>
@@ -64,8 +63,8 @@ export const Delete = () => {
           >
             {t("global.confirm")}
           </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </AppModalFooter>
+      </AppModalContent>
+    </AppModal>
   )
 }

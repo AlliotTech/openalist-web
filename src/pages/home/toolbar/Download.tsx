@@ -1,13 +1,4 @@
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  createDisclosure,
-} from "@hope-ui/solid"
+import { Button, createDisclosure } from "@hope-ui/solid"
 import { createSignal, lazy, onCleanup, Show, Suspense } from "solid-js"
 import { FullLoading } from "~/components"
 import { useT, useDownload } from "~/hooks"
@@ -16,6 +7,14 @@ import { UserMethods } from "~/types"
 import { bus } from "~/utils"
 import { CenterIcon } from "./Icon"
 import { AppMenu } from "~/components/ui/Menu"
+import {
+  AppModal,
+  AppModalBody,
+  AppModalContent,
+  AppModalFooter,
+  AppModalHeader,
+  AppModalOverlay,
+} from "~/components/ui/Modal"
 
 export const Download = () => {
   const t = useT()
@@ -79,7 +78,7 @@ export const PackageDownloadModal = () => {
   const { isOpen, onOpen, onClose } = createDisclosure()
   const [show, setShow] = createSignal("pre_tips")
   return (
-    <Modal
+    <AppModal
       blockScrollOnMount={false}
       opened={isOpen()}
       onClose={onClose}
@@ -90,18 +89,18 @@ export const PackageDownloadModal = () => {
       //   "@md": "md",
       // }}
     >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{t("home.toolbar.package_download")}</ModalHeader>
+      <AppModalOverlay />
+      <AppModalContent>
+        <AppModalHeader>{t("home.toolbar.package_download")}</AppModalHeader>
         <Suspense fallback={<FullLoading />}>
           <Show
             when={show() === "pre_tips"}
             fallback={<PackageDownload onClose={onClose} />}
           >
-            <ModalBody>
+            <AppModalBody>
               <p>{t("home.toolbar.pre_package_download-tips")}</p>
-            </ModalBody>
-            <ModalFooter display="flex" gap="$2">
+            </AppModalBody>
+            <AppModalFooter>
               <Button onClick={onClose} colorScheme="neutral">
                 {t("global.cancel")}
               </Button>
@@ -113,10 +112,10 @@ export const PackageDownloadModal = () => {
               >
                 {t("global.confirm")}
               </Button>
-            </ModalFooter>
+            </AppModalFooter>
           </Show>
         </Suspense>
-      </ModalContent>
-    </Modal>
+      </AppModalContent>
+    </AppModal>
   )
 }
