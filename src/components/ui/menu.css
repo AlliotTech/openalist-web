@@ -19,7 +19,7 @@
   background: var(--hope-colors-background, #fff);
   color: var(--hope-colors-neutral12, #1a202c);
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.16);
-  z-index: 1000;
+  z-index: var(--hope-zIndices-dropdown, 1400);
 }
 
 .app-menu__item {

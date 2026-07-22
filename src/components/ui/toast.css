@@ -1,6 +1,6 @@
 .app-toast-region {
   position: fixed;
-  z-index: 2147483647;
+  z-index: var(--hope-zIndices-notification, 1800);
   top: 1rem;
   right: 1rem;
   width: calc(100% - 32px);

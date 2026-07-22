@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   background: hsl(0deg 0% 0% / 65%);
-  z-index: 1100;
+  z-index: var(--hope-zIndices-modal, 1300);
 }
 
 .app-modal__content {
@@ -21,7 +21,7 @@
   color: var(--hope-colors-neutral12, #1a202c);
   box-shadow: var(--hope-shadows-lg, 0 10px 15px rgba(15, 23, 42, 0.18));
   transform: translateX(-50%);
-  z-index: 1101;
+  z-index: calc(var(--hope-zIndices-modal, 1300) + 1);
   outline: none;
 }
 
