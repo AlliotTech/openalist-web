@@ -1,4 +1,4 @@
-import { Button } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createDisclosure } from "~/hooks/disclosure"
 import {
   AppModal,
@@ -45,10 +45,10 @@ export const Delete = () => {
           <p>{t("home.toolbar.delete-tips")}</p>
         </AppModalBody>
         <AppModalFooter>
-          <Button onClick={onClose} colorScheme="neutral">
+          <AppButton onClick={onClose} colorScheme="neutral">
             {t("global.cancel")}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             colorScheme="danger"
             loading={loading()}
             onClick={async () => {
@@ -63,7 +63,7 @@ export const Delete = () => {
             }}
           >
             {t("global.confirm")}
-          </Button>
+          </AppButton>
         </AppModalFooter>
       </AppModalContent>
     </AppModal>

@@ -1,4 +1,4 @@
-import { Button } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, lazy, onCleanup, Show, Suspense } from "solid-js"
 import { FullLoading } from "~/components"
@@ -102,17 +102,17 @@ export const PackageDownloadModal = () => {
               <p>{t("home.toolbar.pre_package_download-tips")}</p>
             </AppModalBody>
             <AppModalFooter>
-              <Button onClick={onClose} colorScheme="neutral">
+              <AppButton onClick={onClose} colorScheme="neutral">
                 {t("global.cancel")}
-              </Button>
-              <Button
+              </AppButton>
+              <AppButton
                 colorScheme="info"
                 onClick={() => {
                   setShow("package_download")
                 }}
               >
                 {t("global.confirm")}
-              </Button>
+              </AppButton>
             </AppModalFooter>
           </Show>
         </Suspense>

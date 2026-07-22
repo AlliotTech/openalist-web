@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   FormControl,
   FormLabel,
@@ -11,6 +10,7 @@ import {
   Textarea,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
   AppModalBody,
@@ -76,9 +76,9 @@ export const PublicKeys = (props: PublicKeysProps) => {
         <Heading>{t(`users.ssh_keys.heading`)}</Heading>
         <Show when={props.isMine}>
           <Spacer />
-          <Button loading={loading()} onClick={onOpen}>
+          <AppButton loading={loading()} onClick={onOpen}>
             {t(`global.add`)}
-          </Button>
+          </AppButton>
           <AppModal opened={isOpen()} onClose={onClose} scrollBehavior="inside">
             <AppModalOverlay />
             <AppModalContent>
@@ -105,7 +105,7 @@ export const PublicKeys = (props: PublicKeysProps) => {
                 </FormControl>
               </AppModalBody>
               <AppModalFooter>
-                <Button
+                <AppButton
                   loading={addLoading()}
                   onClick={async () => {
                     const resp = await add()
@@ -118,7 +118,7 @@ export const PublicKeys = (props: PublicKeysProps) => {
                   }}
                 >
                   {t(`global.add`)}
-                </Button>
+                </AppButton>
               </AppModalFooter>
             </AppModalContent>
           </AppModal>

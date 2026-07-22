@@ -1,4 +1,5 @@
-import { Button, Input, Textarea, FormHelperText } from "@hope-ui/solid"
+import { Input, Textarea, FormHelperText } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
   AppModalBody,
@@ -131,12 +132,12 @@ export const ModalInput = (props: ModalInputProps) => {
         </AppModalBody>
         <AppModalFooter>
           <Show when={props.footerSlot}>{props.footerSlot}</Show>
-          <Button onClick={props.onClose} colorScheme="neutral">
+          <AppButton onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
-          </Button>
-          <Button loading={props.loading} onClick={() => submit()}>
+          </AppButton>
+          <AppButton loading={props.loading} onClick={() => submit()}>
             {t("global.ok")}
-          </Button>
+          </AppButton>
         </AppModalFooter>
       </AppModalContent>
     </AppModal>

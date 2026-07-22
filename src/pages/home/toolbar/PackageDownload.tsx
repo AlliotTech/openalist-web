@@ -4,7 +4,8 @@ import { getLinkByDirAndObj, useRouter, useT } from "~/hooks"
 import { fsList, pathBase, pathJoin } from "~/utils"
 import { password, selectedObjs as _selectedObjs } from "~/store"
 import { createSignal, For, Show } from "solid-js"
-import { Button, Heading, Text, VStack } from "@hope-ui/solid"
+import { Heading, Text, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { AppModalBody, AppModalFooter } from "~/components/ui/Modal"
 import { Obj } from "~/types"
 
@@ -154,9 +155,9 @@ const PackageDownload = (props: { onClose: () => void }) => {
       </AppModalBody>
       <Show when={[1, 4].includes(status())}>
         <AppModalFooter>
-          <Button colorScheme="info" onClick={props.onClose}>
+          <AppButton colorScheme="info" onClick={props.onClose}>
             {t("global.close")}
-          </Button>
+          </AppButton>
         </AppModalFooter>
       </Show>
     </>

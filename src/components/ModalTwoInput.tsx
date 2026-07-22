@@ -1,4 +1,5 @@
-import { Button, Input, Textarea, FormHelperText, VStack } from "@hope-ui/solid"
+import { Input, Textarea, FormHelperText, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
   AppModalBody,
@@ -102,16 +103,16 @@ export const ModalTwoInput = (props: ModalTwoInputProps) => {
           </Show>
         </AppModalBody>
         <AppModalFooter>
-          <Button onClick={props.onClose} colorScheme="neutral">
+          <AppButton onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             loading={props.loading}
             onClick={() => submit()}
             disabled={!value1() || !value2()}
           >
             {t("global.ok")}
-          </Button>
+          </AppButton>
         </AppModalFooter>
       </AppModalContent>
     </AppModal>

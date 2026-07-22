@@ -1,13 +1,5 @@
-import {
-  Box,
-  Button,
-  HStack,
-  Icon,
-  Input,
-  Spinner,
-  Text,
-  VStack,
-} from "@hope-ui/solid"
+import { Box, HStack, Icon, Input, Spinner, Text, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
   AppModalBody,
@@ -228,15 +220,15 @@ export const ModalFolderChoose = (props: ModalFolderChooseProps) => {
         </AppModalBody>
         <AppModalFooter>
           <Show when={props.footerSlot}>{props.footerSlot}</Show>
-          <Button onClick={props.onClose} colorScheme="neutral">
+          <AppButton onClick={props.onClose} colorScheme="neutral">
             {t("global.cancel")}
-          </Button>
-          <Button
+          </AppButton>
+          <AppButton
             loading={props.loading}
             onClick={() => props.onSubmit?.(value())}
           >
             {t("global.ok")}
-          </Button>
+          </AppButton>
         </AppModalFooter>
       </AppModalContent>
     </AppModal>
@@ -267,7 +259,7 @@ export const FolderChooseInput = (props: {
           )}
         />
         <Show when={!props.onlyFolder}>
-          <Button onClick={onOpen}>{t("global.choose")}</Button>
+          <AppButton onClick={onOpen}>{t("global.choose")}</AppButton>
         </Show>
       </HStack>
       <AppModal size="xl" opened={isOpen()} onClose={onClose}>
@@ -279,7 +271,7 @@ export const FolderChooseInput = (props: {
             <FolderTree forceRoot onChange={props.onChange} />
           </AppModalBody>
           <AppModalFooter>
-            <Button onClick={onClose}>{t("global.confirm")}</Button>
+            <AppButton onClick={onClose}>{t("global.confirm")}</AppButton>
           </AppModalFooter>
         </AppModalContent>
       </AppModal>

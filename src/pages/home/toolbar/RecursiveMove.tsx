@@ -1,4 +1,5 @@
-import { Button, HStack, SimpleOption, SimpleSelect } from "@hope-ui/solid"
+import { HStack, SimpleOption, SimpleSelect } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
   AppModalBody,
@@ -53,10 +54,13 @@ export const RecursiveMove = () => {
             <p>{t("home.toolbar.recursive_move_directory-tips")}</p>
           </AppModalBody>
           <AppModalFooter>
-            <Button onClick={() => closeConfirmModal()} colorScheme="neutral">
+            <AppButton
+              onClick={() => closeConfirmModal()}
+              colorScheme="neutral"
+            >
               {t("global.cancel")}
-            </Button>
-            <Button
+            </AppButton>
+            <AppButton
               onClick={() => {
                 closeConfirmModal()
                 onOpen()
@@ -64,7 +68,7 @@ export const RecursiveMove = () => {
               colorScheme="danger"
             >
               {t("global.confirm")}
-            </Button>
+            </AppButton>
           </AppModalFooter>
         </AppModalContent>
       </AppModal>

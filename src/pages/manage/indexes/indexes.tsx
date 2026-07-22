@@ -1,6 +1,5 @@
 import {
   Badge,
-  Button,
   Heading,
   HStack,
   Icon,
@@ -10,6 +9,7 @@ import {
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import {
   AppModal,
   AppModalBody,
@@ -148,32 +148,32 @@ const Indexes = () => {
         </HStack>
       </Show>
       <HStack spacing="$2">
-        <Button
+        <AppButton
           colorScheme="accent"
           onClick={[refreshProgress, undefined]}
           loading={progressLoading()}
         >
           {t("global.refresh")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           colorScheme="danger"
           onClick={[clearIndex, undefined]}
           loading={clearIndexLoading()}
         >
           {t("indexes.clear")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           colorScheme="warning"
           onClick={[stopBuild, undefined]}
           loading={stopBuildLoading()}
         >
           {t("indexes.stop")}
-        </Button>
-        <Button onClick={[rebuild, undefined]} loading={rebuildLoading()}>
+        </AppButton>
+        <AppButton onClick={[rebuild, undefined]} loading={rebuildLoading()}>
           {t(`indexes.${progress()?.is_done ? "rebuild" : "build"}`)}
-        </Button>
+        </AppButton>
       </HStack>
-      <Button onClick={onOpen}>{t(`indexes.update`)}</Button>
+      <AppButton onClick={onOpen}>{t(`indexes.update`)}</AppButton>
       <AppModal opened={isOpen()} onClose={onClose}>
         <AppModalOverlay />
         <AppModalContent>
@@ -186,9 +186,9 @@ const Indexes = () => {
             <Input value={20} type="number" ref={updateMaxDepthRef!} />
           </AppModalBody>
           <AppModalFooter>
-            <Button onClick={[update, undefined]} loading={updateLoading()}>
+            <AppButton onClick={[update, undefined]} loading={updateLoading()}>
               {t(`indexes.update`)}
-            </Button>
+            </AppButton>
           </AppModalFooter>
         </AppModalContent>
       </AppModal>
