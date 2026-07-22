@@ -1,8 +1,12 @@
 import { IconTypes } from "solid-icons"
 import { TiDeleteOutline } from "solid-icons/ti"
 import { CgRename } from "solid-icons/cg"
-import { TbArchive, TbFileArrowRight } from "solid-icons/tb"
-import { TbCopy, TbLink } from "solid-icons/tb"
+import {
+  TbOutlineArchive,
+  TbOutlineCopy,
+  TbOutlineFileArrowRight,
+  TbOutlineLink,
+} from "solid-icons/tb"
 import { AiTwotoneDelete } from "solid-icons/ai"
 import { CgFileAdd, CgFolderAdd, CgFolderRemove } from "solid-icons/cg"
 import { AiOutlineCloudDownload } from "solid-icons/ai"
@@ -18,11 +22,11 @@ export interface Operations {
 }
 export const operations: Operations = {
   rename: { icon: CgRename, color: "$accent9" },
-  copy: { icon: TbCopy, color: "$success9" },
-  move: { icon: TbFileArrowRight, color: "$warning9" },
+  copy: { icon: TbOutlineCopy, color: "$success9" },
+  move: { icon: TbOutlineFileArrowRight, color: "$warning9" },
   delete: { icon: AiTwotoneDelete, color: "$danger9" },
-  decompress: { icon: TbArchive, color: "$primary9" },
-  copy_link: { icon: TbLink, color: "$info9" },
+  decompress: { icon: TbOutlineArchive, color: "$primary9" },
+  copy_link: { icon: TbOutlineLink, color: "$info9" },
   mkdir: { icon: CgFolderAdd, p: true },
   recursive_move: { icon: ImMoveUp, p: true },
   remove_empty_directory: { icon: CgFolderRemove, p: true },

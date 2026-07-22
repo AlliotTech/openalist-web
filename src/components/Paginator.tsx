@@ -13,7 +13,7 @@ import {
 import { createMemo, For, mergeProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { FaSolidAngleLeft, FaSolidAngleRight } from "solid-icons/fa"
-import { TbSelector } from "solid-icons/tb"
+import { TbOutlineSelector } from "solid-icons/tb"
 
 export interface PaginatorProps {
   colorScheme?:
@@ -127,7 +127,7 @@ export const Paginator = (props: PaginatorProps) => {
             colorScheme={merged.colorScheme}
           >
             <Box px={store.current > 10 ? "$1_5" : "$2"}>{store.current}</Box>
-            <TbSelector />
+            <TbOutlineSelector />
           </SelectTrigger>
           <SelectContent minW="80px">
             <SelectListbox>

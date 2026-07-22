@@ -42,7 +42,7 @@ import { useSelectWithMouse } from "~/pages/home/folder/helper"
 import { getIconByObj } from "~/utils/icon"
 import createMutex from "~/utils/mutex"
 import { Item, Menu, useContextMenu } from "solid-contextmenu"
-import { TbCopy, TbLink } from "solid-icons/tb"
+import { TbOutlineCopy, TbOutlineLink } from "solid-icons/tb"
 import { AiOutlineCloudDownload } from "solid-icons/ai"
 import { Operations } from "~/pages/home/toolbar/operations"
 import "solid-contextmenu/dist/style.css"
@@ -141,8 +141,8 @@ const ListItem = (props: ListItemProps) => {
 }
 
 const operations: Operations = {
-  extract: { icon: TbCopy, color: "$success9" },
-  copy_link: { icon: TbLink, color: "$info9" },
+  extract: { icon: TbOutlineCopy, color: "$success9" },
+  copy_link: { icon: TbOutlineLink, color: "$info9" },
   download: { icon: AiOutlineCloudDownload, color: "$primary9" },
 }
 

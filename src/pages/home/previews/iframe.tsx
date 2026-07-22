@@ -4,7 +4,7 @@ import { Icon, hope } from "@hope-ui/solid"
 import { convertURL, hoverColor } from "~/utils"
 import { Component, createMemo } from "solid-js"
 import { useLink } from "~/hooks"
-import { TbExternalLink } from "solid-icons/tb"
+import { TbOutlineExternalLink } from "solid-icons/tb"
 
 const IframePreview = (props: { scheme: string }) => {
   const { currentObjLink } = useLink()
@@ -24,7 +24,7 @@ const IframePreview = (props: { scheme: string }) => {
         right="$2"
         bottom="$10"
         aria-label="Open in new tab"
-        as={TbExternalLink}
+        as={TbOutlineExternalLink}
         onClick={() => {
           window.open(iframeSrc(), "_blank")
         }}

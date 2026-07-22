@@ -2,7 +2,7 @@ import { Box, createDisclosure, VStack } from "@hope-ui/solid"
 import { createMemo, Show } from "solid-js"
 import { RightIcon } from "./Icon"
 import { CgMoreO } from "solid-icons/cg"
-import { TbCheckbox } from "solid-icons/tb"
+import { TbOutlineCheckbox } from "solid-icons/tb"
 import { objStore, selectAll, State, toggleCheckbox, userCan } from "~/store"
 import { bus } from "~/utils"
 import { operations } from "./operations"
@@ -133,7 +133,7 @@ export const Right = () => {
             </Show>
             <RightIcon
               tips="toggle_checkbox"
-              as={TbCheckbox}
+              as={TbOutlineCheckbox}
               onClick={toggleCheckbox}
             />
             <RightIcon
