@@ -7,7 +7,7 @@
     "url": "https://www.nn.ci"
   },
   "description": "The front end of Alist V3",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@11.15.1",
   "engines": {
     "node": ">=22.22.1"
   },
@@ -103,11 +103,6 @@
     "solid-transition-group": "^0.0.12",
     "streamsaver": "^2.0.6",
     "typescript-natural-sort": "^0.7.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "changelogithub>changelogen": "0.6.2"
-    }
   },
   "lint-staged": {
     "**/*.{css,html,js,json,jsx,md,mjs,ts,tsx,yaml,yml}": "prettier --write"

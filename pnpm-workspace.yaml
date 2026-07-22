@@ -1,0 +1,24 @@
+packages:
+  - "."
+
+allowBuilds:
+  "@swc/core": true
+  core-js: false
+
+overrides:
+  "changelogithub>changelogen": 0.6.2
+  "mpegts.js>webworkify-webpack": 2.1.5
+  baseline-browser-mapping: 2.10.44
+  browserslist: 4.28.6
+  electron-to-chromium: 1.5.394
+  postcss: 8.5.20
+  tar: 7.5.20
+
+patchedDependencies:
+  "webworkify-webpack@2.1.5": patches/webworkify-webpack@2.1.5.patch
+
+onlyBuiltDependencies:
+  - "@swc/core"
+
+ignoredBuiltDependencies:
+  - core-js
