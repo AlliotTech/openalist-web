@@ -1,4 +1,5 @@
-import { Button, HStack, Text, VStack, Input } from "@hope-ui/solid"
+import { HStack, Text, VStack, Input } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import {
   bus,
@@ -223,7 +224,7 @@ export const BatchRename = () => {
             </VStack>
           </AppModalBody>
           <AppModalFooter>
-            <Button
+            <AppButton
               onClick={() => {
                 setType("1")
                 setNewNameType("string")
@@ -232,13 +233,13 @@ export const BatchRename = () => {
               colorScheme="neutral"
             >
               {t("global.cancel")}
-            </Button>
-            <Button
+            </AppButton>
+            <AppButton
               onClick={() => submit()}
               disabled={!srcName() || !newName()}
             >
               {t("global.ok")}
-            </Button>
+            </AppButton>
           </AppModalFooter>
         </AppModalContent>
       </AppModal>
@@ -271,7 +272,7 @@ export const BatchRename = () => {
             </VStack>
           </AppModalBody>
           <AppModalFooter>
-            <Button
+            <AppButton
               onClick={() => {
                 setMatchNames([])
                 setType("1")
@@ -282,8 +283,8 @@ export const BatchRename = () => {
               colorScheme="neutral"
             >
               {t("global.cancel")}
-            </Button>
-            <Button
+            </AppButton>
+            <AppButton
               onClick={() => {
                 setMatchNames([])
                 closePreviewModal()
@@ -292,8 +293,8 @@ export const BatchRename = () => {
               colorScheme="neutral"
             >
               {t("global.back")}
-            </Button>
-            <Button
+            </AppButton>
+            <AppButton
               loading={loading()}
               onClick={async () => {
                 const resp = await ok(pathname(), matchNames())
@@ -311,7 +312,7 @@ export const BatchRename = () => {
               disabled={matchNames().length == 0}
             >
               {t("global.ok")}
-            </Button>
+            </AppButton>
           </AppModalFooter>
         </AppModalContent>
       </AppModal>

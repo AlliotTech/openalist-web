@@ -1,4 +1,5 @@
-import { Button, Text } from "@hope-ui/solid"
+import { Text } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { Match, onCleanup, onMount, Show, Switch } from "solid-js"
 import { FullLoading, Paginator } from "~/components"
 import { getGlobalPage, usePath, useRouter, useT } from "~/hooks"
@@ -27,7 +28,7 @@ const LoadMore = () => {
       when={!allLoaded()}
       fallback={<Text fontStyle="italic">{t("home.no_more")}</Text>}
     >
-      <Button onClick={loadMore}>{t("home.load_more")}</Button>
+      <AppButton onClick={loadMore}>{t("home.load_more")}</AppButton>
     </Show>
   )
 }
