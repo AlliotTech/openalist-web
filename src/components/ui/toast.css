@@ -55,9 +55,29 @@
   --app-toast-accent: var(--hope-colors-warning9, #d69e2e);
 }
 
+.app-toast[data-status="custom"] {
+  width: auto;
+  max-width: 100%;
+  padding: var(--hope-space-3);
+  background: var(--hope-colors-whiteAlpha10);
+  box-shadow: var(--hope-shadows-md);
+  backdrop-filter: blur(8px);
+}
+
+.hope-ui-dark .app-toast[data-status="custom"] {
+  background: var(--hope-colors-blackAlpha11);
+}
+
 .app-toast__content {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.app-toast[data-status="custom"] .app-toast__content {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-toast__icon {
@@ -78,18 +98,26 @@
   position: absolute;
   top: var(--hope-space-1_5);
   right: var(--hope-space-1_5);
-  width: var(--hope-sizes-8);
-  height: var(--hope-sizes-8);
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: 0;
   border-radius: var(--hope-radii-md);
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: var(--hope-fontSizes-xl);
+  font-size: 10px;
   line-height: 1;
   cursor: pointer;
   opacity: 0.72;
+}
+
+.app-toast[data-status="custom"] .app-toast__close {
+  position: static;
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  font-size: 12px;
 }
 
 .app-toast__close:hover {
