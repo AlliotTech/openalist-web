@@ -297,11 +297,15 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
 }
 
 export const AppHStack = (props: AppStackProps) => (
-  <Stack {...props} direction="row" />
+  <Stack {...props} direction="row" alignItems={props.alignItems ?? "center"} />
 )
 
 export const AppVStack = (props: AppStackProps) => (
-  <Stack {...props} direction="column" />
+  <Stack
+    {...props}
+    direction="column"
+    alignItems={props.alignItems ?? "center"}
+  />
 )
 
 export const AppCenter = (props: AppStackProps) => (
