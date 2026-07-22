@@ -1,6 +1,5 @@
 import {
   HStack,
-  Button,
   VStack,
   Text,
   Input,
@@ -8,6 +7,7 @@ import {
   FormLabel,
   Flex,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { r, handleRespWithoutNotify, notify } from "~/utils"
 import { useFetch, useManageTitle, useT } from "~/hooks"
 import {
@@ -391,7 +391,7 @@ const BackupRestore = () => {
   return (
     <VStack spacing="$2" w="$full">
       <HStack spacing="$2" w="$full">
-        <Button
+        <AppButton
           loading={backupLoading()}
           onClick={() => {
             backup()
@@ -399,15 +399,15 @@ const BackupRestore = () => {
           colorScheme="accent"
         >
           {t("br.backup")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           loading={restoreLoading()}
           onClick={() => {
             restore()
           }}
         >
           {t("br.restore")}
-        </Button>
+        </AppButton>
       </HStack>
       <FormControl w="$full" display="flex" flexDirection="column">
         <Flex w="$full" direction="column" gap="$1">

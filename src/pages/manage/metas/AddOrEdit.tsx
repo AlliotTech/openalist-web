@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormLabel,
   Heading,
@@ -9,6 +8,7 @@ import {
   Textarea,
   FormHelperText,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { MaybeLoading, FolderChooseInput } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
@@ -164,7 +164,7 @@ const AddOrEdit = () => {
             )
           }}
         </For>
-        <Button
+        <AppButton
           loading={okLoading()}
           onClick={async () => {
             const resp = await ok()
@@ -176,7 +176,7 @@ const AddOrEdit = () => {
           }}
         >
           {t(`global.${id ? "save" : "add"}`)}
-        </Button>
+        </AppButton>
       </VStack>
     </MaybeLoading>
   )

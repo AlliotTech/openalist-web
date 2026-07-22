@@ -1,7 +1,6 @@
 import {
   Badge,
   Box,
-  Button,
   HStack,
   Td,
   Text,
@@ -9,6 +8,7 @@ import {
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { getMainColor } from "~/store"
 import { PEmptyResp, Storage } from "~/types"
@@ -35,14 +35,14 @@ function StorageOp(props: StorageProps) {
   )
   return (
     <>
-      <Button
+      <AppButton
         onClick={() => {
           to(`/@manage/storages/edit/${props.storage.id}`)
         }}
       >
         {t("global.edit")}
-      </Button>
-      <Button
+      </AppButton>
+      <AppButton
         loading={enableOrDisableLoading()}
         colorScheme={props.storage.disabled ? "success" : "warning"}
         onClick={async () => {
@@ -53,7 +53,7 @@ function StorageOp(props: StorageProps) {
         }}
       >
         {t(`global.${props.storage.disabled ? "enable" : "disable"}`)}
-      </Button>
+      </AppButton>
       <DeletePopover
         name={props.storage.mount_path}
         loading={deleteLoading()}

@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Grid,
   HStack,
   Table,
@@ -10,6 +9,7 @@ import {
   Tr,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createMemo, createSignal, For, Match, Show, Switch } from "solid-js"
 import { useFetch, useManageTitle, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
@@ -68,27 +68,27 @@ const Storages = () => {
           "@md": "unset",
         }}
       >
-        <Button
+        <AppButton
           colorScheme="accent"
           loading={getStoragesLoading()}
           onClick={refresh}
         >
           {t("global.refresh")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           onClick={() => {
             to("/@manage/storages/add")
           }}
         >
           {t("global.add")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           colorScheme="warning"
           loading={getStoragesLoading()}
           onClick={loadAll}
         >
           {t("storages.other.load_all")}
-        </Button>
+        </AppButton>
         <Show when={drivers().length > 0}>
           <AppSelect
             multiple

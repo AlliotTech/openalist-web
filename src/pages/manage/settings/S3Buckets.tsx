@@ -1,4 +1,5 @@
-import { VStack, Button, FormLabel } from "@hope-ui/solid"
+import { VStack, FormLabel } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { For } from "solid-js"
 import { SetStoreFunction } from "solid-js/store"
 import { SettingItem } from "~/types"
@@ -18,7 +19,7 @@ const S3Buckets = (props: S3BucketsProps) => {
       <FormLabel display="flex" alignItems="center">
         {t("settings.s3_buckets")}
       </FormLabel>
-      <Button
+      <AppButton
         onClick={() => {
           props.setSettings(
             (i) => i.key === "s3_buckets",
@@ -29,7 +30,7 @@ const S3Buckets = (props: S3BucketsProps) => {
         }}
       >
         {t("global.add")}
-      </Button>
+      </AppButton>
       <For each={props.buckets}>
         {(item) => (
           <S3BucketItem

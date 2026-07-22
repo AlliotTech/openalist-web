@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   FormControl,
   FormLabel,
@@ -7,6 +6,7 @@ import {
   Input,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { MaybeLoading, FolderChooseInput } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
@@ -147,7 +147,7 @@ const AddOrEdit = () => {
             {t(`users.disabled`)}
           </AppCheckbox>
         </FormControl>
-        <Button
+        <AppButton
           loading={okLoading()}
           onClick={async () => {
             const resp = await ok()
@@ -163,7 +163,7 @@ const AddOrEdit = () => {
           }}
         >
           {t(`global.${id ? "save" : "add"}`)}
-        </Button>
+        </AppButton>
         <Show when={id && !UserMethods.is_guest(user)}>
           <PublicKeys isMine={false} userId={parseInt(id!)} />
         </Show>

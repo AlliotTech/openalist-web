@@ -2,7 +2,8 @@ import { useFetch, useT, useManageTitle } from "~/hooks"
 import { Group, SettingItem, PResp, PEmptyResp, EmptyResp } from "~/types"
 import { r, notify, getTarget, handleResp } from "~/utils"
 import { createStore } from "solid-js/store"
-import { Button, HStack, Heading, VStack } from "@hope-ui/solid"
+import { HStack, Heading, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal, Index, Show } from "solid-js"
 import { Item } from "./SettingItem"
 import { ResponsiveGrid } from "../common/ResponsiveGrid"
@@ -57,7 +58,7 @@ const S3Settings = () => {
             </Show>
           )}
         </Index>
-        <Button
+        <AppButton
           onClick={() => {
             const awsAccessKeyId = crypto.lib.WordArray.random(120 / 8)
             const awsSecretAccessKey = crypto.lib.WordArray.random(240 / 8)
@@ -80,19 +81,19 @@ const S3Settings = () => {
           }}
         >
           {t("settings.s3_generate")}
-        </Button>
+        </AppButton>
         <Heading>{t("settings.s3_restart_to_apply")}</Heading>
         <S3Buckets buckets={bucket_parse(settings)} setSettings={setSettings} />
       </ResponsiveGrid>
       <HStack spacing="$2">
-        <Button
+        <AppButton
           colorScheme="accent"
           onClick={refresh}
           loading={settingsLoading() || loading()}
         >
           {t("global.refresh")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           loading={saveLoading()}
           onClick={async () => {
             //check that bucket path and name cannot be duplicated or empty
@@ -114,7 +115,7 @@ const S3Settings = () => {
           }}
         >
           {t("global.save")}
-        </Button>
+        </AppButton>
       </HStack>
     </VStack>
   )

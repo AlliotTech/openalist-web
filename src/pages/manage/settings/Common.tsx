@@ -2,7 +2,8 @@ import { useFetch, useT, useRouter, useManageTitle } from "~/hooks"
 import { Group, SettingItem, PResp, PEmptyResp, EmptyResp } from "~/types"
 import { r, notify, getTarget, handleResp } from "~/utils"
 import { createStore } from "solid-js/store"
-import { Button, HStack, VStack } from "@hope-ui/solid"
+import { HStack, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal, Index } from "solid-js"
 import { Item } from "./SettingItem"
 import { ResponsiveGrid } from "../common/ResponsiveGrid"
@@ -53,14 +54,14 @@ const CommonSettings = (props: CommonSettingsProps) => {
         </Index>
       </ResponsiveGrid>
       <HStack spacing="$2">
-        <Button
+        <AppButton
           colorScheme="accent"
           onClick={refresh}
           loading={settingsLoading() || loading()}
         >
           {t("global.refresh")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           loading={saveLoading()}
           onClick={async () => {
             const resp = await saveSettings()
@@ -68,7 +69,7 @@ const CommonSettings = (props: CommonSettingsProps) => {
           }}
         >
           {t("global.save")}
-        </Button>
+        </AppButton>
       </HStack>
     </VStack>
   )

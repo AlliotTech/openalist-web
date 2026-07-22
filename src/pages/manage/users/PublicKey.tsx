@@ -2,7 +2,8 @@ import { PublicKeysProps } from "./PublicKeys"
 import { SSHPublicKey } from "~/types/sshkey"
 import { useFetch, useT } from "~/hooks"
 import { createSignal, Show } from "solid-js"
-import { Button, Flex, Heading, HStack, Spacer, Text } from "@hope-ui/solid"
+import { Flex, Heading, HStack, Spacer, Text } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { PResp } from "~/types"
 import { handleResp, notify, r } from "~/utils"
 
@@ -73,7 +74,7 @@ export const PublicKey = (props: PublicKeysProps & SSHPublicKey) => {
         </Text>
         <Flex w={cols[3].w} gap="$1">
           <Spacer />
-          <Button
+          <AppButton
             size="sm"
             colorScheme="danger"
             loading={delLoading()}
@@ -86,7 +87,7 @@ export const PublicKey = (props: PublicKeysProps & SSHPublicKey) => {
             }}
           >
             {t(`global.delete`)}
-          </Button>
+          </AppButton>
         </Flex>
       </HStack>
     </Show>

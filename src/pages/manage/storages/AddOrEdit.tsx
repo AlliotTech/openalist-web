@@ -1,4 +1,5 @@
-import { Alert, AlertIcon, Button, Heading, VStack } from "@hope-ui/solid"
+import { Alert, AlertIcon, Heading, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createMemo, createSignal, For, Show } from "solid-js"
 import { MaybeLoading } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
@@ -172,7 +173,7 @@ const AddOrEdit = () => {
           </For>
         </Show>
       </ResponsiveGrid>
-      <Button
+      <AppButton
         mt="$2"
         loading={okLoading()}
         onClick={async () => {
@@ -197,7 +198,7 @@ const AddOrEdit = () => {
         }}
       >
         {t(`global.${id ? "save" : "add"}`)}
-      </Button>
+      </AppButton>
     </MaybeLoading>
   )
 }

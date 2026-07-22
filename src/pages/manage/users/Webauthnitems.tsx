@@ -1,4 +1,5 @@
-import { Button, Heading, Stack, VStack } from "@hope-ui/solid"
+import { Heading, Stack, VStack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal, Show } from "solid-js"
 import { useT, useFetch } from "~/hooks"
 import { PEmptyResp } from "~/types"
@@ -44,7 +45,7 @@ export const WebauthnItem = (props: WebauthnItemProps) => {
           justifyContent={{ "@xl": "center" }}
           spacing="$1"
         >
-          <Button
+          <AppButton
             colorScheme="danger"
             loading={removeLoading()}
             onClick={async () => {
@@ -56,7 +57,7 @@ export const WebauthnItem = (props: WebauthnItemProps) => {
             }}
           >
             {t("global.delete")}
-          </Button>
+          </AppButton>
         </Stack>
       </Stack>
     </Show>

@@ -1,4 +1,5 @@
-import { Button, FormControl, FormLabel, Input, Stack } from "@hope-ui/solid"
+import { FormControl, FormLabel, Input, Stack } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { FolderChooseInput } from "~/components"
 import { useT } from "~/hooks"
 
@@ -53,14 +54,14 @@ export const S3BucketItem = (props: props) => {
         justifyContent={{ "@xl": "center" }}
         spacing="$1"
       >
-        <Button
+        <AppButton
           colorScheme="danger"
           onClick={async () => {
             props.onDelete()
           }}
         >
           {t("global.delete")}
-        </Button>
+        </AppButton>
       </Stack>
     </Stack>
   )
