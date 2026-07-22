@@ -1,19 +1,13 @@
 import {
   Box,
   Center,
-  createDisclosure,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
   Flex,
   Heading,
   HStack,
   IconButton,
   useColorModeValue,
 } from "@hope-ui/solid"
+import { createSignal } from "solid-js"
 import { TiThMenu } from "solid-icons/ti"
 import { IoExit } from "solid-icons/io"
 import { SwitchColorMode, SwitchLanguageWhite } from "~/components"
@@ -22,7 +16,11 @@ import { SideMenu } from "./SideMenu"
 import { side_menu_items } from "./sidemenu_items"
 import { changeToken, handleResp, notify, r } from "~/utils"
 import { PResp } from "~/types"
-const { isOpen, onOpen, onClose } = createDisclosure()
+import { AppDrawer } from "~/components/ui/Drawer"
+
+const [isOpen, setOpen] = createSignal(false)
+const onOpen = () => setOpen(true)
+const onClose = () => setOpen(false)
 const [logOutReqLoading, logOutReq] = useFetch((): PResp<any> =>
   r.get("/auth/logout"),
 )
@@ -81,22 +79,20 @@ const Header = () => {
           />
         </HStack>
       </Flex>
-      <Drawer opened={isOpen()} placement="left" onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader color="$info9">{t("manage.title")}</DrawerHeader>
-          <DrawerBody>
-            <SideMenu items={side_menu_items} />
-            <Center>
-              <HStack spacing="$4" p="$2" color="$neutral11">
-                <SwitchLanguageWhite />
-                <SwitchColorMode />
-              </HStack>
-            </Center>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+      <AppDrawer
+        open={isOpen()}
+        placement="left"
+        onOpenChange={setOpen}
+        title={t("manage.title")}
+      >
+        <SideMenu items={side_menu_items} />
+        <Center>
+          <HStack spacing="$4" p="$2" color="$neutral11">
+            <SwitchLanguageWhite />
+            <SwitchColorMode />
+          </HStack>
+        </Center>
+      </AppDrawer>
     </Box>
   )
 }

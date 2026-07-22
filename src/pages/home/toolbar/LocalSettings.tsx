@@ -1,12 +1,5 @@
 import {
   Center,
-  createDisclosure,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
   FormControl,
   FormLabel,
   HStack,
@@ -24,11 +17,12 @@ import {
   VStack,
   Switch as HopeSwitch,
 } from "@hope-ui/solid"
-import { For, Match, onCleanup, Switch } from "solid-js"
+import { For, Match, onCleanup, Switch, createSignal } from "solid-js"
 import { SwitchLanguageWhite, SwitchColorMode } from "~/components"
 import { useT } from "~/hooks"
 import { initialLocalSettings, local, LocalSetting, setLocal } from "~/store"
 import { bus } from "~/utils"
+import { AppDrawer } from "~/components/ui/Drawer"
 
 function LocalSettingEdit(props: LocalSetting) {
   const t = useT()
@@ -92,11 +86,11 @@ function LocalSettingEdit(props: LocalSetting) {
 }
 
 export const LocalSettings = () => {
-  const { isOpen, onOpen, onClose } = createDisclosure()
+  const [isOpen, setOpen] = createSignal(false)
   const t = useT()
   const handler = (name: string) => {
     if (name === "local_settings") {
-      onOpen()
+      setOpen(true)
     }
   }
   bus.on("tool", handler)
@@ -104,27 +98,23 @@ export const LocalSettings = () => {
     bus.off("tool", handler)
   })
   return (
-    <Drawer opened={isOpen()} placement="right" onClose={onClose}>
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerCloseButton />
-        <DrawerHeader color="$info9">
-          {t("home.toolbar.local_settings")}
-        </DrawerHeader>
-        <DrawerBody>
-          <VStack spacing="$2">
-            <For each={initialLocalSettings.filter((s) => !s.hidden)}>
-              {(setting) => <LocalSettingEdit {...setting} />}
-            </For>
-          </VStack>
-          <Center mt="$4">
-            <HStack spacing="$4" p="$2" color="$neutral11">
-              <SwitchLanguageWhite />
-              <SwitchColorMode />
-            </HStack>
-          </Center>
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
+    <AppDrawer
+      open={isOpen()}
+      placement="right"
+      onOpenChange={setOpen}
+      title={t("home.toolbar.local_settings")}
+    >
+      <VStack spacing="$2">
+        <For each={initialLocalSettings.filter((s) => !s.hidden)}>
+          {(setting) => <LocalSettingEdit {...setting} />}
+        </For>
+      </VStack>
+      <Center mt="$4">
+        <HStack spacing="$4" p="$2" color="$neutral11">
+          <SwitchLanguageWhite />
+          <SwitchColorMode />
+        </HStack>
+      </Center>
+    </AppDrawer>
   )
 }

@@ -1,0 +1,107 @@
+.app-drawer__overlay {
+  position: fixed;
+  z-index: var(--hope-zIndices-modal, 1400);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  animation: app-drawer-overlay-in 160ms ease-out;
+}
+
+.app-drawer__content {
+  position: fixed;
+  z-index: calc(var(--hope-zIndices-modal, 1400) + 1);
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(22rem, 88vw);
+  background: var(--hope-colors-background, #fff);
+  color: var(--hope-colors-neutral12, #1a202c);
+  box-shadow: var(--hope-shadows-xl, 0 20px 35px rgba(15, 23, 42, 0.25));
+}
+
+.hope-ui-dark .app-drawer__content {
+  background: var(--hope-colors-neutral2, #17171a);
+  color: var(--hope-colors-neutral12, #f7fafc);
+}
+
+.app-drawer__content[data-placement="left"] {
+  left: 0;
+  animation: app-drawer-left-in 180ms ease-out;
+}
+
+.app-drawer__content[data-placement="right"] {
+  right: 0;
+  animation: app-drawer-right-in 180ms ease-out;
+}
+
+.app-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--hope-colors-neutral6, rgba(127, 127, 127, 0.2));
+}
+
+.app-drawer__title {
+  margin: 0;
+  color: var(--hope-colors-info9, #3182ce);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.app-drawer__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.app-drawer__close:hover {
+  background: rgba(127, 127, 127, 0.14);
+}
+
+.app-drawer__close:focus-visible {
+  outline: 2px solid var(--hope-colors-info9, #3182ce);
+  outline-offset: 1px;
+}
+
+.app-drawer__body {
+  flex: 1;
+  padding: 1rem;
+  overflow: auto;
+}
+
+@keyframes app-drawer-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes app-drawer-left-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes app-drawer-right-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-drawer__overlay,
+  .app-drawer__content {
+    animation: none;
+  }
+}
