@@ -1,0 +1,11 @@
+.app-anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-anchor--hover:hover {
+  color: var(--app-anchor-hover-color);
+  background: var(--app-anchor-hover-background);
+  text-decoration: var(--app-anchor-hover-decoration);
+  transform: var(--app-anchor-hover-transform);
+}
