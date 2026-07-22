@@ -3,6 +3,15 @@ import { SelectWrapper } from "./Base"
 import chardet from "chardet"
 import { createEffect } from "solid-js"
 
+const isUtf8 = (buffer: Uint8Array) => {
+  try {
+    new TextDecoder("utf-8", { fatal: true }).decode(buffer)
+    return true
+  } catch {
+    return false
+  }
+}
+
 export function EncodingSelect(props: {
   encoding: string
   setEncoding: (encoding: string) => void
@@ -59,6 +68,12 @@ export function EncodingSelect(props: {
         buffer = new TextEncoder().encode(props.referenceText)
       } else {
         buffer = new Uint8Array(props.referenceText)
+      }
+      // ASCII is valid UTF-8, but statistical detectors commonly rank a
+      // single-byte encoding higher for English-only content.
+      if (isUtf8(buffer)) {
+        props.setEncoding("utf-8")
+        return
       }
       for (let encoding of chardet.analyse(buffer)) {
         const encodingLabel = encoding.name.toLowerCase()
