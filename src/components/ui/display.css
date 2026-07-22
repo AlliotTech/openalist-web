@@ -64,6 +64,14 @@
   flex: 0 0 auto;
 }
 
+.app-alert__title {
+  font-weight: var(--hope-fontWeights-semibold);
+}
+
+.app-alert__description {
+  display: inline-block;
+}
+
 .app-alert--success .app-alert__icon {
   color: var(--hope-colors-success9);
 }

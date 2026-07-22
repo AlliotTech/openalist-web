@@ -113,13 +113,16 @@ export const AppAlertIcon = (props: { mr?: string }) => {
 }
 
 export const AppAlertTitle = (props: ParentProps<{ mr?: string }>) => (
-  <strong style={{ "margin-right": token(props.mr, "space") }}>
+  <strong
+    class="app-alert__title"
+    style={{ "margin-right": token(props.mr, "space") }}
+  >
     {props.children}
   </strong>
 )
 
 export const AppAlertDescription = (props: ParentProps) => (
-  <span>{props.children}</span>
+  <span class="app-alert__description">{props.children}</span>
 )
 
 export const AppKbd = (props: ParentProps) => (
