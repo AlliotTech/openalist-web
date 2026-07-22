@@ -1,12 +1,10 @@
+import { Text, Icon, useColorMode } from "@hope-ui/solid"
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  Text,
-  Icon,
-  useColorMode,
-} from "@hope-ui/solid"
+  AppBreadcrumb as Breadcrumb,
+  AppBreadcrumbItem as BreadcrumbItem,
+  AppBreadcrumbLink as BreadcrumbLink,
+  AppBreadcrumbSeparator as BreadcrumbSeparator,
+} from "~/components/ui/Breadcrumb"
 import { AppDivider as Divider } from "~/components/ui/Display"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"

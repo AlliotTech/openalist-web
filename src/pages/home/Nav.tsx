@@ -1,10 +1,10 @@
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbProps,
-  BreadcrumbSeparator,
-} from "@hope-ui/solid"
+  AppBreadcrumb as Breadcrumb,
+  AppBreadcrumbItem as BreadcrumbItem,
+  AppBreadcrumbLink as BreadcrumbLink,
+  type AppBreadcrumbProps,
+  AppBreadcrumbSeparator as BreadcrumbSeparator,
+} from "~/components/ui/Breadcrumb"
 import { A as Link } from "@solidjs/router"
 import { createMemo, For, Show } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
@@ -17,31 +17,15 @@ export const Nav = () => {
   const t = useT()
   const { setPathAs } = usePath()
 
-  const stickyProps = createMemo<BreadcrumbProps>(() => {
-    const mask: BreadcrumbProps = {
-      _after: {
-        content: "",
-        bgColor: "$background" as any,
-        position: "absolute",
-        height: "100%",
-        width: "99vw",
-        zIndex: -1,
-        transform: "translateX(-50%)",
-        left: "50%",
-        top: 0,
-        borderBottom: "1px solid",
-        borderColor: "$neutral4",
-      },
-    }
-
+  const stickyProps = createMemo<AppBreadcrumbProps>(() => {
     switch (local["position_of_header_navbar"]) {
       case "only_navbar_sticky":
-        return { ...mask, position: "sticky", zIndex: "$sticky", top: 0 }
+        return { masked: true, position: "sticky", zIndex: "$sticky", top: 0 }
       case "sticky":
-        return { ...mask, position: "sticky", zIndex: "$sticky", top: 60 }
+        return { masked: true, position: "sticky", zIndex: "$sticky", top: 60 }
       default:
         return {
-          _after: undefined,
+          masked: false,
           position: undefined,
           zIndex: undefined,
           top: undefined,
