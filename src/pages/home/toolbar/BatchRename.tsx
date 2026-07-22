@@ -10,8 +10,6 @@ import {
   ModalOverlay,
   Text,
   VStack,
-  Radio,
-  RadioGroup,
   Input,
 } from "@hope-ui/solid"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
@@ -25,6 +23,7 @@ import { createSignal, For, onCleanup, Show } from "solid-js"
 import { selectedObjs } from "~/store"
 import { RenameObj } from "~/types"
 import { RenameItem } from "~/pages/home/toolbar/RenameItem"
+import { AppRadio, AppRadioGroup } from "~/components/ui/RadioGroup"
 
 export const BatchRename = () => {
   const {
@@ -174,22 +173,22 @@ export const BatchRename = () => {
           {/* <ModalCloseButton /> */}
           <ModalHeader>{t("home.toolbar.batch_rename")}</ModalHeader>
           <ModalBody>
-            <RadioGroup
+            <AppRadioGroup
               defaultValue="1"
-              onChange={(event: string) => {
-                setType(event)
-                if (event === "1") {
+              onChange={(value) => {
+                setType(value)
+                if (value === "1") {
                   setNewNameType("string")
-                } else if (event === "2") {
+                } else if (value === "2") {
                   setNewNameType("number")
                 }
               }}
             >
-              <HStack spacing="$4">
-                <Radio value="1">{t("home.toolbar.regex_rename")}</Radio>
-                <Radio value="2">{t("home.toolbar.sequential_renaming")}</Radio>
-              </HStack>
-            </RadioGroup>
+              <AppRadio value="1">{t("home.toolbar.regex_rename")}</AppRadio>
+              <AppRadio value="2">
+                {t("home.toolbar.sequential_renaming")}
+              </AppRadio>
+            </AppRadioGroup>
             <VStack spacing="$2">
               <p style={{ margin: "10px 0" }}>
                 <Show when={type() === "1"}>

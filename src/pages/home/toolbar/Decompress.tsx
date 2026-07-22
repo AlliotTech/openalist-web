@@ -1,16 +1,10 @@
-import {
-  Checkbox,
-  createDisclosure,
-  HStack,
-  Input,
-  Text,
-  VStack,
-} from "@hope-ui/solid"
+import { createDisclosure, HStack, Input, Text, VStack } from "@hope-ui/solid"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsArchiveDecompress, handleRespWithNotifySuccess } from "~/utils"
 import { batch, createSignal, onCleanup } from "solid-js"
 import { ModalFolderChoose } from "~/components"
 import { selectedObjs } from "~/store"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 export const Decompress = () => {
   const t = useT()
@@ -97,18 +91,12 @@ export const Decompress = () => {
             flexGrow="1"
           />
         </HStack>
-        <Checkbox
-          checked={cacheFull()}
-          onChange={(e: any) => setCacheFull(e.target.checked as boolean)}
-        >
+        <AppCheckbox checked={cacheFull()} onChange={setCacheFull}>
           {t(`home.toolbar.decompress-cache-full`)}
-        </Checkbox>
-        <Checkbox
-          checked={putIntoNewDir()}
-          onChange={(e: any) => setPutIntoNewDir(e.target.checked as boolean)}
-        >
+        </AppCheckbox>
+        <AppCheckbox checked={putIntoNewDir()} onChange={setPutIntoNewDir}>
           {t(`home.toolbar.decompress-put-into-new`)}
-        </Checkbox>
+        </AppCheckbox>
         <div />
       </VStack>
     </ModalFolderChoose>

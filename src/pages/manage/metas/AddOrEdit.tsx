@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   FormControl,
   FormLabel,
   Heading,
@@ -17,6 +16,7 @@ import { Meta, PEmptyResp, PResp } from "~/types"
 import { createStore } from "solid-js/store"
 import { For, Show } from "solid-js"
 import { AppSwitch } from "~/components/ui/Switch"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 type ItemProps = {
   name: string
@@ -62,16 +62,14 @@ const Item = (props: ItemProps) => {
           />
         )}
         <FormControl w="fit-content" display="flex">
-          <Checkbox
-            css={{ whiteSpace: "nowrap" }}
+          <AppCheckbox
+            style={{ "white-space": "nowrap" }}
             id={`${props.name}_sub`}
-            onChange={(e: any) => props.onSub(e.currentTarget.checked)}
-            color="$neutral10"
-            fontSize="$sm"
+            onChange={props.onSub}
             checked={props.sub}
           >
             {t("metas.apply_sub")}
-          </Checkbox>
+          </AppCheckbox>
         </FormControl>
       </Flex>
       <Show when={props.help}>

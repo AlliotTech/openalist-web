@@ -9,11 +9,11 @@ import {
   useColorModeValue,
   HStack,
   VStack,
-  Checkbox,
   Icon,
 } from "@hope-ui/solid"
 import { createMemo, createSignal, Show, onMount, onCleanup } from "solid-js"
 import { SwitchColorMode, SwitchLanguageWhite } from "~/components"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 import { useFetch, useT, useTitle, useRouter } from "~/hooks"
 import {
   changeToken,
@@ -275,14 +275,12 @@ const Login = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Checkbox
+            <AppCheckbox
               checked={remember() === "true"}
-              onChange={() =>
-                setRemember(remember() === "true" ? "false" : "true")
-              }
+              onChange={(checked) => setRemember(checked.toString())}
             >
               {t("login.remember")}
-            </Checkbox>
+            </AppCheckbox>
             <Text as="a" target="_blank" href={t("login.forget_url")}>
               {t("login.forget")}
             </Text>
@@ -310,13 +308,13 @@ const Login = () => {
           </Button>
         </HStack>
         <Show when={ldapLoginEnabled}>
-          <Checkbox
-            w="$full"
+          <AppCheckbox
+            style={{ width: "100%" }}
             checked={useLdap() === true}
-            onChange={() => setUseLdap(!useLdap())}
+            onChange={setUseLdap}
           >
             {ldapLoginTips}
-          </Checkbox>
+          </AppCheckbox>
         </Show>
         <Button
           w="$full"

@@ -1,0 +1,47 @@
+.app-radio-group,
+.app-radio {
+  display: inline-flex;
+  align-items: center;
+}
+
+.app-radio-group {
+  gap: 1rem;
+}
+
+.app-radio {
+  gap: 0.5rem;
+}
+
+.app-radio__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  padding: 0;
+  border: 1px solid var(--hope-colors-neutral7, #a0aec0);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.app-radio__control[data-checked] {
+  border-color: var(--hope-colors-info9, #3182ce);
+}
+
+.app-radio__control:focus-visible {
+  outline: 2px solid var(--hope-colors-info8, #4299e1);
+  outline-offset: 2px;
+}
+
+.app-radio__indicator {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--hope-colors-info9, #3182ce);
+}
+
+.app-radio__label {
+  cursor: pointer;
+  user-select: none;
+}

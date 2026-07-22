@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   Flex,
   Heading,
   HStack,
@@ -25,6 +24,7 @@ import { PEmptyResp, PResp, TaskInfo } from "~/types"
 import { handleResp, notify, r } from "~/utils"
 import { TaskCol, cols, Task, TaskOrderBy, TaskLocal } from "./Task"
 import { me } from "~/store"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 export interface TaskNameAnalyzer {
   regex: RegExp
@@ -333,12 +333,9 @@ export const Tasks = (props: TasksProps) => {
           invalid={regexCompileFailed()}
         />
         <Show when={me().role === 2}>
-          <Checkbox
-            checked={showOnlyMine()}
-            onChange={(e: any) => setShowOnlyMine(e.target.checked as boolean)}
-          >
+          <AppCheckbox checked={showOnlyMine()} onChange={setShowOnlyMine}>
             {t(`tasks.show_only_mine`)}
-          </Checkbox>
+          </AppCheckbox>
         </Show>
       </HStack>
       <VStack
@@ -351,11 +348,11 @@ export const Tasks = (props: TasksProps) => {
       >
         <HStack class="title" w="$full" p="$2">
           <HStack w={cols[0].w} spacing="$1">
-            <Checkbox
+            <AppCheckbox
               disabled={filteredTask().length === 0}
               checked={allSelected()}
               indeterminate={isIndeterminate()}
-              onChange={(e: any) => selectAll(e.target.checked as boolean)}
+              onChange={selectAll}
             />
             <Text {...itemProps(cols[0])} {...itemPropsSort(cols[0])}>
               {t(`tasks.attr.${cols[0].name}`)}

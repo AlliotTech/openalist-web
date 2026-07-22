@@ -2,7 +2,6 @@ import {
   Badge,
   Button,
   Center,
-  Checkbox,
   Divider,
   Flex,
   Grid,
@@ -21,6 +20,7 @@ import { PEmptyResp } from "~/types"
 import { handleResp, notify, r } from "~/utils"
 import { TaskAttribute, TaskLocalSetter, TasksProps } from "./Tasks"
 import { me } from "~/store"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 enum TaskStateEnum {
   Pending,
@@ -180,15 +180,15 @@ export const Task = (props: TaskAttribute & TasksProps & TaskLocalSetter) => {
     <Show when={!deleted()}>
       <HStack w="$full" p="$2">
         <HStack w={cols[0].w} spacing="$1">
-          <Checkbox
+          <AppCheckbox
             // colorScheme="neutral"
-            on:click={(e: MouseEvent) => {
+            onClick={(e) => {
               e.stopPropagation()
             }}
             checked={props.local.selected}
-            onChange={(e: any) => {
+            onChange={(checked) => {
               props.setLocal({
-                selected: e.target.checked as boolean,
+                selected: checked,
                 expanded: props.local.expanded,
               })
             }}

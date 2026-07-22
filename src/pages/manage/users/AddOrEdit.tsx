@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   Flex,
   FormControl,
   FormLabel,
@@ -23,6 +22,7 @@ import { createStore } from "solid-js/store"
 import { For, Show } from "solid-js"
 import { me, Me, setMe } from "~/store"
 import { PublicKeys } from "./PublicKeys"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 const Permission = (props: {
   can: boolean
@@ -42,10 +42,7 @@ const Permission = (props: {
       w="fit-content"
     >
       <FormLabel mb="0">{t(`users.permissions.${props.name}`)}</FormLabel>
-      <Checkbox
-        checked={props.can}
-        onChange={() => props.onChange(!props.can)}
-      />
+      <AppCheckbox checked={props.can} onChange={props.onChange} />
     </FormControl>
   )
 }
@@ -141,16 +138,14 @@ const AddOrEdit = () => {
           </Flex>
         </FormControl>
         <FormControl w="fit-content" display="flex">
-          <Checkbox
-            css={{ whiteSpace: "nowrap" }}
+          <AppCheckbox
+            style={{ "white-space": "nowrap" }}
             id="disabled"
-            onChange={(e: any) => setUser("disabled", e.currentTarget.checked)}
-            color="$neutral10"
-            fontSize="$sm"
+            onChange={(checked) => setUser("disabled", checked)}
             checked={user.disabled}
           >
             {t(`users.disabled`)}
-          </Checkbox>
+          </AppCheckbox>
         </FormControl>
         <Button
           loading={okLoading()}

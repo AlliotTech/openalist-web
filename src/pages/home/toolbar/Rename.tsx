@@ -1,9 +1,10 @@
-import { Checkbox, createDisclosure } from "@hope-ui/solid"
+import { createDisclosure } from "@hope-ui/solid"
 import { createSignal, onCleanup, Show } from "solid-js"
 import { ModalInput } from "~/components"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { oneChecked, selectedObjs } from "~/store"
 import { bus, fsRename, handleRespWithNotifySuccess, pathJoin } from "~/utils"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 export const Rename = () => {
   const t = useT()
@@ -31,15 +32,13 @@ export const Rename = () => {
       <ModalInput
         title="home.toolbar.input_new_name"
         footerSlot={
-          <Checkbox
-            mr="auto"
+          <AppCheckbox
+            style={{ "margin-right": "auto" }}
             checked={overwrite()}
-            onChange={() => {
-              setOverwrite(!overwrite())
-            }}
+            onChange={setOverwrite}
           >
             {t("home.conflict_policy.overwrite_existing")}
-          </Checkbox>
+          </AppCheckbox>
         }
         isRenamingFile={!selectedObjs()[0].is_dir}
         opened={isOpen()}

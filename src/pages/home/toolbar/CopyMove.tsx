@@ -1,9 +1,10 @@
-import { Checkbox, createDisclosure } from "@hope-ui/solid"
+import { createDisclosure } from "@hope-ui/solid"
 import { createSignal, onCleanup } from "solid-js"
 import { ModalFolderChoose } from "~/components"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { selectedObjs } from "~/store"
 import { bus, fsCopy, fsMove, handleRespWithNotifySuccess } from "~/utils"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 export const Copy = () => {
   const t = useT()
@@ -29,15 +30,13 @@ export const Copy = () => {
       onClose={onClose}
       loading={loading()}
       footerSlot={
-        <Checkbox
-          mr="auto"
+        <AppCheckbox
+          style={{ "margin-right": "auto" }}
           checked={overwrite()}
-          onChange={() => {
-            setOverwrite(!overwrite())
-          }}
+          onChange={setOverwrite}
         >
           {t("home.conflict_policy.overwrite_existing")}
-        </Checkbox>
+        </AppCheckbox>
       }
       onSubmit={async (dst) => {
         const resp = await ok(
@@ -79,15 +78,13 @@ export const Move = () => {
       onClose={onClose}
       loading={loading()}
       footerSlot={
-        <Checkbox
-          mr="auto"
+        <AppCheckbox
+          style={{ "margin-right": "auto" }}
           checked={overwrite()}
-          onChange={() => {
-            setOverwrite(!overwrite())
-          }}
+          onChange={setOverwrite}
         >
           {t("home.conflict_policy.overwrite_existing")}
-        </Checkbox>
+        </AppCheckbox>
       }
       onSubmit={async (dst) => {
         const resp = await ok(

@@ -4,7 +4,6 @@ import {
   Heading,
   HStack,
   IconButton,
-  Checkbox,
   Text,
   Badge,
   Progress,
@@ -26,6 +25,7 @@ import { UploadFileProps, StatusBadge } from "./types"
 import { File2Upload, traverseFileTree } from "./util"
 import { SelectWrapper } from "~/components"
 import { getUploads } from "./uploads"
+import { AppCheckbox } from "~/components/ui/Checkbox"
 
 const UploadFile = (props: UploadFileProps) => {
   const t = useT()
@@ -308,30 +308,15 @@ const Upload = () => {
               />
             </HStack>
             <HStack spacing="$4">
-              <Checkbox
-                checked={asTask()}
-                onChange={() => {
-                  setAsTask(!asTask())
-                }}
-              >
+              <AppCheckbox checked={asTask()} onChange={setAsTask}>
                 {t("home.upload.add_as_task")}
-              </Checkbox>
-              <Checkbox
-                checked={overwrite()}
-                onChange={() => {
-                  setOverwrite(!overwrite())
-                }}
-              >
+              </AppCheckbox>
+              <AppCheckbox checked={overwrite()} onChange={setOverwrite}>
                 {t("home.conflict_policy.overwrite_existing")}
-              </Checkbox>
-              <Checkbox
-                checked={rapid()}
-                onChange={() => {
-                  setRapid(!rapid())
-                }}
-              >
+              </AppCheckbox>
+              <AppCheckbox checked={rapid()} onChange={setRapid}>
                 {t("home.upload.try_rapid")}
-              </Checkbox>
+              </AppCheckbox>
             </HStack>
           </Show>
         </VStack>
