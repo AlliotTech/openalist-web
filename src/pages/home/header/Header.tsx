@@ -1,5 +1,4 @@
 import {
-  HStack,
   useColorModeValue,
   Image,
   Center,
@@ -7,6 +6,7 @@ import {
   Kbd,
   CenterProps,
 } from "@hope-ui/solid"
+import { AppHStack as HStack } from "~/components/ui/Stack"
 import { changeColor } from "seemly"
 import { Show, createMemo } from "solid-js"
 import { getMainColor, getSetting, local, objStore, State } from "~/store"

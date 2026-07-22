@@ -22,7 +22,14 @@ type StackProps = ParentProps<
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
     justifyContent?: JSX.CSSProperties["justify-content"]
-    w?: string | { "@initial"?: string; "@md"?: string; "@lg"?: string }
+    w?:
+      | string
+      | {
+          "@initial"?: string
+          "@sm"?: string
+          "@md"?: string
+          "@lg"?: string
+        }
     width?: string
     h?: string
     minW?: string | number
@@ -190,6 +197,10 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           "border-color": cssTokens(local.borderColor),
           "--app-stack-width-md": token(
             typeof local.w === "object" ? local.w["@md"] : undefined,
+            "sizes",
+          ),
+          "--app-stack-width-sm": token(
+            typeof local.w === "object" ? local.w["@sm"] : undefined,
             "sizes",
           ),
           "--app-stack-width-lg": token(

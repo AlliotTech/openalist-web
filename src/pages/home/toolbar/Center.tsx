@@ -1,4 +1,5 @@
-import { Box, HStack, useColorModeValue } from "@hope-ui/solid"
+import { Box, useColorModeValue } from "@hope-ui/solid"
+import { AppHStack as HStack } from "~/components/ui/Stack"
 import { createMemo, For, Show } from "solid-js"
 import { checkboxOpen, haveSelected, objStore, selectAll, State } from "~/store"
 import { CopyLink } from "./CopyLink"
@@ -40,7 +41,7 @@ export const Center = () => {
             border="1px solid"
             borderColor={useColorModeValue("$neutral4", "$neutral6")()}
             css={{
-              backdropFilter: "blur(20px)",
+              "backdrop-filter": "blur(20px)",
             }}
           >
             <For each={["rename", "move", "copy", "delete", "decompress"]}>

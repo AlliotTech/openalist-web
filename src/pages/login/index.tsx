@@ -5,10 +5,9 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  HStack,
-  VStack,
   Icon,
 } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { createMemo, createSignal, Show, onMount, onCleanup } from "solid-js"

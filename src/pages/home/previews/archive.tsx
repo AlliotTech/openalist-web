@@ -3,13 +3,12 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
-  VStack,
   Text,
   Divider,
-  HStack,
   Icon,
   useColorMode,
 } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import {
   batch,
