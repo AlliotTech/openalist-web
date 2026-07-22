@@ -1,4 +1,4 @@
-import { useColorModeValue } from "@hope-ui/solid"
+import { useColorModeValue } from "~/components/ui/ColorMode"
 
 export const hoverColor = () => "rgba(132,133,141,0.18)"
 

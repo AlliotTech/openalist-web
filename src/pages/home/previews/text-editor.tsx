@@ -1,4 +1,4 @@
-import { useColorMode } from "@hope-ui/solid"
+import { useColorMode } from "~/components/ui/ColorMode"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createEffect, createMemo, createSignal, on, Show } from "solid-js"

@@ -1,4 +1,4 @@
-import { useColorModeValue } from "@hope-ui/solid"
+import { useColorModeValue } from "~/components/ui/ColorMode"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import { createMemo, For, Show } from "solid-js"

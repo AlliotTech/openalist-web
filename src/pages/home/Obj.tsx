@@ -1,5 +1,5 @@
 import { AppText as Text } from "~/components/ui/Typography"
-import { useColorModeValue } from "@hope-ui/solid"
+import { useColorModeValue } from "~/components/ui/ColorMode"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import {
   createEffect,

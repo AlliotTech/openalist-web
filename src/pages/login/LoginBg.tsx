@@ -1,4 +1,4 @@
-import { useColorModeValue } from "@hope-ui/solid"
+import { useColorModeValue } from "~/components/ui/ColorMode"
 import { AppBox as Box } from "~/components/ui/Layout"
 import CornerBottom from "./CornerBottom"
 import CornerTop from "./CornerTop"
