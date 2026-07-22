@@ -9,29 +9,51 @@
   transform: var(--app-stack-active-transform);
 }
 
+.app-stack--responsive-width {
+  width: var(--app-stack-width-initial);
+}
+
+.app-stack--responsive-direction {
+  flex-direction: var(--app-stack-direction-initial);
+}
+
+.app-stack--responsive-wrap {
+  flex-wrap: var(--app-stack-wrap-initial);
+}
+
+.app-stack--responsive-justify {
+  justify-content: var(--app-stack-justify-initial);
+}
+
 @media (min-width: 640px) {
   .app-stack--responsive-width {
-    width: var(--app-stack-width-sm);
+    width: var(--app-stack-width-sm, var(--app-stack-width-initial));
   }
 
   .app-stack--responsive-direction {
-    flex-direction: var(--app-stack-direction-sm);
+    flex-direction: var(
+      --app-stack-direction-sm,
+      var(--app-stack-direction-initial)
+    );
   }
 }
 
 @media (min-width: 768px) {
   .app-stack--responsive-wrap {
-    flex-wrap: nowrap;
+    flex-wrap: var(--app-stack-wrap-md, var(--app-stack-wrap-initial));
   }
 
   .app-stack--responsive-width {
-    width: var(--app-stack-width-md, var(--app-stack-width-sm));
+    width: var(
+      --app-stack-width-md,
+      var(--app-stack-width-sm, var(--app-stack-width-initial))
+    );
   }
 
   .app-stack--responsive-direction {
     flex-direction: var(
       --app-stack-direction-md,
-      var(--app-stack-direction-sm)
+      var(--app-stack-direction-sm, var(--app-stack-direction-initial))
     );
   }
 }
@@ -40,7 +62,10 @@
   .app-stack--responsive-width {
     width: var(
       --app-stack-width-lg,
-      var(--app-stack-width-md, var(--app-stack-width-sm))
+      var(
+        --app-stack-width-md,
+        var(--app-stack-width-sm, var(--app-stack-width-initial))
+      )
     );
   }
 }
@@ -49,11 +74,17 @@
   .app-stack--responsive-direction {
     flex-direction: var(
       --app-stack-direction-xl,
-      var(--app-stack-direction-md, var(--app-stack-direction-sm))
+      var(
+        --app-stack-direction-md,
+        var(--app-stack-direction-sm, var(--app-stack-direction-initial))
+      )
     );
   }
 
   .app-stack--responsive-justify {
-    justify-content: var(--app-stack-justify-xl);
+    justify-content: var(
+      --app-stack-justify-xl,
+      var(--app-stack-justify-initial)
+    );
   }
 }

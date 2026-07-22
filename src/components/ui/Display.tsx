@@ -57,7 +57,7 @@ export const AppAlert = (
     class={`app-alert app-alert--${props.status ?? "info"}${props.flexDirection ? " app-alert--responsive" : ""}`}
     style={{
       width: token(props.w, "sizes"),
-      "flex-direction": props.flexDirection?.["@initial"],
+      "--app-alert-direction-initial": props.flexDirection?.["@initial"],
       "--app-alert-direction-lg": props.flexDirection?.["@lg"],
     }}
   >

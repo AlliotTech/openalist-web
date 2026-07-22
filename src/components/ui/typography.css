@@ -24,9 +24,14 @@
   background: var(--app-type-hover-background);
 }
 
+.app-type--responsive {
+  width: var(--app-type-width-initial);
+  display: var(--app-type-display-initial);
+}
+
 @media (min-width: 768px) {
   .app-type--responsive {
-    width: var(--app-type-width-md);
-    display: var(--app-type-display-md);
+    width: var(--app-type-width-md, var(--app-type-width-initial));
+    display: var(--app-type-display-md, var(--app-type-display-initial));
   }
 }

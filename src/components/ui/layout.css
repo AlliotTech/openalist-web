@@ -11,13 +11,22 @@
   color: var(--app-box-dark-color);
 }
 
+.app-box--responsive {
+  width: var(--app-box-width-initial);
+  display: var(--app-box-display-initial);
+  top: var(--app-box-top-initial);
+  right: var(--app-box-right-initial);
+  bottom: var(--app-box-bottom-initial);
+  left: var(--app-box-left-initial);
+}
+
 @media (min-width: 640px) {
   .app-box--responsive {
-    width: var(--app-box-width-sm);
-    display: var(--app-box-display-sm);
-    top: var(--app-box-top-sm);
-    right: var(--app-box-right-sm);
-    bottom: var(--app-box-bottom-sm);
-    left: var(--app-box-left-sm);
+    width: var(--app-box-width-sm, var(--app-box-width-initial));
+    display: var(--app-box-display-sm, var(--app-box-display-initial));
+    top: var(--app-box-top-sm, var(--app-box-top-initial));
+    right: var(--app-box-right-sm, var(--app-box-right-initial));
+    bottom: var(--app-box-bottom-sm, var(--app-box-bottom-initial));
+    left: var(--app-box-left-sm, var(--app-box-left-initial));
   }
 }

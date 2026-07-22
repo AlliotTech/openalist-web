@@ -128,8 +128,7 @@ export const AppBox = (props: AppBoxProps) => {
         ...(local.css ?? {}),
         ...(local.style ?? {}),
         width: token(
-          local.boxSize ??
-            (typeof local.w === "object" ? local.w["@initial"] : local.w),
+          local.boxSize ?? (typeof local.w === "object" ? undefined : local.w),
           "sizes",
         ),
         height: token(local.boxSize ?? local.h ?? local.height, "sizes"),
@@ -147,23 +146,19 @@ export const AppBox = (props: AppBoxProps) => {
         "margin-right": token(local.mx, "space"),
         position: local.pos ?? local.position,
         top: token(
-          typeof local.top === "object" ? local.top["@initial"] : local.top,
+          typeof local.top === "object" ? undefined : local.top,
           "space",
         ),
         right: token(
-          typeof local.right === "object"
-            ? local.right["@initial"]
-            : local.right,
+          typeof local.right === "object" ? undefined : local.right,
           "space",
         ),
         bottom: token(
-          typeof local.bottom === "object"
-            ? local.bottom["@initial"]
-            : local.bottom,
+          typeof local.bottom === "object" ? undefined : local.bottom,
           "space",
         ),
         left: token(
-          typeof local.left === "object" ? local.left["@initial"] : local.left,
+          typeof local.left === "object" ? undefined : local.left,
           "space",
         ),
         "z-index": token(local.zIndex, "zIndices"),
@@ -172,10 +167,7 @@ export const AppBox = (props: AppBoxProps) => {
         "overflow-x": local.overflowX,
         "overflow-y": local.overflowY,
         color: token(local.color, "colors"),
-        display:
-          typeof local.display === "object"
-            ? local.display["@initial"]
-            : local.display,
+        display: typeof local.display === "object" ? undefined : local.display,
         opacity: local.opacity,
         "border-radius": token(local.rounded, "radii"),
         background: colors(local.bg ?? local.bgColor),
@@ -197,22 +189,48 @@ export const AppBox = (props: AppBoxProps) => {
           typeof local.w === "object" ? local.w["@sm"] : undefined,
           "sizes",
         ),
+        "--app-box-width-initial": token(
+          typeof local.w === "object" ? local.w["@initial"] : undefined,
+          "sizes",
+        ),
         "--app-box-display-sm":
           typeof local.display === "object" ? local.display["@sm"] : undefined,
+        "--app-box-display-initial":
+          typeof local.display === "object"
+            ? local.display["@initial"]
+            : undefined,
         "--app-box-top-sm": token(
           typeof local.top === "object" ? local.top["@sm"] : undefined,
+          "space",
+        ),
+        "--app-box-top-initial": token(
+          typeof local.top === "object" ? local.top["@initial"] : undefined,
           "space",
         ),
         "--app-box-right-sm": token(
           typeof local.right === "object" ? local.right["@sm"] : undefined,
           "space",
         ),
+        "--app-box-right-initial": token(
+          typeof local.right === "object" ? local.right["@initial"] : undefined,
+          "space",
+        ),
         "--app-box-bottom-sm": token(
           typeof local.bottom === "object" ? local.bottom["@sm"] : undefined,
           "space",
         ),
+        "--app-box-bottom-initial": token(
+          typeof local.bottom === "object"
+            ? local.bottom["@initial"]
+            : undefined,
+          "space",
+        ),
         "--app-box-left-sm": token(
           typeof local.left === "object" ? local.left["@sm"] : undefined,
+          "space",
+        ),
+        "--app-box-left-initial": token(
+          typeof local.left === "object" ? local.left["@initial"] : undefined,
           "space",
         ),
       }}

@@ -104,13 +104,10 @@ const Type = (props: TypeProps & { element: "span" | "h2" }) => {
         "font-style": local.fontStyle,
         "text-align": local.textAlign,
         width: token(
-          typeof local.w === "object" ? local.w["@initial"] : local.w,
+          typeof local.w === "object" ? undefined : local.w,
           "sizes",
         ),
-        display:
-          typeof local.display === "object"
-            ? local.display["@initial"]
-            : local.display,
+        display: typeof local.display === "object" ? undefined : local.display,
         overflow: local.overflow,
         cursor: local.cursor,
         padding: token(local.p, "space"),
@@ -130,8 +127,16 @@ const Type = (props: TypeProps & { element: "span" | "h2" }) => {
           typeof local.w === "object" ? local.w["@md"] : undefined,
           "sizes",
         ),
+        "--app-type-width-initial": token(
+          typeof local.w === "object" ? local.w["@initial"] : undefined,
+          "sizes",
+        ),
         "--app-type-display-md":
           typeof local.display === "object" ? local.display["@md"] : undefined,
+        "--app-type-display-initial":
+          typeof local.display === "object"
+            ? local.display["@initial"]
+            : undefined,
       }}
     >
       {local.children}

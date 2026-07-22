@@ -69,8 +69,9 @@ export const AppGrid = (props: GridProps) => {
         transition: local.transition,
         "grid-template-columns":
           typeof source() === "object"
-            ? at("@initial")
+            ? undefined
             : columnsValue(source() as any),
+        "--app-grid-columns-initial": at("@initial"),
         "--app-grid-columns-md": at("@md"),
         "--app-grid-columns-lg": at("@lg"),
       }}

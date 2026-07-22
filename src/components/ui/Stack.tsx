@@ -182,7 +182,7 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           display: "flex",
           "flex-direction":
             typeof local.flexDirection === "object"
-              ? local.flexDirection["@initial"]
+              ? undefined
               : (local.flexDirection ?? local.direction),
           gap: token(local.gap ?? local.spacing, "space"),
           "column-gap": token(local.columnGap, "space"),
@@ -190,11 +190,11 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           "align-items": local.alignItems,
           "justify-content":
             typeof local.justifyContent === "object"
-              ? local.justifyContent["@initial"]
+              ? undefined
               : local.justifyContent,
           width: token(
             typeof local.w === "object"
-              ? local.w["@initial"]
+              ? local.width
               : (local.w ?? local.width),
             "sizes",
           ),
@@ -217,9 +217,7 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           "margin-right": token(local.mr ?? local.mx, "space"),
           "flex-wrap":
             local.flexWrap ??
-            (typeof local.wrap === "object"
-              ? (local.wrap["@initial"] as JSX.CSSProperties["flex-wrap"])
-              : local.wrap),
+            (typeof local.wrap === "object" ? undefined : local.wrap),
           flex: local.flex,
           position: local.position ?? local.pos,
           transition:
@@ -253,6 +251,10 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
             typeof local.w === "object" ? local.w["@lg"] : undefined,
             "sizes",
           ),
+          "--app-stack-width-initial": token(
+            typeof local.w === "object" ? local.w["@initial"] : undefined,
+            "sizes",
+          ),
           "--app-stack-hover-border": cssTokens(local._hover?.border),
           "--app-stack-hover-background": cssTokens(local._hover?.bgColor),
           "--app-stack-hover-transform": local._hover?.transform,
@@ -269,6 +271,18 @@ const Stack = (props: AppStackProps & { direction: "row" | "column" }) => {
           "--app-stack-direction-xl":
             typeof local.flexDirection === "object"
               ? local.flexDirection["@xl"]
+              : undefined,
+          "--app-stack-direction-initial":
+            typeof local.flexDirection === "object"
+              ? (local.flexDirection["@initial"] ?? local.direction)
+              : undefined,
+          "--app-stack-wrap-initial":
+            typeof local.wrap === "object" ? local.wrap["@initial"] : undefined,
+          "--app-stack-wrap-md":
+            typeof local.wrap === "object" ? local.wrap["@md"] : undefined,
+          "--app-stack-justify-initial":
+            typeof local.justifyContent === "object"
+              ? local.justifyContent["@initial"]
               : undefined,
           "--app-stack-justify-xl":
             typeof local.justifyContent === "object"

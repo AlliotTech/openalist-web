@@ -65,9 +65,16 @@
   line-height: 1;
 }
 
+.app-alert--responsive {
+  flex-direction: var(--app-alert-direction-initial);
+}
+
 @media (min-width: 1024px) {
   .app-alert--responsive {
-    flex-direction: var(--app-alert-direction-lg);
+    flex-direction: var(
+      --app-alert-direction-lg,
+      var(--app-alert-direction-initial)
+    );
   }
 }
 
