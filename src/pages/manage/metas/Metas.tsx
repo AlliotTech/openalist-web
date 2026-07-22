@@ -19,7 +19,7 @@ import {
   useT,
 } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
-import { Meta, PageResp } from "~/types"
+import { Meta, PageResp, PEmptyResp } from "~/types"
 import { DeletePopover } from "../common/DeletePopover"
 import { Wether } from "~/components"
 
@@ -35,7 +35,7 @@ const Metas = () => {
   }
   refresh()
 
-  const [deleting, deleteMeta] = useListFetch((id: number) =>
+  const [deleting, deleteMeta] = useListFetch((id: number): PEmptyResp =>
     r.post(`/admin/meta/delete?id=${id}`),
   )
   return (

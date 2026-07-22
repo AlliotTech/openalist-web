@@ -144,9 +144,10 @@ const previews: Preview[] = [
 export const getPreviews = (
   file: Obj & { provider: string },
 ): PreviewComponent[] => {
-  const { searchParams } = useRouter()
+  const { searchParam } = useRouter()
+  const requestedType = searchParam("type")
   const typeOverride =
-    ObjType[searchParams["type"]?.toUpperCase() as keyof typeof ObjType]
+    ObjType[requestedType?.toUpperCase() as keyof typeof ObjType]
   const res: PreviewComponent[] = []
   const subsequent: PreviewComponent[] = []
   // internal previews

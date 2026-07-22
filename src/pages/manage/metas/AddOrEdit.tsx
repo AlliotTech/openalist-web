@@ -105,7 +105,7 @@ const AddOrEdit = () => {
 
   const initEdit = async () => {
     const resp = await loadMeta()
-    handleResp(resp, setMeta)
+    handleResp(resp, (data) => setMeta(data))
   }
   if (id) {
     initEdit()
@@ -161,7 +161,7 @@ const AddOrEdit = () => {
                 }
                 sub={meta[item.sub] as boolean}
                 onSub={(val: boolean): void => setMeta(item.sub, val)}
-                help={item.help}
+                help={"help" in item && item.help}
               />
             )
           }}

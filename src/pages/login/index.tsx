@@ -102,13 +102,13 @@ const Login = () => {
         signal,
       }),
   )
-  const { searchParams, to } = useRouter()
+  const { searchParam, to } = useRouter()
+  const redirect = () => searchParam("redirect") || base_path || "/"
   const isAuthnConditionalAvailable = async (): Promise<boolean> => {
     if (
       PublicKeyCredential &&
       "isConditionalMediationAvailable" in PublicKeyCredential
     ) {
-      // @ts-expect-error
       return await PublicKeyCredential.isConditionalMediationAvailable()
     } else {
       return false
@@ -144,7 +144,6 @@ const Login = () => {
         const options = parseRequestOptionsFromJSON(data.options)
         options.signal = controller.signal
         if (conditional) {
-          // @ts-expect-error
           options.mediation = "conditional"
         }
         const credentials = await get(options)
@@ -157,10 +156,7 @@ const Login = () => {
         handleRespWithoutNotify(resp, (data) => {
           notify.success(t("login.success"))
           changeToken(data.token)
-          to(
-            decodeURIComponent(searchParams.redirect || base_path || "/"),
-            true,
-          )
+          to(decodeURIComponent(redirect()), true)
         })
       } catch (error: unknown) {
         if (error instanceof Error && error.name != "AbortError")
@@ -195,10 +191,7 @@ const Login = () => {
         (data) => {
           notify.success(t("login.success"))
           changeToken(data.token)
-          to(
-            decodeURIComponent(searchParams.redirect || base_path || "/"),
-            true,
-          )
+          to(decodeURIComponent(redirect()), true)
         },
         (msg, code) => {
           if (!needOpt() && code === 402) {
@@ -330,10 +323,7 @@ const Login = () => {
           colorScheme="accent"
           onClick={() => {
             changeToken()
-            to(
-              decodeURIComponent(searchParams.redirect || base_path || "/"),
-              true,
-            )
+            to(decodeURIComponent(redirect()), true)
           }}
         >
           {t("login.use_guest")}

@@ -41,7 +41,7 @@ export const resetGlobalPage = () => {
   setGlobalPage(1)
 }
 export const usePath = () => {
-  const { pathname, to, searchParams } = useRouter()
+  const { pathname, to, searchParam } = useRouter()
   const [, getObj] = useFetch((path: string) =>
     fsGet(
       path,
@@ -53,7 +53,7 @@ export const usePath = () => {
   )
   const pagination = getPagination()
   if (pagination.type === "pagination") {
-    setGlobalPage(parseInt(searchParams["page"]) || 1)
+    setGlobalPage(parseInt(searchParam("page") ?? "") || 1)
   }
   const [, getObjs] = useFetch(
     (arg?: {

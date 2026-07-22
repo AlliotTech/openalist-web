@@ -11,10 +11,17 @@ import {
 import { MaybeLoading, FolderChooseInput } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { handleResp, notify, r } from "~/utils"
-import { PEmptyResp, PResp, User, UserMethods, UserPermissions } from "~/types"
+import {
+  PEmptyResp,
+  PResp,
+  Resp,
+  User,
+  UserMethods,
+  UserPermissions,
+} from "~/types"
 import { createStore } from "solid-js/store"
 import { For, Show } from "solid-js"
-import { me, setMe } from "~/store"
+import { me, Me, setMe } from "~/store"
 import { PublicKeys } from "./PublicKeys"
 
 const Permission = (props: {
@@ -63,7 +70,7 @@ const AddOrEdit = () => {
 
   const initEdit = async () => {
     const resp = await loadUser()
-    handleResp(resp, setUser)
+    handleResp(resp, (data) => setUser(data))
   }
   if (id) {
     initEdit()
@@ -152,8 +159,10 @@ const AddOrEdit = () => {
             // TODO maybe can use handleRespWithNotifySuccess
             handleResp(resp, async () => {
               notify.success(t("global.save_success"))
-              if (user.username === me().username)
-                handleResp(await r.get("/me"), setMe)
+              if (user.username === me().username) {
+                const meResp: Resp<Me> = await r.get("/me")
+                handleResp(meResp, (data) => setMe(data))
+              }
               back()
             })
           }}
@@ -161,7 +170,7 @@ const AddOrEdit = () => {
           {t(`global.${id ? "save" : "add"}`)}
         </Button>
         <Show when={id && !UserMethods.is_guest(user)}>
-          <PublicKeys isMine={false} userId={parseInt(id)} />
+          <PublicKeys isMine={false} userId={parseInt(id!)} />
         </Show>
       </VStack>
     </MaybeLoading>

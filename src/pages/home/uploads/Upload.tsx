@@ -88,8 +88,8 @@ const Upload = () => {
       ["success", "error"].includes(status),
     )
   }
-  let fileInput: HTMLInputElement
-  let folderInput: HTMLInputElement
+  let fileInput!: HTMLInputElement
+  let folderInput!: HTMLInputElement
   const handleAddFiles = async (files: File[]) => {
     if (files.length === 0) return
     setUploading(true)

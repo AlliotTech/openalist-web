@@ -47,6 +47,10 @@ const useRouter = () => {
     pathname: pathname,
     search: location.search,
     searchParams: location.query,
+    searchParam: (name: string) => {
+      const value = location.query[name]
+      return Array.isArray(value) ? value[0] : value
+    },
     setSearchParams: (
       params: SetParams,
       options?: Partial<NavigateOptions>,

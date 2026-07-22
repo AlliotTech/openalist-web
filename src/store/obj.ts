@@ -97,7 +97,8 @@ export type OrderBy = "name" | "size" | "modified"
 
 export const sortObjs = (orderBy: OrderBy, reverse?: boolean) => {
   log("sort:", orderBy, reverse)
-  naturalSort.insensitive = true
+  ;(naturalSort as typeof naturalSort & { insensitive: boolean }).insensitive =
+    true
   setObjStore(
     "objs",
     produce((objs) =>

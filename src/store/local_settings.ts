@@ -35,7 +35,15 @@ const toJSON = () => ({ ...local })
 //   return key in object
 // }
 
-export const initialLocalSettings = [
+export interface LocalSetting {
+  key: string
+  default: string
+  type?: "select" | "boolean" | "number"
+  options?: string[] | (() => string[])
+  hidden?: boolean
+}
+
+export const initialLocalSettings: LocalSetting[] = [
   {
     key: "aria2_rpc_url",
     default: "http://localhost:6800/jsonrpc",
@@ -86,7 +94,6 @@ export const initialLocalSettings = [
     options: ["direct", "dblclick", "disable_while_checked"],
   },
 ]
-export type LocalSetting = (typeof initialLocalSettings)[number]
 for (const setting of initialLocalSettings) {
   if (!local[setting.key]) {
     setLocal(setting.key, setting.default)

@@ -11,17 +11,18 @@ const SSOLogin = () => {
   const ssoSignEnabled = getSettingBool("sso_login_enabled")
   const loginPlatform = getSetting("sso_login_platform")
   const usecompatibility = getSettingBool("sso_compatibility_mode")
-  const { searchParams, to } = useRouter()
-  const token = searchParams["token"]
+  const { searchParam, to } = useRouter()
+  const token = searchParam("token")
+  const redirect = () => searchParam("redirect") || base_path || "/"
   if (token != undefined && token != "") {
     changeToken(token)
-    to(decodeURIComponent(searchParams.redirect || base_path || "/"), true)
+    to(decodeURIComponent(redirect()), true)
   }
   function messageEvent(event: MessageEvent) {
     const data = event.data
     if (data.token) {
       changeToken(data.token)
-      to(decodeURIComponent(searchParams.redirect || base_path || "/"), true)
+      to(decodeURIComponent(redirect()), true)
     }
   }
   window.addEventListener("message", messageEvent)

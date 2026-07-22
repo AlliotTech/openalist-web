@@ -102,7 +102,8 @@ const Profile = () => {
       }
     })
   }
-  const ssoID = searchParams["sso_id"]
+  const ssoIDValue = searchParams["sso_id"]
+  const ssoID = Array.isArray(ssoIDValue) ? ssoIDValue[0] : ssoIDValue
   if (ssoID) {
     setMe({ ...me(), sso_id: ssoID })
     saveMe(true)

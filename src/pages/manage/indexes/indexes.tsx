@@ -78,8 +78,8 @@ const Indexes = () => {
     refreshProgress()
   }
 
-  let updatePathsRef: HTMLTextAreaElement
-  let updateMaxDepthRef: HTMLInputElement
+  let updatePathsRef!: HTMLTextAreaElement
+  let updateMaxDepthRef!: HTMLInputElement
   const [updateLoading, updateReq] = useFetch(updateIndex)
   const update = async () => {
     let updatePaths: string[] = []

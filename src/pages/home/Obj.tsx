@@ -32,12 +32,12 @@ export { objBoxRef }
 export const Obj = () => {
   const t = useT()
   const cardBg = useColorModeValue("white", "$neutral3")
-  const { pathname, searchParams } = useRouter()
+  const { pathname, searchParam } = useRouter()
   const { handlePathChange, refresh } = usePath()
   const pagination = getPagination()
   const page = createMemo(() => {
     return pagination.type === "pagination"
-      ? parseInt(searchParams["page"], 10) || 1
+      ? parseInt(searchParam("page") ?? "", 10) || 1
       : undefined
   })
   let lastPathname: string
