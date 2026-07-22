@@ -17,7 +17,13 @@
   line-height: var(--hope-lineHeights-4, 1rem);
   overflow-wrap: anywhere;
   transform-origin: var(--kb-tooltip-content-transform-origin);
-  animation: app-tooltip-in 120ms ease-out;
+}
+
+.app-tooltip__content[data-expanded] {
+  animation: app-tooltip-in 200ms ease-out;
+}
+.app-tooltip__content[data-closed] {
+  animation: app-tooltip-out 100ms ease-in;
 }
 
 .app-tooltip__arrow {
@@ -36,6 +42,13 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes app-tooltip-out {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
   }
 }
 

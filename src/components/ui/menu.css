@@ -20,6 +20,27 @@
   color: var(--hope-colors-neutral12, #1a202c);
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.16);
   z-index: var(--hope-zIndices-dropdown, 1400);
+  transform-origin: var(--kb-menu-content-transform-origin);
+}
+
+.app-menu__content[data-expanded] {
+  animation: app-menu-in 200ms ease-out;
+}
+.app-menu__content[data-closed] {
+  animation: app-menu-out 100ms ease-in;
+}
+
+@keyframes app-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+@keyframes app-menu-out {
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
 }
 
 .app-menu__item {
@@ -57,5 +78,11 @@
   .app-menu__content {
     background: var(--hope-colors-background, #1a202c);
     color: var(--hope-colors-neutral12, #f7fafc);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-menu__content {
+    animation: none;
   }
 }

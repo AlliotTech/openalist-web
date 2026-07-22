@@ -5,6 +5,14 @@
   z-index: var(--hope-zIndices-modal, 1300);
 }
 
+.app-modal__overlay[data-expanded] {
+  animation: app-modal-overlay-in 200ms ease-out;
+}
+
+.app-modal__overlay[data-closed] {
+  animation: app-modal-overlay-out 100ms ease-in;
+}
+
 .app-modal__content {
   position: fixed;
   top: 3.75rem;
@@ -23,6 +31,14 @@
   transform: translateX(-50%);
   z-index: calc(var(--hope-zIndices-modal, 1300) + 1);
   outline: none;
+}
+
+.app-modal__content[data-expanded] {
+  animation: app-modal-content-in 200ms ease-out;
+}
+
+.app-modal__content[data-closed] {
+  animation: app-modal-content-out 100ms ease-in;
 }
 
 .app-modal__content[data-size="xs"] {
@@ -193,8 +209,46 @@
   background: var(--hope-colors-neutral4, #edf2f7);
 }
 
+.app-modal__close:focus-visible {
+  outline: 2px solid var(--hope-colors-info9, #3182ce);
+  outline-offset: 1px;
+}
+
+@keyframes app-modal-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes app-modal-overlay-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes app-modal-content-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 1rem) scale(0.95);
+  }
+}
+
+@keyframes app-modal-content-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, 0.5rem) scale(0.98);
+  }
+}
+
 @media (max-width: 40rem) {
   .app-modal__content {
     width: calc(100vw - 1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-modal__overlay,
+  .app-modal__content {
+    animation: none;
   }
 }

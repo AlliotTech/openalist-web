@@ -104,6 +104,30 @@
   color: var(--hope-colors-neutral12, #1a202c);
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.16);
   z-index: var(--hope-zIndices-dropdown, 1400);
+  transform-origin: var(
+    --kb-select-content-transform-origin,
+    var(--kb-combobox-content-transform-origin, center top)
+  );
+}
+
+.app-select__content[data-expanded] {
+  animation: app-select-in 200ms ease-out;
+}
+.app-select__content[data-closed] {
+  animation: app-select-out 100ms ease-in;
+}
+
+@keyframes app-select-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+@keyframes app-select-out {
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
 }
 
 .app-select__listbox {
@@ -148,4 +172,10 @@
   position: absolute;
   right: var(--hope-space-3, 0.75rem);
   color: var(--hope-colors-info9, #3182ce);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-select__content {
+    animation: none;
+  }
 }
