@@ -1,18 +1,16 @@
 import { MaybeLoading } from "~/components"
-import { recordKeysToLowerCase } from "~/utils"
+import { parseInternetShortcutUrl } from "~/utils"
 import { FileInfo } from "./info"
 import { useFetchText, useParseText, useT } from "~/hooks"
 import { createEffect } from "solid-js"
 import { Button } from "@hope-ui/solid"
-import { parse } from "ini"
 
 export default function () {
   const [content] = useFetchText()
   function openInNewWindow() {
     const ini = content()?.content
     const { text } = useParseText(ini)
-    const config = recordKeysToLowerCase(parse(text()))
-    const url = config.internetshortcut?.url
+    const url = parseInternetShortcutUrl(text())
     if (url) {
       const a = document.createElement("a")
       a.href = url
