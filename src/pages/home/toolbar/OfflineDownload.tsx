@@ -1,4 +1,5 @@
-import { Box, createDisclosure } from "@hope-ui/solid"
+import { Box } from "@hope-ui/solid"
+import { createDisclosure } from "~/hooks/disclosure"
 import { ModalInput, SelectWrapper } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import {

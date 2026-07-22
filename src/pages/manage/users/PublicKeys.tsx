@@ -1,6 +1,5 @@
 import {
   Button,
-  createDisclosure,
   Flex,
   FormControl,
   FormLabel,
@@ -21,6 +20,7 @@ import {
   AppModalHeader,
   AppModalOverlay,
 } from "~/components/ui/Modal"
+import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, Show } from "solid-js"
 import { useFetch, useT } from "~/hooks"
 import { SSHPublicKey } from "~/types/sshkey"

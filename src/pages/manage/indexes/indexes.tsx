@@ -1,7 +1,6 @@
 import {
   Badge,
   Button,
-  createDisclosure,
   Heading,
   HStack,
   Icon,
@@ -20,6 +19,7 @@ import {
   AppModalHeader,
   AppModalOverlay,
 } from "~/components/ui/Modal"
+import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, onCleanup, Show } from "solid-js"
 import { useFetch, useT } from "~/hooks"
 import { Group, PEmptyResp, PResp } from "~/types"

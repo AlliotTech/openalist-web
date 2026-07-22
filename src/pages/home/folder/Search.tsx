@@ -1,6 +1,5 @@
 import {
   Badge,
-  createDisclosure,
   HStack,
   Icon,
   IconButton,
@@ -48,6 +47,7 @@ import {
   AppModalHeader,
   AppModalOverlay,
 } from "~/components/ui/Modal"
+import { createDisclosure } from "~/hooks/disclosure"
 
 // class MarkKeywords {
 //   root

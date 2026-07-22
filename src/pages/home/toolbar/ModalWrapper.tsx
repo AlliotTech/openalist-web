@@ -1,4 +1,4 @@
-import { createDisclosure } from "@hope-ui/solid"
+import { createDisclosure } from "~/hooks/disclosure"
 import { JSXElement, onCleanup, Show, Suspense } from "solid-js"
 import { FullLoading } from "~/components"
 import { useT } from "~/hooks"

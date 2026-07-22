@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   useColorModeValue,
-  createDisclosure,
   Icon,
 } from "@hope-ui/solid"
 import { SwitchColorMode } from "./SwitchColorMode"
@@ -12,6 +11,7 @@ import { mergeProps, Show } from "solid-js"
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from "solid-icons/ai"
 import { hoverColor } from "~/utils"
 import { AppSelect } from "~/components/ui/Select"
+import { createDisclosure } from "~/hooks/disclosure"
 
 export const Error = (props: {
   msg: string

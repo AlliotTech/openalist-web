@@ -1,11 +1,4 @@
-import {
-  Button,
-  createDisclosure,
-  HStack,
-  Text,
-  VStack,
-  Input,
-} from "@hope-ui/solid"
+import { Button, HStack, Text, VStack, Input } from "@hope-ui/solid"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import {
   bus,
@@ -26,6 +19,7 @@ import {
   AppModalHeader,
   AppModalOverlay,
 } from "~/components/ui/Modal"
+import { createDisclosure } from "~/hooks/disclosure"
 
 export const BatchRename = () => {
   const {

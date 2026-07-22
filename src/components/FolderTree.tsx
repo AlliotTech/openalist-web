@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  createDisclosure,
   HStack,
   Icon,
   Input,
@@ -18,6 +17,7 @@ import {
   AppModalHeader,
   AppModalOverlay,
 } from "~/components/ui/Modal"
+import { createDisclosure } from "~/hooks/disclosure"
 import { BiSolidRightArrow, BiSolidFolderOpen } from "solid-icons/bi"
 import {
   Accessor,

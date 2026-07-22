@@ -1,4 +1,5 @@
-import { createDisclosure, HStack, Input, Text, VStack } from "@hope-ui/solid"
+import { HStack, Input, Text, VStack } from "@hope-ui/solid"
+import { createDisclosure } from "~/hooks/disclosure"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
 import { bus, fsArchiveDecompress, handleRespWithNotifySuccess } from "~/utils"
 import { batch, createSignal, onCleanup } from "solid-js"

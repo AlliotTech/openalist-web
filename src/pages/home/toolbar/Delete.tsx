@@ -1,4 +1,5 @@
-import { Button, createDisclosure } from "@hope-ui/solid"
+import { Button } from "@hope-ui/solid"
+import { createDisclosure } from "~/hooks/disclosure"
 import {
   AppModal,
   AppModalBody,

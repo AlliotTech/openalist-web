@@ -1,4 +1,5 @@
-import { Button, createDisclosure } from "@hope-ui/solid"
+import { Button } from "@hope-ui/solid"
+import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, lazy, onCleanup, Show, Suspense } from "solid-js"
 import { FullLoading } from "~/components"
 import { useT, useDownload } from "~/hooks"

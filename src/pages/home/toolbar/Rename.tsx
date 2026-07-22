@@ -1,4 +1,4 @@
-import { createDisclosure } from "@hope-ui/solid"
+import { createDisclosure } from "~/hooks/disclosure"
 import { createSignal, onCleanup, Show } from "solid-js"
 import { ModalInput } from "~/components"
 import { useFetch, usePath, useRouter, useT } from "~/hooks"
