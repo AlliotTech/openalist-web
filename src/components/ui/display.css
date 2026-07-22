@@ -1,0 +1,32 @@
+.app-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--hope-colors-neutral3) 25%,
+    var(--hope-colors-neutral5) 50%,
+    var(--hope-colors-neutral3) 75%
+  );
+  background-size: 200% 100%;
+  animation: app-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.app-divider {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--hope-colors-neutral6);
+}
+
+@keyframes app-skeleton-pulse {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-skeleton {
+    animation: none;
+  }
+}

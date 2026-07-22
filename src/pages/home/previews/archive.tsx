@@ -4,10 +4,10 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   Text,
-  Divider,
   Icon,
   useColorMode,
 } from "@hope-ui/solid"
+import { AppDivider as Divider } from "~/components/ui/Display"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import {

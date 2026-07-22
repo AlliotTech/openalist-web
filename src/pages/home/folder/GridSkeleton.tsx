@@ -1,4 +1,4 @@
-import { Skeleton } from "@hope-ui/solid"
+import { AppSkeleton as Skeleton } from "~/components/ui/Display"
 import { AppGrid as Grid } from "~/components/ui/Grid"
 import { For } from "solid-js"
 

@@ -1,4 +1,4 @@
-import { Skeleton } from "@hope-ui/solid"
+import { AppSkeleton as Skeleton } from "~/components/ui/Display"
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { For } from "solid-js"
 
