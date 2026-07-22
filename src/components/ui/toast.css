@@ -3,14 +3,16 @@
   z-index: 2147483647;
   top: 1rem;
   right: 1rem;
-  width: min(24rem, calc(100vw - 2rem));
+  width: calc(100% - 32px);
+  max-width: var(--hope-sizes-md);
   pointer-events: none;
 }
 
 .app-toast-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  align-items: flex-end;
+  gap: var(--hope-space-4);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -19,23 +21,26 @@
 .app-toast {
   --app-toast-accent: var(--hope-colors-info9, #3182ce);
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  overflow: hidden;
-  min-height: 3.25rem;
-  border: 1px solid var(--app-toast-accent);
-  border-radius: var(--hope-radii-lg, 0.75rem);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: var(--hope-shadows-md, 0 4px 12px rgba(15, 23, 42, 0.16));
-  color: var(--hope-colors-neutral12, #1a202c);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--hope-sizes-md);
+  padding: var(--hope-space-3);
+  padding-right: var(--hope-space-9);
+  border: 0;
+  border-radius: var(--hope-radii-lg);
+  background: var(--hope-colors-loContrast);
+  box-shadow: var(--hope-shadows-lg);
+  color: var(--hope-colors-neutral12);
+  font-size: var(--hope-fontSizes-sm);
+  line-height: var(--hope-lineHeights-5);
   pointer-events: auto;
-  backdrop-filter: blur(12px);
   animation: app-toast-in 160ms ease-out;
 }
 
 .hope-ui-dark .app-toast {
-  background: rgba(18, 18, 20, 0.92);
-  color: var(--hope-colors-neutral12, #f7fafc);
+  background: var(--hope-colors-loContrast);
+  color: var(--hope-colors-neutral12);
 }
 
 .app-toast[data-status="success"] {
@@ -51,31 +56,37 @@
 }
 
 .app-toast__content {
-  display: flex;
-  align-items: center;
   min-width: 0;
-  padding: 0.85rem 0.5rem 0.85rem 1rem;
   overflow-wrap: anywhere;
 }
 
+.app-toast__icon {
+  width: var(--hope-sizes-7);
+  height: var(--hope-sizes-7);
+  flex: 0 0 auto;
+  margin-right: var(--hope-space-2_5);
+  color: var(--app-toast-accent);
+}
+
 .app-toast__title {
-  font-size: 0.925rem;
-  font-weight: 600;
-  line-height: 1.35;
+  font-size: inherit;
+  font-weight: var(--hope-fontWeights-medium);
+  line-height: inherit;
 }
 
 .app-toast__close {
-  align-self: start;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin: 0.35rem;
+  position: absolute;
+  top: var(--hope-space-1_5);
+  right: var(--hope-space-1_5);
+  width: var(--hope-sizes-8);
+  height: var(--hope-sizes-8);
   padding: 0;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--hope-radii-md);
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: 1.35rem;
+  font-size: var(--hope-fontSizes-xl);
   line-height: 1;
   cursor: pointer;
   opacity: 0.72;
@@ -89,21 +100,6 @@
 .app-toast__close:focus-visible {
   outline: 2px solid var(--app-toast-accent);
   outline-offset: 1px;
-}
-
-.app-toast__progress-track {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  overflow: hidden;
-  background: rgba(127, 127, 127, 0.14);
-}
-
-.app-toast__progress-fill {
-  height: 100%;
-  background: var(--app-toast-accent);
 }
 
 @keyframes app-toast-in {
