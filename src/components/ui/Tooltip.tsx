@@ -28,10 +28,10 @@ export interface AppTooltipProps {
 export const AppTooltip = (props: AppTooltipProps) => (
   <KobalteTooltip
     disabled={props.disabled}
-    placement={props.placement ?? "top"}
+    placement={props.placement ?? "bottom"}
     gutter={8}
-    openDelay={350}
-    closeDelay={80}
+    openDelay={0}
+    closeDelay={0}
   >
     <KobalteTooltip.Trigger as="span" class="app-tooltip__trigger">
       {props.children}
