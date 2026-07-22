@@ -1,12 +1,21 @@
 .app-menu__trigger {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   cursor: pointer;
 }
 
 .app-menu__content {
-  min-width: 10rem;
-  padding: 0.375rem;
-  border: 1px solid var(--hope-colors-neutral6, #cbd5e0);
-  border-radius: 0.5rem;
+  min-width: unset;
+  padding: var(--hope-space-1, 0.25rem);
+  border: 0;
+  border-radius: var(--hope-radii-md, 0.375rem);
   background: var(--hope-colors-background, #fff);
   color: var(--hope-colors-neutral12, #1a202c);
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.16);
@@ -18,9 +27,9 @@
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  min-height: 2rem;
-  padding: 0.375rem 0.625rem;
-  border-radius: 0.375rem;
+  min-height: var(--hope-sizes-8, 2rem);
+  padding: var(--hope-space-1, 0.25rem) var(--hope-space-2, 0.5rem);
+  border-radius: var(--hope-radii-md, 0.375rem);
   color: inherit;
   font-size: 0.875rem;
   line-height: 1.25rem;
