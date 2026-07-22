@@ -3,14 +3,13 @@ import {
   Input,
   Heading,
   HStack,
-  IconButton,
   Text,
   Badge,
   Progress,
   ProgressIndicator,
-  Button,
   Box,
 } from "@hope-ui/solid"
+import { AppButton, AppIconButton } from "~/components/ui/Button"
 import { createSignal, For, Show, onMount, onCleanup } from "solid-js"
 import { usePath, useRouter, useT } from "~/hooks"
 import { getMainColor } from "~/store"
@@ -171,7 +170,7 @@ const Upload = () => {
         fallback={
           <>
             <HStack spacing="$2">
-              <Button
+              <AppButton
                 colorScheme="accent"
                 onClick={() => {
                   setUploadFiles("uploads", (_uploads) =>
@@ -183,15 +182,15 @@ const Upload = () => {
                 }}
               >
                 {t("home.upload.clear_done")}
-              </Button>
+              </AppButton>
               <Show when={allDone()}>
-                <Button
+                <AppButton
                   onClick={() => {
                     setUploading(false)
                   }}
                 >
                   {t("home.upload.back")}
-                </Button>
+                </AppButton>
               </Show>
             </HStack>
             <For each={uploadFiles.uploads}>
@@ -287,7 +286,7 @@ const Upload = () => {
               />
             </Box>
             <HStack spacing="$4">
-              <IconButton
+              <AppIconButton
                 compact
                 size="xl"
                 aria-label={t("home.upload.upload_folder")}
@@ -297,7 +296,7 @@ const Upload = () => {
                   folderInput.click()
                 }}
               />
-              <IconButton
+              <AppIconButton
                 compact
                 size="xl"
                 aria-label={t("home.upload.upload_files")}

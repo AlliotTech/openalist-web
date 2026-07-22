@@ -1,7 +1,6 @@
 import {
   Badge,
   Box,
-  Button,
   HStack,
   Table,
   Tbody,
@@ -11,6 +10,7 @@ import {
   Tr,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { createSignal, For } from "solid-js"
 import {
@@ -87,20 +87,20 @@ const Users = () => {
   return (
     <VStack spacing="$2" alignItems="start" w="$full">
       <HStack spacing="$2">
-        <Button
+        <AppButton
           colorScheme="accent"
           loading={getUsersLoading()}
           onClick={refresh}
         >
           {t("global.refresh")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           onClick={() => {
             to("/@manage/users/add")
           }}
         >
           {t("global.add")}
-        </Button>
+        </AppButton>
       </HStack>
       <Box w="$full" overflowX="auto">
         <Table highlightOnHover dense>
@@ -137,13 +137,13 @@ const Users = () => {
                   </Td>
                   <Td>
                     <HStack spacing="$2">
-                      <Button
+                      <AppButton
                         onClick={() => {
                           to(`/@manage/users/edit/${user.id}`)
                         }}
                       >
                         {t("global.edit")}
-                      </Button>
+                      </AppButton>
                       <DeletePopover
                         name={user.username}
                         loading={deleting() === user.id}
@@ -155,7 +155,7 @@ const Users = () => {
                           })
                         }}
                       />
-                      <Button
+                      <AppButton
                         colorScheme="accent"
                         loading={cancel_2faId() === user.id}
                         onClick={async () => {
@@ -167,7 +167,7 @@ const Users = () => {
                         }}
                       >
                         {t("users.cancel_2fa")}
-                      </Button>
+                      </AppButton>
                     </HStack>
                   </Td>
                 </Tr>

@@ -20,6 +20,7 @@ export interface AppButtonProps {
   width?: string
   display?: string
   px?: string
+  my?: string
   leftIcon?: JSXElement
   rightIcon?: JSXElement
   [key: string]: unknown
@@ -43,6 +44,7 @@ export const AppButton = (props: AppButtonProps) => {
     "width",
     "display",
     "px",
+    "my",
     "leftIcon",
     "rightIcon",
   ])
@@ -75,6 +77,12 @@ export const AppButton = (props: AppButtonProps) => {
           ? `var(--hope-sizes-${width()!.slice(1)})`
           : width(),
         display: local.display,
+        "margin-top": local.my?.startsWith("$")
+          ? `var(--hope-space-${local.my.slice(1)})`
+          : local.my,
+        "margin-bottom": local.my?.startsWith("$")
+          ? `var(--hope-space-${local.my.slice(1)})`
+          : local.my,
       }}
     >
       {local.loading ? (

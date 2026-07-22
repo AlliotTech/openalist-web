@@ -4,7 +4,6 @@ import {
   AlertIcon,
   AlertTitle,
   Badge,
-  Button,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -15,6 +14,7 @@ import {
   VStack,
   Text,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal, For, JSXElement, onCleanup, Show } from "solid-js"
 import { LinkWithBase, MaybeLoading } from "~/components"
 import { useFetch, useManageTitle, useRouter, useT } from "~/hooks"
@@ -207,18 +207,18 @@ const Profile = () => {
           </FormControl>
         </SimpleGrid>
         <HStack spacing="$2">
-          <Button loading={loading()} onClick={[saveMe, false]}>
+          <AppButton loading={loading()} onClick={[saveMe, false]}>
             {t("global.save")}
-          </Button>
+          </AppButton>
           <Show when={!me().otp}>
-            <Button
+            <AppButton
               colorScheme="accent"
               onClick={() => {
                 to("/@manage/2fa")
               }}
             >
               {t("users.enable_2fa")}
-            </Button>
+            </AppButton>
           </Show>
         </HStack>
       </Show>
@@ -232,7 +232,7 @@ const Profile = () => {
           <Show
             when={me().sso_id}
             fallback={
-              <Button
+              <AppButton
                 onClick={() => {
                   const url = r.getUri() + "/auth/sso?method=get_sso_id"
                   if (usecompatibility) {
@@ -243,10 +243,10 @@ const Profile = () => {
                 }}
               >
                 {t("users.connect_sso")}
-              </Button>
+              </AppButton>
             }
           >
-            <Button
+            <AppButton
               colorScheme="danger"
               loading={loading()}
               onClick={() => {
@@ -255,7 +255,7 @@ const Profile = () => {
               }}
             >
               {t("users.disconnect_sso")}
-            </Button>
+            </AppButton>
           </Show>
         </HStack>
       </Show>
@@ -275,7 +275,7 @@ const Profile = () => {
             </For>
           </MaybeLoading>
         </HStack>
-        <Button
+        <AppButton
           loading={postregistrationloading()}
           onClick={async () => {
             if (!supported()) {
@@ -301,7 +301,7 @@ const Profile = () => {
           }}
         >
           {t("users.add_webauthn")}
-        </Button>
+        </AppButton>
       </Show>
       <HStack wrap="wrap" gap="$2" mt="$2">
         <For each={UserPermissions}>

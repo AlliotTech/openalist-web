@@ -58,6 +58,17 @@
   font-size: 0.875rem;
 }
 
+.app-button--xl {
+  min-height: 3rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1.25rem;
+}
+
+.app-icon-button.app-button--xl {
+  width: 3rem;
+  padding: 0.625rem;
+}
+
 .app-icon-button {
   width: 2.5rem;
   padding: 0.5rem;

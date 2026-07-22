@@ -5,12 +5,12 @@ import {
   Heading,
   Text,
   Input,
-  Button,
   useColorModeValue,
   HStack,
   VStack,
   Icon,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createMemo, createSignal, Show, onMount, onCleanup } from "solid-js"
 import { SwitchColorMode, SwitchLanguageWhite } from "~/components"
 import { AppCheckbox } from "~/components/ui/Checkbox"
@@ -288,7 +288,7 @@ const Login = () => {
         </Show>
         <HStack w="$full" spacing="$2">
           <Show when={!useauthn()}>
-            <Button
+            <AppButton
               colorScheme="primary"
               w="$full"
               onClick={() => {
@@ -301,11 +301,11 @@ const Login = () => {
               }}
             >
               {t("login.clear")}
-            </Button>
+            </AppButton>
           </Show>
-          <Button w="$full" loading={loading()} onClick={Login}>
+          <AppButton w="$full" loading={loading()} onClick={Login}>
             {t("login.login")}
-          </Button>
+          </AppButton>
         </HStack>
         <Show when={ldapLoginEnabled}>
           <AppCheckbox
@@ -316,7 +316,7 @@ const Login = () => {
             {ldapLoginTips}
           </AppCheckbox>
         </Show>
-        <Button
+        <AppButton
           w="$full"
           colorScheme="accent"
           onClick={() => {
@@ -325,7 +325,7 @@ const Login = () => {
           }}
         >
           {t("login.use_guest")}
-        </Button>
+        </AppButton>
         <Flex
           mt="$2"
           justifyContent="space-evenly"

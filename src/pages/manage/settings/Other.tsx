@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormLabel,
   Heading,
@@ -7,6 +6,7 @@ import {
   Input,
   SimpleGrid,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import { FolderChooseInput, MaybeLoading } from "~/components"
 import { useFetch, useManageTitle, useT, useUtil } from "~/hooks"
@@ -109,7 +109,7 @@ const OtherSettings = () => {
           onChange={(str) => setSecret(str)}
         />
       </SimpleGrid>
-      <Button
+      <AppButton
         my="$2"
         loading={setAria2Loading()}
         onClick={async () => {
@@ -120,7 +120,7 @@ const OtherSettings = () => {
         }}
       >
         {t("settings_other.set_aria2")}
-      </Button>
+      </AppButton>
       <Heading my="$2">{t("settings_other.qbittorrent")}</Heading>
       <SimpleGrid gap="$2" columns={{ "@initial": 1, "@md": 2 }}>
         <Item
@@ -134,7 +134,7 @@ const OtherSettings = () => {
           onChange={(str) => setQbitSeedTime(str)}
         />
       </SimpleGrid>
-      <Button
+      <AppButton
         my="$2"
         loading={setQbitLoading()}
         onClick={async () => {
@@ -145,7 +145,7 @@ const OtherSettings = () => {
         }}
       >
         {t("settings_other.set_qbit")}
-      </Button>
+      </AppButton>
       <Heading my="$2">{t("settings_other.transmission")}</Heading>
       <SimpleGrid gap="$2" columns={{ "@initial": 1, "@md": 2 }}>
         <Item
@@ -159,7 +159,7 @@ const OtherSettings = () => {
           onChange={(str) => setTransmissionSeedTime(str)}
         />
       </SimpleGrid>
-      <Button
+      <AppButton
         my="$2"
         loading={setTransmissionLoading()}
         onClick={async () => {
@@ -170,7 +170,7 @@ const OtherSettings = () => {
         }}
       >
         {t("settings_other.set_transmission")}
-      </Button>
+      </AppButton>
       <Heading my="$2">{t("settings_other.115")}</Heading>
       <FormControl w="$full" display="flex" flexDirection="column">
         <FormLabel for="115_temp_dir" display="flex" alignItems="center">
@@ -182,7 +182,7 @@ const OtherSettings = () => {
           onChange={(path) => set115TempDir(path)}
         />
       </FormControl>
-      <Button
+      <AppButton
         my="$2"
         loading={set115Loading()}
         onClick={async () => {
@@ -193,7 +193,7 @@ const OtherSettings = () => {
         }}
       >
         {t("settings_other.set_115")}
-      </Button>
+      </AppButton>
       <Heading my="$2">{t("settings_other.pikpak")}</Heading>
       <FormControl w="$full" display="flex" flexDirection="column">
         <FormLabel for="pikpak_temp_dir" display="flex" alignItems="center">
@@ -205,7 +205,7 @@ const OtherSettings = () => {
           onChange={(path) => setPikPakTempDir(path)}
         />
       </FormControl>
-      <Button
+      <AppButton
         my="$2"
         loading={setPikPakLoading()}
         onClick={async () => {
@@ -216,7 +216,7 @@ const OtherSettings = () => {
         }}
       >
         {t("settings_other.set_pikpak")}
-      </Button>
+      </AppButton>
       <Heading my="$2">{t("settings_other.thunder")}</Heading>
       <FormControl w="$full" display="flex" flexDirection="column">
         <FormLabel for="thunder_temp_dir" display="flex" alignItems="center">
@@ -228,7 +228,7 @@ const OtherSettings = () => {
           onChange={(path) => setThunderTempDir(path)}
         />
       </FormControl>
-      <Button
+      <AppButton
         my="$2"
         loading={setThunderLoading()}
         onClick={async () => {
@@ -239,18 +239,18 @@ const OtherSettings = () => {
         }}
       >
         {t("settings_other.set_thunder")}
-      </Button>
+      </AppButton>
       <Heading my="$2">{t("settings.token")}</Heading>
       <Input value={token()} readOnly />
       <HStack my="$2" spacing="$2">
-        <Button
+        <AppButton
           onClick={() => {
             copy(token())
           }}
         >
           {t("settings_other.copy_token")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           colorScheme="danger"
           loading={resetTokenLoading()}
           onClick={async () => {
@@ -262,7 +262,7 @@ const OtherSettings = () => {
           }}
         >
           {t("settings_other.reset_token")}
-        </Button>
+        </AppButton>
       </HStack>
     </MaybeLoading>
   )

@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   HStack,
   Table,
   Tbody,
@@ -10,6 +9,7 @@ import {
   Tr,
   VStack,
 } from "@hope-ui/solid"
+import { AppButton } from "~/components/ui/Button"
 import { createSignal, For } from "solid-js"
 import {
   useFetch,
@@ -41,20 +41,20 @@ const Metas = () => {
   return (
     <VStack spacing="$2" alignItems="start" w="$full">
       <HStack spacing="$2">
-        <Button
+        <AppButton
           colorScheme="accent"
           loading={getMetasLoading()}
           onClick={refresh}
         >
           {t("global.refresh")}
-        </Button>
-        <Button
+        </AppButton>
+        <AppButton
           onClick={() => {
             to("/@manage/metas/add")
           }}
         >
           {t("global.add")}
-        </Button>
+        </AppButton>
       </HStack>
       <Box w="$full" overflowX="auto">
         <Table highlightOnHover dense>
@@ -78,13 +78,13 @@ const Metas = () => {
                   {/* <Td>{meta.hide}</Td> */}
                   <Td>
                     <HStack spacing="$2">
-                      <Button
+                      <AppButton
                         onClick={() => {
                           to(`/@manage/metas/edit/${meta.id}`)
                         }}
                       >
                         {t("global.edit")}
-                      </Button>
+                      </AppButton>
                       <DeletePopover
                         name={meta.path}
                         loading={deleting() === meta.id}
