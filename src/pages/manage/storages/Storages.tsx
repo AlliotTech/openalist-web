@@ -1,14 +1,5 @@
-import {
-  Box,
-  Grid,
-  HStack,
-  Table,
-  Tbody,
-  Th,
-  Thead,
-  Tr,
-  VStack,
-} from "@hope-ui/solid"
+import { Box, Grid, HStack, VStack } from "@hope-ui/solid"
+import "~/components/ui/table.css"
 import { AppButton } from "~/components/ui/Button"
 import { createMemo, createSignal, For, Match, Show, Switch } from "solid-js"
 import { useFetch, useManageTitle, useRouter, useT } from "~/hooks"
@@ -129,25 +120,25 @@ const Storages = () => {
         </Match>
         <Match when={layout() === "table"}>
           <Box w="$full" overflowX="auto">
-            <Table highlightOnHover dense>
-              <Thead>
-                <Tr>
+            <table class="app-table--dense app-table--hover">
+              <thead>
+                <tr>
                   <For
                     each={["mount_path", "driver", "order", "status", "remark"]}
                   >
-                    {(title) => <Th>{t(`storages.common.${title}`)}</Th>}
+                    {(title) => <th>{t(`storages.common.${title}`)}</th>}
                   </For>
-                  <Th>{t("global.operations")}</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
+                  <th>{t("global.operations")}</th>
+                </tr>
+              </thead>
+              <tbody>
                 <For each={shownStorages()}>
                   {(storage) => (
                     <StorageListItem storage={storage} refresh={refresh} />
                   )}
                 </For>
-              </Tbody>
-            </Table>
+              </tbody>
+            </table>
           </Box>
         </Match>
       </Switch>

@@ -1,0 +1,8 @@
+.app-table--dense th,
+.app-table--dense td {
+  padding: var(--hope-space-2, 0.5rem);
+}
+
+.app-table--hover tbody tr:hover {
+  background: var(--hope-colors-neutral2, #f7fafc);
+}

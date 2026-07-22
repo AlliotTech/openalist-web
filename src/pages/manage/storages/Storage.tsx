@@ -2,9 +2,7 @@ import {
   Badge,
   Box,
   HStack,
-  Td,
   Text,
-  Tr,
   useColorModeValue,
   VStack,
 } from "@hope-ui/solid"
@@ -116,17 +114,17 @@ export function StorageGridItem(props: StorageProps) {
 export function StorageListItem(props: StorageProps) {
   const t = useT()
   return (
-    <Tr>
-      <Td>{props.storage.mount_path}</Td>
-      <Td>{t(`drivers.drivers.${props.storage.driver}`)}</Td>
-      <Td>{props.storage.order}</Td>
-      <Td>{props.storage.status}</Td>
-      <Td>{props.storage.remark}</Td>
-      <Td>
+    <tr>
+      <td>{props.storage.mount_path}</td>
+      <td>{t(`drivers.drivers.${props.storage.driver}`)}</td>
+      <td>{props.storage.order}</td>
+      <td>{props.storage.status}</td>
+      <td>{props.storage.remark}</td>
+      <td>
         <HStack spacing="$2">
           <StorageOp {...props} />
         </HStack>
-      </Td>
-    </Tr>
+      </td>
+    </tr>
   )
 }

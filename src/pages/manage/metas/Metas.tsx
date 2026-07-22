@@ -1,14 +1,5 @@
-import {
-  Box,
-  HStack,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-  VStack,
-} from "@hope-ui/solid"
+import { Box, HStack, VStack } from "@hope-ui/solid"
+import "~/components/ui/table.css"
 import { AppButton } from "~/components/ui/Button"
 import { createSignal, For } from "solid-js"
 import {
@@ -27,7 +18,9 @@ const Metas = () => {
   const t = useT()
   useManageTitle("manage.sidemenu.metas")
   const { to } = useRouter()
-  const [getMetasLoading, getMetas] = useFetch(() => r.get("/admin/meta/list"))
+  const [getMetasLoading, getMetas] = useFetch((): Promise<PageResp<Meta>> =>
+    r.get("/admin/meta/list"),
+  )
   const [metas, setMetas] = createSignal<Meta[]>([])
   const refresh = async () => {
     const resp: PageResp<Meta> = await getMetas()
@@ -57,26 +50,26 @@ const Metas = () => {
         </AppButton>
       </HStack>
       <Box w="$full" overflowX="auto">
-        <Table highlightOnHover dense>
-          <Thead>
-            <Tr>
+        <table class="app-table--dense app-table--hover">
+          <thead>
+            <tr>
               <For each={["path", "password", "write"]}>
-                {(title) => <Th>{t(`metas.${title}`)}</Th>}
+                {(title) => <th>{t(`metas.${title}`)}</th>}
               </For>
-              <Th>{t("global.operations")}</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
+              <th>{t("global.operations")}</th>
+            </tr>
+          </thead>
+          <tbody>
             <For each={metas()}>
               {(meta) => (
-                <Tr>
-                  <Td>{meta.path}</Td>
-                  <Td>{meta.password}</Td>
-                  <Td>
+                <tr>
+                  <td>{meta.path}</td>
+                  <td>{meta.password}</td>
+                  <td>
                     <Wether yes={meta.write} />
-                  </Td>
+                  </td>
                   {/* <Td>{meta.hide}</Td> */}
-                  <Td>
+                  <td>
                     <HStack spacing="$2">
                       <AppButton
                         onClick={() => {
@@ -97,12 +90,12 @@ const Metas = () => {
                         }}
                       />
                     </HStack>
-                  </Td>
-                </Tr>
+                  </td>
+                </tr>
               )}
             </For>
-          </Tbody>
-        </Table>
+          </tbody>
+        </table>
       </Box>
     </VStack>
   )

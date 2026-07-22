@@ -1,15 +1,5 @@
-import {
-  Badge,
-  Box,
-  HStack,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-  VStack,
-} from "@hope-ui/solid"
+import { Badge, Box, HStack, VStack } from "@hope-ui/solid"
+import "~/components/ui/table.css"
 import { AppButton } from "~/components/ui/Button"
 import { AppTooltip as Tooltip } from "~/components/ui/Tooltip"
 import { createSignal, For } from "solid-js"
@@ -103,9 +93,9 @@ const Users = () => {
         </AppButton>
       </HStack>
       <Box w="$full" overflowX="auto">
-        <Table highlightOnHover dense>
-          <Thead>
-            <Tr>
+        <table class="app-table--dense app-table--hover">
+          <thead>
+            <tr>
               <For
                 each={[
                   "username",
@@ -115,27 +105,27 @@ const Users = () => {
                   "available",
                 ]}
               >
-                {(title) => <Th>{t(`users.${title}`)}</Th>}
+                {(title) => <th>{t(`users.${title}`)}</th>}
               </For>
-              <Th>{t("global.operations")}</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
+              <th>{t("global.operations")}</th>
+            </tr>
+          </thead>
+          <tbody>
             <For each={users()}>
               {(user) => (
-                <Tr>
-                  <Td>{user.username}</Td>
-                  <Td>{user.base_path}</Td>
-                  <Td>
+                <tr>
+                  <td>{user.username}</td>
+                  <td>{user.base_path}</td>
+                  <td>
                     <Role role={user.role} />
-                  </Td>
-                  <Td>
+                  </td>
+                  <td>
                     <Permissions user={user} />
-                  </Td>
-                  <Td>
+                  </td>
+                  <td>
                     <Wether yes={!user.disabled} />
-                  </Td>
-                  <Td>
+                  </td>
+                  <td>
                     <HStack spacing="$2">
                       <AppButton
                         onClick={() => {
@@ -169,12 +159,12 @@ const Users = () => {
                         {t("users.cancel_2fa")}
                       </AppButton>
                     </HStack>
-                  </Td>
-                </Tr>
+                  </td>
+                </tr>
               )}
             </For>
-          </Tbody>
-        </Table>
+          </tbody>
+        </table>
       </Box>
     </VStack>
   )
