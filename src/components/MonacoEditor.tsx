@@ -7,6 +7,22 @@ import HtmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker"
 import JsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker"
 import TsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
 
+const markdownExtensions = new Set([
+  "md",
+  "markdown",
+  "mdown",
+  "mkdn",
+  "mkd",
+  "mdwn",
+  "mdtxt",
+  "mdtext",
+])
+
+export const editorLanguageForPath = (path?: string) => {
+  const extension = path?.split(".").pop()?.toLowerCase()
+  return extension && markdownExtensions.has(extension) ? "markdown" : undefined
+}
+
 ;(self as any).MonacoEnvironment = {
   getWorker(_: string, label: string) {
     if (label === "json") return new JsonWorker()
@@ -38,7 +54,7 @@ export const MonacoEditor = (props: MonacoEditorProps) => {
     })
     model = monaco.editor.createModel(
       props.value,
-      props.language,
+      props.language ?? editorLanguageForPath(props.path),
       props.path ? monaco.Uri.parse(props.path) : undefined,
     )
     monacoEditor.setModel(model)
