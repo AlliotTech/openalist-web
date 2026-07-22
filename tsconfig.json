@@ -13,8 +13,7 @@
     "noEmit": true,
     "isolatedModules": false,
     "paths": {
-      "~/*": ["./src/*"],
-      "@hope-ui/solid": ["./node_modules/@hope-ui/solid/dist/index.d.ts"]
+      "~/*": ["./src/*"]
       // "@solidjs/router": ["./solid-router/src/index.tsx"]
     },
     "resolveJsonModule": true
