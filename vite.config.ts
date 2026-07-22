@@ -25,6 +25,12 @@ export default defineConfig({
     }),
   ],
   base: process.env.NODE_ENV === "production" ? "/__dynamic_base__/" : "/",
+  optimizeDeps: {
+    include: [
+      "remark-gfm > micromark > debug",
+      "remark-gfm > unified > extend",
+    ],
+  },
   // base: "/",
   build: {
     // target: "es2015", //next
