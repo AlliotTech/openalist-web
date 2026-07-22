@@ -45,6 +45,36 @@ type ContextValue = {
   close: () => void
 }
 
+const menuItems = (menu: HTMLElement) =>
+  Array.from(menu.querySelectorAll<HTMLElement>('[role="menuitem"]')).filter(
+    (item) =>
+      item.closest('[role="menu"]') === menu &&
+      item.getAttribute("aria-disabled") !== "true",
+  )
+
+const focusRelativeItem = (menu: HTMLElement, offset: number) => {
+  const items = menuItems(menu)
+  if (!items.length) return
+  const current = items.indexOf(document.activeElement as HTMLElement)
+  const next =
+    current < 0 ? (offset > 0 ? 0 : items.length - 1) : current + offset
+  items[(next + items.length) % items.length]?.focus()
+}
+
+const handleMenuNavigation = (event: KeyboardEvent) => {
+  const menu = event.currentTarget as HTMLElement
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    event.preventDefault()
+    event.stopPropagation()
+    focusRelativeItem(menu, event.key === "ArrowDown" ? 1 : -1)
+  } else if (event.key === "Home" || event.key === "End") {
+    event.preventDefault()
+    event.stopPropagation()
+    const items = menuItems(menu)
+    items[event.key === "Home" ? 0 : items.length - 1]?.focus()
+  }
+}
+
 const Context = createContext<ContextValue>()
 
 const evaluate = <T,>(
@@ -137,6 +167,7 @@ export const Menu = (
               left: `${position().x}px`,
               top: `${position().y}px`,
             }}
+            onKeyDown={handleMenuNavigation}
           >
             {props.children}
           </div>
@@ -200,22 +231,77 @@ export const Submenu = (
   const event = createMemo<MenuEvent>(() => ({ props: context.props() }))
   const hidden = () => evaluate(props.hidden ?? false, event())
   const disabled = () => evaluate(props.disabled ?? false, event())
+  let triggerRef: HTMLDivElement | undefined
+  let contentRef: HTMLDivElement | undefined
+  const [submenuPosition, setSubmenuPosition] = createSignal({
+    left: 0,
+    top: 0,
+  })
+  const positionSubmenu = () => {
+    requestAnimationFrame(() => {
+      if (!triggerRef || !contentRef) return
+      const triggerRect = triggerRef.getBoundingClientRect()
+      const contentRect = contentRef.getBoundingClientRect()
+      const space = 4
+      const left =
+        triggerRect.right + contentRect.width <= window.innerWidth
+          ? triggerRect.right
+          : Math.max(space, triggerRect.left - contentRect.width)
+      const top = Math.max(
+        space,
+        Math.min(
+          triggerRect.top - 6,
+          window.innerHeight - contentRect.height - space,
+        ),
+      )
+      setSubmenuPosition({ left, top })
+    })
+  }
   return (
     <Show when={!hidden()}>
       <div
+        ref={triggerRef}
         class="app-context-menu__submenu"
         role="menuitem"
         aria-haspopup="menu"
         aria-disabled={disabled() ? "true" : undefined}
         tabindex={disabled() ? undefined : "0"}
+        onMouseEnter={positionSubmenu}
+        onFocus={positionSubmenu}
+        onKeyDown={(e) => {
+          if (disabled()) return
+          if (e.key === "ArrowRight") {
+            e.preventDefault()
+            e.stopPropagation()
+            positionSubmenu()
+            requestAnimationFrame(() => menuItems(contentRef!)[0]?.focus())
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault()
+            e.stopPropagation()
+            triggerRef?.focus()
+          }
+        }}
       >
         <div class="app-context-menu__item app-context-menu__submenu-label">
           {props.label}
           <span aria-hidden="true">›</span>
         </div>
         <div
+          ref={contentRef}
           class="app-context-menu app-context-menu__submenu-content"
           role="menu"
+          style={{
+            left: `${submenuPosition().left}px`,
+            top: `${submenuPosition().top}px`,
+          }}
+          onKeyDown={(e) => {
+            handleMenuNavigation(e)
+            if (e.key === "ArrowLeft") {
+              e.preventDefault()
+              e.stopPropagation()
+              triggerRef?.focus()
+            }
+          }}
         >
           {props.children}
         </div>

@@ -69,9 +69,7 @@
 }
 
 .app-context-menu__submenu-content {
-  position: absolute;
-  top: -6px;
-  left: 100%;
+  position: fixed;
   display: none;
 }
 
