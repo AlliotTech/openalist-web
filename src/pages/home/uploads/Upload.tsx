@@ -1,4 +1,8 @@
-import { Heading, Text } from "@hope-ui/solid"
+import {
+  AppText as Text,
+  AppHeading as Heading,
+} from "~/components/ui/Typography"
+
 import { AppBadge as Badge } from "~/components/ui/Display"
 import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"

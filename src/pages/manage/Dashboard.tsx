@@ -1,4 +1,5 @@
-import { Heading } from "@hope-ui/solid"
+import { AppHeading as Heading } from "~/components/ui/Typography"
+
 import { AppCenter as Center } from "~/components/ui/Stack"
 import { useManageTitle } from "~/hooks"
 

@@ -2,11 +2,146 @@ import { splitProps, type JSX, type ParentProps } from "solid-js"
 import { Dynamic } from "solid-js/web"
 import "./typography.css"
 
-const token = (value: string | undefined, group: string) =>
-  value?.startsWith("$") ? `var(--hope-${group}-${value.slice(1)})` : value
+const token = (value: string | number | undefined, group: string) => {
+  if (typeof value === "number") return `${value}px`
+  return value?.startsWith("$")
+    ? `var(--hope-${group}-${value.slice(1)})`
+    : value
+}
 
 const colors = (value: string | undefined) =>
   value?.replace(/\$([\w]+)/g, "var(--hope-colors-$1)")
+
+const normalizeCss = (value: Record<string, unknown> | undefined) =>
+  Object.fromEntries(
+    Object.entries(value ?? {}).map(([key, item]) => [
+      key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`),
+      item,
+    ]),
+  )
+
+type ResponsiveValue =
+  string | number | { "@initial"?: string | number; "@md"?: string | number }
+
+type TypeProps = ParentProps<{
+  as?: any
+  class?: string
+  href?: string
+  target?: string
+  title?: string
+  css?: JSX.CSSProperties | Record<string, unknown>
+  color?: string
+  size?: string
+  fontSize?: string
+  fontWeight?: string
+  fontStyle?: JSX.CSSProperties["font-style"]
+  textAlign?: JSX.CSSProperties["text-align"]
+  w?: ResponsiveValue
+  display?: ResponsiveValue
+  overflow?: JSX.CSSProperties["overflow"]
+  cursor?: JSX.CSSProperties["cursor"]
+  p?: string
+  px?: string
+  pl?: string
+  pr?: string
+  m?: string
+  mt?: string
+  mb?: string
+  ml?: string
+  mr?: string
+  my?: string
+  rounded?: string
+  bgColor?: string
+  transition?: string
+  _hover?: { color?: string; bgColor?: string }
+  onClick?: JSX.EventHandlerUnion<HTMLElement, MouseEvent>
+}>
+
+const Type = (props: TypeProps & { element: "span" | "h2" }) => {
+  const [local, others] = splitProps(props, [
+    "as",
+    "class",
+    "children",
+    "element",
+    "css",
+    "color",
+    "size",
+    "fontSize",
+    "fontWeight",
+    "fontStyle",
+    "textAlign",
+    "w",
+    "display",
+    "overflow",
+    "cursor",
+    "p",
+    "px",
+    "pl",
+    "pr",
+    "m",
+    "mt",
+    "mb",
+    "ml",
+    "mr",
+    "my",
+    "rounded",
+    "bgColor",
+    "transition",
+    "_hover",
+  ])
+  const responsive =
+    typeof local.w === "object" || typeof local.display === "object"
+  return (
+    <Dynamic
+      component={local.as ?? local.element}
+      {...others}
+      class={`app-type${responsive ? " app-type--responsive" : ""}${local.element === "h2" ? " app-heading" : ""}${local._hover ? " app-type--hover" : ""}${local.class ? ` ${local.class}` : ""}`}
+      style={{
+        ...normalizeCss(local.css as Record<string, unknown>),
+        color: colors(local.color),
+        "font-size": token(local.fontSize ?? local.size, "fontSizes"),
+        "font-weight": token(local.fontWeight, "fontWeights"),
+        "font-style": local.fontStyle,
+        "text-align": local.textAlign,
+        width: token(
+          typeof local.w === "object" ? local.w["@initial"] : local.w,
+          "sizes",
+        ),
+        display:
+          typeof local.display === "object"
+            ? local.display["@initial"]
+            : local.display,
+        overflow: local.overflow,
+        cursor: local.cursor,
+        padding: token(local.p, "space"),
+        "padding-left": token(local.pl ?? local.px, "space"),
+        "padding-right": token(local.pr ?? local.px, "space"),
+        margin: token(local.m, "space"),
+        "margin-top": token(local.mt ?? local.my, "space"),
+        "margin-bottom": token(local.mb ?? local.my, "space"),
+        "margin-left": token(local.ml, "space"),
+        "margin-right": token(local.mr, "space"),
+        "border-radius": token(local.rounded, "radii"),
+        background: colors(local.bgColor),
+        transition: local.transition,
+        "--app-type-hover-color": colors(local._hover?.color),
+        "--app-type-hover-background": colors(local._hover?.bgColor),
+        "--app-type-width-md": token(
+          typeof local.w === "object" ? local.w["@md"] : undefined,
+          "sizes",
+        ),
+        "--app-type-display-md":
+          typeof local.display === "object" ? local.display["@md"] : undefined,
+      }}
+    >
+      {local.children}
+    </Dynamic>
+  )
+}
+
+export const AppText = (props: TypeProps) => <Type {...props} element="span" />
+
+export const AppHeading = (props: TypeProps) => <Type {...props} element="h2" />
 
 export type AppAnchorProps = ParentProps<
   Omit<JSX.AnchorHTMLAttributes<HTMLAnchorElement>, "style"> & {

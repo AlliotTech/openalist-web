@@ -1,4 +1,5 @@
-import { Heading, useColorModeValue } from "@hope-ui/solid"
+import { AppHeading as Heading } from "~/components/ui/Typography"
+import { useColorModeValue } from "@hope-ui/solid"
 import { AppBox as Box } from "~/components/ui/Layout"
 import {
   AppCenter as Center,

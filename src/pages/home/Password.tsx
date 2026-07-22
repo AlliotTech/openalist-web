@@ -1,4 +1,5 @@
-import { Heading, Text, useColorModeValue } from "@hope-ui/solid"
+import { AppHeading as Heading } from "~/components/ui/Typography"
+import { useColorModeValue } from "@hope-ui/solid"
 import {
   AppFlex as Flex,
   AppHStack as HStack,

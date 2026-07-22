@@ -1,4 +1,5 @@
-import { Text } from "@hope-ui/solid"
+import { AppText as Text } from "~/components/ui/Typography"
+
 import { AppButton } from "~/components/ui/Button"
 import { Match, onCleanup, onMount, Show, Switch } from "solid-js"
 import { FullLoading, Paginator } from "~/components"

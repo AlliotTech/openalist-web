@@ -9,3 +9,24 @@
   text-decoration: var(--app-anchor-hover-decoration);
   transform: var(--app-anchor-hover-transform);
 }
+
+.app-type {
+  margin: 0;
+}
+
+.app-heading {
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.app-type--hover:hover {
+  color: var(--app-type-hover-color);
+  background: var(--app-type-hover-background);
+}
+
+@media (min-width: 768px) {
+  .app-type--responsive {
+    width: var(--app-type-width-md);
+    display: var(--app-type-display-md);
+  }
+}

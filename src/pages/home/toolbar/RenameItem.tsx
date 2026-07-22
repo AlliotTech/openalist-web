@@ -1,4 +1,5 @@
-import { Text } from "@hope-ui/solid"
+import { AppText as Text } from "~/components/ui/Typography"
+
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import { Motion } from "solid-motionone"
 import { RenameObj } from "~/types"

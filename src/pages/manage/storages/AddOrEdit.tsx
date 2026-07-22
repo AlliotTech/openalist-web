@@ -1,4 +1,5 @@
-import { Heading } from "@hope-ui/solid"
+import { AppHeading as Heading } from "~/components/ui/Typography"
+
 import {
   AppAlert as Alert,
   AppAlertIcon as AlertIcon,

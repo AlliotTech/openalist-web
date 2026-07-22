@@ -1,8 +1,9 @@
+import { AppHeading as Heading } from "~/components/ui/Typography"
 import { useFetch, useT, useManageTitle } from "~/hooks"
 import { Group, SettingItem, PResp, PEmptyResp, EmptyResp } from "~/types"
 import { r, notify, getTarget, handleResp } from "~/utils"
 import { createStore } from "solid-js/store"
-import { Heading } from "@hope-ui/solid"
+
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { createSignal, Index, Show } from "solid-js"

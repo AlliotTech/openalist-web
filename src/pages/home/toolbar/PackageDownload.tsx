@@ -1,10 +1,14 @@
+import {
+  AppText as Text,
+  AppHeading as Heading,
+} from "~/components/ui/Typography"
 import "~/utils/zip-stream.js"
 import streamSaver from "streamsaver"
 import { getLinkByDirAndObj, useRouter, useT } from "~/hooks"
 import { fsList, pathBase, pathJoin } from "~/utils"
 import { password, selectedObjs as _selectedObjs } from "~/store"
 import { createSignal, For, Show } from "solid-js"
-import { Heading, Text } from "@hope-ui/solid"
+
 import { AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { AppModalBody, AppModalFooter } from "~/components/ui/Modal"

@@ -1,4 +1,5 @@
-import { Heading, Icon } from "@hope-ui/solid"
+import { AppHeading as Heading } from "~/components/ui/Typography"
+import { Icon } from "@hope-ui/solid"
 import { AppBox as Box } from "~/components/ui/Layout"
 import {
   AppFlex as Flex,

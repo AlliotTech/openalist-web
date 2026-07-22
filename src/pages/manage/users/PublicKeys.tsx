@@ -1,4 +1,8 @@
-import { Heading, Text } from "@hope-ui/solid"
+import {
+  AppText as Text,
+  AppHeading as Heading,
+} from "~/components/ui/Typography"
+
 import { AppSpacer as Spacer } from "~/components/ui/Layout"
 import {
   AppFlex as Flex,

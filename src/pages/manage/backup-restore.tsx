@@ -1,4 +1,5 @@
-import { Text } from "@hope-ui/solid"
+import { AppText as Text } from "~/components/ui/Typography"
+
 import {
   AppFlex as Flex,
   AppHStack as HStack,

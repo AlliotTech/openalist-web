@@ -1,4 +1,5 @@
-import { Heading } from "@hope-ui/solid"
+import { AppHeading as Heading } from "~/components/ui/Typography"
+
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"

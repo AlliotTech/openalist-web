@@ -1,8 +1,12 @@
+import {
+  AppText as Text,
+  AppHeading as Heading,
+} from "~/components/ui/Typography"
 import { PublicKeysProps } from "./PublicKeys"
 import { SSHPublicKey } from "~/types/sshkey"
 import { useFetch, useT } from "~/hooks"
 import { createSignal, Show } from "solid-js"
-import { Heading, Text } from "@hope-ui/solid"
+
 import { AppSpacer as Spacer } from "~/components/ui/Layout"
 import { AppFlex as Flex, AppHStack as HStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"

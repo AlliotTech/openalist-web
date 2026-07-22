@@ -1,6 +1,7 @@
+import { AppText as Text } from "~/components/ui/Typography"
 import { Menu, Item, Submenu } from "~/components/ui/ContextMenu"
 import { useCopyLink, useDownload, useLink, useT } from "~/hooks"
-import { Icon, Text, useColorMode } from "@hope-ui/solid"
+import { Icon, useColorMode } from "@hope-ui/solid"
 import { AppImage as Image } from "~/components/ui/Image"
 import { AppHStack as HStack } from "~/components/ui/Stack"
 import { operations } from "../toolbar/operations"

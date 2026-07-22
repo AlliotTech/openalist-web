@@ -1,4 +1,5 @@
-import { Text } from "@hope-ui/solid"
+import { AppText as Text } from "~/components/ui/Typography"
+
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppInput } from "~/components/ui/Input"
 import { createDisclosure } from "~/hooks/disclosure"

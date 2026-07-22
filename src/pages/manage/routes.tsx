@@ -1,5 +1,6 @@
+import { AppHeading as Heading } from "~/components/ui/Typography"
 import { lazy } from "solid-js"
-import { Heading } from "@hope-ui/solid"
+
 import { AppCenter as Center } from "~/components/ui/Stack"
 import { trimLeft } from "~/utils"
 import { SideMenuItem, side_menu_items } from "./sidemenu_items"

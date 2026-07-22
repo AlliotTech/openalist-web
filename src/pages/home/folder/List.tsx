@@ -1,4 +1,5 @@
-import { Text } from "@hope-ui/solid"
+import { AppText as Text } from "~/components/ui/Typography"
+
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { batch, createEffect, createSignal, For, Show } from "solid-js"
 import { useT } from "~/hooks"
