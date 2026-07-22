@@ -1,12 +1,11 @@
+import { Heading, Text } from "@hope-ui/solid"
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Heading,
-  Text,
-} from "@hope-ui/solid"
-import { AppBadge as Badge } from "~/components/ui/Display"
+  AppAlert as Alert,
+  AppAlertDescription as AlertDescription,
+  AppAlertIcon as AlertIcon,
+  AppAlertTitle as AlertTitle,
+  AppBadge as Badge,
+} from "~/components/ui/Display"
 import { AppSimpleGrid as SimpleGrid } from "~/components/ui/Grid"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import {

@@ -41,3 +41,46 @@ export const AppBadge = (
     {props.children}
   </span>
 )
+
+export const AppAlert = (
+  props: ParentProps<{
+    status?: string
+    w?: string
+    flexDirection?: {
+      "@initial"?: JSX.CSSProperties["flex-direction"]
+      "@lg"?: JSX.CSSProperties["flex-direction"]
+    }
+  }>,
+) => (
+  <div
+    role="alert"
+    class={`app-alert app-alert--${props.status ?? "info"}${props.flexDirection ? " app-alert--responsive" : ""}`}
+    style={{
+      width: token(props.w, "sizes"),
+      "flex-direction": props.flexDirection?.["@initial"],
+      "--app-alert-direction-lg": props.flexDirection?.["@lg"],
+    }}
+  >
+    {props.children}
+  </div>
+)
+
+export const AppAlertIcon = (props: { mr?: string }) => (
+  <span
+    aria-hidden="true"
+    class="app-alert__icon"
+    style={{ "margin-right": token(props.mr, "space") }}
+  >
+    !
+  </span>
+)
+
+export const AppAlertTitle = (props: ParentProps<{ mr?: string }>) => (
+  <strong style={{ "margin-right": token(props.mr, "space") }}>
+    {props.children}
+  </strong>
+)
+
+export const AppAlertDescription = (props: ParentProps) => (
+  <span>{props.children}</span>
+)

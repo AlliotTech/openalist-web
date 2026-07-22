@@ -28,6 +28,49 @@
   vertical-align: middle;
 }
 
+.app-alert {
+  display: flex;
+  align-items: center;
+  padding: var(--hope-space-3);
+  border-radius: var(--hope-radii-md);
+  background: var(--hope-colors-info3);
+  color: var(--hope-colors-info11);
+}
+
+.app-alert--warning {
+  background: var(--hope-colors-warning3);
+  color: var(--hope-colors-warning11);
+}
+
+.app-alert--danger,
+.app-alert--error {
+  background: var(--hope-colors-danger3);
+  color: var(--hope-colors-danger11);
+}
+
+.app-alert--success {
+  background: var(--hope-colors-success3);
+  color: var(--hope-colors-success11);
+}
+
+.app-alert__icon {
+  display: inline-grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (min-width: 1024px) {
+  .app-alert--responsive {
+    flex-direction: var(--app-alert-direction-lg);
+  }
+}
+
 @keyframes app-skeleton-pulse {
   from {
     background-position: 200% 0;
