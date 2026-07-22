@@ -1,13 +1,5 @@
-import {
-  Badge,
-  HStack,
-  Icon,
-  IconButton,
-  Input,
-  Text,
-  VStack,
-  hope,
-} from "@hope-ui/solid"
+import { Badge, HStack, Icon, Input, Text, VStack, hope } from "@hope-ui/solid"
+import { AppIconButton } from "~/components/ui/Button"
 import { BsSearch } from "solid-icons/bs"
 import {
   createSignal,
@@ -286,7 +278,7 @@ const Search = () => {
                   }
                 }}
               />
-              <IconButton
+              <AppIconButton
                 flexShrink={0}
                 aria-label="search"
                 icon={<BsSearch />}

@@ -22,6 +22,7 @@ export interface AppButtonProps {
   px?: string
   my?: string
   mt?: string
+  flexShrink?: JSX.CSSProperties["flex-shrink"]
   leftIcon?: JSXElement
   rightIcon?: JSXElement
   [key: string]: unknown
@@ -47,6 +48,7 @@ export const AppButton = (props: AppButtonProps) => {
     "px",
     "my",
     "mt",
+    "flexShrink",
     "leftIcon",
     "rightIcon",
   ])
@@ -79,6 +81,7 @@ export const AppButton = (props: AppButtonProps) => {
           ? `var(--hope-sizes-${width()!.slice(1)})`
           : width(),
         display: local.display,
+        "flex-shrink": local.flexShrink,
         "margin-top": (local.mt ?? local.my)?.startsWith("$")
           ? `var(--hope-space-${(local.mt ?? local.my)!.slice(1)})`
           : (local.mt ?? local.my),

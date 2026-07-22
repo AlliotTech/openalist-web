@@ -4,9 +4,9 @@ import {
   Flex,
   Heading,
   HStack,
-  IconButton,
   useColorModeValue,
 } from "@hope-ui/solid"
+import { AppIconButton } from "~/components/ui/Button"
 import { createSignal } from "solid-js"
 import { TiThMenu } from "solid-icons/ti"
 import { IoExit } from "solid-icons/io"
@@ -51,10 +51,10 @@ const Header = () => {
     >
       <Flex alignItems="center" justifyContent="space-between" h="$full">
         <HStack spacing="$2">
-          <IconButton
+          <AppIconButton
             aria-label="menu"
             icon={<TiThMenu />}
-            display={{ "@sm": "none" }}
+            class="app-button--mobile-only"
             onClick={onOpen}
             size="sm"
           />
@@ -70,7 +70,7 @@ const Header = () => {
           </Heading>
         </HStack>
         <HStack spacing="$1">
-          <IconButton
+          <AppIconButton
             aria-label="logout"
             icon={<IoExit />}
             loading={logOutReqLoading()}
