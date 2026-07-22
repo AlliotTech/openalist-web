@@ -19,7 +19,7 @@ type StackProps = ParentProps<
     gap?: string
     alignItems?: JSX.CSSProperties["align-items"]
     justifyContent?: JSX.CSSProperties["justify-content"]
-    w?: string | { "@initial"?: string; "@lg"?: string }
+    w?: string | { "@initial"?: string; "@md"?: string; "@lg"?: string }
     width?: string
     h?: string
     minW?: string | number
@@ -29,6 +29,8 @@ type StackProps = ParentProps<
     p?: string
     px?: string
     py?: string
+    pt?: string
+    pb?: string
     m?: string
     mt?: string
     mb?: string
@@ -52,8 +54,12 @@ type StackProps = ParentProps<
     pl?: string
     pr?: string
     bg?: string
+    bgColor?: string
     background?: string
     border?: string
+    borderTop?: string
+    borderBottom?: string
+    borderColor?: string
     _hover?: { border?: string }
     css?: JSX.CSSProperties
   }
@@ -79,6 +85,8 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "p",
     "px",
     "py",
+    "pt",
+    "pb",
     "m",
     "mt",
     "mb",
@@ -101,8 +109,12 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
     "pl",
     "pr",
     "bg",
+    "bgColor",
     "background",
     "border",
+    "borderTop",
+    "borderBottom",
+    "borderColor",
     "_hover",
     "css",
   ])
@@ -135,8 +147,8 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           "padding-right": token(local.px, "space"),
           "padding-inline-start": token(local.pl, "space"),
           "padding-inline-end": token(local.pr, "space"),
-          "padding-top": token(local.py, "space"),
-          "padding-bottom": token(local.py, "space"),
+          "padding-top": token(local.pt ?? local.py, "space"),
+          "padding-bottom": token(local.pb ?? local.py, "space"),
           margin: token(local.m, "space"),
           "margin-top": token(local.mt ?? local.my, "space"),
           "margin-bottom": token(local.mb ?? local.my, "space"),
@@ -156,8 +168,19 @@ const Stack = (props: StackProps & { direction: "row" | "column" }) => {
           color: token(local.color, "colors"),
           "border-radius": token(local.rounded, "radii"),
           "box-shadow": token(local.shadow, "shadows"),
-          background: cssTokens(local.bg ?? local.background),
+          background: cssTokens(local.bg ?? local.bgColor ?? local.background),
           border: cssTokens(local.border),
+          "border-top": cssTokens(local.borderTop),
+          "border-bottom": cssTokens(local.borderBottom),
+          "border-color": cssTokens(local.borderColor),
+          "--app-stack-width-md": token(
+            typeof local.w === "object" ? local.w["@md"] : undefined,
+            "sizes",
+          ),
+          "--app-stack-width-lg": token(
+            typeof local.w === "object" ? local.w["@lg"] : undefined,
+            "sizes",
+          ),
           "--app-stack-hover-border": cssTokens(local._hover?.border),
         } as any
       }

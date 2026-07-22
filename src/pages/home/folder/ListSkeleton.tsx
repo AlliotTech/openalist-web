@@ -1,4 +1,5 @@
-import { Skeleton, VStack } from "@hope-ui/solid"
+import { Skeleton } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import { For } from "solid-js"
 
 const ListSkeleton = () => {

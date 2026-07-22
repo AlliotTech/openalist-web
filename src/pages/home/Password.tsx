@@ -1,11 +1,5 @@
-import {
-  Flex,
-  Heading,
-  HStack,
-  Text,
-  useColorModeValue,
-  VStack,
-} from "@hope-ui/solid"
+import { Flex, Heading, Text, useColorModeValue } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"
 import { useRouter, useT } from "~/hooks"

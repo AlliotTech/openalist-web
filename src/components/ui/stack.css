@@ -6,10 +6,14 @@
   .app-stack--responsive-wrap {
     flex-wrap: nowrap;
   }
+
+  .app-stack--responsive-width {
+    width: var(--app-stack-width-md);
+  }
 }
 
 @media (min-width: 1024px) {
   .app-stack--responsive-width {
-    width: 100%;
+    width: var(--app-stack-width-lg, var(--app-stack-width-md));
   }
 }

@@ -1,4 +1,5 @@
-import { Anchor, HStack, VStack, Text } from "@hope-ui/solid"
+import { Anchor, Text } from "@hope-ui/solid"
+import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { A as Link } from "@solidjs/router"
 import { AnchorWithBase } from "~/components"
 import { useT } from "~/hooks"

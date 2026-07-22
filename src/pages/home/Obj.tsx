@@ -1,4 +1,5 @@
-import { Text, useColorModeValue, VStack } from "@hope-ui/solid"
+import { Text, useColorModeValue } from "@hope-ui/solid"
+import { AppVStack as VStack } from "~/components/ui/Stack"
 import {
   createEffect,
   createMemo,
