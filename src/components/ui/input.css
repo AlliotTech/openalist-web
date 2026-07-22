@@ -45,6 +45,9 @@
 }
 
 .app-textarea {
-  min-height: 6rem;
+  min-height: 80px;
+  padding-top: var(--hope-space-2);
+  padding-bottom: var(--hope-space-2);
   resize: vertical;
+  word-break: break-all;
 }
