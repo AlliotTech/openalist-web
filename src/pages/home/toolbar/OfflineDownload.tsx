@@ -1,4 +1,4 @@
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { createDisclosure } from "~/hooks/disclosure"
 import { ModalInput, SelectWrapper } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"

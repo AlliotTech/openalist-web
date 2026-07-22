@@ -1,7 +1,7 @@
 import "aplayer/dist/APlayer.min.css"
 import "./audio.css"
 import APlayer from "aplayer"
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { onCleanup, onMount } from "solid-js"
 import { useLink, useRouter, useTitle } from "~/hooks"
 import { getMainColor, getSetting, getSettingBool, objStore } from "~/store"

@@ -1,6 +1,7 @@
 import { JSXElement, Match, Switch } from "solid-js"
 import { getSetting } from "~/store"
-import { Box, Container as HopeContainer } from "@hope-ui/solid"
+import { Container as HopeContainer } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 
 export const Container = (props: { children: JSXElement }) => {
   const container = getSetting("home_container")

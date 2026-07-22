@@ -1,4 +1,5 @@
-import { Box, useColorModeValue } from "@hope-ui/solid"
+import { useColorModeValue } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { createMemo, Show, createResource, on } from "solid-js"
 import { Markdown, MaybeLoading } from "~/components"
 import { useLink, useRouter } from "~/hooks"

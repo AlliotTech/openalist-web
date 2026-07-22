@@ -1,4 +1,5 @@
-import { Box, Icon, Text } from "@hope-ui/solid"
+import { Icon, Text } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { AppHStack as HStack, AppVStack as VStack } from "~/components/ui/Stack"
 import { AppButton } from "~/components/ui/Button"
 import { AppInput } from "~/components/ui/Input"

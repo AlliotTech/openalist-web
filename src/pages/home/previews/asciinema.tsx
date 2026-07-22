@@ -1,4 +1,4 @@
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import * as AsciinemaPlayer from "asciinema-player"
 import "asciinema-player/dist/bundle/asciinema-player.css"
 import { onMount } from "solid-js"

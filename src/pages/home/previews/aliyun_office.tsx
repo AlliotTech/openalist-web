@@ -1,4 +1,4 @@
-import { Box } from "@hope-ui/solid"
+import { AppBox as Box } from "~/components/ui/Layout"
 import { MaybeLoading } from "~/components"
 import { useFetch, useRouter } from "~/hooks"
 import { password } from "~/store"
