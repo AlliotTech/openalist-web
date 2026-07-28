@@ -1,6 +1,5 @@
 /* @refresh reload */
 import { Route, Router } from "@solidjs/router"
-import { Dynamic } from "solid-js/web"
 import { lazy, type JSXElement } from "solid-js"
 import { render } from "solid-js/web"
 
@@ -16,6 +15,12 @@ const Test = lazy(() => import("~/pages/test"))
 
 const Protected = (props: { children: JSXElement }) => (
   <MustUser>{props.children}</MustUser>
+)
+
+const ManageRoute = (props: { children?: JSXElement }) => (
+  <Protected>
+    <Manage>{props.children}</Manage>
+  </Protected>
 )
 
 declare global {
@@ -36,18 +41,11 @@ render(
     <Router root={Index}>
       <Route path={joinBase("/@test")} component={Test} />
       <Route path={joinBase("/@login")} component={Login} />
-      {manageRoutes.map((route) => (
-        <Route
-          path={joinBase("/@manage", route.to!)}
-          component={() => (
-            <Protected>
-              <Manage>
-                <Dynamic component={route.component} />
-              </Manage>
-            </Protected>
-          )}
-        />
-      ))}
+      <Route path={joinBase("/@manage/*")} component={ManageRoute}>
+        {manageRoutes.map((route) => (
+          <Route path={route.to!} component={route.component} />
+        ))}
+      </Route>
       <Route
         path="*"
         component={() => (

@@ -12,7 +12,7 @@ import { SideMenu } from "./SideMenu"
 import { side_menu_items } from "./sidemenu_items"
 import { JSXElement, Suspense } from "solid-js"
 
-const Manage = (props: { children: JSXElement }) => {
+const Manage = (props: { children?: JSXElement }) => {
   const t = useT()
   useTitle(() => t("manage.title"))
   return (
