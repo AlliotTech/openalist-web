@@ -77,6 +77,11 @@
   box-shadow: var(--app-breadcrumb-hover-shadow);
 }
 
+.app-breadcrumb__link--current.app-breadcrumb__link--hover:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .app-breadcrumb__link--active:active {
   transition: var(--app-breadcrumb-active-transition);
   transform: var(--app-breadcrumb-active-transform);

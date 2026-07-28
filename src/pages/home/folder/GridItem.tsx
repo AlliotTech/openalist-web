@@ -44,11 +44,9 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
         p="$2"
         spacing="$2"
         rounded="$lg"
-        transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+        transition="background-color 160ms ease"
         _hover={{
-          transform: "translateY(-4px) scale(1.02)",
-          boxShadow:
-            "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+          bgColor: hoverColor() as any,
         }}
         as={LinkWithPush}
         href={props.obj.name}
@@ -125,10 +123,6 @@ export const GridItem = (props: { obj: StoreObj; index: number }) => {
               fallbackErr={objIcon}
               src={props.obj.thumb}
               loading="lazy"
-              transition="transform 0.3s ease"
-              _hover={{
-                transform: "scale(1.05)",
-              }}
             />
           </Show>
         </Center>

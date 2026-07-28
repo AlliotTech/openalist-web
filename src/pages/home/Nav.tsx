@@ -58,26 +58,36 @@ export const Nav = () => {
                 class="nav-link"
                 css={{
                   wordBreak: "break-all",
-                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                  transition: isLast()
+                    ? "background-color 150ms ease, color 150ms ease"
+                    : "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 color="unset"
-                _hover={{
-                  bgColor: hoverColor() as any,
-                  color: "unset",
-                  transform: "translateY(-1px)",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                }}
-                _active={{
-                  transform: "scale(.95)",
-                  transition: "0.1s",
-                }}
-                cursor="pointer"
+                _hover={
+                  isLast()
+                    ? { bgColor: hoverColor() as any, color: "unset" }
+                    : {
+                        bgColor: hoverColor() as any,
+                        color: "unset",
+                        transform: "translateY(-1px)",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                      }
+                }
+                _active={
+                  isLast()
+                    ? undefined
+                    : {
+                        transform: "scale(.95)",
+                        transition: "0.1s",
+                      }
+                }
+                cursor={isLast() ? "default" : "pointer"}
                 p="$2"
                 rounded="$lg"
                 currentPage={isLast()}
                 as={isLast() ? undefined : Link}
                 href={joinBase(href)}
-                onMouseEnter={() => setPathAs(path)}
+                onMouseEnter={isLast() ? undefined : () => setPathAs(path)}
               >
                 {text()}
               </BreadcrumbLink>

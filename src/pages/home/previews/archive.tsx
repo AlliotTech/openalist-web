@@ -78,9 +78,8 @@ const ListItem = (props: ListItemProps) => {
         w="$full"
         p="$2"
         rounded="$lg"
-        transition="all 0.3s"
+        transition="background-color 160ms ease"
         _hover={{
-          transform: "scale(1.01)",
           bgColor: hoverColor() as any,
         }}
         cursor={!isMouseSupported() ? "pointer" : "default"}

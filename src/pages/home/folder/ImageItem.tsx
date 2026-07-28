@@ -38,7 +38,7 @@ export const ImageItem = (props: { obj: StoreObj; index: number }) => {
         p="$1"
         spacing="$1"
         rounded="$lg"
-        transition="all 0.3s"
+        transition="border-color 160ms ease"
         border="2px solid transparent"
         _hover={{
           border: `2px solid ${getMainColor()}`,
