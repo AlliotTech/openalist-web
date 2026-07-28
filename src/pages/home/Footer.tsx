@@ -14,6 +14,7 @@ export const Footer = () => {
     <VStack
       class="footer"
       w="$full"
+      mt="auto"
       py="$6"
       borderTop="1px solid"
       borderColor="$neutral4"
