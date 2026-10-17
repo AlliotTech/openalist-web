@@ -97,7 +97,6 @@ const AddOrEdit = () => {
   })
   const alert = createMemo(() => {
     const i = drivers()[storage.driver]?.config.alert
-    console.log(i)
     if (i) {
       return i.split("|")[0]
     }
@@ -196,7 +195,7 @@ const AddOrEdit = () => {
               back()
             },
             (msg, code) => {
-              if (resp.data.id) {
+              if (resp.data?.id) {
                 to(`/@manage/storages/edit/${resp.data.id}`)
               }
             },

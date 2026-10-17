@@ -86,6 +86,12 @@
   },
   "139Yun": {
     "authorization": "Authorization",
+    "client_type": "Client type",
+    "client_type-tips": "Use pc for the larger upload limit",
+    "client_types": {
+      "pc": "PC",
+      "web": "Web"
+    },
     "cloud_id": "Cloud id",
     "custom_upload_part_size": "Custom upload part size",
     "custom_upload_part_size-tips": "0 for auto",
@@ -140,6 +146,8 @@
     },
     "upload_thread": "Upload thread",
     "upload_thread-tips": "1\u003c=thread\u003c=32",
+    "user_finger": "User finger",
+    "user_finger-tips": "Device fingerprint sent during 189 login",
     "username": "Username",
     "validate_code": "Validate code"
   },
