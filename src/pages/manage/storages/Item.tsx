@@ -130,7 +130,7 @@ const Item = (props: ItemProps) => {
             <AppCombobox
               id={props.name}
               readOnly={props.readonly}
-              defaultValue={props.value}
+              value={props.value}
               onChange={(value) => props.onChange?.(value)}
               placeholder={t("global.choose")}
               options={props.options.split(",").map((key) => ({
@@ -147,7 +147,7 @@ const Item = (props: ItemProps) => {
             <AppSelect
               id={props.name}
               readOnly={props.readonly}
-              defaultValue={props.value}
+              value={props.value}
               onChange={(value) => props.onChange?.(value)}
               placeholder={t("global.choose")}
               options={props.options.split(",").map((key) => ({
