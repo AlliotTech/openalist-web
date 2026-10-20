@@ -91,10 +91,7 @@ export const getPagination = (): {
   type: "all" | "pagination" | "load_more" | "auto_load_more"
 } => {
   const rawType = (getSetting("pagination_type") || "all") as
-    | "all"
-    | "pagination"
-    | "load_more"
-    | "auto_load_more"
+    "all" | "pagination" | "load_more" | "auto_load_more"
   const size = Math.min(
     MAX_PAGE_SIZE,
     Math.max(1, getSettingNumber("default_page_size", DEFAULT_PAGE_SIZE)),

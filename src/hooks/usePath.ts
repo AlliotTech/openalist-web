@@ -64,7 +64,7 @@ export const usePath = () => {
       typeof size === "number" && Number.isFinite(size)
         ? size
         : pagination.type === "pagination"
-          ? querySize ?? pagination.size
+          ? (querySize ?? pagination.size)
           : pagination.size
     const fallback = raw || DEFAULT_PAGE_SIZE
     return Math.min(MAX_PAGE_SIZE, Math.max(1, fallback))
