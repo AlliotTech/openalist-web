@@ -44,17 +44,25 @@ export const Obj = () => {
       ? parseInt(searchParam("page") ?? "", 10) || 1
       : undefined
   })
+  const perPage = createMemo(() => {
+    if (pagination.type === "all") {
+      return -1
+    }
+    return pagination.type === "pagination"
+      ? parseInt(searchParam("per_page") ?? "", 10) || pagination.size
+      : undefined
+  })
   let lastPathname: string
   let lastPage: number | undefined
   createEffect(
-    on([pathname, page], async ([pathname, page]) => {
+    on([pathname, page, perPage], async ([pathname, page, perPage]) => {
       if (lastPathname) {
         recordHistory(lastPathname, lastPage)
       }
       lastPathname = pathname
       lastPage = page
       useObjTitle()
-      await handlePathChange(pathname, page)
+      await handlePathChange(pathname, page, undefined, undefined, perPage)
     }),
   )
   return (

@@ -83,13 +83,25 @@ export const getExternalPreviews = (name: string) =>
 export const getIframePreviews = (name: string) =>
   getPreviewsByName(name, "iframe_previews")
 
+export const DEFAULT_PAGE_SIZE = 200
+export const MAX_PAGE_SIZE = 500
+
 export const getPagination = (): {
   size: number
   type: "all" | "pagination" | "load_more" | "auto_load_more"
 } => {
+  const rawType = (getSetting("pagination_type") || "all") as
+    | "all"
+    | "pagination"
+    | "load_more"
+    | "auto_load_more"
+  const size = Math.min(
+    MAX_PAGE_SIZE,
+    Math.max(1, getSettingNumber("default_page_size", DEFAULT_PAGE_SIZE)),
+  )
   return {
-    type: (getSetting("pagination_type") || "all") as any,
-    size: getSettingNumber("default_page_size", 30),
+    type: rawType,
+    size,
   }
 }
 
