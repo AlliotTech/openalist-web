@@ -1,6 +1,8 @@
 import axios, { Canceler } from "axios"
 import {
   appendObjs,
+  DEFAULT_PAGE_SIZE,
+  MAX_PAGE_SIZE,
   password,
   ObjStore,
   State,
@@ -30,6 +32,8 @@ let cancelList: Canceler
 
 const IsDirRecord: Record<string, boolean> = {}
 let globalPage = 1
+let globalHasMore = false
+let globalHasMoreKnown = false
 export const getGlobalPage = () => {
   return globalPage
 }
@@ -42,6 +46,29 @@ export const resetGlobalPage = () => {
 }
 export const usePath = () => {
   const { pathname, to, searchParam } = useRouter()
+
+  const perPageFromQuery = () => {
+    const value = parseInt(searchParam("per_page") ?? "", 10)
+    if (Number.isFinite(value) && value > 0) {
+      return value
+    }
+    return undefined
+  }
+
+  const clampPerPage = (size?: number) => {
+    if (pagination.type === "all") {
+      return -1
+    }
+    const querySize = perPageFromQuery()
+    const raw =
+      typeof size === "number" && Number.isFinite(size)
+        ? size
+        : pagination.type === "pagination"
+          ? querySize ?? pagination.size
+          : pagination.size
+    const fallback = raw || DEFAULT_PAGE_SIZE
+    return Math.min(MAX_PAGE_SIZE, Math.max(1, fallback))
+  }
   const [, getObj] = useFetch((path: string) =>
     fsGet(
       path,
@@ -101,6 +128,7 @@ export const usePath = () => {
     index?: number,
     rp?: boolean,
     force?: boolean,
+    size?: number,
   ) => {
     cancelObj?.()
     cancelList?.()
@@ -111,15 +139,15 @@ export const usePath = () => {
       return recoverHistory(path, index)
     } else if (IsDirRecord[path]) {
       log(`handle [${getHistoryKey(path, index)}] as folder`)
-      return handleFolder(path, index, undefined, undefined, force)
+      return handleFolder(path, index, size, undefined, force)
     } else {
       log(`handle [${getHistoryKey(path, index)}] as obj`)
-      return handleObj(path, index)
+      return handleObj(path, index, size)
     }
   }
 
   // handle enter obj that don't know if it is dir or file
-  const handleObj = async (path: string, index?: number) => {
+  const handleObj = async (path: string, index?: number, size?: number) => {
     ObjStore.setState(State.FetchingObj)
     const resp = await getObj(path)
     handleRespWithoutNotify(
@@ -129,7 +157,7 @@ export const usePath = () => {
         ObjStore.setProvider(data.provider)
         if (data.is_dir) {
           setPathAs(path)
-          handleFolder(path, index)
+          handleFolder(path, index, size)
         } else {
           ObjStore.setReadme(data.readme)
           ObjStore.setHeader(data.header)
@@ -150,24 +178,41 @@ export const usePath = () => {
     append = false,
     force?: boolean,
   ) => {
-    if (!size) {
-      size = pagination.size
-    }
-    if (size !== undefined && pagination.type === "all") {
-      size = undefined
-    }
+    const requestPage = index && index > 0 ? index : 1
+    const requestPerPage = clampPerPage(size)
     ObjStore.setState(append ? State.FetchingMore : State.FetchingObjs)
-    const resp = await getObjs({ path, index, size, force })
+    const resp = await getObjs({
+      path,
+      index: requestPage,
+      size: requestPerPage,
+      force,
+    })
     handleRespWithoutNotify(
       resp,
       (data) => {
-        setGlobalPage(index ?? 1)
+        const responsePage =
+          typeof data.page === "number" && data.page > 0
+            ? data.page
+            : requestPage
+        const responsePerPage =
+          typeof data.per_page === "number" && data.per_page > 0
+            ? data.per_page
+            : requestPerPage
+        const filteredTotal = data.filtered_total ?? data.total ?? 0
+        const hasMore =
+          typeof data.has_more === "boolean"
+            ? data.has_more
+            : responsePerPage > 0 &&
+              responsePage * responsePerPage < filteredTotal
+        globalHasMore = hasMore
+        globalHasMoreKnown = true
+        setGlobalPage(responsePage)
         if (append) {
           appendObjs(data.content)
         } else {
           ObjStore.setObjs(data.content ?? [])
-          ObjStore.setTotal(data.total)
         }
+        ObjStore.setTotal(filteredTotal)
         ObjStore.setReadme(data.readme)
         ObjStore.setHeader(data.header)
         ObjStore.setWrite(data.write)
@@ -202,6 +247,9 @@ export const usePath = () => {
     }
   }
   const loadMore = () => {
+    if (!globalHasMoreKnown || !globalHasMore) {
+      return Promise.resolve()
+    }
     return handleFolder(pathname(), globalPage + 1, undefined, true)
   }
   return {
@@ -209,24 +257,20 @@ export const usePath = () => {
     setPathAs: setPathAs,
     refresh: async (retry_pass?: boolean, force?: boolean) => {
       const path = pathname()
-      const scroll = window.scrollY
       clearHistory(path, globalPage)
-      if (
-        pagination.type === "load_more" ||
-        pagination.type === "auto_load_more"
-      ) {
-        const page = globalPage
-        resetGlobalPage()
-        await handlePathChange(path, globalPage, retry_pass, force)
-        while (globalPage < page) {
-          await loadMore()
-        }
-      } else {
-        await handlePathChange(path, globalPage, retry_pass, force)
-      }
-      window.scroll({ top: scroll, behavior: "smooth" })
+      globalHasMore = false
+      globalHasMoreKnown = false
+      resetGlobalPage()
+      ObjStore.setObjs([])
+      ObjStore.setTotal(0)
+      const perPage = clampPerPage()
+      await handlePathChange(path, 1, retry_pass, force ?? true, perPage)
+      window.scroll({ top: 0, behavior: "smooth" })
     },
     loadMore: loadMore,
-    allLoaded: () => globalPage >= Math.ceil(objStore.total / pagination.size),
+    allLoaded: () =>
+      globalHasMoreKnown
+        ? !globalHasMore
+        : globalPage >= Math.ceil(objStore.total / pagination.size),
   }
 }
