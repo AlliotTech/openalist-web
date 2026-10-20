@@ -10,6 +10,7 @@ import {
   objStore,
   selectAll,
   sortObjs,
+  userCan,
 } from "~/store"
 import { OrderBy } from "~/store"
 import { Col, cols, ListItem } from "./ListItem"
@@ -77,6 +78,10 @@ export const ListTitle = (props: {
 
 const ListLayout = () => {
   const onDragOver = (e: DragEvent) => {
+    // 拖拽上传做权限检查限制
+    if (!userCan("write") && !objStore.write) {
+      return
+    }
     const items = Array.from(e.dataTransfer?.items ?? [])
     for (let i = 0; i < items.length; i++) {
       const item = items[i]
