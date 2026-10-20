@@ -1292,6 +1292,84 @@
     "WebDav": "WebDav",
     "WeiYun": "WeiYun",
     "WoPan": "WoPan",
-    "YandexDisk": "YandexDisk"
+    "YandexDisk": "YandexDisk",
+    "FTPS": "FTPS",
+    "ProtonDrive": "ProtonDrive",
+    "MediaFire": "MediaFire",
+    "pCloud": "pCloud",
+    "Gofile": "Gofile",
+    "Emby": "Emby",
+    "Strm": "Strm",
+    "Streamtape": "Streamtape"
+  },
+  "FTPS": {
+    "address": "Address",
+    "encoding": "Encoding",
+    "username": "Username",
+    "password": "Password",
+    "tls_mode": "Tls mode",
+    "tls_mode-tips": "Explicit: STARTTLS on port 21; Implicit: direct TLS on port 990",
+    "tls_insecure_skip_verify": "Tls insecure skip verify",
+    "tls_insecure_skip_verify-tips": "Allow insecure TLS connections (e.g. self-signed certificates)"
+  },
+  "ProtonDrive": {
+    "username": "Username",
+    "password": "Password"
+  },
+  "MediaFire": {
+    "session_token": "Session token",
+    "session_token-tips": "Required for MediaFire API",
+    "cookie": "Cookie",
+    "cookie-tips": "Required for navigation",
+    "order_by": "Order by",
+    "order_direction": "Order direction",
+    "chunk_size": "Chunk size"
+  },
+  "pCloud": {
+    "access_token": "Access token",
+    "access_token-tips": "OAuth token from pCloud authorization",
+    "hostname": "Hostname",
+    "hostname-tips": "Select pCloud server region",
+    "root_folder_id": "Root folder id",
+    "root_folder_id-tips": "Get folder ID from URL like https://my.pcloud.com/#/filemanager?folder=12345678901 (leave empty for root folder)",
+    "client_id": "Client id",
+    "client_id-tips": "Custom OAuth client ID (optional)",
+    "client_secret": "Client secret",
+    "client_secret-tips": "Custom OAuth client secret (optional)"
+  },
+  "Gofile": {
+    "api_token": "Api token",
+    "api_token-tips": "Get your API token from your Gofile profile page",
+    "link_expiry": "Link expiry",
+    "link_expiry-tips": "Direct link cache duration in days. Set to 0 to disable caching",
+    "direct_link_expiry": "Direct link expiry",
+    "direct_link_expiry-tips": "Direct link expiration time in hours on Gofile server. Set to 0 for no expiration"
+  },
+  "Emby": {
+    "address": "Address",
+    "address-tips": "Emby/Jellyfin server address, e.g. http://192.168.1.1:8096",
+    "username": "Username",
+    "password": "Password"
+  },
+  "Strm": {
+    "paths": "Paths"
+  },
+  "Streamtape": {
+    "api_login": "Api login",
+    "api_login-tips": "API Login from Streamtape account settings",
+    "api_key": "Api key",
+    "api_key-tips": "API Key from Streamtape account settings",
+    "range_mode": "Range mode",
+    "range_mode-tips": "Range strategy for preview: chunk=bounded ranges, full=single full-tail range, percent=part size by file percentage",
+    "range_chunk_mb": "Range chunk mb",
+    "range_chunk_mb-tips": "Chunk mode part size in MB",
+    "range_concurrency": "Range concurrency",
+    "range_concurrency-tips": "Chunk mode concurrent upstream requests",
+    "range_percent": "Range percent",
+    "range_percent-tips": "Percent mode part size percentage (1-100)",
+    "enable_range_control": "Enable range control",
+    "enable_range_control-tips": "Enable driver-level range shaping for smoother streaming",
+    "sha256": "Sha256",
+    "sha256-tips": "Expected SHA256 hash for upload verification (optional)"
   }
 }
